@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập Thì Hiện Tại Đơn & Hiện Tại Tiếp Diễn</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0fdf4;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        .header-title {
+            text-align: center;
+            color: #0d9488;
+            background-color: #ccfbf1;
+            padding: 20px;
+            border-radius: 16px;
+            border: 3px dashed #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        .exercise-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-top: 6px solid #0d9488;
+        }
+        .exercise-title {
+            color: #0f766e;
+            border-bottom: 2px solid #99f6e4;
+            padding-bottom: 8px;
+            margin-top: 0;
+            font-size: 20px;
+        }
+        .question {
+            margin-bottom: 18px;
+            padding: 14px 16px;
+            background-color: #f8fafc;
+            border-radius: 12px;
+            border-left: 5px solid #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .question.correct {
+            border-left-color: #10b981;
+            background-color: #f0fdf4;
+        }
+        .question.incorrect {
+            border-left-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+        .btn-hint-single {
+            background-color: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde047;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .btn-hint-single:hover {
+            background-color: #fde047;
+        }
+        .btn-hint-single.active {
+            background-color: #f59e0b;
+            color: #ffffff;
+            border-color: #d97706;
+        }
+        .hint-box {
+            display: none;
+            background-color: #fffbeb;
+            border: 1px solid #fef08a;
+            color: #92400e;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .question.show-hint .hint-box {
+            display: block;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .options label {
+            background-color: #ffffff;
+            padding: 8px 14px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .options label:hover {
+            background-color: #f1f5f9;
+            border-color: #0d9488;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .btn-check {
+            background-color: #0d9488;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+        .btn-check:hover {
+            background-color: #0f766e;
+        }
+        .result-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #e0f2fe;
+            display: none;
+        }
+        .explanation {
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-title">🌟 BÀI TẬP TỔNG HỢP: THÌ HIỆN TẠI ĐƠN & HIỆN TẠI TIẾP DIỄN 🌟</div>
+    <div class="subtitle">💡 <i>Em hãy đọc kỹ câu hỏi, bấm nút <b>"💡 Gợi ý"</b> nếu cần gợi ý tư duy, sau đó chọn đáp án đúng nhất nhé!</i></div>
+
+    <div id="quiz-container"></div>
+
+<script>
+const quizData = {
+    1: {
+        title: "Bài 1: Phân Biệt Từ Nhận Biết (Signal Words)",
+        questions: [
+            { q: "She ___ breakfast every morning.", hint: "💡 <b>Từ nhận biết:</b> 'every morning' chỉ thói quen hàng ngày → Dùng <b>Hiện Tại Đơn</b>. 'She' (chủ ngữ số ít) → Động từ phải thêm <b>-s</b> hoặc <b>-es</b>.", opts: ["A. eats", "B. is eating", "C. eat", "D. eating"], ans: "A", exp: "Hiện tại đơn với 'She': eats." },
+            { q: "Look! The dog ___ in the river.", hint: "💡 <b>Từ nhận biết:</b> 'Look!' chỉ hành động đang diễn ra → Dùng <b>Hiện Tại Tiếp Diễn</b> (am/is/are + V-ing). 'The dog' (số ít) → Chọn trợ động từ <b>is</b>.", opts: ["A. swims", "B. swim", "C. is swimming", "D. are swimming"], ans: "C", exp: "Hiện tại tiếp diễn: is swimming." },
+            { q: "They usually ___ football on Sundays.", hint: "💡 <b>Từ nhận biết:</b> 'usually' chỉ thói quen → Dùng <b>Hiện Tại Đơn</b>. 'They' (số nhiều) → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. play", "B. is playing", "C. are playing", "D. plays"], ans: "A", exp: "Hiện tại đơn với 'They': play." },
+            { q: "Listen! The baby ___ in the room.", hint: "💡 <b>Từ nhận biết:</b> 'Listen!' gây sự chú ý vào hành động đang xảy ra → Dùng <b>Hiện Tại Tiếp Diễn</b>. 'The baby' (số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. cries", "B. is crying", "C. cry", "D. are crying"], ans: "B", exp: "Hiện tại tiếp diễn: is crying." },
+            { q: "My father ___ his car right now.", hint: "💡 <b>Từ nhận biết:</b> 'right now' (ngay bây giờ) → Dùng <b>Hiện Tại Tiếp Diễn</b>. 'My father' (số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. washes", "B. wash", "C. is washing", "D. are washing"], ans: "C", exp: "Hiện tại tiếp diễn: is washing." },
+            { q: "We ___ to school by bus every day.", hint: "💡 <b>Từ nhận biết:</b> 'every day' chỉ lịch trình hàng ngày → Dùng <b>Hiện Tại Đơn</b>. 'We' → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. go", "B. goes", "C. are going", "D. is going"], ans: "A", exp: "Hiện tại đơn với 'We': go." },
+            { q: "At the moment, I ___ a funny cartoon.", hint: "💡 <b>Từ nhận biết:</b> 'At the moment' → Dùng <b>Hiện Tại Tiếp Diễn</b>. Chủ ngữ 'I' luôn đi cùng trợ động từ <b>am</b>.", opts: ["A. watch", "B. watches", "C. am watching", "D. is watching"], ans: "C", exp: "Hiện tại tiếp diễn với 'I': am watching." },
+            { q: "Cats always ___ milk.", hint: "💡 <b>Từ nhận biết:</b> 'always' chỉ sở thích/thói quen → Dùng <b>Hiện Tại Đơn</b>. 'Cats' (số nhiều) → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. like", "B. is liking", "C. likes", "D. are liking"], ans: "A", exp: "Hiện tại đơn: like." },
+            { q: "Quiet, please! The students ___ a test.", hint: "💡 <b>Từ nhận biết:</b> 'Quiet, please!' nhắc nhở hành động đang diễn ra → Dùng <b>Hiện Tại Tiếp Diễn</b>. 'The students' (số nhiều) → Dùng <b>are + V-ing</b>.", opts: ["A. do", "B. does", "C. is doing", "D. are doing"], ans: "D", exp: "Hiện tại tiếp diễn: are doing." },
+            { q: "He often ___ television after dinner.", hint: "💡 <b>Từ nhận biết:</b> 'often' chỉ tần suất → Dùng <b>Hiện Tại Đơn</b>. 'He' (số ít), động từ kết thúc bằng đuôi -ch → Thêm <b>-es</b>.", opts: ["A. watch", "B. watches", "C. is watching", "D. are watching"], ans: "B", exp: "Hiện tại đơn với 'He': watches." },
+            { q: "Now, my mother ___ dinner in the kitchen.", hint: "💡 <b>Từ nhận biết:</b> 'Now' → Dùng <b>Hiện Tại Tiếp Diễn</b>. 'My mother' (số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. cooks", "B. cook", "C. is cooking", "D. are cooking"], ans: "C", exp: "Hiện tại tiếp diễn: is cooking." },
+            { q: "Tom and Mary ___ ice cream every weekend.", hint: "💡 <b>Từ nhận biết:</b> 'every weekend' → Dùng <b>Hiện Tại Đơn</b>. 'Tom and Mary' (2 người = số nhiều) → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. eats", "B. eat", "C. is eating", "D. are eating"], ans: "B", exp: "Hiện tại đơn số nhiều: eat." },
+            { q: "Look! A red car ___ very fast.", hint: "💡 <b>Từ nhận biết:</b> 'Look!' → Dùng <b>Hiện Tại Tiếp Diễn</b>. 'A red car' (1 chiếc xe = số ít) → Dùng <b>is + V-ing</b> (Lưu ý: động từ kết thúc bằng 'e' thì bỏ 'e' trước khi thêm -ing).", opts: ["A. comes", "B. come", "C. is coming", "D. are coming"], ans: "C", exp: "Hiện tại tiếp diễn: is coming." },
+            { q: "I never ___ lie to my parents.", hint: "💡 <b>Từ nhận biết:</b> 'never' chỉ thói quen → Dùng <b>Hiện Tại Đơn</b>. Chủ ngữ 'I' → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. tell", "B. tells", "C. am telling", "D. is telling"], ans: "A", exp: "Hiện tại đơn với 'I': tell." },
+            { q: "Be quiet! The baby ___.", hint: "💡 <b>Từ nhận biết:</b> 'Be quiet!' → Hành động đang xảy ra → Dùng <b>Hiện Tại Tiếp Diễn</b>. 'The baby' (số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. sleeps", "B. sleep", "C. is sleeping", "D. are sleeping"], ans: "C", exp: "Hiện tại tiếp diễn: is sleeping." },
+            { q: "On Mondays, we ___ English lessons.", hint: "💡 <b>Từ nhận biết:</b> 'On Mondays' chỉ lịch trình cố định → Dùng <b>Hiện Tại Đơn</b>. 'We' → Dùng dạng nguyên mẫu của động từ 'have/has'.", opts: ["A. have", "B. has", "C. are having", "D. is having"], ans: "A", exp: "Hiện tại đơn với 'We': have." },
+            { q: "At present, the sun ___ brightly.", hint: "💡 <b>Từ nhận biết:</b> 'At present' → Dùng <b>Hiện Tại Tiếp Diễn</b>. 'The sun' (số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. shines", "B. shine", "C. is shining", "D. are shining"], ans: "C", exp: "Hiện tại tiếp diễn: is shining." },
+            { q: "My brother sometimes ___ his bike to the park.", hint: "💡 <b>Từ nhận biết:</b> 'sometimes' → Dùng <b>Hiện Tại Đơn</b>. 'My brother' (số ít) → Động từ thêm <b>-s</b>.", opts: ["A. rides", "B. ride", "C. is riding", "D. are riding"], ans: "A", exp: "Hiện tại đơn với 'My brother': rides." },
+            { q: "Listen! Somebody ___ at the front door.", hint: "💡 <b>Từ nhận biết:</b> 'Listen!' → Dùng <b>Hiện Tại Tiếp Diễn</b>. 'Somebody' (Ai đó = đại từ số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. knocks", "B. knock", "C. is knocking", "D. are knocking"], ans: "C", exp: "Hiện tại tiếp diễn: is knocking." },
+            { q: "Birds ___ in the sky.", hint: "💡 Đây là một sự thật tự nhiên → Dùng <b>Hiện Tại Đơn</b>. 'Birds' (số nhiều) → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. fly", "B. flies", "C. is flying", "D. are flying"], ans: "A", exp: "Hiện tại đơn chỉ sự thật: fly." }
+        ]
+    },
+    2: {
+        title: "Bài 2: Câu Khẳng Định (Affirmative Forms)",
+        questions: [
+            { q: "She (read) ___ a book in her room right now.", hint: "💡 Dấu hiệu: 'right now' → Thì <b>Hiện Tại Tiếp Diễn</b>. Công thức cho 'She': <b>is + V-ing</b>.", opts: ["A. reads", "B. is reading", "C. read", "D. are reading"], ans: "B", exp: "She is reading." },
+            { q: "He usually (get up) ___ at 6 o'clock.", hint: "💡 Dấu hiệu: 'usually' → Thì <b>Hiện Tại Đơn</b>. Công thức cho 'He' (số ít): <b>V + s/es</b>.", opts: ["A. gets up", "B. get up", "C. is getting up", "D. are getting up"], ans: "A", exp: "He gets up." },
+            { q: "Look! The birds (sing) ___ on the tree.", hint: "💡 Dấu hiệu: 'Look!' → Thì <b>Hiện Tại Tiếp Diễn</b>. 'The birds' (số nhiều) → Dùng <b>are + V-ing</b>.", opts: ["A. sing", "B. sings", "C. is singing", "D. are singing"], ans: "D", exp: "The birds are singing." },
+            { q: "My mother (cook) ___ delicious food every day.", hint: "💡 Dấu hiệu: 'every day' → Thì <b>Hiện Tại Đơn</b>. 'My mother' (số ít) → Thêm <b>-s</b> vào sau động từ.", opts: ["A. cooks", "B. cook", "C. is cooking", "D. are cooking"], ans: "A", exp: "My mother cooks." },
+            { q: "I (do) ___ my homework at the moment.", hint: "💡 Dấu hiệu: 'at the moment' → Thì <b>Hiện Tại Tiếp Diễn</b>. 'I' → Dùng <b>am + V-ing</b>.", opts: ["A. do", "B. does", "C. am doing", "D. is doing"], ans: "C", exp: "I am doing." },
+            { q: "They (play) ___ basketball every afternoon.", hint: "💡 Dấu hiệu: 'every afternoon' → Thì <b>Hiện Tại Đơn</b>. 'They' (số nhiều) → Giữ <b>nguyên mẫu</b> động từ.", opts: ["A. plays", "B. play", "C. are playing", "D. is playing"], ans: "B", exp: "They play." },
+            { q: "Listen! Anna (play) ___ the piano.", hint: "💡 Dấu hiệu: 'Listen!' → Thì <b>Hiện Tại Tiếp Diễn</b>. 'Anna' (số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. plays", "B. play", "C. is playing", "D. are playing"], ans: "C", exp: "Anna is playing." },
+            { q: "The Earth (go) ___ around the Sun.", hint: "💡 Diễn tả chân lý hiển nhiên → Thì <b>Hiện Tại Đơn</b>. 'The Earth' (số ít), động từ kết thúc bằng đuôi -o → Thêm <b>-es</b>.", opts: ["A. goes", "B. go", "C. is going", "D. are going"], ans: "A", exp: "The Earth goes." },
+            { q: "Right now, we (learn) ___ English.", hint: "💡 Dấu hiệu: 'Right now' → Thì <b>Hiện Tại Tiếp Diễn</b>. 'We' (số nhiều) → Dùng <b>are + V-ing</b>.", opts: ["A. learn", "B. learns", "C. is learning", "D. are learning"], ans: "D", exp: "We are learning." },
+            { q: "Tom (wash) ___ his hands before meals.", hint: "💡 Dấu hiệu: Thói quen ăn uống → Thì <b>Hiện Tại Đơn</b>. 'Tom' (số ít), động từ kết thúc bằng -sh → Thêm <b>-es</b>.", opts: ["A. washes", "B. wash", "C. is washing", "D. are washing"], ans: "A", exp: "Tom washes." },
+            { q: "Look! The bus (come) ___!", hint: "💡 Dấu hiệu: 'Look!' → Thì <b>Hiện Tại Tiếp Diễn</b>. 'The bus' (số ít) → Dùng <b>is + V-ing</b> (Lưu ý: bỏ 'e' ở cuối từ 'come' trước khi thêm -ing).", opts: ["A. comes", "B. come", "C. is coming", "D. are coming"], ans: "C", exp: "The bus is coming." },
+            { q: "My parents (work) ___ in a hospital.", hint: "💡 Diễn tả công việc cố định → Thì <b>Hiện Tại Đơn</b>. 'My parents' (số nhiều) → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. works", "B. work", "C. are working", "D. is working"], ans: "B", exp: "My parents work." },
+            { q: "At present, my dad (repair) ___ his bike.", hint: "💡 Dấu hiệu: 'At present' → Thì <b>Hiện Tại Tiếp Diễn</b>. 'My dad' (số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. repairs", "B. repair", "C. is repairing", "D. are repairing"], ans: "C", exp: "My dad is repairing." },
+            { q: "Monkeys (love) ___ bananas.", hint: "💡 Sự thật về loài vật → Thì <b>Hiện Tại Đơn</b>. 'Monkeys' (số nhiều) → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. loves", "B. love", "C. is loving", "D. are loving"], ans: "B", exp: "Monkeys love." },
+            { q: "Keep silent! The teacher (speak) ___.", hint: "💡 Dấu hiệu: 'Keep silent!' → Thì <b>Hiện Tại Tiếp Diễn</b>. 'The teacher' (số ít) → Dùng <b>is + V-ing</b>.", opts: ["A. speaks", "B. speak", "C. is speaking", "D. are speaking"], ans: "C", exp: "The teacher is speaking." },
+            { q: "I always (clean) ___ my room on Saturday.", hint: "💡 Dấu hiệu: 'always' → Thì <b>Hiện Tại Đơn</b>. Chủ ngữ 'I' → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. cleans", "B. clean", "C. am cleaning", "D. is cleaning"], ans: "B", exp: "I clean." },
+            { q: "Look! The children (run) ___ on the grass.", hint: "💡 Dấu hiệu: 'Look!' → Thì <b>Hiện Tại Tiếp Diễn</b>. 'The children' (số nhiều) → Dùng <b>are + V-ing</b> (Quy tắc chính tả: gấp đôi chữ 'n' trong 'run').", opts: ["A. runs", "B. run", "C. is running", "D. are running"], ans: "D", exp: "The children are running." },
+            { q: "The sun (rise) ___ in the East.", hint: "💡 Sự thật tự nhiên → Thì <b>Hiện Tại Đơn</b>. 'The sun' (số ít) → Động từ thêm <b>-s</b>.", opts: ["A. rises", "B. rise", "C. is rising", "D. are rising"], ans: "A", exp: "The sun rises." },
+            { q: "Now, I (write) ___ a letter to my friend.", hint: "💡 Dấu hiệu: 'Now' → Thì <b>Hiện Tại Tiếp Diễn</b>. Chủ ngữ 'I' → Dùng <b>am + V-ing</b> (Bỏ 'e' cuối từ 'write' rồi thêm -ing).", opts: ["A. write", "B. writes", "C. am writing", "D. is writing"], ans: "C", exp: "I am writing." },
+            { q: "She (brush) ___ her teeth twice a day.", hint: "💡 Dấu hiệu: 'twice a day' → Thì <b>Hiện Tại Đơn</b>. 'She' (số ít), động từ kết thúc bằng đuôi -sh → Thêm <b>-es</b>.", opts: ["A. brushes", "B. brush", "C. is brushing", "D. are brushing"], ans: "A", exp: "She brushes." }
+        ]
+    },
+    3: {
+        title: "Bài 3: Câu Phủ Định & Câu Hỏi (Negative & Interrogative)",
+        questions: [
+            { q: "She ___ (not watch) TV every day.", hint: "💡 'every day' → <b>Hiện Tại Đơn</b>. Phủ định với chủ ngữ số ít 'She' → Dùng công thức: <b>doesn't + V-nguyên-thể</b>.", opts: ["A. doesn't watch", "B. don't watch", "C. isn't watching", "D. aren't watching"], ans: "A", exp: "Phủ định HTĐ số ít: doesn't watch." },
+            { q: "They ___ (not swim) in the lake right now.", hint: "💡 'right now' → <b>Hiện Tại Tiếp Diễn</b>. Phủ định với chủ ngữ số nhiều 'They' → Dùng công thức: <b>aren't + V-ing</b>.", opts: ["A. don't swim", "B. doesn't swim", "C. isn't swimming", "D. aren't swimming"], ans: "D", exp: "Phủ định HTTD số nhiều: aren't swimming." },
+            { q: "___ you play badminton every Sunday?", hint: "💡 Câu hỏi <b>Hiện Tại Đơn</b> ('every Sunday'). Với chủ ngữ 'you' → Cần mượn trợ động từ <b>Do</b> đứng đầu câu.", opts: ["A. Do", "B. Does", "C. Is", "D. Are"], ans: "A", exp: "Câu hỏi HTĐ với You: Do you play...?" },
+            { q: "___ he listening to music at the moment?", hint: "💡 Câu hỏi <b>Hiện Tại Tiếp Diễn</b> ('at the moment', động từ có -ing). Chủ ngữ 'he' → Dùng trợ động từ <b>Is</b> đứng đầu câu.", opts: ["A. Do", "B. Does", "C. Is", "D. Are"], ans: "C", exp: "Câu hỏi HTTD với He: Is he listening...?" },
+            { q: "I ___ (not like) eating onions.", hint: "💡 Động từ chỉ cảm xúc 'like' → Dùng <b>Hiện Tại Đơn</b>. Phủ định với 'I' → Dùng công thức: <b>don't + V-nguyên-thể</b>.", opts: ["A. don't like", "B. doesn't like", "C. am not liking", "D. isn't liking"], ans: "A", exp: "I don't like." },
+            { q: "Look! The cat ___ (not sleep), it is awake!", hint: "💡 'Look!' → <b>Hiện Tại Tiếp Diễn</b>. Phủ định với chủ ngữ 'The cat' (số ít) → Dùng công thức: <b>isn't + V-ing</b>.", opts: ["A. doesn't sleep", "B. don't sleep", "C. isn't sleeping", "D. aren't sleeping"], ans: "C", exp: "The cat isn't sleeping." },
+            { q: "___ your mother work in a school?", hint: "💡 Câu hỏi <b>Hiện Tại Đơn</b> hỏi nghề nghiệp. Chủ ngữ 'your mother' (số ít) → Mượn trợ động từ <b>Does</b> đứng đầu câu.", opts: ["A. Do", "B. Does", "C. Is", "D. Are"], ans: "B", exp: "Câu hỏi HTĐ số ít: Does your mother work...?" },
+            { q: "___ the children playing in the yard now?", hint: "💡 Câu hỏi <b>Hiện Tại Tiếp Diễn</b> ('now', động từ có -ing). Chủ ngữ 'the children' (số nhiều) → Dùng <b>Are</b> đứng đầu câu.", opts: ["A. Do", "B. Does", "C. Is", "D. Are"], ans: "D", exp: "Câu hỏi HTTD số nhiều: Are the children playing...?" },
+            { q: "We ___ (not go) to school on Saturdays.", hint: "💡 'on Saturdays' chỉ lịch cố định → <b>Hiện Tại Đơn</b>. Phủ định với 'We' → Dùng công thức: <b>don't + V-nguyên-thể</b>.", opts: ["A. don't go", "B. doesn't go", "C. aren't going", "D. isn't going"], ans: "A", exp: "We don't go." },
+            { q: "Be quiet! I ___ (not study) well with loud noise.", hint: "💡 Nhắc nhở lúc này 'Be quiet!' → <b>Hiện Tại Tiếp Diễn</b>. Phủ định với chủ ngữ 'I' → Dùng công thức: <b>am not + V-ing</b>.", opts: ["A. don't study", "B. doesn't study", "C. am not studying", "D. isn't studying"], ans: "C", exp: "I am not studying." },
+            { q: "What ___ you usually do in your free time?", hint: "💡 Câu hỏi <b>Hiện Tại Đơn</b> ('usually'). Công thức câu hỏi WH-: <b>What + do/does + S + V-nguyên-thể?</b> (với 'you' chọn 'do').", opts: ["A. do", "B. does", "C. is", "D. are"], ans: "A", exp: "What do you usually do...?" },
+            { q: "Where ___ she going right now?", hint: "💡 Câu hỏi <b>Hiện Tại Tiếp Diễn</b> ('right now', động từ có -ing). Công thức: <b>Where + am/is/are + S + V-ing?</b> (với 'she' chọn 'is').", opts: ["A. do", "B. does", "C. is", "D. are"], ans: "C", exp: "Where is she going...?" },
+            { q: "Tom ___ (not eat) vegetables, he hates them.", hint: "💡 Thói quen/sở thích → <b>Hiện Tại Đơn</b>. Phủ định với 'Tom' (số ít) → Dùng công thức: <b>doesn't + V-nguyên-thể</b>.", opts: ["A. doesn't eat", "B. don't eat", "C. isn't eating", "D. aren't eating"], ans: "A", exp: "Tom doesn't eat." },
+            { q: "Listen! The train ___ (not come) yet.", hint: "💡 'Listen!' → <b>Hiện Tại Tiếp Diễn</b>. Phủ định với 'The train' (số ít) → Dùng công thức: <b>isn't + V-ing</b>.", opts: ["A. doesn't come", "B. don't come", "C. isn't coming", "D. aren't coming"], ans: "C", exp: "The train isn't coming." },
+            { q: "___ Peter and John live in London?", hint: "💡 Câu hỏi <b>Hiện Tại Đơn</b> về nơi ở. 'Peter and John' (2 người = số nhiều) → Mượn trợ động từ <b>Do</b> đứng đầu câu.", opts: ["A. Do", "B. Does", "C. Is", "D. Are"], ans: "A", exp: "Do Peter and John live...?" },
+            { q: "Why ___ you crying right now?", hint: "💡 Câu hỏi <b>Hiện Tại Tiếp Diễn</b> ('right now', động từ có -ing). Với chủ ngữ 'you' → Dùng <b>are</b>.", opts: ["A. do", "B. does", "C. is", "D. are"], ans: "D", exp: "Why are you crying...?" },
+            { q: "My dog ___ (not bark) at night.", hint: "💡 Thói quen → <b>Hiện Tại Đơn</b>. Phủ định với chủ ngữ 'My dog' (số ít) → Dùng công thức: <b>doesn't + V-nguyên-thể</b>.", opts: ["A. doesn't bark", "B. don't bark", "C. isn't barking", "D. aren't barking"], ans: "A", exp: "My dog doesn't bark." },
+            { q: "Look! They ___ (not wear) school uniforms today.", hint: "💡 'Look!' → <b>Hiện Tại Tiếp Diễn</b>. Phủ định với chủ ngữ 'They' → Dùng công thức: <b>aren't + V-ing</b>.", opts: ["A. don't wear", "B. doesn't wear", "C. aren't wearing", "D. isn't wearing"], ans: "C", exp: "They aren't wearing." },
+            { q: "___ your father drive to work every morning?", hint: "💡 Câu hỏi <b>Hiện Tại Đơn</b> ('every morning'). Chủ ngữ 'your father' (số ít) → Mượn trợ động từ <b>Does</b> đứng đầu câu.", opts: ["A. Do", "B. Does", "C. Is", "D. Are"], ans: "B", exp: "Does your father drive...?" },
+            { q: "What ___ the girl drawing on the board now?", hint: "💡 Câu hỏi <b>Hiện Tại Tiếp Diễn</b> ('now', động từ có -ing). Với chủ ngữ số ít 'the girl' → Dùng <b>is</b>.", opts: ["A. do", "B. does", "C. is", "D. are"], ans: "C", exp: "What is the girl drawing...?" }
+        ]
+    },
+    4: {
+        title: "Bài 4: Quy Tắc Động Từ & Động Từ Trạng Thái (Stative Verbs)",
+        questions: [
+            { q: "I (want) ___ a cup of water right now.", hint: "💡 <b>Động từ chỉ mong muốn 'want':</b> KHÔNG dùng dạng V-ing → Chia <b>Hiện Tại Đơn</b>. Chủ ngữ 'I' → Động từ giữ <b>nguyên mẫu</b>.", opts: ["A. am wanting", "B. want", "C. wants", "D. is wanting"], ans: "B", exp: "'want' không dùng dạng -ing → dùng HTĐ: want." },
+            { q: "She (like) ___ reading comic books.", hint: "💡 <b>Động từ chỉ cảm xúc 'like':</b> KHÔNG dùng dạng V-ing → Chia <b>Hiện Tại Đơn</b>. Chủ ngữ 'She' → Động từ thêm <b>-s</b>.", opts: ["A. is liking", "B. like", "C. likes", "D. are liking"], ans: "C", exp: "'like' không dùng -ing → She likes." },
+            { q: "Look! The boy (run) ___ fast.", hint: "💡 'Look!' → <b>Hiện Tại Tiếp Diễn</b>. Động từ 'run' (1 âm tiết, kết thúc bằng 1 phụ âm có 1 nguyên âm đứng trước) → Cần <b>gấp đôi phụ âm cuối 'n'</b> rồi mới thêm -ing.", opts: ["A. is runing", "B. is running", "C. runs", "D. run"], ans: "B", exp: "run → running (gấp đôi n)." },
+            { q: "He (make) ___ a paper house right now.", hint: "💡 'right now' → <b>Hiện Tại Tiếp Diễn</b>. Động từ 'make' tận cùng là chữ <b>'e'</b> → Cần <b>bỏ 'e'</b> rồi mới thêm -ing.", opts: ["A. is makeing", "B. is making", "C. makes", "D. make"], ans: "B", exp: "make → making (bỏ 'e')." },
+            { q: "My mother (have) ___ a red car.", hint: "💡 <b>Động từ 'have' mang nghĩa 'sở hữu':</b> Chia ở <b>Hiện Tại Đơn</b>. Chủ ngữ 'My mother' (số ít) → Động từ chuyển thành <b>has</b>.", opts: ["A. is having", "B. have", "C. has", "D. are having"], ans: "C", exp: "Sở hữu dùng HTĐ: My mother has." },
+            { q: "Do you (know) ___ the answer to this question?", hint: "💡 <b>Động từ chỉ nhận thức 'know':</b> KHÔNG dùng dạng V-ing. Trong câu hỏi Hiện Tại Đơn với 'Do you' → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. knowing", "B. know", "C. knows", "D. is knowing"], ans: "B", exp: "'know' không dùng -ing → Do you know...?" },
+            { q: "The fish (swim) ___ in the glass bowl right now.", hint: "💡 'right now' → <b>Hiện Tại Tiếp Diễn</b>. Động từ 'swim' kết thúc bằng phụ âm 'm' trước đó là nguyên âm 'i' → Cần <b>gấp đôi 'm'</b> trước khi thêm -ing.", opts: ["A. is swiming", "B. is swimming", "C. swims", "D. swim"], ans: "B", exp: "swim → swimming (gấp đôi m)." },
+            { q: "He (fly) ___ a kite every Sunday.", hint: "💡 'every Sunday' → <b>Hiện Tại Đơn</b>. Động từ 'fly' kết thúc bằng chữ 'y' sau phụ âm 'l' và chủ ngữ là 'He' → Đổi 'y' thành 'i' rồi thêm <b>-es</b>.", opts: ["A. flys", "B. flies", "C. is flying", "D. fly"], ans: "B", exp: "fly → flies." },
+            { q: "Listen! The girl (cry) ___ loudly.", hint: "💡 'Listen!' → <b>Hiện Tại Tiếp Diễn</b>. Động từ kết thúc bằng chữ 'y' khi thêm đuôi -ing thì <b>GIỮ NGUYÊN 'y'</b> rồi thêm -ing.", opts: ["A. is criing", "B. is crying", "C. cries", "D. cry"], ans: "B", exp: "cry → crying (giữ nguyên y)." },
+            { q: "Look! The bus (stop) ___ over there.", hint: "💡 'Look!' → <b>Hiện Tại Tiếp Diễn</b>. Động từ 'stop' → Cần <b>gấp đôi phụ âm 'p'</b> trước khi thêm đuôi -ing.", opts: ["A. is stoping", "B. is stopping", "C. stops", "D. stop"], ans: "B", exp: "stop → stopping (gấp đôi p)." },
+            { q: "They (understand) ___ the lesson today.", hint: "💡 <b>Động từ chỉ nhận thức 'understand':</b> KHÔNG dùng dạng V-ing → Chia <b>Hiện Tại Đơn</b>. Chủ ngữ 'They' → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. are understanding", "B. understand", "C. understands", "D. is understanding"], ans: "B", exp: "'understand' dùng HTĐ: understand." },
+            { q: "My sister (dance) ___ gracefully right now.", hint: "💡 'right now' → <b>Hiện Tại Tiếp Diễn</b>. Động từ 'dance' tận cùng bằng chữ <b>'e'</b> → Cần <b>bỏ 'e'</b> rồi thêm đuôi -ing.", opts: ["A. is danceing", "B. is dancing", "C. dances", "D. dance"], ans: "B", exp: "dance → dancing (bỏ 'e')." },
+            { q: "He (sit) ___ on a big chair at present.", hint: "💡 'at present' → <b>Hiện Tại Tiếp Diễn</b>. Động từ 'sit' → Cần <b>gấp đôi phụ âm 't'</b> trước khi thêm đuôi -ing.", opts: ["A. is siting", "B. is sitting", "C. sits", "D. sit"], ans: "B", exp: "sit → sitting (gấp đôi t)." },
+            { q: "I (need) ___ a pen to write my name.", hint: "💡 <b>Động từ chỉ nhu cầu 'need':</b> KHÔNG dùng dạng V-ing → Chia <b>Hiện Tại Đơn</b>. Chủ ngữ 'I' → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. am needing", "B. need", "C. needs", "D. is needing"], ans: "B", exp: "'need' không dùng -ing → I need." },
+            { q: "My uncle (drive) ___ his bus every day.", hint: "💡 'every day' → <b>Hiện Tại Đơn</b>. Chủ ngữ 'My uncle' (số ít) → Động từ cần thêm đuôi <b>-s</b>.", opts: ["A. drive", "B. drives", "C. is driving", "D. driving"], ans: "B", exp: "My uncle drives." },
+            { q: "Look! The children (hop) ___ like frogs.", hint: "💡 'Look!' → <b>Hiện Tại Tiếp Diễn</b>. Động từ 'hop' → Cần <b>gấp đôi phụ âm 'p'</b> trước khi thêm đuôi -ing.", opts: ["A. are hoping", "B. are hopping", "C. hops", "D. hop"], ans: "B", exp: "hop → hopping (gấp đôi p)." },
+            { q: "She (love) ___ her teddy bear very much.", hint: "💡 <b>Động từ chỉ tình cảm 'love':</b> KHÔNG dùng dạng V-ing → Chia <b>Hiện Tại Đơn</b>. Chủ ngữ 'She' → Động từ cần thêm đuôi <b>-s</b>.", opts: ["A. is loving", "B. loves", "C. love", "D. are loving"], ans: "B", exp: "'love' dùng HTĐ: She loves." },
+            { q: "Right now, Tom (put) ___ on his coat.", hint: "💡 'Right now' → <b>Hiện Tại Tiếp Diễn</b>. Động từ 'put' → Cần <b>gấp đôi phụ âm 't'</b> trước khi thêm đuôi -ing.", opts: ["A. is puting", "B. is putting", "C. puts", "D. put"], ans: "B", exp: "put → putting (gấp đôi t)." },
+            { q: "A turtle (move) ___ very slowly.", hint: "💡 Sự thật tự nhiên → <b>Hiện Tại Đơn</b>. Chủ ngữ 'A turtle' (số ít) → Động từ cần thêm <b>-s</b>.", opts: ["A. is moving", "B. moves", "C. move", "D. moveing"], ans: "B", exp: "A turtle moves." },
+            { q: "I (remember) ___ your face clearly.", hint: "💡 <b>Động từ chỉ trí nhớ 'remember':</b> KHÔNG dùng dạng V-ing → Chia <b>Hiện Tại Đơn</b>. Chủ ngữ 'I' → Động từ ở dạng <b>nguyên mẫu</b>.", opts: ["A. am remembering", "B. remember", "C. remembers", "D. is remembering"], ans: "B", exp: "'remember' dùng HTĐ: remember." }
+        ]
+    },
+    5: {
+        title: "Bài 5: Ôn Tập Tổng Hợp Tình Huống Thực Tế",
+        questions: [
+            { q: "Look at Tom! He (skip) ___ rope with his friends.", hint: "💡 Hành động quan sát thấy ngay lúc này ('Look at Tom!') → <b>Hiện Tại Tiếp Diễn</b> (is + V-ing). Lưu ý: động từ 'skip' cần gấp đôi chữ 'p'.", opts: ["A. skips", "B. is skiping", "C. is skipping", "D. skip"], ans: "C", exp: "Look! -> is skipping." },
+            { q: "Every Sunday, my family (go) ___ to the zoo.", hint: "💡 'Every Sunday' chỉ thói quen → <b>Hiện Tại Đơn</b>. Chủ ngữ 'my family' (số ít), động từ kết thúc bằng đuôi -o → Thêm <b>-es</b>.", opts: ["A. goes", "B. go", "C. is going", "D. are going"], ans: "A", exp: "Every Sunday -> goes." },
+            { q: "Where is Mary? – She (wash) ___ the dishes in the kitchen.", hint: "💡 Hỏi vị trí ai đó đang làm gì ngay lúc này → <b>Hiện Tại Tiếp Diễn</b>. 'She' → Dùng công thức: <b>is + V-ing</b>.", opts: ["A. washes", "B. wash", "C. is washing", "D. are washing"], ans: "C", exp: "Hành động đang diễn ra: is washing." },
+            { q: "Water (boil) ___ at 100 degrees Celsius.", hint: "💡 Sự thật khoa học hiển nhiên → <b>Hiện Tại Đơn</b>. 'Water' (danh từ không đếm được = tính là số ít) → Động từ thêm <b>-s</b>.", opts: ["A. is boiling", "B. boils", "C. boil", "D. are boiling"], ans: "B", exp: "Sự thật khoa học: boils." },
+            { q: "Listen! Someone (sing) ___ an English song.", hint: "💡 'Listen!' → <b>Hiện Tại Tiếp Diễn</b>. Chủ ngữ 'Someone' (số ít) → Dùng công thức: <b>is + V-ing</b>.", opts: ["A. sings", "B. sing", "C. is singing", "D. are singing"], ans: "C", exp: "Listen! -> is singing." },
+            { q: "Ben usually (ride) ___ his bike, but today he (walk) ___ to school.", hint: "💡 Vế 1 có 'usually' (thói quen) → <b>Hiện Tại Đơn</b> (V-s). Vế 2 có 'today' (sự thay đổi tạm thời hôm nay) → <b>Hiện Tại Tiếp Diễn</b> (is + V-ing).", opts: ["A. rides / is walking", "B. is riding / walks", "C. ride / walk", "D. rides / walks"], ans: "A", exp: "Thói quen thường lệ vs Hành động tạm thời hôm nay." },
+            { q: "My grandmother (not like) ___ noisy places.", hint: "💡 Động từ 'like' không dùng dạng -ing. Sự thật/sở thích → Phủ định <b>Hiện Tại Đơn</b> với chủ ngữ số ít 'My grandmother' → Dùng <b>doesn't + V-nguyên-thể</b>.", opts: ["A. isn't liking", "B. don't like", "C. doesn't like", "D. aren't liking"], ans: "C", exp: "Sở thích -> doesn't like." },
+            { q: "Look! The monkey (climb) ___ up the coconut tree!", hint: "💡 'Look!' → <b>Hiện Tại Tiếp Diễn</b>. 'The monkey' (số ít) → Dùng công thức: <b>is + V-ing</b>.", opts: ["A. climbs", "B. is climbing", "C. climb", "D. are climbing"], ans: "B", exp: "Look! -> is climbing." },
+            { q: "___ your dad (play) ___ tennis every afternoon?", hint: "💡 'every afternoon' → Câu hỏi <b>Hiện Tại Đơn</b>. Chủ ngữ 'your dad' (số ít) → Công thức: <b>Does + S + V-nguyên-thể?</b>", opts: ["A. Is / playing", "B. Does / play", "C. Do / play", "D. Are / playing"], ans: "B", exp: "Does your dad play...?" },
+            { q: "At the moment, the students (write) ___ an essay.", hint: "💡 'At the moment' → <b>Hiện Tại Tiếp Diễn</b>. 'the students' (số nhiều) → Dùng công thức: <b>are + V-ing</b> (bỏ 'e' cuối từ 'write' trước khi thêm -ing).", opts: ["A. write", "B. writes", "C. is writing", "D. are writing"], ans: "D", exp: "At the moment -> are writing." },
+            { q: "I (have) ___ a younger sister. Her name is Lucy.", hint: "💡 Diễn tả mối quan hệ gia đình/sở hữu → <b>Hiện Tại Đơn</b>. Chủ ngữ 'I' → Dùng dạng <b>nguyên mẫu</b> của động từ.", opts: ["A. am having", "B. have", "C. has", "D. is having"], ans: "B", exp: "Sở hữu -> I have." },
+            { q: "Be quiet! The headmaster (talk) ___ to the class.", hint: "💡 'Be quiet!' → <b>Hiện Tại Tiếp Diễn</b>. 'The headmaster' (Thầy hiệu trưởng = số ít) → Dùng công thức: <b>is + V-ing</b>.", opts: ["A. talks", "B. talk", "C. is talking", "D. are talking"], ans: "C", exp: "Be quiet! -> is talking." },
+            { q: "Birds (not fly) ___ in the water; they swim.", hint: "💡 Sự thật tự nhiên → Phủ định <b>Hiện Tại Đơn</b>. Chủ ngữ 'Birds' (số nhiều) → Dùng công thức: <b>don't + V-nguyên-thể</b>.", opts: ["A. aren't flying", "B. don't fly", "C. doesn't fly", "D. isn't flying"], ans: "B", exp: "Sự thật -> don't fly." },
+            { q: "What ___ you (do) ___ under the table right now?", hint: "💡 'right now' → Câu hỏi <b>Hiện Tại Tiếp Diễn</b>. Với chủ ngữ 'you' → Cấu trúc: <b>What + are + you + V-ing?</b>", opts: ["A. do / do", "B. does / do", "C. are / doing", "D. is / doing"], ans: "C", exp: "What are you doing...?" },
+            { q: "My brother (play) ___ video games twice a week.", hint: "💡 'twice a week' (tần suất) → <b>Hiện Tại Đơn</b>. Chủ ngữ 'My brother' (số ít) → Động từ thêm <b>-s</b>.", opts: ["A. plays", "B. play", "C. is playing", "D. are playing"], ans: "A", exp: "Tần suất -> plays." },
+            { q: "Look! The butterflies (fly) ___ over the colorful flowers.", hint: "💡 'Look!' → <b>Hiện Tại Tiếp Diễn</b>. Chủ ngữ 'The butterflies' (số nhiều) → Dùng công thức: <b>are + V-ing</b>.", opts: ["A. flies", "B. fly", "C. is flying", "D. are flying"], ans: "D", exp: "Look! -> are flying." },
+            { q: "She (know) ___ how to speak English very well.", hint: "💡 Động từ chỉ nhận thức 'know' KHÔNG dùng dạng -ing → Chia <b>Hiện Tại Đơn</b>. Chủ ngữ 'She' → Động từ thêm <b>-s</b>.", opts: ["A. is knowing", "B. knows", "C. know", "D. are knowing"], ans: "B", exp: "'know' không chia Tiếp diễn -> knows." },
+            { q: "Don't make noise! My baby brother (sleep) ___.", hint: "💡 'Don't make noise!' → <b>Hiện Tại Tiếp Diễn</b>. 'My baby brother' (số ít) → Dùng công thức: <b>is + V-ing</b>.", opts: ["A. sleeps", "B. sleep", "C. is sleeping", "D. are sleeping"], ans: "C", exp: "is sleeping." },
+            { q: "___ they (go) ___ to the park on Sundays?", hint: "💡 'on Sundays' → Câu hỏi <b>Hiện Tại Đơn</b>. Chủ ngữ 'they' → Công thức: <b>Do + S + V-nguyên-thể?</b>", opts: ["A. Are / going", "B. Do / go", "C. Does / go", "D. Is / going"], ans: "B", exp: "Do they go...?" },
+            { q: "Right now, my mother (bake) ___ a birthday cake for me.", hint: "💡 'Right now' → <b>Hiện Tại Tiếp Diễn</b>. Chủ ngữ 'my mother' (số ít) → Dùng công thức: <b>is + V-ing</b> (Bỏ 'e' cuối từ 'bake' rồi thêm -ing).", opts: ["A. bakes", "B. bake", "C. is baking", "D. are baking"], ans: "C", exp: "Right now -> is baking." }
+        ]
+    }
+};
+
+function toggleSingleHint(qId) {
+    const qDiv = document.getElementById(qId);
+    const btn = qDiv.querySelector('.btn-hint-single');
+    
+    qDiv.classList.toggle('show-hint');
+    
+    if (qDiv.classList.contains('show-hint')) {
+        btn.innerHTML = '🙈 Ẩn gợi ý';
+        btn.classList.add('active');
+    } else {
+        btn.innerHTML = '💡 Gợi ý';
+        btn.classList.remove('active');
+    }
+}
+
+function renderAllQuiz() {
+    const container = document.getElementById('quiz-container');
+    let html = '';
+
+    for (let exNum = 1; exNum <= 5; exNum++) {
+        const exData = quizData[exNum];
+        html += `
+            <div class="exercise-card">
+                <h2 class="exercise-title">${exData.title}</h2>
+                <form id="form-ex${exNum}">
+        `;
+
+        exData.questions.forEach((item, index) => {
+            const qNum = index + 1;
+            const qId = `ex${exNum}-q${qNum}`;
+            
+            html += `
+                <div class="question" id="${qId}">
+                    <div class="question-header">
+                        <div class="question-text">Câu ${qNum}: ${item.q}</div>
+                        <button type="button" class="btn-hint-single" onclick="toggleSingleHint('${qId}')">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-box">${item.hint}</div>
+                    <div class="options">
+            `;
+
+            item.opts.forEach(opt => {
+                const optVal = opt.charAt(0);
+                html += `
+                    <label>
+                        <input type="radio" name="${qId}" value="${optVal}">
+                        ${opt}
+                    </label>
+                `;
+            });
+
+            html += `
+                    </div>
+                    <div class="explanation" id="exp-${qId}"></div>
+                </div>
+            `;
+        });
+
+        html += `
+                </form>
+                <button type="button" class="btn-check" onclick="checkExercise(${exNum})">Check Bài ${exNum}</button>
+                <div id="result-ex${exNum}" class="result-box"></div>
+            </div>
+        `;
+    }
+
+    container.innerHTML = html;
+}
+
+function checkExercise(exNum) {
+    let score = 0;
+    const total = 20;
+    const questions = quizData[exNum].questions;
+
+    questions.forEach((item, index) => {
+        const qNum = index + 1;
+        const qId = `ex${exNum}-q${qNum}`;
+        const qDiv = document.getElementById(qId);
+        const expDiv = document.getElementById(`exp-${qId}`);
+        const selected = document.querySelector(`input[name="${qId}"]:checked`);
+
+        if (selected) {
+            if (selected.value === item.ans) {
+                score++;
+                qDiv.className = "question correct" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+                expDiv.innerHTML = `✅ Đúng rồi! <i>(${item.exp})</i>`;
+                expDiv.style.color = "#047857";
+            } else {
+                qDiv.className = "question incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+                expDiv.innerHTML = `❌ Chưa chính xác. Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
+                expDiv.style.color = "#b91c1c";
+            }
+        } else {
+            qDiv.className = "question incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+            expDiv.innerHTML = `⚠️ Em chưa chọn đáp án! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
+            expDiv.style.color = "#d97706";
+        }
+    });
+
+    const resultBox = document.getElementById(`result-ex${exNum}`);
+    resultBox.style.display = "block";
+    let comment = "";
+    if (score === 20) comment = "🎉 Xuất sắc! Em đã làm đúng tất cả các câu!";
+    else if (score >= 15) comment = "🌟 Rất tốt! Em đã nắm vững kiến thức bài này.";
+    else if (score >= 10) comment = "👍 Khá tốt! Em hãy bấm nút '💡 Gợi ý' ở các câu sai để kiểm tra lại nhé.";
+    else comment = "💪 Cố gắng lên nhé! Đọc kỹ gợi ý ở mỗi câu sẽ giúp em chọn đúng đáp án dễ hơn.";
+
+    resultBox.innerHTML = `
+        <h3 style="margin-top:0; color: #0f766e;">📊 Kết Quả Bài ${exNum}: ${score}/${total} Câu Đúng</h3>
+        <p style="margin-bottom:0;"><b>Nhận xét:</b> ${comment}</p>
+    `;
+
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+window.onload = renderAllQuiz;
+</script>
+
+</body>
+</html>
