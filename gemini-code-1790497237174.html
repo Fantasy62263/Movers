@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập Thì Tương Lai Gần (Be Going To)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0fdf4;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        .header-title {
+            text-align: center;
+            color: #0d9488;
+            background-color: #ccfbf1;
+            padding: 20px;
+            border-radius: 16px;
+            border: 3px dashed #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .subtitle {
+            text-align: center;
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .student-info-box {
+            background-color: #ffffff;
+            border: 2px solid #0d9488;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        .student-info-box h3 {
+            margin: 0;
+            color: #0f766e;
+            width: 100%;
+            font-size: 18px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 280px;
+        }
+        .input-group label {
+            font-weight: bold;
+            color: #334155;
+            white-space: nowrap;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #94a3b8;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #0d9488;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+        }
+        .exercise-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-top: 6px solid #0d9488;
+        }
+        .exercise-title {
+            color: #0f766e;
+            border-bottom: 2px solid #99f6e4;
+            padding-bottom: 8px;
+            margin-top: 0;
+            font-size: 20px;
+        }
+        .question {
+            margin-bottom: 18px;
+            padding: 14px 16px;
+            background-color: #f8fafc;
+            border-radius: 12px;
+            border-left: 5px solid #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .question.correct {
+            border-left-color: #10b981;
+            background-color: #f0fdf4;
+        }
+        .question.incorrect {
+            border-left-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+        .btn-hint-single {
+            background-color: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde047;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .btn-hint-single:hover {
+            background-color: #fde047;
+        }
+        .btn-hint-single.active {
+            background-color: #f59e0b;
+            color: #ffffff;
+            border-color: #d97706;
+        }
+        .hint-box {
+            display: none;
+            background-color: #fffbeb;
+            border: 1px solid #fef08a;
+            color: #92400e;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .question.show-hint .hint-box {
+            display: block;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .options label {
+            background-color: #ffffff;
+            padding: 8px 14px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .options label:hover {
+            background-color: #f1f5f9;
+            border-color: #0d9488;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .btn-check {
+            background-color: #0d9488;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+        .btn-check:hover {
+            background-color: #0f766e;
+        }
+        .result-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #e0f2fe;
+            display: none;
+        }
+        .status-sending {
+            color: #b45309;
+            font-weight: bold;
+            margin-top: 8px;
+            background: #fef3c7;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .status-success {
+            color: #047857;
+            font-weight: bold;
+            margin-top: 8px;
+            background: #d1fae5;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .explanation {
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-title">🌟 BÀI TẬP ÔN TẬP THÌ TƯƠNG LAI GẦN (BE GOING TO) 🌟</div>
+    <div class="subtitle">💡 <i>Em hãy điền Tên, đọc kỹ câu hỏi, dùng nút <b>"💡 Gợi ý"</b> khi cần tư duy, sau đó chọn đáp án đúng nhất nhé!</i></div>
+
+    <!-- Student Info Header -->
+    <div class="student-info-box">
+        <h3>📝 THÔNG TIN HỌC SINH:</h3>
+        <div class="input-group">
+            <label for="student-name">Tên:</label>
+            <input type="text" id="student-name" placeholder="Ví dụ: Nguyễn Văn An">
+        </div>
+    </div>
+
+    <div id="quiz-container"></div>
+
+<script>
+// Cấu hình Web App URL từ Google Apps Script của giáo viên
+const TEACHER_CONFIG = {
+    googleScriptURL: "https://script.google.com/macros/s/AKfycbwaMoZrvQBmUUOPJOGJjH2doz7krotYU3TN5f0KdeCZ7RrIhLGmORAS3bMc-e2BDKic/exec"
+};
+
+const quizData = {
+    1: {
+        title: "Bài 1: Dạng Khẳng Định (am / is / are + going to + V)",
+        questions: [
+            { q: "I ___ (visit) my grandparents next weekend.", hint: "💡 Cấu trúc: 'I' + am + going to + V nguyên mẫu.", opts: ["A. am going to visit", "B. is going to visit", "C. are going to visit", "D. go to visit"], ans: "A", exp: "I đi với 'am going to visit'." },
+            { q: "She ___ (buy) a new bicycle tomorrow.", hint: "💡 'She' là chủ ngữ số ít -> Dùng 'is going to + V'.", opts: ["A. am going to buy", "B. is going to buy", "C. are going to buy", "D. buys"], ans: "B", exp: "She đi với 'is going to buy'." },
+            { q: "They ___ (play) soccer this afternoon.", hint: "💡 'They' là chủ ngữ số nhiều -> Dùng 'are going to + V'.", opts: ["A. is going to play", "B. are going to play", "C. am going to play", "D. played"], ans: "B", exp: "They đi với 'are going to play'." },
+            { q: "We ___ (clean) the classroom tomorrow morning.", hint: "💡 'We' (chúng tôi = số nhiều) -> Dùng 'are going to + V'.", opts: ["A. is going to clean", "B. are going to clean", "C. am going to clean", "D. cleaned"], ans: "B", exp: "We đi với 'are going to clean'." },
+            { q: "He ___ (cook) dinner tonight.", hint: "💡 'He' là chủ ngữ số ít -> Dùng 'is going to + V'.", opts: ["A. am going to cook", "B. is going to cook", "C. are going to cook", "D. cooks"], ans: "B", exp: "He đi với 'is going to cook'." },
+            { q: "Tom and Mary ___ (fly) to Hanoi next week.", hint: "💡 'Tom and Mary' là 2 người (chủ ngữ số nhiều) -> Dùng 'are going to + V'.", opts: ["A. is going to fly", "B. are going to fly", "C. am going to fly", "D. flew"], ans: "B", exp: "Chủ ngữ số nhiều đi với 'are going to fly'." },
+            { q: "My father ___ (repair) his car this weekend.", hint: "💡 'My father' (1 người = số ít) -> Dùng 'is going to + V'.", opts: ["A. is going to repair", "B. are going to repair", "C. am going to repair", "D. repaired"], ans: "A", exp: "My father đi với 'is going to repair'." },
+            { q: "Look at the sky! It ___ (rain) soon.", hint: "💡 'It' đi với 'is going to + V' để diễn tả dự đoán có căn cứ.", opts: ["A. are going to rain", "B. is going to rain", "C. am going to rain", "D. rains"], ans: "B", exp: "It đi với 'is going to rain'." },
+            { q: "The students ___ (take) an English test tomorrow.", hint: "💡 'The students' (có -s = số nhiều) -> Dùng 'are going to + V'.", opts: ["A. is going to take", "B. are going to take", "C. am going to take", "D. took"], ans: "B", exp: "The students đi với 'are going to take'." },
+            { q: "You ___ (learn) how to swim this summer.", hint: "💡 Chủ ngữ 'You' đi với 'are going to + V'.", opts: ["A. is going to learn", "B. are going to learn", "C. am going to learn", "D. learned"], ans: "B", exp: "You đi với 'are going to learn'." },
+            { q: "My sister ___ (study) abroad next year.", hint: "💡 'My sister' (số ít) -> Dùng 'is going to + V'.", opts: ["A. is going to study", "B. are going to study", "C. am going to study", "D. studied"], ans: "A", exp: "My sister đi với 'is going to study'." },
+            { q: "The dog ___ (bark) at the stranger.", hint: "💡 'The dog' (số ít) -> Dùng 'is going to + V'.", opts: ["A. are going to bark", "B. is going to bark", "C. am going to bark", "D. barks"], ans: "B", exp: "The dog đi với 'is going to bark'." },
+            { q: "We ___ (have) a party on Saturday night.", hint: "💡 'We' đi với 'are going to + V'.", opts: ["A. is going to have", "B. are going to have", "C. am going to have", "D. had"], ans: "B", exp: "We đi với 'are going to have'." },
+            { q: "Nam ___ (join) the football club next month.", hint: "💡 'Nam' (tên riêng 1 người) -> Dùng 'is going to + V'.", opts: ["A. is going to join", "B. are going to join", "C. am going to join", "D. joined"], ans: "A", exp: "Nam đi với 'is going to join'." },
+            { q: "They ___ (build) a new house near the lake.", hint: "💡 'They' đi với 'are going to + V'.", opts: ["A. is going to build", "B. are going to build", "C. am going to build", "D. built"], ans: "B", exp: "They đi với 'are going to build'." },
+            { q: "I ___ (read) this interesting book tonight.", hint: "💡 'I' đi với 'am going to + V'.", opts: ["A. am going to read", "B. is going to read", "C. are going to read", "D. readed"], ans: "A", exp: "I đi với 'am going to read'." },
+            { q: "The teacher ___ (explain) the new lesson tomorrow.", hint: "💡 'The teacher' (số ít) -> Dùng 'is going to + V'.", opts: ["A. is going to explain", "B. are going to explain", "C. am going to explain", "D. explained"], ans: "A", exp: "The teacher đi với 'is going to explain'." },
+            { q: "My parents ___ (buy) a new TV this evening.", hint: "💡 'My parents' (bố mẹ = số nhiều) -> Dùng 'are going to + V'.", opts: ["A. is going to buy", "B. are going to buy", "C. am going to buy", "D. bought"], ans: "B", exp: "My parents đi với 'are going to buy'." },
+            { q: "Linh ___ (wear) a yellow dress to the party.", hint: "💡 'Linh' (số ít) -> Dùng 'is going to + V'.", opts: ["A. is going to wear", "B. are going to wear", "C. am going to wear", "D. wore"], ans: "A", exp: "Linh đi với 'is going to wear'." },
+            { q: "I ___ (drink) a glass of warm milk before going to bed.", hint: "💡 'I' đi với 'am going to + V'.", opts: ["A. am going to drink", "B. is going to drink", "C. are going to drink", "D. drank"], ans: "A", exp: "I đi với 'am going to drink'." }
+        ]
+    },
+    2: {
+        title: "Bài 2: Dạng Phủ Định (am/is/are + NOT + going to + V)",
+        questions: [
+            { q: "I ___ (not stay) at home tonight.", hint: "💡 Cấu trúc phủ định với 'I': am not going to + V.", opts: ["A. am not going to stay", "B. isn't going to stay", "C. aren't going to stay", "D. don't go to stay"], ans: "A", exp: "I đi với 'am not going to stay'." },
+            { q: "She ___ (not attend) the meeting tomorrow.", hint: "💡 Phủ định với chủ ngữ số ít 'She': isn't going to + V.", opts: ["A. aren't going to attend", "B. isn't going to attend", "C. am not going to attend", "D. don't attend"], ans: "B", exp: "She đi với 'isn't going to attend'." },
+            { q: "They ___ (not play) basketball this weekend.", hint: "💡 Phủ định với chủ ngữ số nhiều 'They': aren't going to + V.", opts: ["A. isn't going to play", "B. aren't going to play", "C. am not going to play", "D. won't playing"], ans: "B", exp: "They đi với 'aren't going to play'." },
+            { q: "He ___ (not watch) TV this evening.", hint: "💡 'He' (số ít) -> Dùng 'isn't going to + V'.", opts: ["A. isn't going to watch", "B. aren't going to watch", "C. am not going to watch", "D. isn't watch"], ans: "A", exp: "He đi với 'isn't going to watch'." },
+            { q: "We ___ (not travel) to Danang this summer.", hint: "💡 'We' (số nhiều) -> Dùng 'aren't going to + V'.", opts: ["A. isn't going to travel", "B. aren't going to travel", "C. am not going to travel", "D. don't traveling"], ans: "B", exp: "We đi với 'aren't going to travel'." },
+            { q: "Tom ___ (not buy) that expensive phone.", hint: "💡 'Tom' (số ít) -> Dùng 'isn't going to + V'.", opts: ["A. isn't going to buy", "B. aren't going to buy", "C. am not going to buy", "D. doesn't going to buy"], ans: "A", exp: "Tom đi với 'isn't going to buy'." },
+            { q: "My parents ___ (not go) to the cinema tonight.", hint: "💡 'My parents' (số nhiều) -> Dùng 'aren't going to + V'.", opts: ["A. isn't going to go", "B. aren't going to go", "C. am not going to go", "D. don't going to go"], ans: "B", exp: "My parents đi với 'aren't going to go'." },
+            { q: "It ___ (not rain) today, the sky is clear.", hint: "💡 'It' (số ít) -> Dùng 'isn't going to + V'.", opts: ["A. aren't going to rain", "B. isn't going to rain", "C. am not going to rain", "D. isn't rain"], ans: "B", exp: "It đi với 'isn't going to rain'." },
+            { q: "Linh ___ (not cook) dinner because she is tired.", hint: "💡 'Linh' (số ít) -> Dùng 'isn't going to + V'.", opts: ["A. isn't going to cook", "B. aren't going to cook", "C. am not going to cook", "D. don't cook"], ans: "A", exp: "Linh đi với 'isn't going to cook'." },
+            { q: "You ___ (not fail) the exam if you study hard.", hint: "💡 'You' đi với 'aren't going to + V'.", opts: ["A. isn't going to fail", "B. aren't going to fail", "C. am not going to fail", "D. aren't fail"], ans: "B", exp: "You đi với 'aren't going to fail'." },
+            { q: "The children ___ (not swim) in the river.", hint: "💡 'The children' (trẻ em = số nhiều) -> Dùng 'aren't going to + V'.", opts: ["A. isn't going to swim", "B. aren't going to swim", "C. am not going to swim", "D. don't swim"], ans: "B", exp: "The children đi với 'aren't going to swim'." },
+            { q: "My brother ___ (not sell) his motorbike.", hint: "💡 'My brother' (số ít) -> Dùng 'isn't going to + V'.", opts: ["A. isn't going to sell", "B. aren't going to sell", "C. am not going to sell", "D. doesn't sell"], ans: "A", exp: "My brother đi với 'isn't going to sell'." },
+            { q: "I ___ (not eat) fast food anymore.", hint: "💡 Phủ định với 'I': am not going to + V.", opts: ["A. am not going to eat", "B. isn't going to eat", "C. aren't going to eat", "D. don't eat"], ans: "A", exp: "I đi với 'am not going to eat'." },
+            { q: "We ___ (not invite) him to the party.", hint: "💡 'We' -> Dùng 'aren't going to + V'.", opts: ["A. isn't going to invite", "B. aren't going to invite", "C. am not going to invite", "D. don't invite"], ans: "B", exp: "We đi với 'aren't going to invite'." },
+            { q: "She ___ (not wear) that dark hat.", hint: "💡 'She' -> Dùng 'isn't going to + V'.", opts: ["A. isn't going to wear", "B. aren't going to wear", "C. am not going to wear", "D. doesn't wear"], ans: "A", exp: "She đi với 'isn't going to wear'." },
+            { q: "The cat ___ (not sleep) on the sofa.", hint: "💡 'The cat' (số ít) -> Dùng 'isn't going to + V'.", opts: ["A. aren't going to sleep", "B. isn't going to sleep", "C. am not going to sleep", "D. isn't sleep"], ans: "B", exp: "The cat đi với 'isn't going to sleep'." },
+            { q: "They ___ (not move) to a new house.", hint: "💡 'They' -> Dùng 'aren't going to + V'.", opts: ["A. isn't going to move", "B. aren't going to move", "C. am not going to move", "D. don't move"], ans: "B", exp: "They đi với 'aren't going to move'." },
+            { q: "Nam and Ba ___ (not go) camping tomorrow.", hint: "💡 'Nam and Ba' (số nhiều) -> Dùng 'aren't going to + V'.", opts: ["A. isn't going to go", "B. aren't going to go", "C. am not going to go", "D. don't go"], ans: "B", exp: "Nam and Ba đi với 'aren't going to go'." },
+            { q: "My teacher ___ (not give) us homework today.", hint: "💡 'My teacher' (số ít) -> Dùng 'isn't going to + V'.", opts: ["A. isn't going to give", "B. aren't going to give", "C. am not going to give", "D. doesn't give"], ans: "A", exp: "My teacher đi với 'isn't going to give'." },
+            { q: "I ___ (not give up) my dream.", hint: "💡 'I' -> Dùng 'am not going to + V'.", opts: ["A. am not going to give up", "B. isn't going to give up", "C. aren't going to give up", "D. don't give up"], ans: "A", exp: "I đi với 'am not going to give up'." }
+        ]
+    },
+    3: {
+        title: "Bài 3: Dạng Câu Hỏi / Nghi Vấn (Am / Is / Are + S + going to + V...?)",
+        questions: [
+            { q: "___ you ___ (travel) to Hanoi next week?", hint: "💡 Câu hỏi với 'you': Are + you + going to + V...?", opts: ["A. Is / going to travel", "B. Are / going to travel", "C. Am / going to travel", "D. Do / go to travel"], ans: "B", exp: "Câu hỏi với 'you' dùng 'Are you going to travel...?'." },
+            { q: "___ she ___ (bake) a cake for the party?", hint: "💡 Câu hỏi với 'she': Is + she + going to + V...?", opts: ["A. Is / going to bake", "B. Are / going to bake", "C. Am / going to bake", "D. Does / bake"], ans: "A", exp: "Câu hỏi với 'she' dùng 'Is she going to bake...?'." },
+            { q: "___ he ___ (buy) a new laptop tomorrow?", hint: "💡 Chủ ngữ 'he' (số ít) -> Mượn 'Is' đứng đầu câu hỏi.", opts: ["A. Is / going to buy", "B. Are / going to buy", "C. Am / going to buy", "D. Does / buy"], ans: "A", exp: "Is he going to buy...?" },
+            { q: "___ they ___ (play) football this afternoon?", hint: "💡 Chủ ngữ 'they' (số nhiều) -> Mượn 'Are' đứng đầu câu hỏi.", opts: ["A. Is / going to play", "B. Are / going to play", "C. Am / going to play", "D. Do / play"], ans: "B", exp: "Are they going to play...?" },
+            { q: "___ it ___ (rain) this evening?", hint: "💡 Chủ ngữ 'it' (số ít) -> Mượn 'Is' đứng đầu.", opts: ["A. Is / going to rain", "B. Are / going to rain", "C. Am / going to rain", "D. Does / rain"], ans: "A", exp: "Is it going to rain...?" },
+            { q: "What ___ you ___ (do) this weekend?", hint: "💡 Câu hỏi có từ hỏi What: What + are + you + going to + V...?", opts: ["A. are / going to do", "B. is / going to do", "C. am / going to do", "D. do / do"], ans: "A", exp: "What are you going to do...?" },
+            { q: "Where ___ she ___ (go) on her vacation?", hint: "💡 Từ hỏi Where + is + she + going to + V...?", opts: ["A. is / going to go", "B. are / going to go", "C. am / going to go", "D. does / go"], ans: "A", exp: "Where is she going to go...?" },
+            { q: "When ___ they ___ (arrive) at the airport?", hint: "💡 Từ hỏi When + are + they + going to + V...?", opts: ["A. are / going to arrive", "B. is / going to arrive", "C. am / going to arrive", "D. do / arrive"], ans: "A", exp: "When are they going to arrive...?" },
+            { q: "___ Tom ___ (join) us for dinner night?", hint: "💡 Chủ ngữ 'Tom' (số ít) -> Dùng 'Is'.", opts: ["A. Is / going to join", "B. Are / going to join", "C. Am / going to join", "D. Does / join"], ans: "A", exp: "Is Tom going to join...?" },
+            { q: "___ your parents ___ (visit) Japan next year?", hint: "💡 Chủ ngữ 'your parents' (số nhiều) -> Dùng 'Are'.", opts: ["A. Are / going to visit", "B. Is / going to visit", "C. Am / going to visit", "D. Do / visit"], ans: "A", exp: "Are your parents going to visit...?" },
+            { q: "What ___ he ___ (wear) to the party?", hint: "💡 What + is + he + going to + V...?", opts: ["A. is / going to wear", "B. are / going to wear", "C. am / going to wear", "D. does / wear"], ans: "A", exp: "What is he going to wear...?" },
+            { q: "___ we ___ (have) a test tomorrow?", hint: "💡 Chủ ngữ 'we' -> Dùng 'Are'.", opts: ["A. Are / going to have", "B. Is / going to have", "C. Am / going to have", "D. Do / have"], ans: "A", exp: "Are we going to have...?" },
+            { q: "Where ___ you ___ (stay) in London?", hint: "💡 Where + are + you + going to + V...?", opts: ["A. are / going to stay", "B. is / going to stay", "C. am / going to stay", "D. do / stay"], ans: "A", exp: "Where are you going to stay...?" },
+            { q: "___ Linh ___ (study) Japanese next term?", hint: "💡 Chủ ngữ 'Linh' (số ít) -> Dùng 'Is'.", opts: ["A. Is / going to study", "B. Are / going to study", "C. Am / going to study", "D. Does / study"], ans: "A", exp: "Is Linh going to study...?" },
+            { q: "Who ___ you ___ (meet) at the station?", hint: "💡 Who + are + you + going to + V...?", opts: ["A. are / going to meet", "B. is / going to meet", "C. am / going to meet", "D. do / meet"], ans: "A", exp: "Who are you going to meet...?" },
+            { q: "___ the kids ___ (swim) in the pool?", hint: "💡 Chủ ngữ 'the kids' (số nhiều) -> Dùng 'Are'.", opts: ["A. Are / going to swim", "B. Is / going to swim", "C. Am / going to swim", "D. Do / swim"], ans: "A", exp: "Are the kids going to swim...?" },
+            { q: "Why ___ she ___ (cry)?", hint: "💡 Why + is + she + going to + V...?", opts: ["A. is / going to cry", "B. are / going to cry", "C. am / going to cry", "D. does / cry"], ans: "A", exp: "Why is she going to cry...?" },
+            { q: "___ your brother ___ (learn) to drive?", hint: "💡 Chủ ngữ 'your brother' (1 người = số ít) -> Dùng 'Is'.", opts: ["A. Is / going to learn", "B. Are / going to learn", "C. Am / going to learn", "D. Does / learn"], ans: "A", exp: "Is your brother going to learn...?" },
+            { q: "What time ___ they ___ (leave) tomorrow?", hint: "💡 What time + are + they + going to + V...?", opts: ["A. are / going to leave", "B. is / going to leave", "C. am / going to leave", "D. do / leave"], ans: "A", exp: "What time are they going to leave...?" },
+            { q: "___ I ___ (get) a good mark on this test?", hint: "💡 Câu hỏi với 'I' -> Dùng 'Am I going to + V...?'", opts: ["A. Am / going to get", "B. Is / going to get", "C. Are / going to get", "D. Do / get"], ans: "A", exp: "Am I going to get...?" }
+        ]
+    },
+    4: {
+        title: "Bài 4: Động Từ Nguyên Mẫu (V-bare) Sau 'going to'",
+        questions: [
+            { q: "She is going to ___ (make) a delicious cake.", hint: "💡 Sau 'going to' luôn là động từ NGUYÊN MẪU (V-bare, không thêm ed/ing/s).", opts: ["A. make", "B. made", "C. making", "D. makes"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> make." },
+            { q: "We are going to ___ (visit) Hue next week.", hint: "💡 Động từ đứng sau 'going to' giữ NGUYÊN MẪU.", opts: ["A. visited", "B. visit", "C. visiting", "D. visits"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> visit." },
+            { q: "Look! That tree is going to ___ (fall) down.", hint: "💡 Động từ đứng sau 'going to' ở dạng NGUYÊN MẪU.", opts: ["A. falls", "B. fall", "C. falling", "D. fell"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> fall." },
+            { q: "He is going to ___ (write) a new book.", hint: "💡 Nhớ quy tắc: Be going to + V nguyên mẫu.", opts: ["A. write", "B. wrote", "C. writing", "D. writes"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> write." },
+            { q: "Are you going to ___ (clean) your bedroom?", hint: "💡 Trong câu hỏi, sau 'going to' vẫn là động từ NGUYÊN MẪU.", opts: ["A. cleaned", "B. clean", "C. cleaning", "D. cleans"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> clean." },
+            { q: "I am going to ___ (buy) a new backpack.", hint: "💡 Động từ đứng sau 'going to' ở dạng NGUYÊN MẪU.", opts: ["A. buy", "B. bought", "C. buying", "D. buys"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> buy." },
+            { q: "They are not going to ___ (attend) the meeting.", hint: "💡 Ở dạng phủ định, sau 'going to' vẫn dùng động từ NGUYÊN MẪU.", opts: ["A. attended", "B. attend", "C. attending", "D. attends"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> attend." },
+            { q: "Is she going to ___ (sing) at the party?", hint: "💡 Động từ chính đi sau 'going to' ở dạng NGUYÊN MẪU.", opts: ["A. sang", "B. sing", "C. singing", "D. sings"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> sing." },
+            { q: "My father is going to ___ (fix) the bicycle.", hint: "💡 Sau 'going to' dùng động từ NGUYÊN MẪU.", opts: ["A. fix", "B. fixed", "C. fixing", "D. fixes"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> fix." },
+            { q: "We are going to ___ (learn) French this summer.", hint: "💡 Chọn động từ NGUYÊN MẪU đi sau 'going to'.", opts: ["A. learned", "B. learn", "C. learning", "D. learns"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> learn." },
+            { q: "He isn't going to ___ (spend) all his money.", hint: "💡 Sau 'going to' giữ động từ NGUYÊN MẪU.", opts: ["A. spend", "B. spent", "C. spending", "D. spends"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> spend." },
+            { q: "Are they going to ___ (build) a new hospital?", hint: "💡 Chọn động từ NGUYÊN MẪU đứng sau 'going to'.", opts: ["A. built", "B. build", "C. building", "D. builds"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> build." },
+            { q: "Look at him! He is going to ___ (drop) the glass.", hint: "💡 Động từ đứng sau 'going to' ở dạng NGUYÊN MẪU.", opts: ["A. drop", "B. dropped", "C. dropping", "D. drops"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> drop." },
+            { q: "I am going to ___ (give) you a present.", hint: "💡 Chọn động từ NGUYÊN MẪU.", opts: ["A. gave", "B. give", "C. giving", "D. gives"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> give." },
+            { q: "She is not going to ___ (accept) the gift.", hint: "💡 Sau 'going to' giữ NGUYÊN MẪU.", opts: ["A. accept", "B. accepted", "C. accepting", "D. accepts"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> accept." },
+            { q: "What are you going to ___ (cook) tonight?", hint: "💡 Động từ chính đi sau 'going to' ở dạng NGUYÊN MẪU.", opts: ["A. cooked", "B. cook", "C. cooking", "D. cooks"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> cook." },
+            { q: "The dog is going to ___ (bite) that bone.", hint: "💡 Động từ đứng sau 'going to' ở dạng NGUYÊN MẪU.", opts: ["A. bite", "B. bit", "C. biting", "D. bites"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> bite." },
+            { q: "We aren't going to ___ (waste) our time.", hint: "💡 Chọn động từ NGUYÊN MẪU đứng sau 'going to'.", opts: ["A. wasted", "B. waste", "C. wasting", "D. wastes"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> waste." },
+            { q: "Is Tom going to ___ (drive) us to school?", hint: "💡 Sau 'going to' chọn động từ NGUYÊN MẪU.", opts: ["A. drive", "B. drove", "C. driving", "D. drives"], ans: "A", exp: "Sau 'going to' chọn V nguyên mẫu -> drive." },
+            { q: "They are going to ___ (celebrate) their birthday.", hint: "💡 Chọn động từ NGUYÊN MẪU đứng sau 'going to'.", opts: ["A. celebrated", "B. celebrate", "C. celebrating", "D. celebrates"], ans: "B", exp: "Sau 'going to' chọn V nguyên mẫu -> celebrate." }
+        ]
+    },
+    5: {
+        title: "Bài 5: Tình Huống Tổng Hợp (Thì Tương Lai Gần)",
+        questions: [
+            { q: "Look at those dark clouds! It ___ (rain).", hint: "💡 Có dấu hiệu / bằng chứng ở hiện tại (mây đen) -> Dùng 'is going to rain'.", opts: ["A. is going to rain", "B. rains", "C. rained", "D. is raining"], ans: "A", exp: "Dự đoán có căn cứ hiện tại dùng 'is going to rain'." },
+            { q: "I have saved enough money. I ___ (buy) a laptop.", hint: "💡 Đã có kế hoạch/dự định từ trước -> Dùng 'am going to buy'.", opts: ["A. am going to buy", "B. bought", "C. buys", "D. buying"], ans: "A", exp: "Có kế hoạch trước dùng 'am going to buy'." },
+            { q: "Watch out! You ___ (fall) into the hole!", hint: "💡 Tình huống sắp xảy ra ngay trước mắt -> Dùng 'are going to fall'.", opts: ["A. are going to fall", "B. falls", "C. fell", "D. falling"], ans: "A", exp: "Cảnh báo sự việc sắp xảy ra -> 'are going to fall'." },
+            { q: "Linh has booked the ticket. She ___ (fly) to London.", hint: "💡 Đã đặt vé (có chuẩn bị/kế hoạch sẵn) -> Dùng 'is going to fly'.", opts: ["A. is going to fly", "B. flew", "C. flies", "D. flying"], ans: "A", exp: "Kế hoạch đã chuẩn bị dùng 'is going to fly'." },
+            { q: "Oh no! That guy is driving too fast. He ___ (crash)!", hint: "💡 Nhìn thấy tình huống sắp va chạm ngay lập tức -> Dùng Be going to.", opts: ["A. is going to crash", "B. crashed", "C. crashes", "D. crashing"], ans: "A", exp: "Dự đoán có bằng chứng trước mắt -> 'is going to crash'." },
+            { q: "My sister is studying hard. She ___ (be) a doctor.", hint: "💡 Dự định tương lai của chủ ngữ 'She' -> 'is going to be'.", opts: ["A. is going to be", "B. was", "C. are going to be", "D. be"], ans: "A", exp: "Dự định tương lai -> 'is going to be'." },
+            { q: "We have bought the ingredients. We ___ (make) pizza.", hint: "💡 Đã mua nguyên liệu (đã chuẩn bị) -> dùng 'are going to make'.", opts: ["A. are going to make", "B. made", "C. is going to make", "D. makes"], ans: "A", exp: "Đã chuẩn bị trước dùng 'are going to make'." },
+            { q: "Be careful! You ___ (drop) those glasses.", hint: "💡 Cảnh báo hành động có thể xảy ra ngay tức thì.", opts: ["A. are going to drop", "B. dropped", "C. is going to drop", "D. drops"], ans: "A", exp: "You đi với 'are going to drop'." },
+            { q: "They have packed their bags. They ___ (leave) soon.", hint: "💡 Đã đóng gói hành lý -> Đã có kế hoạch lên đường.", opts: ["A. are going to leave", "B. left", "C. is going to leave", "D. leaves"], ans: "A", exp: "They đi với 'are going to leave'." },
+            { q: "___ you ___ (watch) the football match tonight?", hint: "💡 Câu hỏi dự định với 'you': Are you going to watch...?", opts: ["A. Are / going to watch", "B. Is / going to watch", "C. Do / watch", "D. Did / watch"], ans: "A", exp: "Are you going to watch...?" },
+            { q: "She isn't hungry, so she ___ (not eat) lunch.", hint: "💡 Phủ định dự định với 'she': isn't going to eat.", opts: ["A. isn't going to eat", "B. aren't going to eat", "C. didn't eat", "D. don't eat"], ans: "A", exp: "She đi với 'isn't going to eat'." },
+            { q: "Look at the baby! He ___ (cry).", hint: "💡 Bằng chứng Baby đang nhăn mặt -> Sắp khóc.", opts: ["A. is going to cry", "B. cried", "C. are going to cry", "D. cries"], ans: "A", exp: "Dự đoán có dấu hiệu -> 'is going to cry'." },
+            { q: "What ___ your brother ___ (do) this weekend?", hint: "💡 Câu hỏi dự định với 'your brother' (số ít): What is your brother going to do...?", opts: ["A. is / going to do", "B. are / going to do", "C. does / do", "D. did / do"], ans: "A", exp: "What is your brother going to do...?" },
+            { q: "I feel very tired. I ___ (take) a rest.", hint: "💡 Dự định cá nhân của 'I': am going to take.", opts: ["A. am going to take", "B. is going to take", "C. took", "D. takes"], ans: "A", exp: "I đi với 'am going to take'." },
+            { q: "They ___ (not sell) their old car; they want to keep it.", hint: "💡 Phủ định dự định với 'they': aren't going to sell.", opts: ["A. aren't going to sell", "B. isn't going to sell", "C. don't sell", "D. didn't sell"], ans: "A", exp: "They đi với 'aren't going to sell'." },
+            { q: "The boat is full of water! It ___ (sink)!", hint: "💡 Bằng chứng thuyền đầy nước -> Sắp chìm.", opts: ["A. is going to sink", "B. sank", "C. are going to sink", "D. sinks"], ans: "A", exp: "It đi với 'is going to sink'." },
+            { q: "Nam and Mai have decided. They ___ (get) married.", hint: "💡 Quyết định/Kế hoạch đã đưa ra -> Dùng 'are going to get'.", opts: ["A. are going to get", "B. is going to get", "C. got", "D. gets"], ans: "A", exp: "They đi với 'are going to get'." },
+            { q: "___ she ___ (invite) Peter to her birthday party?", hint: "💡 Câu hỏi dự định với 'she': Is she going to invite...?", opts: ["A. Is / going to invite", "B. Are / going to invite", "C. Does / invite", "D. Did / invite"], ans: "A", exp: "Is she going to invite...?" },
+            { q: "I am going to ___ (start) my new job next Monday.", hint: "💡 Sau 'going to' chọn động từ NGUYÊN MẪU.", opts: ["A. start", "B. started", "C. starting", "D. starts"], ans: "A", exp: "Sau 'going to' dùng V nguyên mẫu -> start." },
+            { q: "Look! The runner is ahead of everyone! He ___ (win).", hint: "💡 Bằng chứng VĐV đang dẫn đầu -> Sắp thắng cuộc.", opts: ["A. is going to win", "B. won", "C. are going to win", "D. wins"], ans: "A", exp: "He đi với 'is going to win'." }
+        ]
+    }
+};
+
+function toggleSingleHint(qId) {
+    const qDiv = document.getElementById(qId);
+    const btn = qDiv.querySelector('.btn-hint-single');
+    qDiv.classList.toggle('show-hint');
+    if (qDiv.classList.contains('show-hint')) {
+        btn.innerHTML = '🙈 Ẩn gợi ý';
+        btn.classList.add('active');
+    } else {
+        btn.innerHTML = '💡 Gợi ý';
+        btn.classList.remove('active');
+    }
+}
+
+function renderAllQuiz() {
+    const container = document.getElementById('quiz-container');
+    let html = '';
+
+    for (let exNum = 1; exNum <= 5; exNum++) {
+        const exData = quizData[exNum];
+        html += `
+            <div class="exercise-card" id="card-ex${exNum}">
+                <h2 class="exercise-title">${exData.title}</h2>
+                <form id="form-ex${exNum}">
+        `;
+
+        exData.questions.forEach((item, index) => {
+            const qNum = index + 1;
+            const qId = `ex${exNum}-q${qNum}`;
+            
+            html += `
+                <div class="question" id="${qId}">
+                    <div class="question-header">
+                        <div class="question-text">Câu ${qNum}: ${item.q}</div>
+                        <button type="button" class="btn-hint-single" onclick="toggleSingleHint('${qId}')">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-box">${item.hint}</div>
+                    <div class="options">
+            `;
+
+            item.opts.forEach(opt => {
+                const optVal = opt.charAt(0);
+                html += `
+                    <label>
+                        <input type="radio" name="${qId}" value="${optVal}">
+                        ${opt}
+                    </label>
+                `;
+            });
+
+            html += `
+                    </div>
+                    <div class="explanation" id="exp-${qId}"></div>
+                </div>
+            `;
+        });
+
+        html += `
+                </form>
+                <button type="button" class="btn-check" onclick="checkExercise(${exNum})">Check Bài ${exNum}</button>
+                <div id="result-ex${exNum}" class="result-box"></div>
+            </div>
+        `;
+    }
+
+    container.innerHTML = html;
+}
+
+function checkExercise(exNum) {
+    const studentNameInput = document.getElementById('student-name');
+    const studentName = studentNameInput.value.trim();
+
+    if (!studentName) {
+        alert("⚠️ Học sinh vui lòng nhập TÊN ở đầu trang trước khi bấm Check bài nhé!");
+        studentNameInput.focus();
+        return;
+    }
+
+    let score = 0;
+    const total = 20;
+    const questions = quizData[exNum].questions;
+    let detailsHTMLArr = [];
+
+    questions.forEach((item, index) => {
+        const qNum = index + 1;
+        const qId = `ex${exNum}-q${qNum}`;
+        const qDiv = document.getElementById(qId);
+        const expDiv = document.getElementById(`exp-${qId}`);
+        const selected = document.querySelector(`input[name="${qId}"]:checked`);
+
+        let statusText = "";
+        let color = "#ef4444";
+
+        if (selected) {
+            if (selected.value === item.ans) {
+                score++;
+                qDiv.className = "question correct" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+                expDiv.innerHTML = `✅ Đúng rồi! <i>(${item.exp})</i>`;
+                expDiv.style.color = "#047857";
+                statusText = `<b>Đúng</b> (Chọn ${selected.value})`;
+                color = "#047857";
+            } else {
+                qDiv.className = "question incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+                expDiv.innerHTML = `❌ Chưa chính xác. Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
+                expDiv.style.color = "#b91c1c";
+                statusText = `<b>Sai</b> (Chọn ${selected.value} - Đáp án đúng: ${item.ans})`;
+            }
+        } else {
+            qDiv.className = "question incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+            expDiv.innerHTML = `⚠️ Em chưa chọn đáp án! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
+            expDiv.style.color = "#d97706";
+            statusText = `<b>Chưa chọn</b> (Đáp án đúng: ${item.ans})`;
+        }
+
+        detailsHTMLArr.push(`<p style="margin: 4px 0; color: ${color};"><b>Câu ${qNum}:</b> ${item.q}<br>&rarr; Trạng thái: ${statusText}</p>`);
+    });
+
+    const resultBox = document.getElementById(`result-ex${exNum}`);
+    resultBox.style.display = "block";
+    let comment = "";
+    if (score === 20) comment = "🎉 Xuất sắc! Em đã làm đúng tất cả các câu!";
+    else if (score >= 15) comment = "🌟 Rất tốt! Em đã nắm vững kiến thức thì Tương lai gần.";
+    else if (score >= 10) comment = "👍 Khá tốt! Em hãy bấm '💡 Gợi ý' ở các câu sai để xem lại nhé.";
+    else comment = "💪 Cố gắng lên nhé! Đọc kỹ gợi ý ở từng câu để làm tốt hơn.";
+
+    resultBox.innerHTML = `
+        <h3 style="margin-top:0; color: #0f766e;">📊 Kết Quả Bài ${exNum}: ${score}/${total} Câu Đúng</h3>
+        <p><b>Tên học sinh:</b> ${studentName}</p>
+        <p><b>Nhận xét:</b> ${comment}</p>
+        <div id="email-status-ex${exNum}" class="status-sending">⏳ Đang gửi kết quả bài làm...</div>
+    `;
+
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // Tự động gửi kết quả ngầm qua Web App Google Script về Email giáo viên
+    fetch(TEACHER_CONFIG.googleScriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            studentName: studentName,
+            exerciseTitle: quizData[exNum].title,
+            score: `${score}/${total}`,
+            detailsHTML: detailsHTMLArr.join("")
+        })
+    })
+    .then(() => {
+        const st = document.getElementById(`email-status-ex${exNum}`);
+        if (st) {
+            st.className = "status-success";
+            st.innerHTML = "📧 ĐÃ GỬI BÀI THÀNH CÔNG!";
+        }
+    })
+    .catch(err => {
+        const st = document.getElementById(`email-status-ex${exNum}`);
+        if (st) {
+            st.className = "status-sending";
+            st.style.color = "#dc2626";
+            st.innerHTML = "❌ Lỗi kết nối mạng, vui lòng kiểm tra đường truyền.";
+        }
+    });
+}
+
+window.onload = renderAllQuiz;
+</script>
+
+</body>
+</html>
