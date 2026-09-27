@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập & Phân Biệt 4 Thì Tiếng Anh</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0fdf4;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        .header-title {
+            text-align: center;
+            color: #0d9488;
+            background-color: #ccfbf1;
+            padding: 20px;
+            border-radius: 16px;
+            border: 3px dashed #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .subtitle {
+            text-align: center;
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* CHEAT SHEET BOX */
+        .cheatsheet-box {
+            background-color: #ffffff;
+            border: 2px solid #0d9488;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .cheatsheet-title {
+            font-weight: bold;
+            color: #0f766e;
+            margin-bottom: 12px;
+            font-size: 18px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cheatsheet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+        }
+        .cheat-item {
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .cheat-item strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .cheat-item.present-simple { background: #ecfdf5; border-left: 5px solid #10b981; }
+        .cheat-item.present-simple strong { color: #047857; }
+        
+        .cheat-item.past-simple { background: #fff7ed; border-left: 5px solid #f97316; }
+        .cheat-item.past-simple strong { color: #c2410c; }
+        
+        .cheat-item.present-cont { background: #f5f3ff; border-left: 5px solid #8b5cf6; }
+        .cheat-item.present-cont strong { color: #6d28d9; }
+        
+        .cheat-item.near-future { background: #ecfeff; border-left: 5px solid #06b6d4; }
+        .cheat-item.near-future strong { color: #0e7490; }
+
+        /* HIGHLIGHT SIGNAL WORDS */
+        .highlight-key {
+            background-color: #fef08a;
+            color: #9a3412;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            border: 1px solid #fde047;
+            display: inline-block;
+            margin: 0 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .student-info-box {
+            background-color: #ffffff;
+            border: 2px solid #0d9488;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        .student-info-box h3 {
+            margin: 0;
+            color: #0f766e;
+            width: 100%;
+            font-size: 18px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 280px;
+        }
+        .input-group label {
+            font-weight: bold;
+            color: #334155;
+            white-space: nowrap;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #94a3b8;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #0d9488;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+        }
+        .exercise-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-top: 6px solid #0d9488;
+        }
+        .exercise-header {
+            color: #0f766e;
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 2px solid #ccfbf1;
+            padding-bottom: 8px;
+        }
+        .question {
+            margin-bottom: 18px;
+            padding: 14px 16px;
+            background-color: #f8fafc;
+            border-radius: 12px;
+            border-left: 5px solid #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .question.correct {
+            border-left-color: #10b981;
+            background-color: #f0fdf4;
+        }
+        .question.incorrect {
+            border-left-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+        .btn-hint-single {
+            background-color: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde047;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .btn-hint-single:hover {
+            background-color: #fde047;
+        }
+        .btn-hint-single.active {
+            background-color: #f59e0b;
+            color: #ffffff;
+            border-color: #d97706;
+        }
+        .hint-box {
+            display: none;
+            background-color: #fffbeb;
+            border: 1px solid #fef08a;
+            color: #92400e;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .question.show-hint .hint-box {
+            display: block;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .options label {
+            background-color: #ffffff;
+            padding: 8px 14px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .options label:hover {
+            background-color: #f1f5f9;
+            border-color: #0d9488;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .btn-check {
+            background-color: #0d9488;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+        .btn-check:hover {
+            background-color: #0f766e;
+        }
+        .result-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #e0f2fe;
+            display: none;
+        }
+        .badge-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #0284c7;
+            color: white;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .status-sending {
+            color: #b45309;
+            font-weight: bold;
+            margin-top: 8px;
+            background: #fef3c7;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .status-success {
+            color: #047857;
+            font-weight: bold;
+            margin-top: 8px;
+            background: #d1fae5;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .explanation {
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-title">🌟 BÀI TẬP ÔN TẬP & PHÂN BIỆT 4 THÌ TIẾNG ANH 🌟</div>
+    <div class="subtitle">💡 <i>Em hãy đọc Bảng Thần Chú, bấm nút <b>"💡 Gợi ý"</b> để tìm Từ Nhận Biết trước khi chọn đáp án!</i></div>
+
+    <!-- CHEAT SHEET -->
+    <div class="cheatsheet-box">
+        <div class="cheatsheet-title">📌 BẢNG THẦN CHÚ "TỪ NHẬN BIẾT" & CẤU TRÚC 4 THÌ</div>
+        <div class="cheatsheet-grid">
+            <div class="cheat-item present-simple">
+                <strong>1. Hiện Tại Đơn</strong>
+                <b>Từ nhận biết:</b> <i>every day, usually, often, always, on Mondays, sự thật.</i><br>
+                <b>Công thức:</b> V(s/es) | don't/doesn't + V | Do/Does...?
+            </div>
+            <div class="cheat-item past-simple">
+                <strong>2. Quá Khứ Đơn</strong>
+                <b>Từ nhận biết:</b> <i>yesterday, last night, ... ago, in 2020, in the past.</i><br>
+                <b>Công thức:</b> V2/-ed | didn't + V | Did...?
+            </div>
+            <div class="cheat-item present-cont">
+                <strong>3. Hiện Tại Tiếp Diễn</strong>
+                <b>Từ nhận biết:</b> <i>now, at the moment, right now, Look!, Listen!, Be quiet!</i><br>
+                <b>Công thức:</b> am/is/are + V-ing | am/is/are + not + V-ing
+            </div>
+            <div class="cheat-item near-future">
+                <strong>4. Tương Lai Gần</strong>
+                <b>Từ nhận biết:</b> <i>tomorrow, next week, soon, dự định, dấu hiệu rõ ràng.</i><br>
+                <b>Công thức:</b> am/is/are + going to + V
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Info Header -->
+    <div class="student-info-box">
+        <h3>📝 THÔNG TIN HỌC SINH:</h3>
+        <div class="input-group">
+            <label for="student-name">Tên học sinh:</label>
+            <input type="text" id="student-name" placeholder="Ví dụ: Nguyễn Văn An">
+        </div>
+    </div>
+
+    <div id="quiz-container"></div>
+
+<script>
+const TEACHER_CONFIG = {
+    googleScriptURL: "https://script.google.com/macros/s/AKfycbwaMoZrvQBmUUOPJOGJjH2doz7krotYU3TN5f0KdeCZ7RrIhLGmORAS3bMc-e2BDKic/exec"
+};
+
+const quizData = {
+    1: {
+        questions: [
+            { q: "He ___ (go) to school by bus every day.", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY DAY</span> ➔ Thói quen ➔ dùng <b>Hiện tại đơn</b> (+).", opts: ["A. goes", "B. went", "C. is going", "D. is going to go"], ans: "A", exp: "Hiện tại đơn khẳng định với 'He' dùng 'goes'." },
+            { q: "They ___ (not go) to school yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn phủ định: <b>didn't + V</b>.", opts: ["A. don't go", "B. didn't go", "C. aren't going", "D. aren't going to go"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't go'." },
+            { q: "___ you ___ (go) to school by bike every day?", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY DAY</span> ➔ Hỏi thói quen Hiện tại đơn: <b>Do / Does + S + V?</b>", opts: ["A. Do / go", "B. Did / go", "C. Are / going", "D. Are / going to go"], ans: "A", exp: "Hiện tại đơn câu hỏi dùng 'Do you go...?'." },
+            { q: "Look! The children ___ (play) in the garden.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> ➔ Đang diễn ra ➔ <b>Hiện tại tiếp diễn</b> (+).", opts: ["A. play", "B. played", "C. are playing", "D. are going to play"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'are playing'." },
+            { q: "She ___ (not watch) TV right now; she is reading.", hint: "💡 Từ nhận biết: <span class='highlight-key'>RIGHT NOW</span> ➔ Hiện tại tiếp diễn phủ định: <b>isn't + V-ing</b>.", opts: ["A. doesn't watch", "B. didn't watch", "C. isn't watching", "D. isn't going to watch"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'isn't watching'." },
+            { q: "___ she ___ (visit) her grandmother yesterday?", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Hỏi Quá khứ đơn: <b>Did + S + V?</b>", opts: ["A. Does / visit", "B. Did / visit", "C. Is / visiting", "D. Is / going to visit"], ans: "B", exp: "Quá khứ đơn nghi vấn dùng 'Did she visit...?'." },
+            { q: "I ___ (buy) a new laptop next week.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT WEEK</span> ➔ Dự định cá nhân ➔ <b>Tương lai gần</b> (+).", opts: ["A. buy", "B. bought", "C. am buying", "D. am going to buy"], ans: "D", exp: "Tương lai gần dùng 'am going to buy'." },
+            { q: "We ___ (not travel) this weekend because of bad weather.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THIS WEEKEND</span> ➔ Tương lai gần phủ định: <b>aren't going to + V</b>.", opts: ["A. don't travel", "B. didn't travel", "C. aren't traveling", "D. aren't going to travel"], ans: "D", exp: "Tương lai gần phủ định dùng 'aren't going to travel'." },
+            { q: "___ they ___ (play) football right now?", hint: "💡 Từ nhận biết: <span class='highlight-key'>RIGHT NOW</span> ➔ Hỏi Hiện tại tiếp diễn: <b>Am/Is/Are + S + V-ing?</b>", opts: ["A. Do / play", "B. Did / play", "C. Are / playing", "D. Are / going to play"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'Are they playing...?'." },
+            { q: "They always ___ (eat) breakfast at 7 AM.", hint: "💡 Từ nhận biết: <span class='highlight-key'>ALWAYS</span> ➔ Thói quen ➔ <b>Hiện tại đơn</b> (+).", opts: ["A. eat", "B. ate", "C. are eating", "D. are going to eat"], ans: "A", exp: "Hiện tại đơn với 'They' dùng 'eat'." },
+            { q: "He ___ (not like) eating spicy food.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỞ THÍCH CÁ NHÂN</span> ➔ Hiện tại đơn phủ định: <b>doesn't + V</b>.", opts: ["A. doesn't like", "B. didn't like", "C. isn't liking", "D. isn't going to like"], ans: "A", exp: "Hiện tại đơn phủ định dùng 'doesn't like'." },
+            { q: "___ you ___ (travel) to Hue next week?", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT WEEK</span> ➔ Hỏi Tương lai gần: <b>Am/Is/Are + S + going to + V?</b>", opts: ["A. Do / travel", "B. Did / travel", "C. Are / traveling", "D. Are / going to travel"], ans: "D", exp: "Tương lai gần nghi vấn dùng 'Are you going to travel...?'." },
+            { q: "We ___ (watch) a great movie last night.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST NIGHT</span> ➔ <b>Quá khứ đơn</b> (+).", opts: ["A. watch", "B. watched", "C. are watching", "D. are going to watch"], ans: "B", exp: "Quá khứ đơn dùng 'watched'." },
+            { q: "Tom ___ (not attend) the party last Saturday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST SATURDAY</span> ➔ Quá khứ đơn phủ định: <b>didn't + V</b>.", opts: ["A. doesn't attend", "B. didn't attend", "C. isn't attending", "D. isn't going to attend"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't attend'." },
+            { q: "___ he ___ (speak) English fluently?", hint: "💡 Ngữ cảnh: <span class='highlight-key'>KHẢ NĂNG / THỰC TẾ</span> ➔ Hỏi Hiện tại đơn.", opts: ["A. Does / speak", "B. Did / speak", "C. Is / speaking", "D. Is / going to speak"], ans: "A", exp: "Hiện tại đơn hỏi với 'he' dùng 'Does he speak...?'." },
+            { q: "Listen! Someone ___ (sing) in the bathroom.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LISTEN!</span> ➔ Đang xảy ra ➔ <b>Hiện tại tiếp diễn</b> (+).", opts: ["A. sings", "B. sang", "C. is singing", "D. is going to sing"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'is singing'." },
+            { q: "Look! The dog ___ (not bark) at the cat.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> ➔ Hiện tại tiếp diễn phủ định: <b>isn't + V-ing</b>.", opts: ["A. doesn't bark", "B. didn't bark", "C. isn't barking", "D. isn't going to bark"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'isn't barking'." },
+            { q: "___ your parents ___ (buy) a new house last year?", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST YEAR</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. Do / buy", "B. Did / buy", "C. Are / buying", "D. Are / going to buy"], ans: "B", exp: "Quá khứ đơn nghi vấn dùng 'Did your parents buy...?'." },
+            { q: "Look at those dark clouds! It ___ (rain) soon.", hint: "💡 Dấu hiệu: <span class='highlight-key'>DARK CLOUDS</span> + <span class='highlight-key'>SOON</span> ➔ <b>Tương lai gần</b> (+).", opts: ["A. rains", "B. rained", "C. is raining", "D. is going to rain"], ans: "D", exp: "Dự đoán có căn cứ mây đen dùng 'is going to rain'." },
+            { q: "He ___ (not buy) that expensive phone next month.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT MONTH</span> ➔ Tương lai gần phủ định: <b>isn't going to + V</b>.", opts: ["A. doesn't buy", "B. didn't buy", "C. isn't buying", "D. isn't going to buy"], ans: "D", exp: "Tương lai gần phủ định dùng 'isn't going to buy'." }
+        ]
+    },
+    2: {
+        questions: [
+            { q: "The sun ___ (rise) in the east.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT HIỂN NHIÊN</span> ➔ dùng <b>Hiện tại đơn</b>.", opts: ["A. rises", "B. rose", "C. is rising", "D. is going to rise"], ans: "A", exp: "Sự thật hiển nhiên dùng Hiện tại đơn 'rises'." },
+            { q: "Shh! The baby ___ (sleep) right now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>SHH!</span> & <span class='highlight-key'>RIGHT NOW</span> ➔ dùng <b>Hiện tại tiếp diễn</b>.", opts: ["A. sleeps", "B. slept", "C. is sleeping", "D. is going to sleep"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'is sleeping'." },
+            { q: "I ___ (not play) video games on weekdays.", hint: "💡 Từ nhận biết: <span class='highlight-key'>ON WEEKDAYS</span> ➔ Thói quen ➔ Hiện tại đơn phủ định: <b>don't + V</b>.", opts: ["A. don't play", "B. didn't play", "C. am not playing", "D. am not going to play"], ans: "A", exp: "Hiện tại đơn phủ định dùng 'don't play'." },
+            { q: "___ she ___ (cook) dinner at the moment?", hint: "💡 Từ nhận biết: <span class='highlight-key'>AT THE MOMENT</span> ➔ Hỏi Hiện tại tiếp diễn.", opts: ["A. Does / cook", "B. Did / cook", "C. Is / cooking", "D. Is / going to cook"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'Is she cooking...?'." },
+            { q: "Linh usually ___ (drink) milk before going to bed.", hint: "💡 Từ nhận biết: <span class='highlight-key'>USUALLY</span> ➔ Thói quen ➔ dùng <b>Hiện tại đơn</b>.", opts: ["A. drinks", "B. drank", "C. is drinking", "D. is going to drink"], ans: "A", exp: "Hiện tại đơn số ít dùng 'drinks'." },
+            { q: "At the moment, we ___ (study) English.", hint: "💡 Từ nhận biết: <span class='highlight-key'>AT THE MOMENT</span> ➔ dùng <b>Hiện tại tiếp diễn</b>.", opts: ["A. study", "B. studied", "C. are studying", "D. are going to study"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'are studying'." },
+            { q: "My sister ___ (not drink) coffee every morning.", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY MORNING</span> ➔ Hiện tại đơn phủ định: <b>doesn't + V</b>.", opts: ["A. doesn't drink", "B. didn't drink", "C. isn't drinking", "D. isn't going to drink"], ans: "A", exp: "Hiện tại đơn phủ định dùng 'doesn't drink'." },
+            { q: "Listen! The teacher ___ (not speak) now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LISTEN!</span> & <span class='highlight-key'>NOW</span> ➔ Hiện tại tiếp diễn phủ định: <b>isn't + V-ing</b>.", opts: ["A. doesn't speak", "B. didn't speak", "C. isn't speaking", "D. isn't going to speak"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'isn't speaking'." },
+            { q: "What time ___ you usually ___ (get up) in the morning?", hint: "💡 Từ nhận biết: <span class='highlight-key'>USUALLY</span> ➔ Hỏi Hiện tại đơn.", opts: ["A. do / get up", "B. did / get up", "C. are / getting up", "D. are / going to get up"], ans: "A", exp: "Hiện tại đơn hỏi thói quen dùng 'do you get up'." },
+            { q: "My parents ___ (work) in a big hospital.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>THỰC TẾ CỐ ĐỊNH</span> ➔ dùng <b>Hiện tại đơn</b>.", opts: ["A. work", "B. worked", "C. are working", "D. are going to work"], ans: "A", exp: "Thực tế cố định dùng 'work'." },
+            { q: "They ___ (not study) at the moment.", hint: "💡 Từ nhận biết: <span class='highlight-key'>AT THE MOMENT</span> ➔ Hiện tại tiếp diễn phủ định.", opts: ["A. don't study", "B. didn't study", "C. aren't studying", "D. aren't going to study"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'aren't studying'." },
+            { q: "What ___ he ___ (do) right now?", hint: "💡 Từ nhận biết: <span class='highlight-key'>RIGHT NOW</span> ➔ Hỏi Hiện tại tiếp diễn.", opts: ["A. does / do", "B. did / do", "C. is / doing", "D. is / going to do"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'is he doing'." },
+            { q: "Be quiet! The teacher ___ (explain) the lesson.", hint: "💡 Từ nhận biết: <span class='highlight-key'>BE QUIET!</span> ➔ <b>Hiện tại tiếp diễn</b>.", opts: ["A. explains", "B. explained", "C. is explaining", "D. is going to explain"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'is explaining'." },
+            { q: "Cats ___ (not like) water.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT TỰ NHIÊN</span> ➔ Hiện tại đơn phủ định: <b>don't + V</b>.", opts: ["A. don't like", "B. didn't like", "C. aren't liking", "D. aren't going to like"], ans: "A", exp: "Hiện tại đơn phủ định số nhiều dùng 'don't like'." },
+            { q: "___ Linh ___ (live) near your house?", hint: "💡 Ngữ cảnh: <span class='highlight-key'>THỰC TẾ CỐ ĐỊNH</span> ➔ Hỏi Hiện tại đơn.", opts: ["A. Does / live", "B. Did / live", "C. Is / living", "D. Is / going to live"], ans: "A", exp: "Hiện tại đơn hỏi dùng 'Does Linh live...?'." },
+            { q: "Listen! ___ someone ___ (knock) at the door?", hint: "💡 Từ nhận biết: <span class='highlight-key'>LISTEN!</span> ➔ Hỏi Hiện tại tiếp diễn.", opts: ["A. Does / knock", "B. Did / knock", "C. Is / knocking", "D. Is / going to knock"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'Is someone knocking...?'." },
+            { q: "They ___ (not live) in Hanoi.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT CỐ ĐỊNH</span> ➔ Hiện tại đơn phủ định.", opts: ["A. don't live", "B. didn't live", "C. aren't living", "D. aren't going to live"], ans: "A", exp: "Hiện tại đơn phủ định dùng 'don't live'." },
+            { q: "Be quiet! I ___ (not joke) right now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>BE QUIET!</span> & <span class='highlight-key'>RIGHT NOW</span> ➔ Hiện tại tiếp diễn phủ định.", opts: ["A. don't joke", "B. didn't joke", "C. am not joking", "D. am not going to joke"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'am not joking'." },
+            { q: "How often ___ they ___ (visit) the museum?", hint: "💡 Từ nhận biết: <span class='highlight-key'>HOW OFTEN</span> ➔ Hỏi tần suất Hiện tại đơn.", opts: ["A. do / visit", "B. did / visit", "C. are / visiting", "D. are / going to visit"], ans: "A", exp: "Hiện tại đơn hỏi dùng 'do they visit'." },
+            { q: "___ the students ___ (listen) to the teacher now?", hint: "💡 Từ nhận biết: <span class='highlight-key'>NOW</span> ➔ Hỏi Hiện tại tiếp diễn.", opts: ["A. Do / listen", "B. Did / listen", "C. Are / listening", "D. Are / going to listen"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'Are the students listening...?'." }
+        ]
+    },
+    3: {
+        questions: [
+            { q: "My father ___ (repair) his bicycle two days ago.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TWO DAYS AGO</span> ➔ <b>Quá khứ đơn</b>.", opts: ["A. repairs", "B. repaired", "C. is repairing", "D. is going to repair"], ans: "B", exp: "Quá khứ đơn dùng 'repaired'." },
+            { q: "Nam has booked a ticket. He ___ (fly) to Hanoi tomorrow.", hint: "💡 Kế hoạch: <span class='highlight-key'>BOOKED A TICKET</span> + <span class='highlight-key'>TOMORROW</span> ➔ <b>Tương lai gần</b>.", opts: ["A. flies", "B. flew", "C. is flying", "D. is going to fly"], ans: "D", exp: "Có chuẩn bị vé sẵn dùng 'is going to fly'." },
+            { q: "They ___ (finish) their homework an hour ago.", hint: "💡 Từ nhận biết: <span class='highlight-key'>AN HOUR AGO</span> ➔ <b>Quá khứ đơn</b>.", opts: ["A. finish", "B. finished", "C. are finishing", "D. are going to finish"], ans: "B", exp: "Quá khứ đơn dùng 'finished'." },
+            { q: "We have bought ingredients. We ___ (make) a cake tonight.", hint: "💡 Kế hoạch: <span class='highlight-key'>BOUGHT INGREDIENTS</span> + <span class='highlight-key'>TONIGHT</span> ➔ <b>Tương lai gần</b>.", opts: ["A. make", "B. made", "C. are making", "D. are going to make"], ans: "D", exp: "Dự định có chuẩn bị dùng 'are going to make'." },
+            { q: "I ___ (see) my old friend in the park yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ <b>Quá khứ đơn</b>.", opts: ["A. see", "B. saw", "C. am seeing", "D. am going to see"], ans: "B", exp: "Quá khứ đơn bất quy tắc: see -> saw." },
+            { q: "She ___ (travel) to Danang next summer.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT SUMMER</span> ➔ <b>Tương lai gần</b>.", opts: ["A. travels", "B. traveled", "C. is traveling", "D. is going to travel"], ans: "D", exp: "Tương lai gần dùng 'is going to travel'." },
+            { q: "We ___ (not see) you at the cinema yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn phủ định: <b>didn't + V</b>.", opts: ["A. don't see", "B. didn't see", "C. aren't seeing", "D. aren't going to see"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't see'." },
+            { q: "I ___ (not stay) at home tomorrow night.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TOMORROW NIGHT</span> ➔ Tương lai gần phủ định: <b>am not going to + V</b>.", opts: ["A. don't stay", "B. didn't stay", "C. am not staying", "D. am not going to stay"], ans: "D", exp: "Tương lai gần phủ định dùng 'am not going to stay'." },
+            { q: "My father ___ (not fix) the car last week.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST WEEK</span> ➔ Quá khứ đơn phủ định.", opts: ["A. doesn't fix", "B. didn't fix", "C. isn't fixing", "D. isn't going to fix"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't fix'." },
+            { q: "She ___ (not wear) that dress to the party tonight.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TONIGHT</span> ➔ Tương lai gần phủ định.", opts: ["A. doesn't wear", "B. didn't wear", "C. isn't wearing", "D. isn't going to wear"], ans: "D", exp: "Tương lai gần phủ định dùng 'isn't going to wear'." },
+            { q: "Linh ___ (not come) to class yesterday because she was sick.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn phủ định.", opts: ["A. doesn't come", "B. didn't come", "C. isn't coming", "D. isn't going to come"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't come'." },
+            { q: "The children ___ (not swim) in the river this afternoon.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THIS AFTERNOON</span> ➔ Tương lai gần phủ định.", opts: ["A. don't swim", "B. didn't swim", "C. aren't swimming", "D. aren't going to swim"], ans: "D", exp: "Tương lai gần phủ định dùng 'aren't going to swim'." },
+            { q: "___ Tom ___ (join) us for the trip tomorrow?", hint: "💡 Từ nhận biết: <span class='highlight-key'>TOMORROW</span> ➔ Hỏi Tương lai gần.", opts: ["A. Does / join", "B. Did / join", "C. Is / joining", "D. Is / going to join"], ans: "D", exp: "Tương lai gần hỏi dùng 'Is Tom going to join...?'." },
+            { q: "Where ___ you ___ (go) last night?", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST NIGHT</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. do / go", "B. did / go", "C. are / going", "D. are / going to go"], ans: "B", exp: "Quá khứ đơn hỏi dùng 'did you go'." },
+            { q: "What ___ you ___ (do) this weekend?", hint: "💡 Từ nhận biết: <span class='highlight-key'>THIS WEEKEND</span> ➔ Hỏi kế hoạch Tương lai gần.", opts: ["A. do / do", "B. did / do", "C. are / doing", "D. are / going to do"], ans: "D", exp: "Tương lai gần hỏi dùng 'are you going to do'." },
+            { q: "___ they ___ (finish) the test two hours ago?", hint: "💡 Từ nhận biết: <span class='highlight-key'>TWO HOURS AGO</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. Do / finish", "B. Did / finish", "C. Are / finishing", "D. Are / going to finish"], ans: "B", exp: "Quá khứ đơn hỏi dùng 'Did they finish...?'." },
+            { q: "___ she ___ (bake) a cake for the party tonight?", hint: "💡 Từ nhận biết: <span class='highlight-key'>TONIGHT</span> ➔ Hỏi Tương lai gần.", opts: ["A. Does / bake", "B. Did / bake", "C. Is / baking", "D. Is / going to bake"], ans: "D", exp: "Tương lai gần hỏi dùng 'Is she going to bake...?'." },
+            { q: "Why ___ you ___ (cry) yesterday afternoon?", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY AFTERNOON</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. do / cry", "B. did / cry", "C. are / crying", "D. are / going to cry"], ans: "B", exp: "Quá khứ đơn hỏi dùng 'did you cry'." },
+            { q: "Where ___ they ___ (stay) during their trip next month?", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT MONTH</span> ➔ Hỏi Tương lai gần.", opts: ["A. do / stay", "B. did / stay", "C. are / staying", "D. are / going to stay"], ans: "D", exp: "Tương lai gần hỏi dùng 'are they going to stay'." },
+            { q: "They ___ (build) this school in 2020.", hint: "💡 Từ nhận biết: <span class='highlight-key'>IN 2020</span> ➔ <b>Quá khứ đơn</b>.", opts: ["A. build", "B. built", "C. are building", "D. are going to build"], ans: "B", exp: "Mốc thời gian quá khứ dùng 'built'." }
+        ]
+    },
+    4: {
+        questions: [
+            { q: "The earth ___ (go) around the sun.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT TỰ NHIÊN</span> ➔ Hiện tại đơn ➔ 'goes'.", opts: ["A. goes", "B. went", "C. is going", "D. is going to go"], ans: "A", exp: "Chân lý khoa học dùng Hiện tại đơn." },
+            { q: "When I was young, I ___ (live) in a small village.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>WHEN I WAS YOUNG</span> ➔ Quá khứ đơn ➔ 'lived'.", opts: ["A. live", "B. lived", "C. am living", "D. am going to live"], ans: "B", exp: "Kể kỷ niệm quá khứ dùng Quá khứ đơn." },
+            { q: "Where is Mai? - She ___ (cook) in the kitchen now.", hint: "💡 Ngữ cảnh: Hỏi vị trí + <span class='highlight-key'>NOW</span> ➔ Hành động đang xảy ra.", opts: ["A. cooks", "B. cooked", "C. is cooking", "D. is going to cook"], ans: "C", exp: "Hành động đang diễn ra dùng 'is cooking'." },
+            { q: "I have decided. I ___ (learn) Japanese next month.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>HAVE DECIDED</span> + <span class='highlight-key'>NEXT MONTH</span> ➔ Tương lai gần.", opts: ["A. learn", "B. learned", "C. am learning", "D. am going to learn"], ans: "D", exp: "Đã quyết định kế hoạch dùng 'am going to learn'." },
+            { q: "Yesterday, Nam ___ (not go) to school because he was sick.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn phủ định.", opts: ["A. doesn't go", "B. didn't go", "C. isn't going", "D. isn't going to go"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't go'." },
+            { q: "Don't make noise! The students ___ (take) an exam.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>DON'T MAKE NOISE!</span> ➔ Đang diễn ra.", opts: ["A. take", "B. took", "C. are taking", "D. are going to take"], ans: "C", exp: "Cảnh báo không làm ồn dùng Hiện tại tiếp diễn." },
+            { q: "Watch out! You ___ (drop) that heavy box!", hint: "💡 Ngữ cảnh: <span class='highlight-key'>WATCH OUT!</span> ➔ Báo hiệu nguy cơ sắp xảy ra.", opts: ["A. drop", "B. dropped", "C. are dropping", "D. are going to drop"], ans: "D", exp: "Cảnh báo nguy cơ sắp xảy ra dùng Tương lai gần." },
+            { q: "Every morning, my mother ___ (get) up at 5:30.", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY MORNING</span> ➔ Thói quen Hiện tại đơn.", opts: ["A. gets", "B. got", "C. is getting", "D. is going to get"], ans: "A", exp: "Thói quen mỗi sáng dùng 'gets'." },
+            { q: "___ you ___ (see) the fireworks last night?", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST NIGHT</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. Do / see", "B. Did / see", "C. Are / seeing", "D. Are / going to see"], ans: "B", exp: "Hỏi sự việc tối qua dùng 'Did you see...?'." },
+            { q: "Look! The cat ___ (climb) up the big tree.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> ➔ Thấy ngay lúc này.", opts: ["A. climbs", "B. climbed", "C. is climbing", "D. is going to climb"], ans: "C", exp: "Hành động đang xảy ra dùng 'is climbing'." },
+            { q: "Look at his ticket! He ___ (fly) to Paris tomorrow.", hint: "💡 Bằng chứng: <span class='highlight-key'>LOOK AT HIS TICKET!</span> ➔ Tương lai gần.", opts: ["A. flies", "B. flew", "C. is flying", "D. is going to fly"], ans: "D", exp: "Cầm vé trên tay dùng 'is going to fly'." },
+            { q: "Water ___ (boil) at 100 degrees Celsius.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT KHOA HỌC</span> ➔ Hiện tại đơn.", opts: ["A. boils", "B. boiled", "C. is boiling", "D. is going to boil"], ans: "A", exp: "Sự thật khoa học dùng 'boils'." },
+            { q: "They ___ (meet) each other five years ago.", hint: "💡 Từ nhận biết: <span class='highlight-key'>FIVE YEARS AGO</span> ➔ Quá khứ đơn.", opts: ["A. meet", "B. met", "C. are meeting", "D. are going to meet"], ans: "B", exp: "Ago đi với Quá khứ đơn 'met'." },
+            { q: "At present, my brother ___ (work) on his project.", hint: "💡 Từ nhận biết: <span class='highlight-key'>AT PRESENT</span> ➔ Hiện tại tiếp diễn.", opts: ["A. works", "B. worked", "C. is working", "D. is going to work"], ans: "C", exp: "At present dùng 'is working'." },
+            { q: "We have bought the tickets. We ___ (watch) a movie tonight.", hint: "💡 Bằng chứng: <span class='highlight-key'>BOUGHT THE TICKETS</span> ➔ Tương lai gần.", opts: ["A. watch", "B. watched", "C. are watching", "D. are going to watch"], ans: "D", exp: "Đã mua vé sẵn dùng 'are going to watch'." },
+            { q: "___ your brother usually ___ (play) badminton on weekends?", hint: "💡 Từ nhận biết: <span class='highlight-key'>USUALLY</span> & <span class='highlight-key'>ON WEEKENDS</span> ➔ Hỏi Hiện tại đơn.", opts: ["A. Does / play", "B. Did / play", "C. Is / playing", "D. Is / going to play"], ans: "A", exp: "Hỏi thói quen số ít dùng 'Does... play'." },
+            { q: "Last summer, my family ___ (go) to Nhatrang.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST SUMMER</span> ➔ Quá khứ đơn.", opts: ["A. goes", "B. went", "C. is going", "D. is going to go"], ans: "B", exp: "Last summer đi với 'went'." },
+            { q: "Hurry up! Everyone ___ (wait) for you!", hint: "💡 Ngữ cảnh: <span class='highlight-key'>HURRY UP!</span> ➔ Đang diễn ra hối thúc.", opts: ["A. waits", "B. waited", "C. is waiting", "D. is going to wait"], ans: "C", exp: "Hành động đang diễn ra dùng 'is waiting'." },
+            { q: "Look at the boat! It is full of water and it ___ (sink)!", hint: "💡 Nguy cơ: <span class='highlight-key'>BOAT IS FULL OF WATER</span> ➔ Tương lai gần.", opts: ["A. sinks", "B. sank", "C. is sinking", "D. is going to sink"], ans: "D", exp: "Dự đoán nguy cơ rõ ràng dùng 'is going to sink'." },
+            { q: "She usually walks to school, but today she ___ (ride) her bicycle.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>TODAY</span> (khác biệt tạm thời hôm nay) ➔ Hiện tại tiếp diễn.", opts: ["A. rides", "B. rode", "C. is riding", "D. is going to ride"], ans: "C", exp: "Hành động tạm thời dùng 'is riding'." }
+        ]
+    },
+    5: {
+        questions: [
+            { q: "He usually ___ (drink) tea in the morning.", hint: "💡 Từ nhận biết: <span class='highlight-key'>USUALLY</span> ➔ Hiện tại đơn (+).", opts: ["A. drinks", "B. drank", "C. is drinking", "D. is going to drink"], ans: "A", exp: "Usually đi với Hiện tại đơn 'drinks'." },
+            { q: "She ___ (buy) a hat yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn (+).", opts: ["A. buys", "B. bought", "C. is buying", "D. is going to buy"], ans: "B", exp: "Yesterday đi với Quá khứ đơn 'bought'." },
+            { q: "They ___ (watch) TV right now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>RIGHT NOW</span> ➔ Hiện tại tiếp diễn (+).", opts: ["A. watch", "B. watched", "C. are watching", "D. are going to watch"], ans: "C", exp: "Right now đi với 'are watching'." },
+            { q: "We ___ (move) to a new house next month.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT MONTH</span> ➔ Tương lai gần (+).", opts: ["A. move", "B. moved", "C. are moving", "D. are going to move"], ans: "D", exp: "Next month mang nghĩa kế hoạch đi với Tương lai gần." },
+            { q: "My father ___ (play) tennis every Sunday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY SUNDAY</span> ➔ Hiện tại đơn (+).", opts: ["A. plays", "B. played", "C. is playing", "D. is going to play"], ans: "A", exp: "Every Sunday đi với 'plays'." },
+            { q: "I ___ (eat) pizza last night.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST NIGHT</span> ➔ Quá khứ đơn (+).", opts: ["A. eat", "B. ate", "C. am eating", "D. am going to eat"], ans: "B", exp: "Last night đi với 'ate'." },
+            { q: "Look! She ___ (draw) a picture at the moment.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> & <span class='highlight-key'>AT THE MOMENT</span> ➔ Hiện tại tiếp diễn.", opts: ["A. draws", "B. drew", "C. is drawing", "D. is going to draw"], ans: "C", exp: "At the moment đi với 'is drawing'." },
+            { q: "They ___ (have) a party tomorrow.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TOMORROW</span> ➔ Tương lai gần.", opts: ["A. have", "B. had", "C. are having", "D. are going to have"], ans: "D", exp: "Tomorrow chỉ kế hoạch dùng Tương lai gần." },
+            { q: "She always ___ (smile) at everyone.", hint: "💡 Từ nhận biết: <span class='highlight-key'>ALWAYS</span> ➔ Hiện tại đơn.", opts: ["A. smiles", "B. smiled", "C. is smiling", "D. is going to smile"], ans: "A", exp: "Always đi với 'smiles'." },
+            { q: "Nam ___ (lose) his key two days ago.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TWO DAYS AGO</span> ➔ Quá khứ đơn.", opts: ["A. loses", "B. lost", "C. is losing", "D. is going to lose"], ans: "B", exp: "Ago đi với Quá khứ đơn 'lost'." },
+            { q: "Look! The bus ___ (come).", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> ➔ Hiện tại tiếp diễn.", opts: ["A. comes", "B. came", "C. is coming", "D. is going to come"], ans: "C", exp: "Look! báo hiệu hành động đang tới ➔ 'is coming'." },
+            { q: "Look at the dark clouds! It ___ (snow) soon.", hint: "💡 Căn cứ: <span class='highlight-key'>DARK CLOUDS</span> ➔ Tương lai gần.", opts: ["A. snows", "B. snowed", "C. is snowing", "D. is going to snow"], ans: "D", exp: "Dự đoán có căn cứ dùng 'is going to snow'." },
+            { q: "We ___ (have) English lessons on Mondays.", hint: "💡 Từ nhận biết: <span class='highlight-key'>ON MONDAYS</span> ➔ Lịch trình cố định ➔ Hiện tại đơn.", opts: ["A. have", "B. had", "C. are having", "D. are going to have"], ans: "A", exp: "Lịch trình cố định đi với 'have'." },
+            { q: "Listen! The birds ___ (sing) in the tree.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LISTEN!</span> ➔ Hiện tại tiếp diễn.", opts: ["A. sing", "B. sang", "C. are singing", "D. are going to sing"], ans: "C", exp: "Listen! đi với 'are singing'." },
+            { q: "I ___ (read) this book tonight.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TONIGHT</span> ➔ Tương lai gần.", opts: ["A. read", "B. readed", "C. am reading", "D. am going to read"], ans: "D", exp: "Dự định tối nay dùng 'am going to read'." },
+            { q: "He often ___ (help) his mom with the housework.", hint: "💡 Từ nhận biết: <span class='highlight-key'>OFTEN</span> ➔ Hiện tại đơn.", opts: ["A. helps", "B. helped", "C. is helping", "D. is going to help"], ans: "A", exp: "Often đi với 'helps'." },
+            { q: "My uncle ___ (repair) the car last week.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST WEEK</span> ➔ Quá khứ đơn.", opts: ["A. repairs", "B. repaired", "C. is repairing", "D. is going to repair"], ans: "B", exp: "Last week đi với 'repaired'." },
+            { q: "Be quiet! The baby ___ (sleep).", hint: "💡 Từ nhận biết: <span class='highlight-key'>BE QUIET!</span> ➔ Hiện tại tiếp diễn.", opts: ["A. sleeps", "B. slept", "C. is sleeping", "D. is going to sleep"], ans: "C", exp: "Be quiet! đi với 'is sleeping'." },
+            { q: "My sister ___ (study) abroad next year.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT YEAR</span> ➔ Tương lai gần.", opts: ["A. studies", "B. studied", "C. is studying", "D. is going to study"], ans: "D", exp: "Next year chỉ kế hoạch đi với Tương lai gần." },
+            { q: "I ___ (not play) football tomorrow morning.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TOMORROW MORNING</span> ➔ Tương lai gần phủ định: <b>am not going to + V</b>.", opts: ["A. don't play", "B. didn't play", "C. am not playing", "D. am not going to play"], ans: "D", exp: "Tương lai gần phủ định dùng 'am not going to play'." }
+        ]
+    }
+};
+
+function toggleSingleHint(qId) {
+    const qDiv = document.getElementById(qId);
+    const btn = qDiv.querySelector('.btn-hint-single');
+    qDiv.classList.toggle('show-hint');
+    if (qDiv.classList.contains('show-hint')) {
+        btn.innerHTML = '🙈 Ẩn gợi ý';
+        btn.classList.add('active');
+    } else {
+        btn.innerHTML = '💡 Gợi ý';
+        btn.classList.remove('active');
+    }
+}
+
+function renderAllQuiz() {
+    const container = document.getElementById('quiz-container');
+    let html = '';
+
+    for (let exNum = 1; exNum <= 5; exNum++) {
+        const exData = quizData[exNum];
+        html += `
+            <div class="exercise-card" id="card-ex${exNum}">
+                <div class="exercise-header">Bài ${exNum}:</div>
+                <form id="form-ex${exNum}">
+        `;
+
+        exData.questions.forEach((item, index) => {
+            const qNum = index + 1;
+            const qId = `ex${exNum}-q${qNum}`;
+            
+            html += `
+                <div class="question" id="${qId}">
+                    <div class="question-header">
+                        <div class="question-text">Câu ${qNum}: ${item.q}</div>
+                        <button type="button" class="btn-hint-single" onclick="toggleSingleHint('${qId}')">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-box">${item.hint}</div>
+                    <div class="options">
+            `;
+
+            item.opts.forEach(opt => {
+                const optVal = opt.charAt(0);
+                html += `
+                    <label>
+                        <input type="radio" name="${qId}" value="${optVal}">
+                        ${opt}
+                    </label>
+                `;
+            });
+
+            html += `
+                    </div>
+                    <div class="explanation" id="exp-${qId}"></div>
+                </div>
+            `;
+        });
+
+        html += `
+                </form>
+                <button type="button" class="btn-check" onclick="checkExercise(${exNum})">Check Bài ${exNum}</button>
+                <div id="result-ex${exNum}" class="result-box"></div>
+            </div>
+        `;
+    }
+
+    container.innerHTML = html;
+}
+
+function getBadgeTitle(score) {
+    if (score === 20) return "🏆 BẬC THẦY 4 THÌ TIẾNG ANH (Xuất sắc 100%)";
+    if (score >= 16) return "🌟 HUY HIỆU THÔNG THÁI (Rất Giỏi)";
+    if (score >= 12) return "👍 HUY HIỆU TẬP TRUNG (Khá)";
+    return "💪 HUY HIỆU CỐ GẮNG (Cần luyện thêm)";
+}
+
+function checkExercise(exNum) {
+    const studentNameInput = document.getElementById('student-name');
+    const studentName = studentNameInput.value.trim();
+
+    if (!studentName) {
+        alert("⚠️ Học sinh vui lòng nhập TÊN ở đầu trang trước khi bấm Check bài nhé!");
+        studentNameInput.focus();
+        return;
+    }
+
+    let score = 0;
+    const total = 20;
+    const questions = quizData[exNum].questions;
+    let detailsHTMLArr = [];
+
+    questions.forEach((item, index) => {
+        const qNum = index + 1;
+        const qId = `ex${exNum}-q${qNum}`;
+        const qDiv = document.getElementById(qId);
+        const expDiv = document.getElementById(`exp-${qId}`);
+        const selected = document.querySelector(`input[name="${qId}"]:checked`);
+
+        let statusText = "";
+        let color = "#ef4444";
+
+        if (selected) {
+            if (selected.value === item.ans) {
+                score++;
+                qDiv.className = "question correct" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+                expDiv.innerHTML = `✅ Chính xác! <i>(${item.exp})</i>`;
+                expDiv.style.color = "#047857";
+                statusText = `<b>Đúng</b> (Chọn ${selected.value})`;
+                color = "#047857";
+            } else {
+                qDiv.className = "question incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+                expDiv.innerHTML = `❌ Chưa đúng. Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
+                expDiv.style.color = "#b91c1c";
+                statusText = `<b>Sai</b> (Chọn ${selected.value} - Đáp án đúng: ${item.ans})`;
+            }
+        } else {
+            qDiv.className = "question incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
+            expDiv.innerHTML = `⚠️ Em chưa chọn đáp án! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
+            expDiv.style.color = "#d97706";
+            statusText = `<b>Chưa chọn</b> (Đáp án đúng: ${item.ans})`;
+        }
+
+        detailsHTMLArr.push(`<p style="margin: 4px 0; color: ${color};"><b>Câu ${qNum}:</b> ${item.q}<br>&rarr; Trạng thái: ${statusText}</p>`);
+    });
+
+    const resultBox = document.getElementById(`result-ex${exNum}`);
+    resultBox.style.display = "block";
+    const badge = getBadgeTitle(score);
+
+    resultBox.innerHTML = `
+        <div class="badge-tag">${badge}</div>
+        <h3 style="margin-top:5px; color: #0f766e;">📊 Kết Quả Bài ${exNum}: ${score}/${total} Câu Đúng</h3>
+        <p><b>Tên học sinh:</b> ${studentName}</p>
+        <div id="email-status-ex${exNum}" class="status-sending">⏳ Đang gửi kết quả bài làm...</div>
+    `;
+
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    fetch(TEACHER_CONFIG.googleScriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            studentName: studentName,
+            exerciseTitle: `Bài ${exNum}`,
+            score: `${score}/${total}`,
+            detailsHTML: detailsHTMLArr.join("")
+        })
+    })
+    .then(() => {
+        const st = document.getElementById(`email-status-ex${exNum}`);
+        if (st) {
+            st.className = "status-success";
+            st.innerHTML = "📧 ĐÃ GỬI BÀI THÀNH CÔNG!";
+        }
+    })
+    .catch(err => {
+        const st = document.getElementById(`email-status-ex${exNum}`);
+        if (st) {
+            st.className = "status-sending";
+            st.style.color = "#dc2626";
+            st.innerHTML = "❌ Lỗi kết nối mạng, vui lòng kiểm tra đường truyền.";
+        }
+    });
+}
+
+window.onload = renderAllQuiz;
+</script>
+
+</body>
+</html>
