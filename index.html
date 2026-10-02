@@ -1,635 +1,1382 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ôn Tập & Phân Biệt 4 Thì Tiếng Anh</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0fdf4;
-            color: #1e293b;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 950px;
-            margin: 0 auto;
-        }
-        .header-title {
-            text-align: center;
-            color: #0d9488;
-            background-color: #ccfbf1;
-            padding: 20px;
-            border-radius: 16px;
-            border: 3px dashed #0d9488;
-            font-size: 26px;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .subtitle {
-            text-align: center;
-            color: #475569;
-            font-size: 15px;
-            margin-bottom: 20px;
-        }
-
-        /* CHEAT SHEET BOX */
-        .cheatsheet-box {
-            background-color: #ffffff;
-            border: 2px solid #0d9488;
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .cheatsheet-title {
-            font-weight: bold;
-            color: #0f766e;
-            margin-bottom: 12px;
-            font-size: 18px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .cheatsheet-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 12px;
-        }
-        .cheat-item {
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        .cheat-item strong {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-        .cheat-item.present-simple { background: #ecfdf5; border-left: 5px solid #10b981; }
-        .cheat-item.present-simple strong { color: #047857; }
-        
-        .cheat-item.past-simple { background: #fff7ed; border-left: 5px solid #f97316; }
-        .cheat-item.past-simple strong { color: #c2410c; }
-        
-        .cheat-item.present-cont { background: #f5f3ff; border-left: 5px solid #8b5cf6; }
-        .cheat-item.present-cont strong { color: #6d28d9; }
-        
-        .cheat-item.near-future { background: #ecfeff; border-left: 5px solid #06b6d4; }
-        .cheat-item.near-future strong { color: #0e7490; }
-
-        /* HIGHLIGHT SIGNAL WORDS */
-        .highlight-key {
-            background-color: #fef08a;
-            color: #9a3412;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-            border: 1px solid #fde047;
-            display: inline-block;
-            margin: 0 2px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        .student-info-box {
-            background-color: #ffffff;
-            border: 2px solid #0d9488;
-            border-radius: 14px;
-            padding: 18px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-        .student-info-box h3 {
-            margin: 0;
-            color: #0f766e;
-            width: 100%;
-            font-size: 18px;
-        }
-        .input-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-            min-width: 280px;
-        }
-        .input-group label {
-            font-weight: bold;
-            color: #334155;
-            white-space: nowrap;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1.5px solid #94a3b8;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-        }
-        .input-group input:focus {
-            border-color: #0d9488;
-            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
-        }
-        .exercise-card {
-            background-color: #ffffff;
-            border-radius: 16px;
-            padding: 22px;
-            margin-bottom: 35px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border-top: 6px solid #0d9488;
-        }
-        .exercise-header {
-            color: #0f766e;
-            margin-top: 0;
-            margin-bottom: 18px;
-            font-size: 20px;
-            font-weight: bold;
-            border-bottom: 2px solid #ccfbf1;
-            padding-bottom: 8px;
-        }
-        .question {
-            margin-bottom: 18px;
-            padding: 14px 16px;
-            background-color: #f8fafc;
-            border-radius: 12px;
-            border-left: 5px solid #cbd5e1;
-            transition: all 0.2s ease;
-        }
-        .question.correct {
-            border-left-color: #10b981;
-            background-color: #f0fdf4;
-        }
-        .question.incorrect {
-            border-left-color: #ef4444;
-            background-color: #fef2f2;
-        }
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-        .question-text {
-            font-size: 16px;
-            font-weight: 600;
-            flex-grow: 1;
-        }
-        .btn-hint-single {
-            background-color: #fef3c7;
-            color: #b45309;
-            border: 1px solid #fde047;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .btn-hint-single:hover {
-            background-color: #fde047;
-        }
-        .btn-hint-single.active {
-            background-color: #f59e0b;
-            color: #ffffff;
-            border-color: #d97706;
-        }
-        .hint-box {
-            display: none;
-            background-color: #fffbeb;
-            border: 1px solid #fef08a;
-            color: #92400e;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-        .question.show-hint .hint-box {
-            display: block;
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .options label {
-            background-color: #ffffff;
-            padding: 8px 14px;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 15px;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-        }
-        .options label:hover {
-            background-color: #f1f5f9;
-            border-color: #0d9488;
-        }
-        .options input {
-            margin-right: 10px;
-        }
-        .btn-check {
-            background-color: #0d9488;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: background 0.2s;
-        }
-        .btn-check:hover {
-            background-color: #0f766e;
-        }
-        .result-box {
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 10px;
-            background-color: #e0f2fe;
-            display: none;
-        }
-        .badge-tag {
-            display: inline-block;
-            padding: 4px 10px;
-            background: #0284c7;
-            color: white;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .status-sending {
-            color: #b45309;
-            font-weight: bold;
-            margin-top: 8px;
-            background: #fef3c7;
-            padding: 8px 12px;
-            border-radius: 6px;
-            display: inline-block;
-        }
-        .status-success {
-            color: #047857;
-            font-weight: bold;
-            margin-top: 8px;
-            background: #d1fae5;
-            padding: 8px 12px;
-            border-radius: 6px;
-            display: inline-block;
-        }
-        .explanation {
-            font-size: 14px;
-            margin-top: 8px;
-            font-weight: 500;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movers Grammar Quiz - So Sánh Hơn & So Sánh Nhất</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .kw-highlight {
+      background-color: #fef08a;
+      color: #854d0e;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.375rem;
+      border: 1px solid #facc15;
+      display: inline-block;
+    }
+    .tab-btn.active {
+      background-color: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen pb-16">
 
-    <div class="header-title">🌟 BÀI TẬP ÔN TẬP & PHÂN BIỆT 4 THÌ TIẾNG ANH 🌟</div>
-    <div class="subtitle">💡 <i>Em hãy đọc Bảng Thần Chú, bấm nút <b>"💡 Gợi ý"</b> để tìm Từ Nhận Biết trước khi chọn đáp án!</i></div>
-
-    <!-- CHEAT SHEET -->
-    <div class="cheatsheet-box">
-        <div class="cheatsheet-title">📌 BẢNG THẦN CHÚ "TỪ NHẬN BIẾT" & CẤU TRÚC 4 THÌ</div>
-        <div class="cheatsheet-grid">
-            <div class="cheat-item present-simple">
-                <strong>1. Hiện Tại Đơn</strong>
-                <b>Từ nhận biết:</b> <i>every day, usually, often, always, on Mondays, sự thật.</i><br>
-                <b>Công thức:</b> V(s/es) | don't/doesn't + V | Do/Does...?
-            </div>
-            <div class="cheat-item past-simple">
-                <strong>2. Quá Khứ Đơn</strong>
-                <b>Từ nhận biết:</b> <i>yesterday, last night, ... ago, in 2020, in the past.</i><br>
-                <b>Công thức:</b> V2/-ed | didn't + V | Did...?
-            </div>
-            <div class="cheat-item present-cont">
-                <strong>3. Hiện Tại Tiếp Diễn</strong>
-                <b>Từ nhận biết:</b> <i>now, at the moment, right now, Look!, Listen!, Be quiet!</i><br>
-                <b>Công thức:</b> am/is/are + V-ing | am/is/are + not + V-ing
-            </div>
-            <div class="cheat-item near-future">
-                <strong>4. Tương Lai Gần</strong>
-                <b>Từ nhận biết:</b> <i>tomorrow, next week, soon, dự định, dấu hiệu rõ ràng.</i><br>
-                <b>Công thức:</b> am/is/are + going to + V
-            </div>
+  <!-- Header gọn gàng, thanh thoát -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-extrabold text-lg shadow-sm">
+          M
         </div>
+        <div>
+          <h1 class="text-base md:text-lg font-bold text-slate-900 leading-tight">Movers Grammar Quiz</h1>
+          <p class="text-xs text-slate-500 font-medium">Ngữ pháp: So sánh hơn & So sánh nhất (100 câu)</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+          Cambridge Movers
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 mt-5 space-y-5">
+    
+    <!-- BẢNG THẦN CHÚ: HIỆN THẲNG RA LUÔN (KHÔNG NÚT ẨN, KHÔNG THU GỌN) -->
+    <section class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+      <div class="flex items-center justify-between mb-3.5 border-b border-slate-100 pb-2.5">
+        <div class="flex items-center space-x-2">
+          <span class="text-lg">⚡</span>
+          <h2 class="text-xs md:text-sm font-extrabold uppercase tracking-wider text-slate-800">
+            BẢNG THẦN CHÚ NGỮ PHÁP (TỔNG HỢP CÔNG THỨC)
+          </h2>
+        </div>
+        <span class="text-[11px] font-semibold text-slate-400 hidden sm:inline">Dành cho học sinh Movers</span>
+      </div>
+
+      <!-- 4 Thẻ màu trực quan -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+        
+        <!-- Ô 1: So sánh hơn tính từ ngắn -->
+        <div class="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200/90 flex flex-col justify-between shadow-2xs">
+          <div>
+            <div class="font-bold text-blue-900 mb-1 flex items-center justify-between">
+              <span>1. So sánh hơn ngắn</span>
+              <span class="text-[10px] font-extrabold bg-blue-200/70 text-blue-900 px-1.5 py-0.5 rounded">adj + er</span>
+            </div>
+            <div class="font-mono text-[11px] font-bold text-blue-950 bg-white p-2 rounded-lg border border-blue-200 mb-2">
+              S + is/are + <span class="text-blue-700 underline font-black">adj-er</span> + than...
+            </div>
+            <p class="text-slate-700 leading-relaxed text-[11px]">
+              • Dấu hiệu: từ <span class="kw-highlight">than</span> (hơn)<br>
+              • Ví dụ: tall ➔ <strong>taller than</strong><br>
+              • Ví dụ: fast ➔ <strong>faster than</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Ô 2: So sánh nhất tính từ ngắn -->
+        <div class="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/90 flex flex-col justify-between shadow-2xs">
+          <div>
+            <div class="font-bold text-emerald-900 mb-1 flex items-center justify-between">
+              <span>2. So sánh nhất ngắn</span>
+              <span class="text-[10px] font-extrabold bg-emerald-200/70 text-emerald-900 px-1.5 py-0.5 rounded">the + est</span>
+            </div>
+            <div class="font-mono text-[11px] font-bold text-emerald-950 bg-white p-2 rounded-lg border border-emerald-200 mb-2">
+              S + is/are + <span class="text-emerald-700 underline font-black">the adj-est</span>...
+            </div>
+            <p class="text-slate-700 leading-relaxed text-[11px]">
+              • Dấu hiệu: <span class="kw-highlight">the</span>, <span class="kw-highlight">in</span>, <span class="kw-highlight">of</span><br>
+              • Ví dụ: <strong>the tallest</strong> in class<br>
+              • Ví dụ: <strong>the fastest</strong> land animal
+            </p>
+          </div>
+        </div>
+
+        <!-- Ô 3: Quy tắc đuôi -y & Gấp đôi phụ âm -->
+        <div class="p-3.5 rounded-xl bg-purple-50/80 border border-purple-200/90 flex flex-col justify-between shadow-2xs">
+          <div>
+            <div class="font-bold text-purple-900 mb-1 flex items-center justify-between">
+              <span>3. Mẹo chính tả</span>
+              <span class="text-[10px] font-extrabold bg-purple-200/70 text-purple-900 px-1.5 py-0.5 rounded">Lưu ý đuôi</span>
+            </div>
+            <div class="text-[11px] text-slate-800 space-y-1.5 bg-white p-2 rounded-lg border border-purple-200 mb-1 leading-snug">
+              <div>
+                • Đuôi <strong>-y</strong> ➔ đổi thành <strong>i</strong> rồi thêm <em>-er / -est</em>:<br>
+                <span class="text-purple-800 font-semibold">happy ➔ happier / happiest</span>
+              </div>
+              <div class="pt-1 border-t border-purple-100">
+                • 1 nguyên âm + 1 phụ âm ➔ <strong>gấp đôi chữ cuối</strong>:<br>
+                <span class="text-purple-800 font-semibold">big ➔ bigger</span>, <span class="text-purple-800 font-semibold">hot ➔ hotter</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ô 4: Bất quy tắc & Tính từ dài -->
+        <div class="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200/90 flex flex-col justify-between shadow-2xs">
+          <div>
+            <div class="font-bold text-amber-900 mb-1 flex items-center justify-between">
+              <span>4. Bất quy tắc & Từ dài</span>
+              <span class="text-[10px] font-extrabold bg-amber-200/70 text-amber-900 px-1.5 py-0.5 rounded">Đặc biệt</span>
+            </div>
+            <div class="text-[11px] text-slate-800 space-y-1 bg-white p-2 rounded-lg border border-amber-200 leading-snug">
+              <div>• <strong>good</strong> ➔ <span class="text-amber-800 font-bold">better</span> ➔ <span class="text-amber-800 font-bold">the best</span></div>
+              <div>• <strong>bad</strong> ➔ <span class="text-amber-800 font-bold">worse</span> ➔ <span class="text-amber-800 font-bold">the worst</span></div>
+              <div class="pt-1 border-t border-amber-100 text-[10px] text-slate-600">
+                • Tính từ dài: <strong>more</strong> beautiful than / <strong>the most</strong> expensive
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- KHUNG NHẬP TÊN HỌC SINH (BẮT BUỘC TRƯỚC KHI CHẤM) -->
+    <section class="bg-white rounded-2xl p-4 md:p-5 border border-slate-200 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex-1">
+          <label for="studentNameInput" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+            Tên học sinh <span class="text-red-500">*</span>
+          </label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="studentNameInput" 
+              placeholder="Nhập họ và tên học sinh (Ví dụ: Nguyễn Minh Khôi)..." 
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-800 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition shadow-2xs"
+              oninput="clearNameWarning()"
+            >
+          </div>
+          <p id="nameWarningText" class="hidden text-xs text-red-600 font-bold mt-1.5 flex items-center gap-1">
+            <span>⚠️</span> Vui lòng nhập tên học sinh trước khi bấm chấm điểm bài tập!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THANH CHỌN BÀI TẬP (BÀI 1 ĐẾN BÀI 5) -->
+    <div class="flex items-center space-x-2 overflow-x-auto pb-1 text-sm font-semibold scrollbar-none" id="tabsBar">
+      <button onclick="switchTab(1)" id="tab-1" class="tab-btn active px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 transition">Bài 1</button>
+      <button onclick="switchTab(2)" id="tab-2" class="tab-btn px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 transition">Bài 2</button>
+      <button onclick="switchTab(3)" id="tab-3" class="tab-btn px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 transition">Bài 3</button>
+      <button onclick="switchTab(4)" id="tab-4" class="tab-btn px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 transition">Bài 4</button>
+      <button onclick="switchTab(5)" id="tab-5" class="tab-btn px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 transition">Bài 5</button>
     </div>
 
-    <!-- Student Info Header -->
-    <div class="student-info-box">
-        <h3>📝 THÔNG TIN HỌC SINH:</h3>
-        <div class="input-group">
-            <label for="student-name">Tên học sinh:</label>
-            <input type="text" id="student-name" placeholder="Ví dụ: Nguyễn Văn An">
-        </div>
+    <!-- KHU VỰC HIỂN THỊ NỘI DUNG 5 BÀI TẬP (20 CÂU/BÀI = 100 CÂU) -->
+    <div id="exerciseContentArea">
+      <!-- Được render tự động bằng Javascript -->
     </div>
 
-    <div id="quiz-container"></div>
+  </main>
 
-<script>
-const TEACHER_CONFIG = {
-    googleScriptURL: "https://script.google.com/macros/s/AKfycbwaMoZrvQBmUUOPJOGJjH2doz7krotYU3TN5f0KdeCZ7RrIhLGmORAS3bMc-e2BDKic/exec"
-};
+  <!-- MODAL THÔNG BÁO TỐI GIẢN (THAY THẾ TOÀN BỘ ALERT()) -->
+  <div id="notificationModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-2xs z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center shadow-xl border border-slate-200">
+      <div id="modalIcon" class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xl mx-auto mb-3">
+        ⚠️
+      </div>
+      <h3 id="modalTitle" class="text-base font-bold text-slate-900 mb-1.5">Thông báo</h3>
+      <p id="modalMessage" class="text-xs md:text-sm text-slate-600 mb-5 leading-relaxed">Nội dung thông báo</p>
+      <button onclick="closeModal()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs md:text-sm transition">
+        Đã hiểu
+      </button>
+    </div>
+  </div>
 
-const quizData = {
-    1: {
-        questions: [
-            { q: "He ___ (go) to school by bus every day.", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY DAY</span> ➔ Thói quen ➔ dùng <b>Hiện tại đơn</b> (+).", opts: ["A. goes", "B. went", "C. is going", "D. is going to go"], ans: "A", exp: "Hiện tại đơn khẳng định với 'He' dùng 'goes'." },
-            { q: "They ___ (not go) to school yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn phủ định: <b>didn't + V</b>.", opts: ["A. don't go", "B. didn't go", "C. aren't going", "D. aren't going to go"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't go'." },
-            { q: "___ you ___ (go) to school by bike every day?", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY DAY</span> ➔ Hỏi thói quen Hiện tại đơn: <b>Do / Does + S + V?</b>", opts: ["A. Do / go", "B. Did / go", "C. Are / going", "D. Are / going to go"], ans: "A", exp: "Hiện tại đơn câu hỏi dùng 'Do you go...?'." },
-            { q: "Look! The children ___ (play) in the garden.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> ➔ Đang diễn ra ➔ <b>Hiện tại tiếp diễn</b> (+).", opts: ["A. play", "B. played", "C. are playing", "D. are going to play"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'are playing'." },
-            { q: "She ___ (not watch) TV right now; she is reading.", hint: "💡 Từ nhận biết: <span class='highlight-key'>RIGHT NOW</span> ➔ Hiện tại tiếp diễn phủ định: <b>isn't + V-ing</b>.", opts: ["A. doesn't watch", "B. didn't watch", "C. isn't watching", "D. isn't going to watch"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'isn't watching'." },
-            { q: "___ she ___ (visit) her grandmother yesterday?", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Hỏi Quá khứ đơn: <b>Did + S + V?</b>", opts: ["A. Does / visit", "B. Did / visit", "C. Is / visiting", "D. Is / going to visit"], ans: "B", exp: "Quá khứ đơn nghi vấn dùng 'Did she visit...?'." },
-            { q: "I ___ (buy) a new laptop next week.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT WEEK</span> ➔ Dự định cá nhân ➔ <b>Tương lai gần</b> (+).", opts: ["A. buy", "B. bought", "C. am buying", "D. am going to buy"], ans: "D", exp: "Tương lai gần dùng 'am going to buy'." },
-            { q: "We ___ (not travel) this weekend because of bad weather.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THIS WEEKEND</span> ➔ Tương lai gần phủ định: <b>aren't going to + V</b>.", opts: ["A. don't travel", "B. didn't travel", "C. aren't traveling", "D. aren't going to travel"], ans: "D", exp: "Tương lai gần phủ định dùng 'aren't going to travel'." },
-            { q: "___ they ___ (play) football right now?", hint: "💡 Từ nhận biết: <span class='highlight-key'>RIGHT NOW</span> ➔ Hỏi Hiện tại tiếp diễn: <b>Am/Is/Are + S + V-ing?</b>", opts: ["A. Do / play", "B. Did / play", "C. Are / playing", "D. Are / going to play"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'Are they playing...?'." },
-            { q: "They always ___ (eat) breakfast at 7 AM.", hint: "💡 Từ nhận biết: <span class='highlight-key'>ALWAYS</span> ➔ Thói quen ➔ <b>Hiện tại đơn</b> (+).", opts: ["A. eat", "B. ate", "C. are eating", "D. are going to eat"], ans: "A", exp: "Hiện tại đơn với 'They' dùng 'eat'." },
-            { q: "He ___ (not like) eating spicy food.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỞ THÍCH CÁ NHÂN</span> ➔ Hiện tại đơn phủ định: <b>doesn't + V</b>.", opts: ["A. doesn't like", "B. didn't like", "C. isn't liking", "D. isn't going to like"], ans: "A", exp: "Hiện tại đơn phủ định dùng 'doesn't like'." },
-            { q: "___ you ___ (travel) to Hue next week?", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT WEEK</span> ➔ Hỏi Tương lai gần: <b>Am/Is/Are + S + going to + V?</b>", opts: ["A. Do / travel", "B. Did / travel", "C. Are / traveling", "D. Are / going to travel"], ans: "D", exp: "Tương lai gần nghi vấn dùng 'Are you going to travel...?'." },
-            { q: "We ___ (watch) a great movie last night.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST NIGHT</span> ➔ <b>Quá khứ đơn</b> (+).", opts: ["A. watch", "B. watched", "C. are watching", "D. are going to watch"], ans: "B", exp: "Quá khứ đơn dùng 'watched'." },
-            { q: "Tom ___ (not attend) the party last Saturday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST SATURDAY</span> ➔ Quá khứ đơn phủ định: <b>didn't + V</b>.", opts: ["A. doesn't attend", "B. didn't attend", "C. isn't attending", "D. isn't going to attend"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't attend'." },
-            { q: "___ he ___ (speak) English fluently?", hint: "💡 Ngữ cảnh: <span class='highlight-key'>KHẢ NĂNG / THỰC TẾ</span> ➔ Hỏi Hiện tại đơn.", opts: ["A. Does / speak", "B. Did / speak", "C. Is / speaking", "D. Is / going to speak"], ans: "A", exp: "Hiện tại đơn hỏi với 'he' dùng 'Does he speak...?'." },
-            { q: "Listen! Someone ___ (sing) in the bathroom.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LISTEN!</span> ➔ Đang xảy ra ➔ <b>Hiện tại tiếp diễn</b> (+).", opts: ["A. sings", "B. sang", "C. is singing", "D. is going to sing"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'is singing'." },
-            { q: "Look! The dog ___ (not bark) at the cat.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> ➔ Hiện tại tiếp diễn phủ định: <b>isn't + V-ing</b>.", opts: ["A. doesn't bark", "B. didn't bark", "C. isn't barking", "D. isn't going to bark"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'isn't barking'." },
-            { q: "___ your parents ___ (buy) a new house last year?", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST YEAR</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. Do / buy", "B. Did / buy", "C. Are / buying", "D. Are / going to buy"], ans: "B", exp: "Quá khứ đơn nghi vấn dùng 'Did your parents buy...?'." },
-            { q: "Look at those dark clouds! It ___ (rain) soon.", hint: "💡 Dấu hiệu: <span class='highlight-key'>DARK CLOUDS</span> + <span class='highlight-key'>SOON</span> ➔ <b>Tương lai gần</b> (+).", opts: ["A. rains", "B. rained", "C. is raining", "D. is going to rain"], ans: "D", exp: "Dự đoán có căn cứ mây đen dùng 'is going to rain'." },
-            { q: "He ___ (not buy) that expensive phone next month.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT MONTH</span> ➔ Tương lai gần phủ định: <b>isn't going to + V</b>.", opts: ["A. doesn't buy", "B. didn't buy", "C. isn't buying", "D. isn't going to buy"], ans: "D", exp: "Tương lai gần phủ định dùng 'isn't going to buy'." }
-        ]
-    },
-    2: {
-        questions: [
-            { q: "The sun ___ (rise) in the east.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT HIỂN NHIÊN</span> ➔ dùng <b>Hiện tại đơn</b>.", opts: ["A. rises", "B. rose", "C. is rising", "D. is going to rise"], ans: "A", exp: "Sự thật hiển nhiên dùng Hiện tại đơn 'rises'." },
-            { q: "Shh! The baby ___ (sleep) right now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>SHH!</span> & <span class='highlight-key'>RIGHT NOW</span> ➔ dùng <b>Hiện tại tiếp diễn</b>.", opts: ["A. sleeps", "B. slept", "C. is sleeping", "D. is going to sleep"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'is sleeping'." },
-            { q: "I ___ (not play) video games on weekdays.", hint: "💡 Từ nhận biết: <span class='highlight-key'>ON WEEKDAYS</span> ➔ Thói quen ➔ Hiện tại đơn phủ định: <b>don't + V</b>.", opts: ["A. don't play", "B. didn't play", "C. am not playing", "D. am not going to play"], ans: "A", exp: "Hiện tại đơn phủ định dùng 'don't play'." },
-            { q: "___ she ___ (cook) dinner at the moment?", hint: "💡 Từ nhận biết: <span class='highlight-key'>AT THE MOMENT</span> ➔ Hỏi Hiện tại tiếp diễn.", opts: ["A. Does / cook", "B. Did / cook", "C. Is / cooking", "D. Is / going to cook"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'Is she cooking...?'." },
-            { q: "Linh usually ___ (drink) milk before going to bed.", hint: "💡 Từ nhận biết: <span class='highlight-key'>USUALLY</span> ➔ Thói quen ➔ dùng <b>Hiện tại đơn</b>.", opts: ["A. drinks", "B. drank", "C. is drinking", "D. is going to drink"], ans: "A", exp: "Hiện tại đơn số ít dùng 'drinks'." },
-            { q: "At the moment, we ___ (study) English.", hint: "💡 Từ nhận biết: <span class='highlight-key'>AT THE MOMENT</span> ➔ dùng <b>Hiện tại tiếp diễn</b>.", opts: ["A. study", "B. studied", "C. are studying", "D. are going to study"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'are studying'." },
-            { q: "My sister ___ (not drink) coffee every morning.", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY MORNING</span> ➔ Hiện tại đơn phủ định: <b>doesn't + V</b>.", opts: ["A. doesn't drink", "B. didn't drink", "C. isn't drinking", "D. isn't going to drink"], ans: "A", exp: "Hiện tại đơn phủ định dùng 'doesn't drink'." },
-            { q: "Listen! The teacher ___ (not speak) now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LISTEN!</span> & <span class='highlight-key'>NOW</span> ➔ Hiện tại tiếp diễn phủ định: <b>isn't + V-ing</b>.", opts: ["A. doesn't speak", "B. didn't speak", "C. isn't speaking", "D. isn't going to speak"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'isn't speaking'." },
-            { q: "What time ___ you usually ___ (get up) in the morning?", hint: "💡 Từ nhận biết: <span class='highlight-key'>USUALLY</span> ➔ Hỏi Hiện tại đơn.", opts: ["A. do / get up", "B. did / get up", "C. are / getting up", "D. are / going to get up"], ans: "A", exp: "Hiện tại đơn hỏi thói quen dùng 'do you get up'." },
-            { q: "My parents ___ (work) in a big hospital.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>THỰC TẾ CỐ ĐỊNH</span> ➔ dùng <b>Hiện tại đơn</b>.", opts: ["A. work", "B. worked", "C. are working", "D. are going to work"], ans: "A", exp: "Thực tế cố định dùng 'work'." },
-            { q: "They ___ (not study) at the moment.", hint: "💡 Từ nhận biết: <span class='highlight-key'>AT THE MOMENT</span> ➔ Hiện tại tiếp diễn phủ định.", opts: ["A. don't study", "B. didn't study", "C. aren't studying", "D. aren't going to study"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'aren't studying'." },
-            { q: "What ___ he ___ (do) right now?", hint: "💡 Từ nhận biết: <span class='highlight-key'>RIGHT NOW</span> ➔ Hỏi Hiện tại tiếp diễn.", opts: ["A. does / do", "B. did / do", "C. is / doing", "D. is / going to do"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'is he doing'." },
-            { q: "Be quiet! The teacher ___ (explain) the lesson.", hint: "💡 Từ nhận biết: <span class='highlight-key'>BE QUIET!</span> ➔ <b>Hiện tại tiếp diễn</b>.", opts: ["A. explains", "B. explained", "C. is explaining", "D. is going to explain"], ans: "C", exp: "Hiện tại tiếp diễn dùng 'is explaining'." },
-            { q: "Cats ___ (not like) water.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT TỰ NHIÊN</span> ➔ Hiện tại đơn phủ định: <b>don't + V</b>.", opts: ["A. don't like", "B. didn't like", "C. aren't liking", "D. aren't going to like"], ans: "A", exp: "Hiện tại đơn phủ định số nhiều dùng 'don't like'." },
-            { q: "___ Linh ___ (live) near your house?", hint: "💡 Ngữ cảnh: <span class='highlight-key'>THỰC TẾ CỐ ĐỊNH</span> ➔ Hỏi Hiện tại đơn.", opts: ["A. Does / live", "B. Did / live", "C. Is / living", "D. Is / going to live"], ans: "A", exp: "Hiện tại đơn hỏi dùng 'Does Linh live...?'." },
-            { q: "Listen! ___ someone ___ (knock) at the door?", hint: "💡 Từ nhận biết: <span class='highlight-key'>LISTEN!</span> ➔ Hỏi Hiện tại tiếp diễn.", opts: ["A. Does / knock", "B. Did / knock", "C. Is / knocking", "D. Is / going to knock"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'Is someone knocking...?'." },
-            { q: "They ___ (not live) in Hanoi.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT CỐ ĐỊNH</span> ➔ Hiện tại đơn phủ định.", opts: ["A. don't live", "B. didn't live", "C. aren't living", "D. aren't going to live"], ans: "A", exp: "Hiện tại đơn phủ định dùng 'don't live'." },
-            { q: "Be quiet! I ___ (not joke) right now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>BE QUIET!</span> & <span class='highlight-key'>RIGHT NOW</span> ➔ Hiện tại tiếp diễn phủ định.", opts: ["A. don't joke", "B. didn't joke", "C. am not joking", "D. am not going to joke"], ans: "C", exp: "Hiện tại tiếp diễn phủ định dùng 'am not joking'." },
-            { q: "How often ___ they ___ (visit) the museum?", hint: "💡 Từ nhận biết: <span class='highlight-key'>HOW OFTEN</span> ➔ Hỏi tần suất Hiện tại đơn.", opts: ["A. do / visit", "B. did / visit", "C. are / visiting", "D. are / going to visit"], ans: "A", exp: "Hiện tại đơn hỏi dùng 'do they visit'." },
-            { q: "___ the students ___ (listen) to the teacher now?", hint: "💡 Từ nhận biết: <span class='highlight-key'>NOW</span> ➔ Hỏi Hiện tại tiếp diễn.", opts: ["A. Do / listen", "B. Did / listen", "C. Are / listening", "D. Are / going to listen"], ans: "C", exp: "Hiện tại tiếp diễn hỏi dùng 'Are the students listening...?'." }
-        ]
-    },
-    3: {
-        questions: [
-            { q: "My father ___ (repair) his bicycle two days ago.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TWO DAYS AGO</span> ➔ <b>Quá khứ đơn</b>.", opts: ["A. repairs", "B. repaired", "C. is repairing", "D. is going to repair"], ans: "B", exp: "Quá khứ đơn dùng 'repaired'." },
-            { q: "Nam has booked a ticket. He ___ (fly) to Hanoi tomorrow.", hint: "💡 Kế hoạch: <span class='highlight-key'>BOOKED A TICKET</span> + <span class='highlight-key'>TOMORROW</span> ➔ <b>Tương lai gần</b>.", opts: ["A. flies", "B. flew", "C. is flying", "D. is going to fly"], ans: "D", exp: "Có chuẩn bị vé sẵn dùng 'is going to fly'." },
-            { q: "They ___ (finish) their homework an hour ago.", hint: "💡 Từ nhận biết: <span class='highlight-key'>AN HOUR AGO</span> ➔ <b>Quá khứ đơn</b>.", opts: ["A. finish", "B. finished", "C. are finishing", "D. are going to finish"], ans: "B", exp: "Quá khứ đơn dùng 'finished'." },
-            { q: "We have bought ingredients. We ___ (make) a cake tonight.", hint: "💡 Kế hoạch: <span class='highlight-key'>BOUGHT INGREDIENTS</span> + <span class='highlight-key'>TONIGHT</span> ➔ <b>Tương lai gần</b>.", opts: ["A. make", "B. made", "C. are making", "D. are going to make"], ans: "D", exp: "Dự định có chuẩn bị dùng 'are going to make'." },
-            { q: "I ___ (see) my old friend in the park yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ <b>Quá khứ đơn</b>.", opts: ["A. see", "B. saw", "C. am seeing", "D. am going to see"], ans: "B", exp: "Quá khứ đơn bất quy tắc: see -> saw." },
-            { q: "She ___ (travel) to Danang next summer.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT SUMMER</span> ➔ <b>Tương lai gần</b>.", opts: ["A. travels", "B. traveled", "C. is traveling", "D. is going to travel"], ans: "D", exp: "Tương lai gần dùng 'is going to travel'." },
-            { q: "We ___ (not see) you at the cinema yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn phủ định: <b>didn't + V</b>.", opts: ["A. don't see", "B. didn't see", "C. aren't seeing", "D. aren't going to see"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't see'." },
-            { q: "I ___ (not stay) at home tomorrow night.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TOMORROW NIGHT</span> ➔ Tương lai gần phủ định: <b>am not going to + V</b>.", opts: ["A. don't stay", "B. didn't stay", "C. am not staying", "D. am not going to stay"], ans: "D", exp: "Tương lai gần phủ định dùng 'am not going to stay'." },
-            { q: "My father ___ (not fix) the car last week.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST WEEK</span> ➔ Quá khứ đơn phủ định.", opts: ["A. doesn't fix", "B. didn't fix", "C. isn't fixing", "D. isn't going to fix"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't fix'." },
-            { q: "She ___ (not wear) that dress to the party tonight.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TONIGHT</span> ➔ Tương lai gần phủ định.", opts: ["A. doesn't wear", "B. didn't wear", "C. isn't wearing", "D. isn't going to wear"], ans: "D", exp: "Tương lai gần phủ định dùng 'isn't going to wear'." },
-            { q: "Linh ___ (not come) to class yesterday because she was sick.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn phủ định.", opts: ["A. doesn't come", "B. didn't come", "C. isn't coming", "D. isn't going to come"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't come'." },
-            { q: "The children ___ (not swim) in the river this afternoon.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THIS AFTERNOON</span> ➔ Tương lai gần phủ định.", opts: ["A. don't swim", "B. didn't swim", "C. aren't swimming", "D. aren't going to swim"], ans: "D", exp: "Tương lai gần phủ định dùng 'aren't going to swim'." },
-            { q: "___ Tom ___ (join) us for the trip tomorrow?", hint: "💡 Từ nhận biết: <span class='highlight-key'>TOMORROW</span> ➔ Hỏi Tương lai gần.", opts: ["A. Does / join", "B. Did / join", "C. Is / joining", "D. Is / going to join"], ans: "D", exp: "Tương lai gần hỏi dùng 'Is Tom going to join...?'." },
-            { q: "Where ___ you ___ (go) last night?", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST NIGHT</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. do / go", "B. did / go", "C. are / going", "D. are / going to go"], ans: "B", exp: "Quá khứ đơn hỏi dùng 'did you go'." },
-            { q: "What ___ you ___ (do) this weekend?", hint: "💡 Từ nhận biết: <span class='highlight-key'>THIS WEEKEND</span> ➔ Hỏi kế hoạch Tương lai gần.", opts: ["A. do / do", "B. did / do", "C. are / doing", "D. are / going to do"], ans: "D", exp: "Tương lai gần hỏi dùng 'are you going to do'." },
-            { q: "___ they ___ (finish) the test two hours ago?", hint: "💡 Từ nhận biết: <span class='highlight-key'>TWO HOURS AGO</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. Do / finish", "B. Did / finish", "C. Are / finishing", "D. Are / going to finish"], ans: "B", exp: "Quá khứ đơn hỏi dùng 'Did they finish...?'." },
-            { q: "___ she ___ (bake) a cake for the party tonight?", hint: "💡 Từ nhận biết: <span class='highlight-key'>TONIGHT</span> ➔ Hỏi Tương lai gần.", opts: ["A. Does / bake", "B. Did / bake", "C. Is / baking", "D. Is / going to bake"], ans: "D", exp: "Tương lai gần hỏi dùng 'Is she going to bake...?'." },
-            { q: "Why ___ you ___ (cry) yesterday afternoon?", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY AFTERNOON</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. do / cry", "B. did / cry", "C. are / crying", "D. are / going to cry"], ans: "B", exp: "Quá khứ đơn hỏi dùng 'did you cry'." },
-            { q: "Where ___ they ___ (stay) during their trip next month?", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT MONTH</span> ➔ Hỏi Tương lai gần.", opts: ["A. do / stay", "B. did / stay", "C. are / staying", "D. are / going to stay"], ans: "D", exp: "Tương lai gần hỏi dùng 'are they going to stay'." },
-            { q: "They ___ (build) this school in 2020.", hint: "💡 Từ nhận biết: <span class='highlight-key'>IN 2020</span> ➔ <b>Quá khứ đơn</b>.", opts: ["A. build", "B. built", "C. are building", "D. are going to build"], ans: "B", exp: "Mốc thời gian quá khứ dùng 'built'." }
-        ]
-    },
-    4: {
-        questions: [
-            { q: "The earth ___ (go) around the sun.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT TỰ NHIÊN</span> ➔ Hiện tại đơn ➔ 'goes'.", opts: ["A. goes", "B. went", "C. is going", "D. is going to go"], ans: "A", exp: "Chân lý khoa học dùng Hiện tại đơn." },
-            { q: "When I was young, I ___ (live) in a small village.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>WHEN I WAS YOUNG</span> ➔ Quá khứ đơn ➔ 'lived'.", opts: ["A. live", "B. lived", "C. am living", "D. am going to live"], ans: "B", exp: "Kể kỷ niệm quá khứ dùng Quá khứ đơn." },
-            { q: "Where is Mai? - She ___ (cook) in the kitchen now.", hint: "💡 Ngữ cảnh: Hỏi vị trí + <span class='highlight-key'>NOW</span> ➔ Hành động đang xảy ra.", opts: ["A. cooks", "B. cooked", "C. is cooking", "D. is going to cook"], ans: "C", exp: "Hành động đang diễn ra dùng 'is cooking'." },
-            { q: "I have decided. I ___ (learn) Japanese next month.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>HAVE DECIDED</span> + <span class='highlight-key'>NEXT MONTH</span> ➔ Tương lai gần.", opts: ["A. learn", "B. learned", "C. am learning", "D. am going to learn"], ans: "D", exp: "Đã quyết định kế hoạch dùng 'am going to learn'." },
-            { q: "Yesterday, Nam ___ (not go) to school because he was sick.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn phủ định.", opts: ["A. doesn't go", "B. didn't go", "C. isn't going", "D. isn't going to go"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't go'." },
-            { q: "Don't make noise! The students ___ (take) an exam.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>DON'T MAKE NOISE!</span> ➔ Đang diễn ra.", opts: ["A. take", "B. took", "C. are taking", "D. are going to take"], ans: "C", exp: "Cảnh báo không làm ồn dùng Hiện tại tiếp diễn." },
-            { q: "Watch out! You ___ (drop) that heavy box!", hint: "💡 Ngữ cảnh: <span class='highlight-key'>WATCH OUT!</span> ➔ Báo hiệu nguy cơ sắp xảy ra.", opts: ["A. drop", "B. dropped", "C. are dropping", "D. are going to drop"], ans: "D", exp: "Cảnh báo nguy cơ sắp xảy ra dùng Tương lai gần." },
-            { q: "Every morning, my mother ___ (get) up at 5:30.", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY MORNING</span> ➔ Thói quen Hiện tại đơn.", opts: ["A. gets", "B. got", "C. is getting", "D. is going to get"], ans: "A", exp: "Thói quen mỗi sáng dùng 'gets'." },
-            { q: "___ you ___ (see) the fireworks last night?", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST NIGHT</span> ➔ Hỏi Quá khứ đơn.", opts: ["A. Do / see", "B. Did / see", "C. Are / seeing", "D. Are / going to see"], ans: "B", exp: "Hỏi sự việc tối qua dùng 'Did you see...?'." },
-            { q: "Look! The cat ___ (climb) up the big tree.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> ➔ Thấy ngay lúc này.", opts: ["A. climbs", "B. climbed", "C. is climbing", "D. is going to climb"], ans: "C", exp: "Hành động đang xảy ra dùng 'is climbing'." },
-            { q: "Look at his ticket! He ___ (fly) to Paris tomorrow.", hint: "💡 Bằng chứng: <span class='highlight-key'>LOOK AT HIS TICKET!</span> ➔ Tương lai gần.", opts: ["A. flies", "B. flew", "C. is flying", "D. is going to fly"], ans: "D", exp: "Cầm vé trên tay dùng 'is going to fly'." },
-            { q: "Water ___ (boil) at 100 degrees Celsius.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>SỰ THẬT KHOA HỌC</span> ➔ Hiện tại đơn.", opts: ["A. boils", "B. boiled", "C. is boiling", "D. is going to boil"], ans: "A", exp: "Sự thật khoa học dùng 'boils'." },
-            { q: "They ___ (meet) each other five years ago.", hint: "💡 Từ nhận biết: <span class='highlight-key'>FIVE YEARS AGO</span> ➔ Quá khứ đơn.", opts: ["A. meet", "B. met", "C. are meeting", "D. are going to meet"], ans: "B", exp: "Ago đi với Quá khứ đơn 'met'." },
-            { q: "At present, my brother ___ (work) on his project.", hint: "💡 Từ nhận biết: <span class='highlight-key'>AT PRESENT</span> ➔ Hiện tại tiếp diễn.", opts: ["A. works", "B. worked", "C. is working", "D. is going to work"], ans: "C", exp: "At present dùng 'is working'." },
-            { q: "We have bought the tickets. We ___ (watch) a movie tonight.", hint: "💡 Bằng chứng: <span class='highlight-key'>BOUGHT THE TICKETS</span> ➔ Tương lai gần.", opts: ["A. watch", "B. watched", "C. are watching", "D. are going to watch"], ans: "D", exp: "Đã mua vé sẵn dùng 'are going to watch'." },
-            { q: "___ your brother usually ___ (play) badminton on weekends?", hint: "💡 Từ nhận biết: <span class='highlight-key'>USUALLY</span> & <span class='highlight-key'>ON WEEKENDS</span> ➔ Hỏi Hiện tại đơn.", opts: ["A. Does / play", "B. Did / play", "C. Is / playing", "D. Is / going to play"], ans: "A", exp: "Hỏi thói quen số ít dùng 'Does... play'." },
-            { q: "Last summer, my family ___ (go) to Nhatrang.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST SUMMER</span> ➔ Quá khứ đơn.", opts: ["A. goes", "B. went", "C. is going", "D. is going to go"], ans: "B", exp: "Last summer đi với 'went'." },
-            { q: "Hurry up! Everyone ___ (wait) for you!", hint: "💡 Ngữ cảnh: <span class='highlight-key'>HURRY UP!</span> ➔ Đang diễn ra hối thúc.", opts: ["A. waits", "B. waited", "C. is waiting", "D. is going to wait"], ans: "C", exp: "Hành động đang diễn ra dùng 'is waiting'." },
-            { q: "Look at the boat! It is full of water and it ___ (sink)!", hint: "💡 Nguy cơ: <span class='highlight-key'>BOAT IS FULL OF WATER</span> ➔ Tương lai gần.", opts: ["A. sinks", "B. sank", "C. is sinking", "D. is going to sink"], ans: "D", exp: "Dự đoán nguy cơ rõ ràng dùng 'is going to sink'." },
-            { q: "She usually walks to school, but today she ___ (ride) her bicycle.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>TODAY</span> (khác biệt tạm thời hôm nay) ➔ Hiện tại tiếp diễn.", opts: ["A. rides", "B. rode", "C. is riding", "D. is going to ride"], ans: "C", exp: "Hành động tạm thời dùng 'is riding'." }
-        ]
-    },
-    5: {
-        questions: [
-            { q: "He usually ___ (drink) tea in the morning.", hint: "💡 Từ nhận biết: <span class='highlight-key'>USUALLY</span> ➔ Hiện tại đơn (+).", opts: ["A. drinks", "B. drank", "C. is drinking", "D. is going to drink"], ans: "A", exp: "Usually đi với Hiện tại đơn 'drinks'." },
-            { q: "She ___ (buy) a hat yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>YESTERDAY</span> ➔ Quá khứ đơn (+).", opts: ["A. buys", "B. bought", "C. is buying", "D. is going to buy"], ans: "B", exp: "Yesterday đi với Quá khứ đơn 'bought'." },
-            { q: "They ___ (watch) TV right now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>RIGHT NOW</span> ➔ Hiện tại tiếp diễn (+).", opts: ["A. watch", "B. watched", "C. are watching", "D. are going to watch"], ans: "C", exp: "Right now đi với 'are watching'." },
-            { q: "We ___ (move) to a new house next month.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT MONTH</span> ➔ Tương lai gần (+).", opts: ["A. move", "B. moved", "C. are moving", "D. are going to move"], ans: "D", exp: "Next month mang nghĩa kế hoạch đi với Tương lai gần." },
-            { q: "My father ___ (play) tennis every Sunday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>EVERY SUNDAY</span> ➔ Hiện tại đơn (+).", opts: ["A. plays", "B. played", "C. is playing", "D. is going to play"], ans: "A", exp: "Every Sunday đi với 'plays'." },
-            { q: "I ___ (eat) pizza last night.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST NIGHT</span> ➔ Quá khứ đơn (+).", opts: ["A. eat", "B. ate", "C. am eating", "D. am going to eat"], ans: "B", exp: "Last night đi với 'ate'." },
-            { q: "Look! She ___ (draw) a picture at the moment.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> & <span class='highlight-key'>AT THE MOMENT</span> ➔ Hiện tại tiếp diễn.", opts: ["A. draws", "B. drew", "C. is drawing", "D. is going to draw"], ans: "C", exp: "At the moment đi với 'is drawing'." },
-            { q: "They ___ (have) a party tomorrow.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TOMORROW</span> ➔ Tương lai gần.", opts: ["A. have", "B. had", "C. are having", "D. are going to have"], ans: "D", exp: "Tomorrow chỉ kế hoạch dùng Tương lai gần." },
-            { q: "She always ___ (smile) at everyone.", hint: "💡 Từ nhận biết: <span class='highlight-key'>ALWAYS</span> ➔ Hiện tại đơn.", opts: ["A. smiles", "B. smiled", "C. is smiling", "D. is going to smile"], ans: "A", exp: "Always đi với 'smiles'." },
-            { q: "Nam ___ (lose) his key two days ago.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TWO DAYS AGO</span> ➔ Quá khứ đơn.", opts: ["A. loses", "B. lost", "C. is losing", "D. is going to lose"], ans: "B", exp: "Ago đi với Quá khứ đơn 'lost'." },
-            { q: "Look! The bus ___ (come).", hint: "💡 Từ nhận biết: <span class='highlight-key'>LOOK!</span> ➔ Hiện tại tiếp diễn.", opts: ["A. comes", "B. came", "C. is coming", "D. is going to come"], ans: "C", exp: "Look! báo hiệu hành động đang tới ➔ 'is coming'." },
-            { q: "Look at the dark clouds! It ___ (snow) soon.", hint: "💡 Căn cứ: <span class='highlight-key'>DARK CLOUDS</span> ➔ Tương lai gần.", opts: ["A. snows", "B. snowed", "C. is snowing", "D. is going to snow"], ans: "D", exp: "Dự đoán có căn cứ dùng 'is going to snow'." },
-            { q: "We ___ (have) English lessons on Mondays.", hint: "💡 Từ nhận biết: <span class='highlight-key'>ON MONDAYS</span> ➔ Lịch trình cố định ➔ Hiện tại đơn.", opts: ["A. have", "B. had", "C. are having", "D. are going to have"], ans: "A", exp: "Lịch trình cố định đi với 'have'." },
-            { q: "Listen! The birds ___ (sing) in the tree.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LISTEN!</span> ➔ Hiện tại tiếp diễn.", opts: ["A. sing", "B. sang", "C. are singing", "D. are going to sing"], ans: "C", exp: "Listen! đi với 'are singing'." },
-            { q: "I ___ (read) this book tonight.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TONIGHT</span> ➔ Tương lai gần.", opts: ["A. read", "B. readed", "C. am reading", "D. am going to read"], ans: "D", exp: "Dự định tối nay dùng 'am going to read'." },
-            { q: "He often ___ (help) his mom with the housework.", hint: "💡 Từ nhận biết: <span class='highlight-key'>OFTEN</span> ➔ Hiện tại đơn.", opts: ["A. helps", "B. helped", "C. is helping", "D. is going to help"], ans: "A", exp: "Often đi với 'helps'." },
-            { q: "My uncle ___ (repair) the car last week.", hint: "💡 Từ nhận biết: <span class='highlight-key'>LAST WEEK</span> ➔ Quá khứ đơn.", opts: ["A. repairs", "B. repaired", "C. is repairing", "D. is going to repair"], ans: "B", exp: "Last week đi với 'repaired'." },
-            { q: "Be quiet! The baby ___ (sleep).", hint: "💡 Từ nhận biết: <span class='highlight-key'>BE QUIET!</span> ➔ Hiện tại tiếp diễn.", opts: ["A. sleeps", "B. slept", "C. is sleeping", "D. is going to sleep"], ans: "C", exp: "Be quiet! đi với 'is sleeping'." },
-            { q: "My sister ___ (study) abroad next year.", hint: "💡 Từ nhận biết: <span class='highlight-key'>NEXT YEAR</span> ➔ Tương lai gần.", opts: ["A. studies", "B. studied", "C. is studying", "D. is going to study"], ans: "D", exp: "Next year chỉ kế hoạch đi với Tương lai gần." },
-            { q: "I ___ (not play) football tomorrow morning.", hint: "💡 Từ nhận biết: <span class='highlight-key'>TOMORROW MORNING</span> ➔ Tương lai gần phủ định: <b>am not going to + V</b>.", opts: ["A. don't play", "B. didn't play", "C. am not playing", "D. am not going to play"], ans: "D", exp: "Tương lai gần phủ định dùng 'am not going to play'." }
-        ]
-    }
-};
+  <script>
+    // URL Web App Google Apps Script nhận kết quả
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwaMoZrvQBmUUOPJOGJjH2doz7krotYU3TN5f0KdeCZ7RrIhLGmORAS3bMc-e2BDKic/exec";
 
-function toggleSingleHint(qId) {
-    const qDiv = document.getElementById(qId);
-    const btn = qDiv.querySelector('.btn-hint-single');
-    qDiv.classList.toggle('show-hint');
-    if (qDiv.classList.contains('show-hint')) {
-        btn.innerHTML = '🙈 Ẩn gợi ý';
-        btn.classList.add('active');
-    } else {
-        btn.innerHTML = '💡 Gợi ý';
-        btn.classList.remove('active');
-    }
-}
+    // Tab đang được kích hoạt
+    let currentActiveTab = 1;
 
-function renderAllQuiz() {
-    const container = document.getElementById('quiz-container');
-    let html = '';
+    // 5 BÀI TẬP, MỖI BÀI ĐÚNG 20 CÂU HỎI (TỔNG CỘNG 100 CÂU)
+    const exercisesData = [
+      {
+        id: 1,
+        title: "Bài 1:",
+        questions: [
+          {
+            id: 1,
+            text: "A giraffe is _______ than a monkey.",
+            options: ["tall", "taller", "tallest", "more tall"],
+            correct: 1,
+            hint: "Tìm từ nhận biết <span class='kw-highlight'>than</span>. 'Tall' là tính từ ngắn nên thêm đuôi -er.",
+            explanation: "Có từ <strong>than</strong> biểu thị so sánh hơn giữa hai con vật: <em>tall</em> ➔ <strong>taller</strong>."
+          },
+          {
+            id: 2,
+            text: "A plane is _______ than a bus.",
+            options: ["fast", "faster", "fastest", "more fast"],
+            correct: 1,
+            hint: "So sánh tốc độ giữa hai phương tiện đi kèm từ nhận biết <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn tính từ ngắn: <em>fast</em> + <em>-er</em> = <strong>faster than</strong>."
+          },
+          {
+            id: 3,
+            text: "My grandfather is _______ than my father.",
+            options: ["old", "older", "oldest", "more old"],
+            correct: 1,
+            hint: "Có từ <span class='kw-highlight'>than</span> đứng sau vị trí cần điền.",
+            explanation: "So sánh hơn tính từ ngắn: <em>old</em> ➔ <strong>older than</strong>."
+          },
+          {
+            id: 4,
+            text: "A blue ruler is _______ than a yellow pencil.",
+            options: ["longer", "long", "longest", "more long"],
+            correct: 0,
+            hint: "Thước dài hơn bút chì với từ so sánh hơn <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn <em>long</em> đổi thành <strong>longer</strong> trong so sánh hơn."
+          },
+          {
+            id: 5,
+            text: "Winter is usually _______ than spring.",
+            options: ["cold", "colder", "coldest", "more cold"],
+            correct: 1,
+            hint: "Xuất hiện từ nhận biết so sánh hơn <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh thời tiết 2 mùa: <em>cold</em> ➔ <strong>colder than</strong>."
+          },
+          {
+            id: 6,
+            text: "A mouse is _______ than an elephant.",
+            options: ["small", "more small", "smaller", "smallest"],
+            correct: 2,
+            hint: "Quan sát từ so sánh <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn: <em>small</em> + <em>-er</em> = <strong>smaller</strong>."
+          },
+          {
+            id: 7,
+            text: "A horse is _______ than a sheep.",
+            options: ["strong", "stronger", "strongest", "more strong"],
+            correct: 1,
+            hint: "Có từ nhận biết <span class='kw-highlight'>than</span> đứng sau.",
+            explanation: "Tính từ ngắn <em>strong</em> thêm đuôi <em>-er</em> ➔ <strong>stronger</strong>."
+          },
+          {
+            id: 8,
+            text: "Ben's hair is _______ than Nick's hair.",
+            options: ["shorter", "short", "shortest", "more short"],
+            correct: 0,
+            hint: "Từ khóa so sánh độ dài tóc giữa 2 bạn: <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn: <em>short</em> ➔ <strong>shorter</strong>."
+          },
+          {
+            id: 9,
+            text: "A rabbit runs _______ than a turtle.",
+            options: ["quick", "quicker", "quickest", "more quick"],
+            correct: 1,
+            hint: "So sánh thỏ và rùa có từ so sánh hơn <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn <em>quick</em> ➔ <strong>quicker than</strong>."
+          },
+          {
+            id: 10,
+            text: "Today the weather is _______ than yesterday.",
+            options: ["cooler", "coolest", "cool", "more cool"],
+            correct: 0,
+            hint: "So sánh thời tiết hôm nay và hôm qua có từ <span class='kw-highlight'>than</span>.",
+            explanation: "<em>Cool</em> là tính từ ngắn trong so sánh hơn ➔ <strong>cooler</strong>."
+          },
+          {
+            id: 11,
+            text: "A lion's roar is _______ than a cat's meow.",
+            options: ["loud", "louder", "loudest", "more loud"],
+            correct: 1,
+            hint: "Có từ <span class='kw-highlight'>than</span> đứng sau tính từ chỉ âm thanh.",
+            explanation: "So sánh hơn tính từ ngắn: <em>loud</em> ➔ <strong>louder than</strong>."
+          },
+          {
+            id: 12,
+            text: "My brother is _______ than my sister.",
+            options: ["young", "younger", "youngest", "more young"],
+            correct: 1,
+            hint: "Từ nhận biết so sánh hơn là <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn: <em>young</em> ➔ <strong>younger than</strong>."
+          },
+          {
+            id: 13,
+            text: "A cup of hot cocoa is _______ than iced water.",
+            options: ["warm", "warmer", "warmest", "more warm"],
+            correct: 1,
+            hint: "So sánh độ ấm của 2 thức uống có từ <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn: <em>warm</em> ➔ <strong>warmer than</strong>."
+          },
+          {
+            id: 14,
+            text: "This dictionary is _______ than that comic book.",
+            options: ["thicker", "thick", "thickest", "more thick"],
+            correct: 0,
+            hint: "Từ so sánh hơn phía sau: <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn <em>thick</em> (dày) ➔ <strong>thicker than</strong>."
+          },
+          {
+            id: 15,
+            text: "Our classroom is _______ than the playground.",
+            options: ["quiet", "quieter", "quietest", "more quiet"],
+            correct: 1,
+            hint: "Xuất hiện từ nhận biết <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ <em>quiet</em> thêm '-er' trong so sánh hơn ➔ <strong>quieter</strong>."
+          },
+          {
+            id: 16,
+            text: "The living room floor is _______ than the garden path.",
+            options: ["clean", "cleaner", "cleanest", "more clean"],
+            correct: 1,
+            hint: "Có từ so sánh hơn <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn <em>clean</em> ➔ <strong>cleaner than</strong>."
+          },
+          {
+            id: 17,
+            text: "At 8 PM, the sky is _______ than at 5 PM.",
+            options: ["dark", "darker", "darkest", "more dark"],
+            correct: 1,
+            hint: "So sánh độ tối giữa 2 mốc thời gian có từ <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn <em>dark</em> ➔ <strong>darker than</strong>."
+          },
+          {
+            id: 18,
+            text: "This rock feels _______ than that cushion.",
+            options: ["hard", "harder", "hardest", "more hard"],
+            correct: 1,
+            hint: "Cục đá cứng hơn cái đệm có từ so sánh hơn <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn <em>hard</em> ➔ <strong>harder than</strong>."
+          },
+          {
+            id: 19,
+            text: "A silk shirt is _______ than a wool sweater.",
+            options: ["soft", "softer", "softest", "more soft"],
+            correct: 1,
+            hint: "So sánh độ mềm của vải đi với từ <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn <em>soft</em> ➔ <strong>softer than</strong>."
+          },
+          {
+            id: 20,
+            text: "A snail moves _______ than a duck.",
+            options: ["slow", "slower", "slowest", "more slow"],
+            correct: 1,
+            hint: "Xuất hiện từ khóa so sánh hơn <span class='kw-highlight'>than</span>.",
+            explanation: "Tính từ ngắn <em>slow</em> ➔ <strong>slower than</strong>."
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Bài 2:",
+        questions: [
+          {
+            id: 1,
+            text: "Mount Everest is the _______ mountain in the world.",
+            options: ["high", "higher", "highest", "most high"],
+            correct: 2,
+            hint: "Có mạo từ <span class='kw-highlight'>the</span> và phạm vi <span class='kw-highlight'>in the world</span>.",
+            explanation: "Cấu trúc so sánh nhất tính từ ngắn: <em>the + highest</em>."
+          },
+          {
+            id: 2,
+            text: "The blue whale is the _______ animal on Earth.",
+            options: ["big", "bigger", "biggest", "most big"],
+            correct: 2,
+            hint: "Có từ <span class='kw-highlight'>the</span> đứng trước chỗ trống.",
+            explanation: "So sánh nhất với <em>the</em>: <em>the</em> + <strong>biggest</strong>."
+          },
+          {
+            id: 3,
+            text: "Dan is the _______ boy in our classroom.",
+            options: ["tallest", "taller", "tall", "most tall"],
+            correct: 0,
+            hint: "Đứng sau <span class='kw-highlight'>the</span> và trong phạm vi tập thể (<span class='kw-highlight'>in our classroom</span>).",
+            explanation: "So sánh nhất trong tập thể: <strong>the tallest</strong>."
+          },
+          {
+            id: 4,
+            text: "The cheetah is the _______ land animal.",
+            options: ["fast", "faster", "fastest", "more fast"],
+            correct: 2,
+            hint: "Đứng ngay sau mạo từ xác định <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất tính từ ngắn: <em>the</em> + <strong>fastest</strong>."
+          },
+          {
+            id: 5,
+            text: "My grandfather is the _______ person in my family.",
+            options: ["oldest", "older", "old", "most old"],
+            correct: 0,
+            hint: "Có <span class='kw-highlight'>the</span> và so sánh cả gia đình <span class='kw-highlight'>in my family</span>.",
+            explanation: "So sánh nhất của <em>old</em>: <strong>the oldest</strong>."
+          },
+          {
+            id: 6,
+            text: "This is the _______ pencil in my pencil case.",
+            options: ["short", "shorter", "shortest", "more short"],
+            correct: 2,
+            hint: "Đứng sau mạo từ xác định <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất trong hộp bút: <em>the</em> + <strong>shortest</strong>."
+          },
+          {
+            id: 7,
+            text: "The Nile is the _______ river in the world.",
+            options: ["long", "longer", "longest", "most long"],
+            correct: 2,
+            hint: "Có từ <span class='kw-highlight'>the</span> và phạm vi toàn cầu <span class='kw-highlight'>in the world</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>longest</strong>."
+          },
+          {
+            id: 8,
+            text: "January is the _______ month of the year here.",
+            options: ["cold", "colder", "coldest", "more cold"],
+            correct: 2,
+            hint: "Có mạo từ <span class='kw-highlight'>the</span> trước vị trí cần điền.",
+            explanation: "Tháng lạnh nhất năm: <em>the</em> + <strong>coldest</strong>."
+          },
+          {
+            id: 9,
+            text: "This hummingbird is the _______ bird in the forest.",
+            options: ["smaller", "small", "smallest", "most small"],
+            correct: 2,
+            hint: "Sau từ <span class='kw-highlight'>the</span> và phạm vi khu rừng <span class='kw-highlight'>in the forest</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>smallest</strong>."
+          },
+          {
+            id: 10,
+            text: "An elephant is the _______ animal in the safari park.",
+            options: ["strong", "stronger", "strongest", "more strong"],
+            correct: 2,
+            hint: "Đứng sau mạo từ <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>strongest</strong>."
+          },
+          {
+            id: 11,
+            text: "The Pacific Ocean is the _______ ocean on our planet.",
+            options: ["deep", "deeper", "deepest", "most deep"],
+            correct: 2,
+            hint: "Sau mạo từ <span class='kw-highlight'>the</span> đi với tính từ 'deep'.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>deepest</strong>."
+          },
+          {
+            id: 12,
+            text: "My baby sister is the _______ child in our house.",
+            options: ["young", "younger", "youngest", "most young"],
+            correct: 2,
+            hint: "Có từ <span class='kw-highlight'>the</span> trước vị trí điền.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>youngest</strong>."
+          },
+          {
+            id: 13,
+            text: "The sun is the _______ object in our daytime sky.",
+            options: ["bright", "brighter", "brightest", "most bright"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span>, chỉ vật sáng nhất.",
+            explanation: "So sánh nhất tính từ ngắn: <em>the</em> + <strong>brightest</strong>."
+          },
+          {
+            id: 14,
+            text: "That green parrot is the _______ bird in the pet shop.",
+            options: ["loud", "louder", "loudest", "most loud"],
+            correct: 2,
+            hint: "Sau từ <span class='kw-highlight'>the</span> trong phạm vi cửa hàng thú cưng.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>loudest</strong>."
+          },
+          {
+            id: 15,
+            text: "This dictionary is the _______ book in my backpack.",
+            options: ["thick", "thicker", "thickest", "most thick"],
+            correct: 2,
+            hint: "Đứng sau mạo từ <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>thickest</strong>."
+          },
+          {
+            id: 16,
+            text: "Who has the _______ desk in our school?",
+            options: ["clean", "cleaner", "cleanest", "most clean"],
+            correct: 2,
+            hint: "Đứng sau mạo từ <span class='kw-highlight'>the</span> và có phạm vi trường học.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>cleanest</strong>."
+          },
+          {
+            id: 17,
+            text: "Midnight is the _______ time of the night.",
+            options: ["dark", "darker", "darkest", "most dark"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>darkest</strong>."
+          },
+          {
+            id: 18,
+            text: "A tortoise is the _______ animal in the farmyard.",
+            options: ["slow", "slower", "slowest", "most slow"],
+            correct: 2,
+            hint: "Sau mạo từ xác định <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>slowest</strong>."
+          },
+          {
+            id: 19,
+            text: "This diamond is the _______ stone in the museum.",
+            options: ["hard", "harder", "hardest", "most hard"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>hardest</strong>."
+          },
+          {
+            id: 20,
+            text: "That white feather is the _______ thing in the box.",
+            options: ["light", "lighter", "lightest", "most light"],
+            correct: 2,
+            hint: "Sau <span class='kw-highlight'>the</span> và tính từ ngắn 'light' (nhẹ).",
+            explanation: "So sánh nhất: <em>the</em> + <strong>lightest</strong>."
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Bài 3:",
+        questions: [
+          {
+            id: 1,
+            text: "Today is _______ than yesterday.",
+            options: ["hot", "hotter", "hottest", "more hot"],
+            correct: 1,
+            hint: "Có từ <span class='kw-highlight'>than</span>. 'Hot' kết thúc bằng 1 nguyên âm + 1 phụ âm nên <span class='kw-highlight'>gấp đôi chữ t</span>.",
+            explanation: "So sánh hơn: <em>hot</em> gấp đôi phụ âm 't' thành <strong>hotter than</strong>."
+          },
+          {
+            id: 2,
+            text: "A hippopotamus is _______ than a zebra.",
+            options: ["fat", "fatter", "fattest", "more fat"],
+            correct: 1,
+            hint: "Có từ <span class='kw-highlight'>than</span>. Tính từ 'fat' cần <span class='kw-highlight'>gấp đôi chữ t</span>.",
+            explanation: "So sánh hơn: <em>fat</em> ➔ <strong>fatter than</strong>."
+          },
+          {
+            id: 3,
+            text: "The dog was _______ than the cat after playing in the mud.",
+            options: ["dirtier", "dirty", "dirtiest", "more dirty"],
+            correct: 0,
+            hint: "Tính từ đuôi <span class='kw-highlight'>-y</span> (dirty) đi với <span class='kw-highlight'>than</span> đổi thành <span class='kw-highlight'>-ier</span>.",
+            explanation: "Tính từ <em>dirty</em> đổi 'y' thành 'i' rồi thêm '-er': <strong>dirtier</strong>."
+          },
+          {
+            id: 4,
+            text: "Sunday was _______ than Monday.",
+            options: ["sunny", "sunnier", "sunniest", "more sunny"],
+            correct: 1,
+            hint: "'Sunny' kết thúc bằng đuôi <span class='kw-highlight'>-y</span>, câu có từ so sánh <span class='kw-highlight'>than</span>.",
+            explanation: "<em>Sunny</em> đổi đuôi '-y' thành '-ier' ➔ <strong>sunnier than</strong>."
+          },
+          {
+            id: 5,
+            text: "My schoolbag is _______ than your schoolbag.",
+            options: ["heavy", "heavier", "heaviest", "more heavy"],
+            correct: 1,
+            hint: "Tính từ <span class='kw-highlight'>heavy</span> kết thúc bằng '-y' đổi thành '-ier' trước <span class='kw-highlight'>than</span>.",
+            explanation: "<em>Heavy</em> + <em>-er</em> ➔ <strong>heavier than</strong>."
+          },
+          {
+            id: 6,
+            text: "July is the _______ month of the summer.",
+            options: ["hot", "hotter", "hottest", "most hot"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span>. 'Hot' gấp đôi chữ 't' thành <span class='kw-highlight'>-ttest</span>.",
+            explanation: "So sánh nhất của <em>hot</em> là <strong>the hottest</strong>."
+          },
+          {
+            id: 7,
+            text: "Jack is _______ than he was this morning.",
+            options: ["happy", "happier", "happiest", "more happy"],
+            correct: 1,
+            hint: "Tính từ <span class='kw-highlight'>happy</span> đổi đuôi đi với từ nối <span class='kw-highlight'>than</span>.",
+            explanation: "<em>Happy</em> biến đổi thành <strong>happier than</strong>."
+          },
+          {
+            id: 8,
+            text: "The music room is _______ than the library.",
+            options: ["noisier", "noisy", "noisiest", "more noisy"],
+            correct: 0,
+            hint: "Tính từ kết thúc bằng '-y' <span class='kw-highlight'>noisy</span> đi với <span class='kw-highlight'>than</span>.",
+            explanation: "<em>Noisy</em> đổi thành <strong>noisier than</strong>."
+          },
+          {
+            id: 9,
+            text: "After swimming, I am _______ than my brother.",
+            options: ["hungrier", "hungry", "hungriest", "more hungry"],
+            correct: 0,
+            hint: "Có từ <span class='kw-highlight'>than</span>. Tính từ <span class='kw-highlight'>hungry</span> đổi 'y' thành 'i'.",
+            explanation: "<em>Hungry</em> đổi thành <strong>hungrier than</strong>."
+          },
+          {
+            id: 10,
+            text: "It rained all day, so the grass is the _______ it has been all week.",
+            options: ["wet", "wetter", "wettest", "most wet"],
+            correct: 2,
+            hint: "Có <span class='kw-highlight'>the</span> đứng trước. 'Wet' gấp đôi 't'.",
+            explanation: "So sánh nhất của <em>wet</em> là <strong>the wettest</strong>."
+          },
+          {
+            id: 11,
+            text: "Playing games in the park made us _______ than reading books.",
+            options: ["thirstier", "thirsty", "thirstiest", "more thirsty"],
+            correct: 0,
+            hint: "Tính từ đuôi -y: <span class='kw-highlight'>thirsty</span> đi với <span class='kw-highlight'>than</span>.",
+            explanation: "<em>Thirsty</em> đổi 'y' thành '-ier' ➔ <strong>thirstier than</strong>."
+          },
+          {
+            id: 12,
+            text: "That clown in the circus is the _______ person I know.",
+            options: ["funny", "funnier", "funniest", "most funny"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span>. 'Funny' đổi 'y' thành <span class='kw-highlight'>-iest</span>.",
+            explanation: "So sánh nhất: <em>funny</em> ➔ <strong>the funniest</strong>."
+          },
+          {
+            id: 13,
+            text: "This math worksheet is _______ than yesterday's worksheet.",
+            options: ["easy", "easier", "easiest", "more easy"],
+            correct: 1,
+            hint: "Tính từ <span class='kw-highlight'>easy</span> tận cùng bằng 'y' đi với <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn: <em>easy</em> ➔ <strong>easier than</strong>."
+          },
+          {
+            id: 14,
+            text: "That girl has the _______ smile in our class.",
+            options: ["pretty", "prettier", "prettiest", "most pretty"],
+            correct: 2,
+            hint: "Sau mạo từ <span class='kw-highlight'>the</span>. 'Pretty' đổi '-y' thành '-iest'.",
+            explanation: "So sánh nhất: <em>pretty</em> ➔ <strong>the prettiest</strong>."
+          },
+          {
+            id: 15,
+            text: "A twig is _______ than a tree trunk.",
+            options: ["thin", "thinner", "thinnest", "more thin"],
+            correct: 1,
+            hint: "Có từ <span class='kw-highlight'>than</span>. 'Thin' có 1 nguyên âm + 1 phụ âm nên <span class='kw-highlight'>gấp đôi n</span>.",
+            explanation: "So sánh hơn: <em>thin</em> ➔ <strong>thinner than</strong>."
+          },
+          {
+            id: 16,
+            text: "The desert is _______ than the rainforest.",
+            options: ["dry", "drier", "driest", "more dry"],
+            correct: 1,
+            hint: "Từ <span class='kw-highlight'>than</span> phía sau. 'Dry' đổi 'y' thành 'i' rồi thêm '-er'.",
+            explanation: "So sánh hơn: <em>dry</em> ➔ <strong>drier than</strong>."
+          },
+          {
+            id: 17,
+            text: "My father is always _______ than my brother on weekdays.",
+            options: ["busy", "busier", "busiest", "more busy"],
+            correct: 1,
+            hint: "Tính từ đuôi -y <span class='kw-highlight'>busy</span> đi kèm từ <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn: <em>busy</em> ➔ <strong>busier than</strong>."
+          },
+          {
+            id: 18,
+            text: "Today was the _______ day of the whole holiday.",
+            options: ["windy", "windier", "windiest", "most windy"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span>. 'Windy' đổi đuôi thành '-iest'.",
+            explanation: "So sánh nhất: <em>windy</em> ➔ <strong>the windiest</strong>."
+          },
+          {
+            id: 19,
+            text: "This kitten is the _______ one in the pet basket.",
+            options: ["tiny", "tinier", "tiniest", "most tiny"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span>. 'Tiny' đổi '-y' thành '-iest'.",
+            explanation: "So sánh nhất: <em>tiny</em> ➔ <strong>the tiniest</strong>."
+          },
+          {
+            id: 20,
+            text: "The giant was the _______ character in the story.",
+            options: ["fat", "fatter", "fattest", "most fat"],
+            correct: 2,
+            hint: "Sau <span class='kw-highlight'>the</span>. 'Fat' gấp đôi chữ 't'.",
+            explanation: "So sánh nhất: <em>fat</em> ➔ <strong>the fattest</strong>."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Bài 4:",
+        questions: [
+          {
+            id: 1,
+            text: "Lucy's score is _______ than my score.",
+            options: ["good", "better", "best", "more good"],
+            correct: 1,
+            hint: "Bất quy tắc: So sánh hơn của <span class='kw-highlight'>good</span> đi với <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn của <em>good</em> là <strong>better</strong>."
+          },
+          {
+            id: 2,
+            text: "This is the _______ comic book in the bookstore!",
+            options: ["good", "better", "best", "most good"],
+            correct: 2,
+            hint: "Sau mạo từ <span class='kw-highlight'>the</span>. Dạng so sánh nhất của <span class='kw-highlight'>good</span>.",
+            explanation: "So sánh nhất của <em>good</em> là <strong>the best</strong>."
+          },
+          {
+            id: 3,
+            text: "His cold is getting _______ than yesterday.",
+            options: ["bad", "worse", "worst", "more bad"],
+            correct: 1,
+            hint: "Bất quy tắc: So sánh hơn của <span class='kw-highlight'>bad</span> đi với <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn của <em>bad</em> là <strong>worse than</strong>."
+          },
+          {
+            id: 4,
+            text: "That was the _______ storm of the year.",
+            options: ["bad", "worse", "worst", "most bad"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span>. Dạng so sánh nhất của <span class='kw-highlight'>bad</span>.",
+            explanation: "So sánh nhất của <em>bad</em> là <strong>the worst</strong>."
+          },
+          {
+            id: 5,
+            text: "A butterfly is _______ than a caterpillar.",
+            options: ["beautiful", "more beautiful", "most beautiful", "beautifuler"],
+            correct: 1,
+            hint: "'Beautiful' là tính từ dài có 3 âm tiết, sau có từ <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn tính từ dài: <em>more + adj + than</em> ➔ <strong>more beautiful than</strong>."
+          },
+          {
+            id: 6,
+            text: "Crocodiles are _______ than ducks.",
+            options: ["dangerous", "more dangerous", "most dangerous", "dangerouser"],
+            correct: 1,
+            hint: "Tính từ dài <span class='kw-highlight'>dangerous</span> đi kèm từ <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn tính từ dài: <strong>more dangerous than</strong>."
+          },
+          {
+            id: 7,
+            text: "You must be _______ when riding a bike than walking.",
+            options: ["more careful", "carefuler", "most careful", "carefulest"],
+            correct: 0,
+            hint: "'Careful' là tính từ 2 âm tiết đi với từ <span class='kw-highlight'>than</span>.",
+            explanation: "Dùng cấu trúc: <strong>more careful than</strong>."
+          },
+          {
+            id: 8,
+            text: "This math puzzle is _______ than the English puzzle.",
+            options: ["difficult", "more difficult", "most difficult", "difficulter"],
+            correct: 1,
+            hint: "Tính từ dài <span class='kw-highlight'>difficult</span> kết hợp với từ <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn tính từ dài: <strong>more difficult than</strong>."
+          },
+          {
+            id: 9,
+            text: "This sports car is the _______ vehicle in the showroom.",
+            options: ["expensive", "more expensive", "most expensive", "expensivest"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span> và tính từ dài <span class='kw-highlight'>expensive</span>.",
+            explanation: "So sánh nhất tính từ dài: <em>the</em> + <strong>most expensive</strong>."
+          },
+          {
+            id: 10,
+            text: "Visiting the zoo was the _______ activity of our holiday.",
+            options: ["exciting", "more exciting", "most exciting", "excitingest"],
+            correct: 2,
+            hint: "Sau từ <span class='kw-highlight'>the</span> đi với tính từ dài <span class='kw-highlight'>exciting</span>.",
+            explanation: "So sánh nhất tính từ dài: <em>the</em> + <strong>most exciting</strong>."
+          },
+          {
+            id: 11,
+            text: "That pop singer is _______ than this actor.",
+            options: ["famous", "more famous", "most famous", "famouser"],
+            correct: 1,
+            hint: "Tính từ 2 âm tiết <span class='kw-highlight'>famous</span> đi với <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn tính từ dài: <strong>more famous than</strong>."
+          },
+          {
+            id: 12,
+            text: "This dinosaur book is _______ than that magazine.",
+            options: ["interesting", "more interesting", "most interesting", "interestinger"],
+            correct: 1,
+            hint: "Tính từ dài <span class='kw-highlight'>interesting</span> đi kèm <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn: <strong>more interesting than</strong>."
+          },
+          {
+            id: 13,
+            text: "Football is the _______ sport in our school.",
+            options: ["popular", "more popular", "most popular", "popularist"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span> và tính từ dài <span class='kw-highlight'>popular</span>.",
+            explanation: "So sánh nhất tính từ dài: <em>the</em> + <strong>most popular</strong>."
+          },
+          {
+            id: 14,
+            text: "This painting is the _______ artwork in the gallery.",
+            options: ["beautiful", "more beautiful", "most beautiful", "beautifulest"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span> và tính từ dài <span class='kw-highlight'>beautiful</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>most beautiful</strong>."
+          },
+          {
+            id: 15,
+            text: "A gold necklace is _______ than a plastic bracelet.",
+            options: ["expensive", "more expensive", "most expensive", "expensiver"],
+            correct: 1,
+            hint: "Tính từ dài <span class='kw-highlight'>expensive</span> đi với từ so sánh <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn: <strong>more expensive than</strong>."
+          },
+          {
+            id: 16,
+            text: "My dad says health is the _______ thing in life.",
+            options: ["important", "more important", "most important", "importantest"],
+            correct: 2,
+            hint: "Sau mạo từ <span class='kw-highlight'>the</span> kết hợp tính từ dài <span class='kw-highlight'>important</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>most important</strong>."
+          },
+          {
+            id: 17,
+            text: "The weather today is even _______ than last Sunday.",
+            options: ["bad", "worse", "worst", "more bad"],
+            correct: 1,
+            hint: "Bất quy tắc của <span class='kw-highlight'>bad</span> đi với <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn của <em>bad</em> là <strong>worse than</strong>."
+          },
+          {
+            id: 18,
+            text: "Sam played very well, he was the _______ player in the match.",
+            options: ["good", "better", "best", "most good"],
+            correct: 2,
+            hint: "Sau từ <span class='kw-highlight'>the</span>. Dạng so sánh nhất của <span class='kw-highlight'>good</span>.",
+            explanation: "So sánh nhất của <em>good</em> là <strong>the best</strong>."
+          },
+          {
+            id: 19,
+            text: "Tigers are _______ than pet rabbits.",
+            options: ["dangerous", "more dangerous", "most dangerous", "dangerouser"],
+            correct: 1,
+            hint: "Tính từ dài <span class='kw-highlight'>dangerous</span> đi với <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn tính từ dài: <strong>more dangerous than</strong>."
+          },
+          {
+            id: 20,
+            text: "This roller coaster was the _______ ride in the funfair.",
+            options: ["exciting", "more exciting", "most exciting", "excitingest"],
+            correct: 2,
+            hint: "Sau từ <span class='kw-highlight'>the</span> và tính từ dài <span class='kw-highlight'>exciting</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>most exciting</strong>."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Bài 5:",
+        questions: [
+          {
+            id: 1,
+            text: "An airplane is faster _______ a train.",
+            options: ["than", "as", "of", "the"],
+            correct: 0,
+            hint: "Đi sau tính từ so sánh hơn <span class='kw-highlight'>faster</span>.",
+            explanation: "Từ nối trong so sánh hơn luôn là <strong>than</strong>."
+          },
+          {
+            id: 2,
+            text: "Look! That is _______ tallest tree in the botanical garden.",
+            options: ["a", "an", "the", "than"],
+            correct: 2,
+            hint: "Đứng trước tính từ so sánh nhất <span class='kw-highlight'>tallest</span>.",
+            explanation: "Trước tính từ so sánh nhất luôn có mạo từ xác định <strong>the</strong>."
+          },
+          {
+            id: 3,
+            text: "Who is the funniest student _______ your class?",
+            options: ["at", "of", "in", "to"],
+            correct: 2,
+            hint: "Giới từ chỉ phạm vi bên trong một địa điểm/tập thể <span class='kw-highlight'>in your class</span>.",
+            explanation: "Dùng giới từ <strong>in</strong> cho phạm vi lớp học: <em>in your class</em>."
+          },
+          {
+            id: 4,
+            text: "My brother is two years _______ than me.",
+            options: ["old", "older", "oldest", "the oldest"],
+            correct: 1,
+            hint: "Trước từ <span class='kw-highlight'>than</span> là tính từ so sánh hơn.",
+            explanation: "Cấu trúc: <em>two years older than me</em>."
+          },
+          {
+            id: 5,
+            text: "This chocolate cake is the sweetest _______ all.",
+            options: ["in", "of", "than", "for"],
+            correct: 1,
+            hint: "Cụm từ cố định trong so sánh nhất: <span class='kw-highlight'>of all</span> (trong tất cả).",
+            explanation: "Dùng cụm <strong>of all</strong> để so sánh giữa tất cả các đối tượng."
+          },
+          {
+            id: 6,
+            text: "A tortoise is _______ than a rabbit.",
+            options: ["slow", "slower", "slowest", "the slowest"],
+            correct: 1,
+            hint: "Có từ nhận biết so sánh hơn <span class='kw-highlight'>than</span>.",
+            explanation: "So sánh hơn: <strong>slower than</strong>."
+          },
+          {
+            id: 7,
+            text: "Which is the _______ ocean in the world?",
+            options: ["deep", "deeper", "deepest", "most deep"],
+            correct: 2,
+            hint: "Đứng sau <span class='kw-highlight'>the</span> và có phạm vi <span class='kw-highlight'>in the world</span>.",
+            explanation: "So sánh nhất tính từ ngắn: <em>the</em> + <strong>deepest</strong>."
+          },
+          {
+            id: 8,
+            text: "Her test score is _______ than last week because she worked hard.",
+            options: ["good", "better", "best", "the best"],
+            correct: 1,
+            hint: "Có từ <span class='kw-highlight'>than</span> và tính từ bất quy tắc gốc là <em>good</em>.",
+            explanation: "So sánh hơn của <em>good</em> là <strong>better than</strong>."
+          },
+          {
+            id: 9,
+            text: "Lions are one of the _______ dangerous animals in the world.",
+            options: ["more", "most", "very", "much"],
+            correct: 1,
+            hint: "Cụm so sánh nhất: <em>one of the</em> + <span class='kw-highlight'>most</span> + tính từ dài.",
+            explanation: "Cấu trúc: <em>the most dangerous</em> ➔ chọn <strong>most</strong>."
+          },
+          {
+            id: 10,
+            text: "Eating apples is _______ than eating lots of candies.",
+            options: ["healthier", "more healthy", "healthy", "healthiest"],
+            correct: 0,
+            hint: "Tính từ đuôi -y <span class='kw-highlight'>healthy</span> đi với <span class='kw-highlight'>than</span> đổi thành -ier.",
+            explanation: "<em>Healthy</em> đổi 'y' thành '-ier' ➔ <strong>healthier than</strong>."
+          },
+          {
+            id: 11,
+            text: "Who is _______ tallest pupil in our group?",
+            options: ["a", "an", "the", "this"],
+            correct: 2,
+            hint: "Trước tính từ so sánh nhất <span class='kw-highlight'>tallest</span>.",
+            explanation: "Trước so sánh nhất luôn là mạo từ <strong>the</strong>."
+          },
+          {
+            id: 12,
+            text: "My red schoolbag is bigger _______ your blue schoolbag.",
+            options: ["than", "as", "then", "of"],
+            correct: 0,
+            hint: "Đi sau tính từ so sánh hơn <span class='kw-highlight'>bigger</span>.",
+            explanation: "So sánh hơn dùng từ nối <strong>than</strong> (chú ý phân biệt với <em>then</em>)."
+          },
+          {
+            id: 13,
+            text: "Of the three singers, Mary sings the _______.",
+            options: ["good", "better", "best", "most good"],
+            correct: 2,
+            hint: "So sánh 3 người (ba đối tượng trở lên) sau <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất của <em>good</em> là <strong>the best</strong>."
+          },
+          {
+            id: 14,
+            text: "A monkey is cleverer _______ a frog.",
+            options: ["than", "then", "of", "as"],
+            correct: 0,
+            hint: "Sau tính từ so sánh hơn <span class='kw-highlight'>cleverer</span>.",
+            explanation: "Dùng từ nối <strong>than</strong>."
+          },
+          {
+            id: 15,
+            text: "This is the _______ exciting game of all the computer games.",
+            options: ["more", "most", "much", "very"],
+            correct: 1,
+            hint: "Sau mạo từ <span class='kw-highlight'>the</span> đi với tính từ dài <span class='kw-highlight'>exciting</span>.",
+            explanation: "Cấu trúc so sánh nhất: <em>the</em> + <strong>most</strong> + adj."
+          },
+          {
+            id: 16,
+            text: "Living in the countryside is quieter _______ living in the city.",
+            options: ["than", "as", "of", "to"],
+            correct: 0,
+            hint: "Sau tính từ so sánh hơn <span class='kw-highlight'>quieter</span>.",
+            explanation: "So sánh hơn dùng <strong>than</strong>."
+          },
+          {
+            id: 17,
+            text: "Which mountain is _______ in Vietnam? - Mount Fansipan.",
+            options: ["highest", "the highest", "higher", "the higher"],
+            correct: 1,
+            hint: "Hỏi ngọn núi cao nhất cả nước cần mạo từ <span class='kw-highlight'>the</span>.",
+            explanation: "Dạng so sánh nhất đầy đủ: <strong>the highest</strong>."
+          },
+          {
+            id: 18,
+            text: "Peter is good at football, but Paul is even _______.",
+            options: ["good", "better", "best", "the best"],
+            correct: 1,
+            hint: "So sánh giữa 2 bạn Peter và Paul.",
+            explanation: "So sánh giữa 2 đối tượng dùng so sánh hơn: <strong>better</strong>."
+          },
+          {
+            id: 19,
+            text: "Look at those three balloons. The red balloon is the _______.",
+            options: ["bigger", "biggest", "more big", "most big"],
+            correct: 1,
+            hint: "So sánh giữa ba quả bóng (từ ba trở lên) sau <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất: <em>the</em> + <strong>biggest</strong>."
+          },
+          {
+            id: 20,
+            text: "December is usually the _______ month of the whole year.",
+            options: ["colder", "coldest", "more cold", "most cold"],
+            correct: 1,
+            hint: "Đứng sau mạo từ xác định <span class='kw-highlight'>the</span>.",
+            explanation: "So sánh nhất của <em>cold</em> là <strong>coldest</strong>."
+          }
+        ]
+      }
+    ];
 
-    for (let exNum = 1; exNum <= 5; exNum++) {
-        const exData = quizData[exNum];
-        html += `
-            <div class="exercise-card" id="card-ex${exNum}">
-                <div class="exercise-header">Bài ${exNum}:</div>
-                <form id="form-ex${exNum}">
+    // Khởi tạo hiển thị toàn bộ 5 bài tập vào DOM
+    function renderExerciseViews() {
+      const area = document.getElementById('exerciseContentArea');
+      area.innerHTML = '';
+
+      exercisesData.forEach(ex => {
+        const isHidden = (ex.id !== currentActiveTab) ? 'hidden' : '';
+        const exWrapper = document.createElement('section');
+        exWrapper.id = `exercise-block-${ex.id}`;
+        exWrapper.className = `space-y-4 ${isHidden}`;
+
+        let html = `
+          <!-- Thẻ tiêu đề bài tập -->
+          <div class="bg-white rounded-2xl p-4 md:p-5 border border-slate-200 shadow-sm flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-extrabold text-sm flex items-center justify-center">
+                #${ex.id}
+              </span>
+              <h2 class="text-base md:text-lg font-bold text-slate-900">${ex.title}</h2>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
+              ${ex.questions.length} câu hỏi trắc nghiệm
+            </span>
+          </div>
+
+          <!-- Danh sách 20 câu hỏi của bài -->
+          <div class="space-y-3.5">
         `;
 
-        exData.questions.forEach((item, index) => {
-            const qNum = index + 1;
-            const qId = `ex${exNum}-q${qNum}`;
-            
-            html += `
-                <div class="question" id="${qId}">
-                    <div class="question-header">
-                        <div class="question-text">Câu ${qNum}: ${item.q}</div>
-                        <button type="button" class="btn-hint-single" onclick="toggleSingleHint('${qId}')">💡 Gợi ý</button>
-                    </div>
-                    <div class="hint-box">${item.hint}</div>
-                    <div class="options">
-            `;
-
-            item.opts.forEach(opt => {
-                const optVal = opt.charAt(0);
-                html += `
-                    <label>
-                        <input type="radio" name="${qId}" value="${optVal}">
-                        ${opt}
-                    </label>
-                `;
-            });
-
-            html += `
-                    </div>
-                    <div class="explanation" id="exp-${qId}"></div>
+        ex.questions.forEach((q, index) => {
+          html += `
+            <div id="card-${ex.id}-${q.id}" class="bg-white rounded-2xl p-4 md:p-5 border border-slate-200 shadow-2xs transition-all duration-200">
+              
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <div class="flex items-start space-x-2.5">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-md bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center mt-0.5">
+                    ${index + 1}
+                  </span>
+                  <div class="text-sm md:text-base font-semibold text-slate-900 leading-snug">
+                    ${q.text}
+                  </div>
                 </div>
+
+                <!-- Nút 💡 Gợi ý -->
+                <button 
+                  type="button" 
+                  onclick="toggleHint(${ex.id}, ${q.id})"
+                  class="flex-shrink-0 text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 transition"
+                >
+                  💡 Gợi ý
+                </button>
+              </div>
+
+              <!-- Hộp hiển thị gợi ý (ẩn/hiện) -->
+              <div id="hint-${ex.id}-${q.id}" class="hidden mb-3 p-3 rounded-xl bg-amber-50/70 border border-amber-200/80 text-xs text-slate-700 leading-relaxed">
+                <span class="font-bold text-amber-900 mr-1">Gợi ý:</span>${q.hint}
+              </div>
+
+              <!-- 4 Lựa chọn A, B, C, D -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs md:text-sm">
+          `;
+
+          const labels = ['A', 'B', 'C', 'D'];
+          q.options.forEach((opt, optIdx) => {
+            html += `
+              <label class="flex items-center p-2.5 md:p-3 rounded-xl border border-slate-200 hover:border-blue-300 hover:bg-blue-50/30 cursor-pointer transition select-none">
+                <input 
+                  type="radio" 
+                  name="ans_${ex.id}_${q.id}" 
+                  value="${optIdx}" 
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-slate-300"
+                  onchange="resetCardBorder(${ex.id}, ${q.id})"
+                >
+                <span class="ml-2.5 font-bold text-slate-400 mr-1.5 text-xs">${labels[optIdx]}.</span>
+                <span class="text-slate-800 font-medium">${opt}</span>
+              </label>
             `;
+          });
+
+          html += `
+              </div>
+
+              <!-- Khung giải thích & đáp án đúng sau khi kiểm tra -->
+              <div id="feedback-${ex.id}-${q.id}" class="hidden mt-3 pt-3 border-t border-slate-100 text-xs"></div>
+
+            </div>
+          `;
         });
 
+        // Nút Check Bài & Bảng Kết quả
         html += `
-                </form>
-                <button type="button" class="btn-check" onclick="checkExercise(${exNum})">Check Bài ${exNum}</button>
-                <div id="result-ex${exNum}" class="result-box"></div>
+          </div>
+
+          <!-- Thanh Chấm Điểm & Trạng thái gửi bài -->
+          <div class="bg-white rounded-2xl p-4 md:p-5 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+            <button 
+              type="button" 
+              onclick="checkExercise(${ex.id})" 
+              id="checkBtn-${ex.id}"
+              class="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm shadow-sm transition flex items-center justify-center gap-2"
+            >
+              <span>✅ Check ${ex.title}</span>
+            </button>
+
+            <!-- Khung điểm, huy hiệu và trạng thái Google Apps Script -->
+            <div id="resultBox-${ex.id}" class="hidden w-full sm:w-auto flex-1 sm:ml-4 flex flex-col sm:flex-row items-center justify-between gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="flex items-center space-x-2.5">
+                <span id="badgeIcon-${ex.id}" class="text-2xl">🏆</span>
+                <div>
+                  <div class="text-[11px] text-slate-500 font-semibold">Điểm số:</div>
+                  <div id="scoreText-${ex.id}" class="font-extrabold text-sm md:text-base text-slate-900">0 / 20 câu đúng</div>
+                </div>
+                <span id="badgeTag-${ex.id}" class="ml-2 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold"></span>
+              </div>
+
+              <!-- Trạng thái gửi Google Apps Script -->
+              <div id="sendStatus-${ex.id}" class="text-xs font-semibold text-slate-500"></div>
             </div>
+          </div>
         `;
+
+        exWrapper.innerHTML = html;
+        area.appendChild(exWrapper);
+      });
     }
 
-    container.innerHTML = html;
-}
+    // Chuyển tab giữa Bài 1 đến Bài 5
+    function switchTab(targetId) {
+      currentActiveTab = targetId;
 
-function getBadgeTitle(score) {
-    if (score === 20) return "🏆 BẬC THẦY 4 THÌ TIẾNG ANH (Xuất sắc 100%)";
-    if (score >= 16) return "🌟 HUY HIỆU THÔNG THÁI (Rất Giỏi)";
-    if (score >= 12) return "👍 HUY HIỆU TẬP TRUNG (Khá)";
-    return "💪 HUY HIỆU CỐ GẮNG (Cần luyện thêm)";
-}
+      for (let i = 1; i <= 5; i++) {
+        const btn = document.getElementById(`tab-${i}`);
+        if (btn) {
+          if (i === targetId) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        }
 
-function checkExercise(exNum) {
-    const studentNameInput = document.getElementById('student-name');
-    const studentName = studentNameInput.value.trim();
+        const block = document.getElementById(`exercise-block-${i}`);
+        if (block) {
+          if (i === targetId) {
+            block.classList.remove('hidden');
+          } else {
+            block.classList.add('hidden');
+          }
+        }
+      }
 
-    if (!studentName) {
-        alert("⚠️ Học sinh vui lòng nhập TÊN ở đầu trang trước khi bấm Check bài nhé!");
-        studentNameInput.focus();
+      // Cuộn trang nhẹ nhàng tới vị trí làm bài
+      window.scrollTo({ top: 380, behavior: 'smooth' });
+    }
+
+    // Ẩn/hiện gợi ý ở từng câu
+    function toggleHint(exId, qId) {
+      const hint = document.getElementById(`hint-${exId}-${qId}`);
+      if (hint) {
+        hint.classList.toggle('hidden');
+      }
+    }
+
+    // Reset màu viền khi học sinh chọn đáp án
+    function resetCardBorder(exId, qId) {
+      const card = document.getElementById(`card-${exId}-${qId}`);
+      if (card) {
+        card.classList.remove('border-rose-400', 'bg-rose-50/20', 'border-emerald-500', 'bg-emerald-50/20');
+        card.classList.add('border-slate-200');
+      }
+    }
+
+    function clearNameWarning() {
+      document.getElementById('nameWarningText').classList.add('hidden');
+    }
+
+    // Modal thông báo tùy chỉnh (không dùng alert())
+    function showModal(title, msg, icon = '⚠️') {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalMessage').innerText = msg;
+      document.getElementById('modalIcon').innerText = icon;
+      document.getElementById('notificationModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('notificationModal').classList.add('hidden');
+    }
+
+    // Chấm điểm bài tập (20 câu) và hiển thị kết quả
+    async function checkExercise(exId) {
+      const nameInput = document.getElementById('studentNameInput');
+      const studentName = nameInput.value.trim();
+
+      // Kiểm tra tên học sinh bắt buộc
+      if (!studentName) {
+        document.getElementById('nameWarningText').classList.remove('hidden');
+        nameInput.focus();
+        showModal(
+          "Chưa điền tên học sinh",
+          "Em hãy nhập tên vào ô 'Tên học sinh' ở đầu trang trước khi bấm check bài nhé!",
+          "✏️"
+        );
         return;
+      }
+
+      const ex = exercisesData.find(item => item.id === exId);
+      if (!ex) return;
+
+      let score = 0;
+      const total = ex.questions.length; // Đúng 20 câu
+      const labels = ['A', 'B', 'C', 'D'];
+      const detailAnswers = [];
+
+      ex.questions.forEach((q) => {
+        const checkedRadio = document.querySelector(`input[name="ans_${ex.id}_${q.id}"]:checked`);
+        const card = document.getElementById(`card-${ex.id}-${q.id}`);
+        const feedback = document.getElementById(`feedback-${ex.id}-${q.id}`);
+
+        const correctLabel = labels[q.correct];
+        const correctText = q.options[q.correct];
+
+        card.classList.remove('border-slate-200', 'border-rose-400', 'bg-rose-50/20', 'border-emerald-500', 'bg-emerald-50/20');
+        feedback.classList.remove('hidden');
+
+        if (checkedRadio) {
+          const userVal = parseInt(checkedRadio.value);
+          const isCorrect = (userVal === q.correct);
+
+          if (isCorrect) {
+            score++;
+            card.classList.add('border-emerald-500', 'bg-emerald-50/20');
+            feedback.innerHTML = `
+              <div class="text-emerald-700 font-bold mb-1">
+                ✓ Chính xác: ${labels[userVal]}. ${correctText}
+              </div>
+              <div class="text-slate-600 bg-emerald-50/60 p-2 rounded-lg border border-emerald-100">
+                <strong>Giải thích:</strong> ${q.explanation}
+              </div>
+            `;
+            detailAnswers.push({
+              question: q.text,
+              selected: `${labels[userVal]}. ${q.options[userVal]}`,
+              isCorrect: true
+            });
+          } else {
+            card.classList.add('border-rose-400', 'bg-rose-50/20');
+            feedback.innerHTML = `
+              <div class="text-rose-600 font-bold mb-1">
+                ✗ Chưa đúng! Đáp án đúng: <span class="text-emerald-700 font-extrabold">${correctLabel}. ${correctText}</span>
+              </div>
+              <div class="text-slate-600 bg-rose-50/60 p-2 rounded-lg border border-rose-100">
+                <strong>Giải thích:</strong> ${q.explanation}
+              </div>
+            `;
+            detailAnswers.push({
+              question: q.text,
+              selected: `${labels[userVal]}. ${q.options[userVal]}`,
+              isCorrect: false
+            });
+          }
+        } else {
+          // Chưa chọn đáp án
+          card.classList.add('border-rose-400', 'bg-rose-50/20');
+          feedback.innerHTML = `
+            <div class="text-amber-700 font-bold mb-1">
+              ⚠️ Chưa chọn đáp án! Đáp án đúng: <span class="text-emerald-700 font-extrabold">${correctLabel}. ${correctText}</span>
+            </div>
+            <div class="text-slate-600 bg-amber-50/60 p-2 rounded-lg border border-amber-100">
+              <strong>Giải thích:</strong> ${q.explanation}
+            </div>
+          `;
+          detailAnswers.push({
+            question: q.text,
+            selected: "Chưa chọn",
+            isCorrect: false
+          });
+        }
+      });
+
+      // Xếp loại dựa trên thang điểm 20 câu
+      let badgeInfo = { icon: "💪", text: "CỐ GẮNG", class: "bg-amber-100 text-amber-800" };
+      if (score === 20) {
+        badgeInfo = { icon: "🏆", text: "XUẤT SẮC", class: "bg-emerald-100 text-emerald-800" };
+      } else if (score >= 16) {
+        badgeInfo = { icon: "🌟", text: "GIỎI", class: "bg-blue-100 text-blue-800" };
+      } else if (score >= 10) {
+        badgeInfo = { icon: "👍", text: "KHÁ", class: "bg-slate-200 text-slate-800" };
+      }
+
+      // Cập nhật UI kết quả
+      const resBox = document.getElementById(`resultBox-${exId}`);
+      const scoreEl = document.getElementById(`scoreText-${exId}`);
+      const badgeIcon = document.getElementById(`badgeIcon-${exId}`);
+      const badgeTag = document.getElementById(`badgeTag-${exId}`);
+      const sendStatus = document.getElementById(`sendStatus-${exId}`);
+
+      resBox.classList.remove('hidden');
+      scoreEl.innerText = `${score} / ${total} câu đúng`;
+      badgeIcon.innerText = badgeInfo.icon;
+      badgeTag.innerText = badgeInfo.text;
+      badgeTag.className = `ml-2 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${badgeInfo.class}`;
+
+      // Gửi kết quả sang Google Apps Script URL
+      sendStatus.innerHTML = `<span class="text-blue-600 font-semibold">⏳ Đang gửi kết quả...</span>`;
+
+      const payload = {
+        studentName: studentName,
+        exerciseTitle: ex.title,
+        score: `${score}/${total}`,
+        badge: badgeInfo.text,
+        timestamp: new Date().toLocaleString('vi-VN'),
+        details: detailAnswers
+      };
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        sendStatus.innerHTML = `
+          <span class="text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 inline-block">
+            📧 ĐÃ GỬI BÀI THÀNH CÔNG!
+          </span>
+        `;
+      } catch (err) {
+        console.error("Lỗi gửi dữ liệu:", err);
+        sendStatus.innerHTML = `<span class="text-slate-500 font-semibold">Đã lưu bài làm</span>`;
+      }
     }
 
-    let score = 0;
-    const total = 20;
-    const questions = quizData[exNum].questions;
-    let detailsHTMLArr = [];
-
-    questions.forEach((item, index) => {
-        const qNum = index + 1;
-        const qId = `ex${exNum}-q${qNum}`;
-        const qDiv = document.getElementById(qId);
-        const expDiv = document.getElementById(`exp-${qId}`);
-        const selected = document.querySelector(`input[name="${qId}"]:checked`);
-
-        let statusText = "";
-        let color = "#ef4444";
-
-        if (selected) {
-            if (selected.value === item.ans) {
-                score++;
-                qDiv.className = "question correct" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
-                expDiv.innerHTML = `✅ Chính xác! <i>(${item.exp})</i>`;
-                expDiv.style.color = "#047857";
-                statusText = `<b>Đúng</b> (Chọn ${selected.value})`;
-                color = "#047857";
-            } else {
-                qDiv.className = "question incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
-                expDiv.innerHTML = `❌ Chưa đúng. Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
-                expDiv.style.color = "#b91c1c";
-                statusText = `<b>Sai</b> (Chọn ${selected.value} - Đáp án đúng: ${item.ans})`;
-            }
-        } else {
-            qDiv.className = "question incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
-            expDiv.innerHTML = `⚠️ Em chưa chọn đáp án! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
-            expDiv.style.color = "#d97706";
-            statusText = `<b>Chưa chọn</b> (Đáp án đúng: ${item.ans})`;
-        }
-
-        detailsHTMLArr.push(`<p style="margin: 4px 0; color: ${color};"><b>Câu ${qNum}:</b> ${item.q}<br>&rarr; Trạng thái: ${statusText}</p>`);
+    // Khởi chạy khi tài liệu tải xong
+    document.addEventListener('DOMContentLoaded', () => {
+      renderExerciseViews();
     });
-
-    const resultBox = document.getElementById(`result-ex${exNum}`);
-    resultBox.style.display = "block";
-    const badge = getBadgeTitle(score);
-
-    resultBox.innerHTML = `
-        <div class="badge-tag">${badge}</div>
-        <h3 style="margin-top:5px; color: #0f766e;">📊 Kết Quả Bài ${exNum}: ${score}/${total} Câu Đúng</h3>
-        <p><b>Tên học sinh:</b> ${studentName}</p>
-        <div id="email-status-ex${exNum}" class="status-sending">⏳ Đang gửi kết quả bài làm...</div>
-    `;
-
-    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-    fetch(TEACHER_CONFIG.googleScriptURL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            studentName: studentName,
-            exerciseTitle: `Bài ${exNum}`,
-            score: `${score}/${total}`,
-            detailsHTML: detailsHTMLArr.join("")
-        })
-    })
-    .then(() => {
-        const st = document.getElementById(`email-status-ex${exNum}`);
-        if (st) {
-            st.className = "status-success";
-            st.innerHTML = "📧 ĐÃ GỬI BÀI THÀNH CÔNG!";
-        }
-    })
-    .catch(err => {
-        const st = document.getElementById(`email-status-ex${exNum}`);
-        if (st) {
-            st.className = "status-sending";
-            st.style.color = "#dc2626";
-            st.innerHTML = "❌ Lỗi kết nối mạng, vui lòng kiểm tra đường truyền.";
-        }
-    });
-}
-
-window.onload = renderAllQuiz;
-</script>
-
+  </script>
 </body>
 </html>
