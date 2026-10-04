@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luyện Tập So Sánh Hơn & So Sánh Nhất - Movers</title>
+    <title>Ôn Tập Modal Verbs & Have/Had To - Movers</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -94,8 +94,8 @@
         .cheat-1 strong { color: #1d4ed8; }
         .cheat-2 { background: #fdf2f8; border-left: 4px solid #ec4899; }
         .cheat-2 strong { color: #be185d; }
-        .cheat-3 { background: #f5f3ff; border-left: 4px solid #8b5cf6; }
-        .cheat-3 strong { color: #6d28d9; }
+        .cheat-3 { background: #fefce8; border-left: 4px solid #eab308; }
+        .cheat-3 strong { color: #854d0e; }
         .cheat-4 { background: #ecfdf5; border-left: 4px solid #10b981; }
         .cheat-4 strong { color: #047857; }
 
@@ -138,7 +138,7 @@
             box-shadow: 0 0 0 3px var(--primary-light);
         }
 
-        /* TABS NAVIGATION */
+        /* TABS */
         .tab-nav {
             display: flex;
             gap: 8px;
@@ -193,7 +193,7 @@
             border-bottom: 1.5px dashed var(--border);
         }
 
-        /* QUESTIONS */
+        /* QUESTION CARD */
         .question-card {
             background: #fafafa;
             border-radius: 12px;
@@ -247,6 +247,7 @@
             border-radius: 8px;
             font-size: 13px;
             margin-bottom: 12px;
+            line-height: 1.5;
         }
         .question-card.show-hint .hint-box {
             display: block;
@@ -346,8 +347,8 @@
 
 <div class="container">
     <div class="app-header">
-        <h1 class="app-title">🌟 ÔN TẬP SO SÁNH HƠN & SO SÁNH NHẤT 🌟</h1>
-        <p class="app-subtitle">Trình độ Cambridge Movers • Chọn đáp án đúng cho từng câu và bấm Check để nộp bài</p>
+        <h1 class="app-title">🌟 ÔN TẬP MODAL VERBS & HAVE/HAD TO 🌟</h1>
+        <p class="app-subtitle">Trình độ Cambridge Movers • Chọn đáp án và bấm Check để gửi bài làm</p>
     </div>
 
     <!-- BẢNG THẦN CHÚ HIỂN THỊ TRỰC TIẾP -->
@@ -355,25 +356,26 @@
         <div class="cheatsheet-title">📌 BẢNG THẦN CHÚ NGỮ PHÁP</div>
         <div class="cheatsheet-grid">
             <div class="cheat-item cheat-1">
-                <strong>1. So Sánh Hơn (Ngắn)</strong>
-                S + be + adj-ER + <span class="highlight-key">THAN</span><br>
-                <i>taller than, faster than</i>
+                <strong>1. Can & Could</strong>
+                <b>Can/Can't:</b> Có thể / không thể ở hiện tại.<br>
+                <b>Could/Couldn't:</b> Khả năng trong quá khứ <i>(yesterday, when I was five...)</i> hoặc nhờ vả lịch sự.
             </div>
             <div class="cheat-item cheat-2">
-                <strong>2. So Sánh Nhất (Ngắn)</strong>
-                S + be + <span class="highlight-key">THE</span> + adj-EST<br>
-                <i>the tallest, the fastest</i>
+                <strong>2. Must & Mustn't</strong>
+                <b>Must:</b> Bắt buộc phải làm (luật, quy định).<br>
+                <b>Mustn't:</b> Cấm tuyệt đối không được làm!
             </div>
             <div class="cheat-item cheat-3">
-                <strong>3. Quy Tắc Chính Tả</strong>
-                Đuôi <b>-y</b>: happy &rarr; happier / happiest<br>
-                <b>Gấp đôi</b>: hot &rarr; hotter, big &rarr; biggest
+                <strong>3. Have to / Has to / Had to</strong>
+                <b>Hiện tại:</b> I/We/They + <span class="highlight-key">have to</span> | He/She/It + <span class="highlight-key">has to</span>.<br>
+                <b>Quá khứ:</b> <span class="highlight-key">had to</span> (phải làm gì trong quá khứ).<br>
+                <b>Phủ định:</b> don't/doesn't have to (không cần phải).
             </div>
             <div class="cheat-item cheat-4">
-                <strong>4. Bất Quy Tắc & Dài</strong>
-                good &rarr; <b>better</b> &rarr; <b>the best</b><br>
-                bad &rarr; <b>worse</b> &rarr; <b>the worst</b><br>
-                <i>more beautiful than / the most...</i>
+                <strong>4. Shall & Should / QUY TẮC VÀNG</strong>
+                <b>Shall I/we...?:</b> Rủ rê hoặc ngỏ ý giúp đỡ.<br>
+                <b>Should/Shouldn't:</b> Lời khuyên nên / không nên.<br>
+                <span class="highlight-key">Sau tất cả các từ trên luôn là V nguyên mẫu!</span>
             </div>
         </div>
     </div>
@@ -405,122 +407,122 @@ const TEACHER_CONFIG = {
 const quizData = {
     1: {
         questions: [
-            { q: "An elephant is ___ than a dog.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn tính từ ngắn: adj-er + than.", opts: ["A. bigger", "B. big", "C. biggest", "D. more big"], ans: "A", exp: "big là tính từ ngắn, dạng so sánh hơn là bigger than." },
-            { q: "A giraffe is ___ than a zebra.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của tall.", opts: ["A. taller", "B. tall", "C. tallest", "D. more tall"], ans: "A", exp: "tall thêm -er thành taller." },
-            { q: "A cheetah runs ___ than a lion.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của fast.", opts: ["A. faster", "B. fast", "C. fastest", "D. more fast"], ans: "A", exp: "fast thêm -er thành faster." },
-            { q: "A mouse is ___ than a cat.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của small.", opts: ["A. smaller", "B. small", "C. smallest", "D. more small"], ans: "A", exp: "small thêm -er thành smaller." },
-            { q: "My grandfather is ___ than my father.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của old.", opts: ["A. older", "B. old", "C. oldest", "D. more old"], ans: "A", exp: "old thêm -er thành older." },
-            { q: "My baby sister is ___ than me.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của young.", opts: ["A. younger", "B. young", "C. youngest", "D. more young"], ans: "A", exp: "young thêm -er thành younger." },
-            { q: "The river is ___ than the pool.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của long.", opts: ["A. longer", "B. long", "C. longest", "D. more long"], ans: "A", exp: "long thêm -er thành longer." },
-            { q: "Winter is ___ than spring.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của cold.", opts: ["A. colder", "B. cold", "C. coldest", "D. more cold"], ans: "A", exp: "cold thêm -er thành colder." },
-            { q: "Summer is ___ than winter.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của warm.", opts: ["A. warmer", "B. warm", "C. warmest", "D. more warm"], ans: "A", exp: "warm thêm -er thành warmer." },
-            { q: "This pencil is ___ than that pen.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của short.", opts: ["A. shorter", "B. short", "C. shortest", "D. more short"], ans: "A", exp: "short thêm -er thành shorter." },
-            { q: "An airplane is ___ than a bus.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của fast.", opts: ["A. faster", "B. fast", "C. fastest", "D. more fast"], ans: "A", exp: "fast thêm -er thành faster." },
-            { q: "A car is ___ than a bike.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của heavy.", opts: ["A. heavier", "B. heavy", "C. heaviest", "D. more heavy"], ans: "A", exp: "heavy đổi 'y' thành 'ier': heavier." },
-            { q: "His ruler is ___ than my ruler.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của long.", opts: ["A. longer", "B. long", "C. longest", "D. more long"], ans: "A", exp: "long thêm -er thành longer." },
-            { q: "The blue whale is ___ than the shark.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của big.", opts: ["A. bigger", "B. big", "C. biggest", "D. more big"], ans: "A", exp: "big gấp đôi 'g' thêm -er: bigger." },
-            { q: "Today is ___ than yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của cool.", opts: ["A. cooler", "B. cool", "C. coolest", "D. more cool"], ans: "A", exp: "cool thêm -er thành cooler." },
-            { q: "A monkey is ___ than a turtle.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của quick.", opts: ["A. quicker", "B. quick", "C. quickest", "D. more quick"], ans: "A", exp: "quick thêm -er thành quicker." },
-            { q: "The mountain is ___ than the hill.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của high.", opts: ["A. higher", "B. high", "C. highest", "D. more high"], ans: "A", exp: "high thêm -er thành higher." },
-            { q: "This box is ___ than that bag.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của light.", opts: ["A. lighter", "B. light", "C. lightest", "D. more light"], ans: "A", exp: "light thêm -er thành lighter." },
-            { q: "A snake is ___ than a worm.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của long.", opts: ["A. longer", "B. long", "C. longest", "D. more long"], ans: "A", exp: "long thêm -er thành longer." },
-            { q: "A train is ___ than a truck.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ So sánh hơn của long.", opts: ["A. longer", "B. long", "C. longest", "D. more long"], ans: "A", exp: "long thêm -er thành longer." }
+            { q: "Birds have wings, so they ___ fly high in the sky.", hint: "💡 Quan sát khả năng tự nhiên: Loài chim có cánh thì có khả năng bay lượn hay không?", opts: ["A. can", "B. can't", "C. must not", "D. couldn't"], ans: "A", exp: "Chim có cánh nên có khả năng bay (can)." },
+            { q: "Fish live underwater. They ___ walk on land.", hint: "💡 Hãy suy nghĩ về loài cá: Chúng có chân để đi bộ trên cạn được không?", opts: ["A. can", "B. can't", "C. must", "D. could"], ans: "B", exp: "Cá không có khả năng đi bộ trên mặt đất (can't)." },
+            { q: "My sister is very talented. She can ___ the guitar beautifully.", hint: "💡 Nhớ lại Quy Tắc Vàng: Động từ đứng ngay sau 'can' phải ở dạng nào (có thêm -s hay -ing không)?", opts: ["A. play", "B. plays", "C. playing", "D. played"], ans: "A", exp: "Sau động từ khuyết thiếu 'can' là động từ nguyên mẫu không chia (play)." },
+            { q: "Can you ___ the door for me, please?", hint: "💡 Trong câu hỏi với 'Can you...', động từ hành động theo sau cần giữ nguyên dạng hay biến đổi?", opts: ["A. open", "B. opens", "C. opening", "D. opened"], ans: "A", exp: "Sau 'Can + S' là động từ nguyên mẫu (open)." },
+            { q: "It is very loud in here. I ___ hear what you are saying.", hint: "💡 Khi không gian xung quanh quá ồn ào, khả năng nghe của em sẽ thế nào?", opts: ["A. can", "B. can't", "C. must", "D. shall"], ans: "B", exp: "Phòng ồn ào dẫn đến không thể nghe rõ (can't)." },
+            { q: "Look at the baby! He can ___ his hands now.", hint: "💡 Xem lại dạng của động từ đứng sau 'can': cần chọn từ nguyên thể chưa chia.", opts: ["A. clap", "B. claps", "C. clapping", "D. clapped"], ans: "A", exp: "Sau 'can' dùng động từ nguyên mẫu (clap)." },
+            { q: "A penguin is a bird, but it ___ fly.", hint: "💡 Chim cánh cụt bơi rất giỏi, nhưng cánh của chúng có bay trên trời được như các loài chim khác không?", opts: ["A. can", "B. can't", "C. could", "D. must"], ans: "B", exp: "Chim cánh cụt không biết bay (can't fly)." },
+            { q: "Can your brother ___ a bicycle to school?", hint: "💡 Chú ý vị trí sau chủ ngữ 'your brother' trong câu hỏi bắt đầu bằng 'Can'.", opts: ["A. ride", "B. rides", "C. riding", "D. rode"], ans: "A", exp: "Động từ theo sau 'Can' ở dạng nguyên mẫu (ride)." },
+            { q: "When my grandfather was young, he ___ run very fast.", hint: "💡 Chú ý mốc thời gian: <span class='highlight-key'>WHEN ... WAS YOUNG</span> chỉ khả năng ở hiện tại hay trong quá khứ?", opts: ["A. can", "B. could", "C. must", "D. shall"], ans: "B", exp: "Nói về khả năng trong quá khứ (khi còn trẻ) dùng 'could'." },
+            { q: "When I was only one year old, I ___ ride a bicycle.", hint: "💡 Hãy nghĩ về một em bé 1 tuổi trong quá khứ: Em bé lúc đó đã có thể tự đạp xe chưa?", opts: ["A. can", "B. could", "C. couldn't", "D. must"], ans: "C", exp: "Lúc 1 tuổi trong quá khứ không thể đạp xe đạp (couldn't)." },
+            { q: "___ you please pass me the glass of milk?", hint: "💡 Khi muốn nhờ ai đó một cách thật lịch sự, ta dùng trợ động từ nào?", opts: ["A. Could", "B. Must", "C. Shall", "D. Shouldn't"], ans: "A", exp: "'Could you please...?' là cấu trúc yêu cầu/nhờ vả lịch sự." },
+            { q: "Yesterday was very foggy, so we ___ see the mountain clearly.", hint: "💡 Chú ý từ chỉ thời gian <span class='highlight-key'>YESTERDAY</span> và thời tiết nhiều sương mù: ta có nhìn rõ được không?", opts: ["A. can", "B. can't", "C. couldn't", "D. must not"], ans: "C", exp: "Hành động không thể nhìn thấy trong quá khứ (yesterday) dùng 'couldn't'." },
+            { q: "When Lucy was five, she could already ___ the piano.", hint: "💡 Động từ đứng sau 'could' tuân theo quy tắc gì về dạng của từ?", opts: ["A. play", "B. plays", "C. playing", "D. played"], ans: "A", exp: "Sau 'could' là động từ nguyên mẫu không chia (play)." },
+            { q: "I looked everywhere yesterday, but I ___ find my schoolbag.", hint: "💡 Sự việc xảy ra hôm qua (looked) và kết quả tìm kiếm không thấy: dùng từ chỉ quá khứ nào?", opts: ["A. can't", "B. couldn't", "C. mustn't", "D. shouldn't"], ans: "B", exp: "Không thể tìm thấy đồ vật trong quá khứ dùng 'couldn't'." },
+            { q: "Could you ___ me the way to the bus stop, please?", hint: "💡 Trong lời nhờ vả lịch sự 'Could you...', động từ phía sau ở dạng nào?", opts: ["A. tell", "B. tells", "C. telling", "D. told"], ans: "A", exp: "Sau 'Could you...' dùng động từ nguyên mẫu (tell)." },
+            { q: "Twenty years ago, my grandma ___ read books without wearing glasses.", hint: "💡 Dấu hiệu nhận biết: <span class='highlight-key'>TWENTY YEARS AGO</span> chỉ khả năng ở thời điểm nào?", opts: ["A. can", "B. could", "C. must", "D. should"], ans: "B", exp: "20 năm trước (quá khứ) có khả năng đọc sách không cần kính (could)." },
+            { q: "Could I ___ your pencil for a few minutes?", hint: "💡 Động từ đứng sau 'Could I...' cần ở dạng nguyên mẫu hay thêm đuôi?", opts: ["A. borrow", "B. borrows", "C. borrowing", "D. borrowed"], ans: "A", exp: "Sau 'Could I...' là động từ nguyên mẫu (borrow)." },
+            { q: "It was dark, but he had a torch, so he ___ see the path.", hint: "💡 Có đèn pin chiếu sáng trong quá khứ (<span class='highlight-key'>WAS</span>) giúp người đó có khả năng thấy đường.", opts: ["A. can", "B. could", "C. can't", "D. couldn't"], ans: "B", exp: "Nhờ có đèn pin nên trong quá khứ đã có thể nhìn thấy đường (could)." },
+            { q: "When Mary was in grade 1, she could ___ short poems.", hint: "💡 Tìm dạng động từ nguyên thể đứng sau trợ từ 'could'.", opts: ["A. write", "B. writes", "C. writing", "D. wrote"], ans: "A", exp: "Sau 'could' là động từ nguyên mẫu (write)." },
+            { q: "___ you ride a two-wheel bike when you were five?", hint: "💡 Nhìn vế sau: <span class='highlight-key'>WHEN YOU WERE FIVE</span> để chọn từ hỏi khả năng trong quá khứ.", opts: ["A. Can", "B. Could", "C. Must", "D. Shall"], ans: "B", exp: "Hỏi về khả năng lúc 5 tuổi trong quá khứ dùng 'Could you...?'." }
         ]
     },
     2: {
         questions: [
-            { q: "The blue whale is the ___ animal in the ocean.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất: the + adj-est.", opts: ["A. biggest", "B. bigger", "C. big", "D. most big"], ans: "A", exp: "the + biggest: to lớn nhất." },
-            { q: "The cheetah is the ___ land animal.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của fast.", opts: ["A. fastest", "B. faster", "C. fast", "D. most fast"], ans: "A", exp: "the + fastest: nhanh nhất." },
-            { q: "Mount Everest is the ___ mountain in the world.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của high.", opts: ["A. highest", "B. higher", "C. high", "D. most high"], ans: "A", exp: "the + highest: cao nhất." },
-            { q: "The giraffe is the ___ animal in the zoo.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của tall.", opts: ["A. tallest", "B. taller", "C. tall", "D. most tall"], ans: "A", exp: "the + tallest: cao nhất." },
-            { q: "A snail is one of the ___ animals.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của slow.", opts: ["A. slowest", "B. slower", "C. slow", "D. most slow"], ans: "A", exp: "the + slowest: chậm nhất." },
-            { q: "That was the ___ day of winter.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của cold.", opts: ["A. coldest", "B. colder", "C. cold", "D. most cold"], ans: "A", exp: "the + coldest: lạnh nhất." },
-            { q: "Who is the ___ student in your class?", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của old.", opts: ["A. oldest", "B. older", "C. old", "D. more old"], ans: "A", exp: "the + oldest: lớn tuổi nhất." },
-            { q: "Tom is the ___ boy in our team.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của short.", opts: ["A. shortest", "B. shorter", "C. short", "D. most short"], ans: "A", exp: "the + shortest: thấp nhất." },
-            { q: "This pencil is the ___ in my pencil case.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của long.", opts: ["A. longest", "B. longer", "C. long", "D. most long"], ans: "A", exp: "the + longest: dài nhất." },
-            { q: "The Pacific Ocean is the ___ ocean on Earth.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của deep.", opts: ["A. deepest", "B. deeper", "C. deep", "D. most deep"], ans: "A", exp: "the + deepest: sâu nhất." },
-            { q: "Which animal is the ___ on the farm?", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của small.", opts: ["A. smallest", "B. smaller", "C. small", "D. most small"], ans: "A", exp: "the + smallest: nhỏ nhất." },
-            { q: "This is the ___ test of the school year.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của hard.", opts: ["A. hardest", "B. harder", "C. hard", "D. most hard"], ans: "A", exp: "the + hardest: khó nhất." },
-            { q: "Today is the ___ day of the week.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của warm.", opts: ["A. warmest", "B. warmer", "C. warm", "D. most warm"], ans: "A", exp: "the + warmest: ấm áp nhất." },
-            { q: "My grandma is the ___ person in our family.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của old.", opts: ["A. oldest", "B. older", "C. old", "D. most old"], ans: "A", exp: "the + oldest: lớn tuổi nhất." },
-            { q: "This bird has the ___ beak of all.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của long.", opts: ["A. longest", "B. longer", "C. long", "D. most long"], ans: "A", exp: "the + longest: dài nhất." },
-            { q: "He is the ___ runner in the competition.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của quick.", opts: ["A. quickest", "B. quicker", "C. quick", "D. most quick"], ans: "A", exp: "the + quickest: nhanh nhất." },
-            { q: "The Nile is the ___ river in the world.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của long.", opts: ["A. longest", "B. longer", "C. long", "D. most long"], ans: "A", exp: "the + longest: dài nhất." },
-            { q: "That tree is the ___ in our school garden.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của tall.", opts: ["A. tallest", "B. taller", "C. tall", "D. most tall"], ans: "A", exp: "the + tallest: cao nhất." },
-            { q: "He told the ___ story of all.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của funny.", opts: ["A. funniest", "B. funnier", "C. funny", "D. most funny"], ans: "A", exp: "the + funniest: buồn cười nhất." },
-            { q: "This is the ___ room in the house.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ So sánh nhất của clean.", opts: ["A. cleanest", "B. cleaner", "C. clean", "D. most clean"], ans: "A", exp: "the + cleanest: sạch sẽ nhất." }
+            { q: "You ___ finish your homework before you go to bed. It's your duty.", hint: "💡 Đây là nhiệm vụ và bổn phận cần phải làm của học sinh.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Diễn tả bổn phận, điều bắt buộc phải làm dùng 'must'." },
+            { q: "Shh! This is a quiet library. You ___ talk loudly.", hint: "💡 Trong thư viện có biển giữ trật tự: hành vi nói to bị cấm hay được phép?", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Hành động bị cấm trong thư viện dùng 'mustn't'." },
+            { q: "The traffic light is red. Drivers ___ stop immediately.", hint: "💡 Đèn giao thông màu đỏ: đây là luật bắt buộc mọi người phải tuân thủ.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. shall"], ans: "A", exp: "Luật giao thông bắt buộc dừng đèn đỏ dùng 'must'." },
+            { q: "The pan on the stove is boiling hot. You ___ touch it!", hint: "💡 Nồi chảo đang sôi trên bếp rất nguy hiểm: cảnh báo cấm chạm vào.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Cấm chạm vào đồ nguy hiểm dùng 'mustn't'." },
+            { q: "In class, students must ___ carefully to the teacher.", hint: "💡 Xác định dạng của động từ đứng ngay sau modal verb 'must'.", opts: ["A. listen", "B. listens", "C. listening", "D. listened"], ans: "A", exp: "Sau 'must' dùng động từ nguyên mẫu (listen)." },
+            { q: "There is a sign: 'Do Not Feed The Animals'. You ___ give them food.", hint: "💡 Biển báo cấm cho thú ăn: hành động cho thú ăn bị cấm tuyệt đối.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Biển báo cấm thực hiện hành động dùng 'mustn't'." },
+            { q: "It is raining heavily outside. You ___ take an umbrella with you.", hint: "💡 Trời đang mưa to: điều bắt buộc cần mang theo để không bị ướt.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Việc cần thiết phải làm dùng 'must'." },
+            { q: "You ___ run across the street without looking both ways.", hint: "💡 Băng qua đường mà không quan sát là hành động cực kỳ nguy hiểm, cấm làm.", opts: ["A. must", "B. mustn't", "C. could", "D. can"], ans: "B", exp: "Cấm thực hiện hành vi nguy hiểm dùng 'mustn't'." },
+            { q: "We must ___ our teeth every morning and evening.", hint: "💡 Chọn dạng nguyên mẫu thích hợp đứng sau 'must'.", opts: ["A. brush", "B. brushes", "C. brushing", "D. brushed"], ans: "A", exp: "Sau 'must' là động từ nguyên mẫu (brush)." },
+            { q: "Matches and lighters are dangerous. Children ___ play with them.", hint: "💡 Diêm và bật lửa dễ gây hỏa hoạn: trẻ em tuyệt đối không được nghịch.", opts: ["A. must", "B. mustn't", "C. could", "D. can"], ans: "B", exp: "Cấm trẻ em nghịch lửa dùng 'mustn't'." },
+            { q: "Patients are resting. Everyone ___ be quiet in the hospital.", hint: "💡 Bệnh nhân cần nghỉ ngơi: quy định bắt buộc phải giữ yên lặng ở bệnh viện.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Quy định bắt buộc giữ trật tự dùng 'must'." },
+            { q: "To protect our environment, people ___ throw plastic bags into rivers.", hint: "💡 Vứt rác nhựa xuống sông làm ô nhiễm môi trường: hành vi này bị cấm.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Cấm xả rác bừa bãi dùng 'mustn't'." },
+            { q: "To board an airplane, every passenger ___ show their passport or ID.", hint: "💡 Thủ tục lên máy bay: đây là quy định bắt buộc đối với mọi hành khách.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Quy định bắt buộc xuất trình giấy tờ dùng 'must'." },
+            { q: "You must not ___ your bicycle on the walkway for pedestrians.", hint: "💡 Đứng sau cụm 'must not' là động từ ở dạng nào?", opts: ["A. ride", "B. rides", "C. riding", "D. rode"], ans: "A", exp: "Sau 'must not' dùng động từ nguyên mẫu (ride)." },
+            { q: "The lake is very deep and the sign says 'No Swimming'. We ___ swim here.", hint: "💡 Biển báo ghi 'No Swimming': điều này có nghĩa là gì?", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Có biển cấm bơi thì tuyệt đối không được bơi (mustn't)." },
+            { q: "It is freezing cold in winter. You ___ wear a warm jacket.", hint: "💡 Thời tiết mùa đông buốt giá: việc cần thiết phải mặc áo ấm để giữ sức khỏe.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Điều rất cần thiết phải làm dùng 'must'." },
+            { q: "During an exam, students ___ look at their friends' papers.", hint: "💡 Quy chế thi cử: hành vi nhìn bài bạn là điều bị nghiêm cấm.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Nội quy cấm gian lận trong thi cử dùng 'mustn't'." },
+            { q: "When the plane is taking off, passengers must ___ their seatbelts.", hint: "💡 Động từ đứng sau 'must' phải giữ ở dạng nào?", opts: ["A. fasten", "B. fastens", "C. fastening", "D. fastened"], ans: "A", exp: "Sau 'must' là động từ nguyên mẫu (fasten)." },
+            { q: "You ___ bring food and drinks into the computer room.", hint: "💡 Phòng máy tính có quy định cấm mang đồ ăn nước uống để tránh hỏng thiết bị.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Nội quy cấm mang đồ ăn vào phòng máy dùng 'mustn't'." },
+            { q: "Before eating meals, everyone ___ wash their hands with soap.", hint: "💡 Quy tắc vệ sinh bắt buộc để phòng ngừa vi khuẩn gây bệnh.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Việc cần thiết bắt buộc phải làm vì vệ sinh dùng 'must'." }
         ]
     },
     3: {
         questions: [
-            { q: "July is usually ___ than April.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ hot gấp đôi phụ âm: hotter.", opts: ["A. hotter", "B. hoter", "C. hottest", "D. more hot"], ans: "A", exp: "hot gấp đôi 't': hotter." },
-            { q: "The hippo is ___ than the zebra.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ fat gấp đôi phụ âm: fatter.", opts: ["A. fatter", "B. fater", "C. fattest", "D. more fat"], ans: "A", exp: "fat gấp đôi 't': fatter than." },
-            { q: "A clown is ___ than a doctor.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ funny đổi y thành i: funnier.", opts: ["A. funnier", "B. funy", "C. funniest", "D. more funny"], ans: "A", exp: "funny đổi 'y' thành 'ier': funnier." },
-            { q: "Yesterday was the ___ day of the month.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ hot so sánh nhất gấp đôi 't': hottest.", opts: ["A. hottest", "B. hotest", "C. hotter", "D. most hot"], ans: "A", exp: "the + hottest: nóng nhất." },
-            { q: "My bag is ___ than your bag.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ heavy đổi y thành i: heavier.", opts: ["A. heavier", "B. heavyer", "C. heaviest", "D. more heavy"], ans: "A", exp: "heavy đổi 'y' thành 'ier': heavier." },
-            { q: "The pig is the ___ animal on the farm.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ fat so sánh nhất: fattest.", opts: ["A. fattest", "B. fatest", "C. fatter", "D. most fat"], ans: "A", exp: "the + fattest: béo nhất." },
-            { q: "The kitchen is ___ than the bedroom.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ dirty đổi y thành i: dirtier.", opts: ["A. dirtier", "B. dirtyer", "C. dirtiest", "D. more dirty"], ans: "A", exp: "dirty đổi 'y' thành 'ier': dirtier." },
-            { q: "Today is ___ than yesterday.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ sunny đổi y thành i: sunnier.", opts: ["A. sunnier", "B. sunnyer", "C. sunniest", "D. more sunny"], ans: "A", exp: "sunny đổi 'y' thành 'ier': sunnier." },
-            { q: "English is ___ than math for me.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ easy đổi y thành i: easier.", opts: ["A. easier", "B. easyer", "C. easiest", "D. more easy"], ans: "A", exp: "easy đổi 'y' thành 'ier': easier." },
-            { q: "The puppy is ___ than the cat.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ thin gấp đôi n: thinner.", opts: ["A. thinner", "B. thiner", "C. thinnest", "D. more thin"], ans: "A", exp: "thin gấp đôi 'n': thinner than." },
-            { q: "He is the ___ boy in our class.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ happy so sánh nhất: happiest.", opts: ["A. happiest", "B. happyest", "C. happier", "D. most happy"], ans: "A", exp: "the + happiest: hạnh phúc nhất." },
-            { q: "This street is ___ than my quiet street.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ noisy đổi y thành i: noisier.", opts: ["A. noisier", "B. noisyer", "C. noisiest", "D. more noisy"], ans: "A", exp: "noisy đổi 'y' thành 'ier': noisier." },
-            { q: "That was the ___ film I have ever seen.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ sad so sánh nhất gấp đôi d: saddest.", opts: ["A. saddest", "B. sadest", "C. sadder", "D. most sad"], ans: "A", exp: "the + saddest: buồn nhất." },
-            { q: "The market is the ___ place in town.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ noisy so sánh nhất: noisiest.", opts: ["A. noisiest", "B. noisest", "C. noisier", "D. more noisy"], ans: "A", exp: "the + noisiest: ồn ào nhất." },
-            { q: "I am ___ than my brother right now.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ hungry đổi y thành i: hungrier.", opts: ["A. hungrier", "B. hungryer", "C. hungriest", "D. more hungry"], ans: "A", exp: "hungry đổi 'y' thành 'ier': hungrier." },
-            { q: "These shoes are the ___ in the house.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ dirty so sánh nhất: dirtiest.", opts: ["A. dirtiest", "B. dirtyest", "C. dirtier", "D. most dirty"], ans: "A", exp: "the + dirtiest: bẩn nhất." },
-            { q: "Sunday was the ___ day of our trip.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ sunny so sánh nhất: sunniest.", opts: ["A. sunniest", "B. sunnyest", "C. sunnier", "D. most sunny"], ans: "A", exp: "the + sunniest: nhiều nắng nhất." },
-            { q: "This box is the ___ of the three boxes.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ heavy so sánh nhất: heaviest.", opts: ["A. heaviest", "B. heavyest", "C. heavier", "D. most heavy"], ans: "A", exp: "the + heaviest: nặng nhất." },
-            { q: "This question is the ___ in the test.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ easy so sánh nhất: easiest.", opts: ["A. easiest", "B. easyest", "C. easier", "D. most easy"], ans: "A", exp: "the + easiest: dễ nhất." },
-            { q: "That dog is ___ than this cat.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ big gấp đôi g: bigger.", opts: ["A. bigger", "B. biger", "C. biggest", "D. more big"], ans: "A", exp: "big gấp đôi 'g': bigger than." }
+            { q: "I ___ wear a school uniform from Monday to Friday.", hint: "💡 Nhìn chủ ngữ: <span class='highlight-key'>I</span> đi với dạng nào của 'have to' ở hiện tại?", opts: ["A. have to", "B. has to", "C. had", "D. having to"], ans: "A", exp: "Chủ ngữ ngôi thứ nhất 'I' dùng 'have to'." },
+            { q: "My sister ___ wake up early because her class starts at 7 AM.", hint: "💡 Nhìn chủ ngữ: <span class='highlight-key'>MY SISTER</span> (ngôi thứ 3 số ít) đi với cụm từ nào?", opts: ["A. have to", "B. has to", "C. had", "D. having to"], ans: "B", exp: "Chủ ngữ số ít 'My sister' dùng 'has to'." },
+            { q: "Yesterday was Sunday, so Tom didn't ___ go to school.", hint: "💡 Nhớ lại: Sau trợ động từ phủ định <span class='highlight-key'>DIDN'T</span>, động từ theo sau giữ ở dạng nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Sau 'didn't' là động từ nguyên mẫu 'have to'." },
+            { q: "Last night, I ___ stay at home and do my homework.", hint: "💡 Chú ý mốc thời gian: <span class='highlight-key'>LAST NIGHT</span> (quá khứ) ➔ dùng dạng quá khứ của 'have to'.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Bắt buộc trong quá khứ dùng 'had to'." },
+            { q: "We have a big test tomorrow, so we ___ study hard tonight.", hint: "💡 Chủ ngữ <span class='highlight-key'>WE</span> (số nhiều) ở hiện tại đi với cụm từ nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Chủ ngữ số nhiều 'We' dùng 'have to'." },
+            { q: "My father ___ drive to work every morning because the office is far.", hint: "💡 Chủ ngữ <span class='highlight-key'>MY FATHER</span> (số ít) đi với dạng nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "B", exp: "Chủ ngữ số ít 'My father' dùng 'has to'." },
+            { q: "It is Sunday today! You don't ___ wake up at 6 AM.", hint: "💡 Sau trợ động từ phủ định <span class='highlight-key'>DON'T</span>, ta dùng cụm nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Sau 'don't' dùng dạng nguyên mẫu 'have to'." },
+            { q: "Yesterday, Mary was ill, so she ___ visit the doctor.", hint: "💡 Nhìn dấu hiệu thời gian: <span class='highlight-key'>YESTERDAY</span> và <span class='highlight-key'>WAS</span> (quá khứ).", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Sự việc bắt buộc đã diễn ra trong quá khứ dùng 'had to'." },
+            { q: "Does your brother ___ clean his bedroom every weekend?", hint: "💡 Trong câu hỏi bắt đầu bằng trợ động từ <span class='highlight-key'>DOES</span>, động từ đi theo giữ ở dạng nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Trong câu hỏi với 'Does', động từ trở về nguyên mẫu 'have to'." },
+            { q: "He has to ___ his dog for a walk every evening.", hint: "💡 Đứng ngay sau cụm 'has to' là động từ ở dạng nào?", opts: ["A. take", "B. takes", "C. taking", "D. took"], ans: "A", exp: "Sau 'has to' luôn là động từ nguyên mẫu (take)." },
+            { q: "Last week, we ___ wear warm jackets because it was freezing.", hint: "💡 Dấu hiệu thời gian: <span class='highlight-key'>LAST WEEK</span> chỉ quá khứ.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Bắt buộc trong quá khứ dùng 'had to'." },
+            { q: "Linh has a lot of chores. She has to ___ the dishes after dinner.", hint: "💡 Xác định dạng của động từ hành động đứng sau 'has to'.", opts: ["A. wash", "B. washes", "C. washing", "D. washed"], ans: "A", exp: "Sau 'has to' dùng động từ nguyên mẫu (wash)." },
+            { q: "Do they ___ wear helmets when they ride motorbikes?", hint: "💡 Sau trợ động từ hỏi <span class='highlight-key'>DO</span>, ta dùng cụm từ nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Trong câu hỏi với 'Do they', dùng 'have to'." },
+            { q: "Yesterday, I missed the bus, so I ___ walk all the way home.", hint: "💡 Hành động đã diễn ra hôm qua: <span class='highlight-key'>YESTERDAY</span>.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Hành động bắt buộc phải làm trong quá khứ dùng 'had to'." },
+            { q: "Today is a holiday. Peter doesn't ___ do any homework.", hint: "💡 Sau trợ từ phủ định <span class='highlight-key'>DOESN'T</span>, động từ trở về dạng nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Sau 'doesn't' dùng dạng nguyên mẫu 'have to'." },
+            { q: "She has to ___ her teeth before going to sleep.", hint: "💡 Chọn dạng nguyên mẫu không chia đứng sau 'has to'.", opts: ["A. brush", "B. brushes", "C. brushing", "D. brushed"], ans: "A", exp: "Sau 'has to' là động từ nguyên mẫu (brush)." },
+            { q: "The rain was very heavy yesterday, so they ___ stay inside the tent.", hint: "💡 Dấu hiệu: <span class='highlight-key'>YESTERDAY</span> và <span class='highlight-key'>WAS</span> (quá khứ).", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Quá khứ phải làm gì dùng 'had to'." },
+            { q: "My mother ___ prepare breakfast for the family every morning.", hint: "💡 Chủ ngữ <span class='highlight-key'>MY MOTHER</span> (ngôi thứ 3 số ít) đi với cụm từ nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "B", exp: "Chủ ngữ số ít 'My mother' dùng 'has to'." },
+            { q: "Two days ago, Nam lost his key, so he ___ call his parents for help.", hint: "💡 Dấu hiệu thời gian: <span class='highlight-key'>TWO DAYS AGO</span> (quá khứ).", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Bắt buộc phải làm gì trong quá khứ dùng 'had to'." },
+            { q: "You have to ___ quiet when the baby is sleeping.", hint: "💡 Sau 'have to' cần chọn dạng nguyên mẫu của động từ 'to be'.", opts: ["A. be", "B. is", "C. are", "D. being"], ans: "A", exp: "Sau 'have to' là động từ nguyên mẫu (be)." }
         ]
     },
     4: {
         questions: [
-            { q: "My score is ___ than his score.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ good bất quy tắc: better.", opts: ["A. better", "B. gooder", "C. best", "D. more good"], ans: "A", exp: "good đổi thành better than." },
-            { q: "This is the ___ cake in the bakery!", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ good so sánh nhất: the best.", opts: ["A. best", "B. goodest", "C. better", "D. most good"], ans: "A", exp: "the + best: ngon nhất / tốt nhất." },
-            { q: "Today's weather is ___ than yesterday's.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ bad bất quy tắc: worse.", opts: ["A. worse", "B. badder", "C. worst", "D. more bad"], ans: "A", exp: "bad đổi thành worse than." },
-            { q: "That was the ___ movie of the month.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ bad so sánh nhất: the worst.", opts: ["A. worst", "B. baddest", "C. worse", "D. most bad"], ans: "A", exp: "the + worst: dở nhất / tệ nhất." },
-            { q: "A peacock is ___ than a crow.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ beautiful là tính từ dài: more beautiful than.", opts: ["A. more beautiful", "B. beautifuler", "C. most beautiful", "D. beautifullest"], ans: "A", exp: "Tính từ dài dùng 'more beautiful than'." },
-            { q: "A tiger is ___ than a rabbit.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ dangerous là tính từ dài: more dangerous than.", opts: ["A. more dangerous", "B. dangerouser", "C. most dangerous", "D. dangerousest"], ans: "A", exp: "Tính từ dài dùng 'more dangerous than'." },
-            { q: "This watch is the ___ item in the shop.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ expensive so sánh nhất: the most expensive.", opts: ["A. most expensive", "B. expensivest", "C. more expensive", "D. expensive"], ans: "A", exp: "the + most expensive: đắt đỏ nhất." },
-            { q: "Football is ___ than golf in Vietnam.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ popular là tính từ dài: more popular than.", opts: ["A. more popular", "B. popularer", "C. most popular", "D. popularest"], ans: "A", exp: "more popular than: phổ biến hơn." },
-            { q: "Apples are ___ for health than candies.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ good bất quy tắc: better.", opts: ["A. better", "B. gooder", "C. best", "D. more good"], ans: "A", exp: "better than: tốt hơn." },
-            { q: "This rose is the ___ flower in the garden.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ beautiful so sánh nhất: the most beautiful.", opts: ["A. most beautiful", "B. beautifullest", "C. more beautiful", "D. beautiful"], ans: "A", exp: "the + most beautiful: đẹp nhất." },
-            { q: "Sharks are ___ than dolphins.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ dangerous so sánh hơn: more dangerous.", opts: ["A. more dangerous", "B. dangerouser", "C. most dangerous", "D. dangerousest"], ans: "A", exp: "more dangerous than: nguy hiểm hơn." },
-            { q: "That was his ___ idea of the day.", hint: "💡 Từ nhận biết: <span class='highlight-key'>HIS</span> ➔ bad so sánh nhất: worst.", opts: ["A. worst", "B. worse", "C. baddest", "D. most bad"], ans: "A", exp: "worst idea: ý tưởng tồi tệ nhất." },
-            { q: "Reading books is ___ than playing games all day.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ useful là tính từ dài: more useful.", opts: ["A. more useful", "B. usefuler", "C. most useful", "D. usefulest"], ans: "A", exp: "more useful than: hữu ích hơn." },
-            { q: "This jacket is ___ than that t-shirt.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ expensive so sánh hơn: more expensive.", opts: ["A. more expensive", "B. expensivest", "C. most expensive", "D. expensive"], ans: "A", exp: "more expensive than: đắt hơn." },
-            { q: "He is the ___ student in English club.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ good so sánh nhất: the best.", opts: ["A. best", "B. better", "C. goodest", "D. most good"], ans: "A", exp: "the + best: giỏi nhất." },
-            { q: "A car is ___ than a bicycle.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ expensive so sánh hơn: more expensive.", opts: ["A. more expensive", "B. expensiver", "C. most expensive", "D. expensivest"], ans: "A", exp: "more expensive than: đắt hơn." },
-            { q: "Who is the ___ singer in your country?", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ popular so sánh nhất: the most popular.", opts: ["A. most popular", "B. popularer", "C. more popular", "D. popularest"], ans: "A", exp: "the + most popular: được mến mộ nhất." },
-            { q: "My drawing is ___ than his drawing.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ good so sánh hơn: better.", opts: ["A. better", "B. gooder", "C. best", "D. more good"], ans: "A", exp: "better than: đẹp hơn." },
-            { q: "This is the ___ chocolate dessert!", hint: "💡 Từ nhận biết: <span class='highlight-key'>THE</span> ➔ delicious so sánh nhất: the most delicious.", opts: ["A. most delicious", "B. deliciousest", "C. more delicious", "D. delicious"], ans: "A", exp: "the + most delicious: ngon nhất." },
-            { q: "A bad cold is ___ than a cough.", hint: "💡 Từ nhận biết: <span class='highlight-key'>THAN</span> ➔ bad so sánh hơn: worse.", opts: ["A. worse", "B. badder", "C. worst", "D. more bad"], ans: "A", exp: "worse than: tệ hơn, mệt hơn." }
+            { q: "___ I help you carry those heavy shopping bags, Grandma?", hint: "💡 Khi muốn ngỏ ý giúp đỡ một người khác, ta mở đầu câu hỏi bằng từ nào?", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Can't"], ans: "A", exp: "'Shall I...?' dùng để đưa ra lời đề nghị giúp đỡ người khác." },
+            { q: "You have a bad toothache. You ___ go to see the dentist.", hint: "💡 Đưa ra lời khuyên chân thành cho người đang bị đau răng: bạn nên làm gì?", opts: ["A. should", "B. shouldn't", "C. mustn't", "D. couldn't"], ans: "A", exp: "Đưa ra lời khuyên nên làm gì dùng 'should'." },
+            { q: "It is sunny outside. ___ we go to the playground for a game?", hint: "💡 Cấu trúc rủ bạn bè cùng làm một việc gì đó: <span class='highlight-key'>___ we + V?</span>.", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall we...?' dùng để rủ rê, gợi ý cùng làm gì." },
+            { q: "You look exhausted. You should ___ a short break right now.", hint: "💡 Sau lời khuyên 'should', động từ theo sau giữ ở dạng nào?", opts: ["A. take", "B. takes", "C. taking", "D. took"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (take)." },
+            { q: "You have a sore throat. You ___ drink ice-cold water.", hint: "💡 Đang bị viêm họng thì có nên uống nước đá lạnh không?", opts: ["A. should", "B. shouldn't", "C. must", "D. shall"], ans: "B", exp: "Khuyên không nên làm điều có hại cho sức khỏe dùng 'shouldn't'." },
+            { q: "It is getting dark. ___ I turn on the living room lights?", hint: "💡 Lời ngỏ ý giúp đỡ người trong nhà: hỏi xem có nên bật đèn lên không.", opts: ["A. Shall", "B. Mustn't", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall I...?' dùng để đề nghị làm một việc giúp mọi người." },
+            { q: "To stay healthy, children should ___ plenty of fresh vegetables.", hint: "💡 Động từ đứng sau 'should' cần ở dạng nguyên mẫu không chia.", opts: ["A. eat", "B. eats", "C. eating", "D. ate"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (eat)." },
+            { q: "Tomorrow is a school day. You ___ stay up past midnight playing games.", hint: "💡 Lời khuyên về thói quen sinh hoạt: có nên thức khuya chơi game trước ngày đi học?", opts: ["A. should", "B. shouldn't", "C. can", "D. shall"], ans: "B", exp: "Khuyên không nên thức khuya chơi game dùng 'shouldn't'." },
+            { q: "We have some bread and cheese. ___ we make some sandwiches for lunch?", hint: "💡 Cấu trúc gợi ý một ý tưởng ăn trưa cùng nhau với chủ ngữ 'we'.", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall we...?' là cấu trúc rủ rê, gợi ý hoạt động chung." },
+            { q: "You have an important test tomorrow. You shouldn't ___ TV all evening.", hint: "💡 Đứng sau 'shouldn't' là động từ ở dạng nào?", opts: ["A. watch", "B. watches", "C. watching", "D. watched"], ans: "A", exp: "Sau 'shouldn't' là động từ nguyên mẫu (watch)." },
+            { q: "The floor was just mopped and is slippery. You should ___ slowly.", hint: "💡 Sàn nhà trơn trượt: lời khuyên nhắc nhở nên di chuyển cẩn thận.", opts: ["A. walk", "B. walks", "C. walking", "D. walked"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (walk)." },
+            { q: "You look thirsty. ___ I bring you a glass of orange juice?", hint: "💡 Thấy bạn khát nước và muốn mang nước cho bạn: cấu trúc đề nghị giúp đỡ.", opts: ["A. Shall", "B. Mustn't", "C. Shouldn't", "D. Can't"], ans: "A", exp: "'Shall I...?' dùng để đề nghị phục vụ hoặc giúp đỡ ai đó." },
+            { q: "You ___ speak rudely to your teachers and grandparents.", hint: "💡 Nói chuyện vô lễ với người lớn tuổi là việc không nên làm.", opts: ["A. should", "B. shouldn't", "C. can", "D. shall"], ans: "B", exp: "Khuyên răn không được cư xử bất lịch sự dùng 'shouldn't'." },
+            { q: "Where ___ we meet this Saturday afternoon? At the park?", hint: "💡 Câu hỏi bàn bạc, thống nhất địa điểm gặp gỡ với chủ ngữ 'we'.", opts: ["A. shall", "B. must", "C. shouldn't", "D. couldn't"], ans: "A", exp: "'Where shall we meet?' dùng để bàn bạc, gợi ý địa điểm." },
+            { q: "To protect your teeth from cavities, you shouldn't ___ too many sweets.", hint: "💡 Động từ đứng sau 'shouldn't' có cần chia thì hay thêm đuôi không?", opts: ["A. eat", "B. eats", "C. eating", "D. ate"], ans: "A", exp: "Sau 'shouldn't' là động từ nguyên mẫu (eat)." },
+            { q: "Mom, you look tired. ___ I wash the dishes for you tonight?", hint: "💡 Đề nghị phụ giúp mẹ làm việc nhà: cấu trúc mở đầu bằng từ gì?", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall I...?' dùng khi ngỏ ý muốn làm việc gì giúp người khác." },
+            { q: "It is freezing outside. You should ___ on a warm woolen hat.", hint: "💡 Đứng sau 'should' cần chọn dạng nguyên mẫu của động từ.", opts: ["A. put", "B. puts", "C. putting", "D. putted"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (put)." },
+            { q: "What time ___ we start our picnic tomorrow morning?", hint: "💡 Câu hỏi thảo luận giờ giấc bắt đầu chuyến đi cùng nhau.", opts: ["A. shall", "B. must", "C. shouldn't", "D. can't"], ans: "A", exp: "'What time shall we...?' dùng để cùng nhau quyết định giờ giấc." },
+            { q: "If you feel dizzy and unwell, you should ___ down on the sofa.", hint: "💡 Lời khuyên chăm sóc bản thân khi bị chóng mặt: chọn động từ nguyên thể thích hợp.", opts: ["A. lie", "B. lies", "C. lying", "D. lay"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (lie)." },
+            { q: "In the hospital hallway, visitors shouldn't ___ loudly.", hint: "💡 Hành động hò hét ở hành lang bệnh viện là điều không nên làm.", opts: ["A. shout", "B. shouts", "C. shouting", "D. shouted"], ans: "A", exp: "Sau 'shouldn't' là động từ nguyên mẫu (shout)." }
         ]
     },
     5: {
         questions: [
-            { q: "A plane is faster ___ a train.", hint: "💡 Ngữ cảnh: So sánh hơn 'faster' đi với THAN.", opts: ["A. than", "B. of", "C. as", "D. the"], ans: "A", exp: "Sau tính từ so sánh hơn dùng 'than'." },
-            { q: "An elephant is ___ biggest animal on land.", hint: "💡 Ngữ cảnh: Đứng trước tính từ so sánh nhất 'biggest' dùng mạo từ THE.", opts: ["A. the", "B. a", "C. than", "D. of"], ans: "A", exp: "Trước so sánh nhất luôn dùng 'the'." },
-            { q: "Russia is the biggest country ___ the world.", hint: "💡 Cụm từ: Trong thế giới dùng IN the world.", opts: ["A. in", "B. of", "C. than", "D. at"], ans: "A", exp: "Phạm vi địa lý dùng 'in the world'." },
-            { q: "Which car is faster, the red car ___ the blue car?", hint: "💡 Ngữ cảnh: Lựa chọn 1 trong 2 đối tượng dùng OR.", opts: ["A. or", "B. than", "C. of", "D. in"], ans: "A", exp: "So sánh hỏi lựa chọn giữa 2 vật dùng 'A or B'." },
-            { q: "Lan is taller ___ her sister.", hint: "💡 Ngữ cảnh: So sánh hơn 'taller' đi với THAN.", opts: ["A. than", "B. then", "C. of", "D. the"], ans: "A", exp: "So sánh hơn dùng 'than'." },
-            { q: "This diamond is the ___ expensive ring.", hint: "💡 Cấu trúc: So sánh nhất tính từ dài: the MOST + adj.", opts: ["A. most", "B. more", "C. much", "D. many"], ans: "A", exp: "the + most expensive: đắt nhất." },
-            { q: "My brother is two years older ___ me.", hint: "💡 Cấu trúc: 'older' so sánh hơn dùng THAN.", opts: ["A. than", "B. as", "C. of", "D. to"], ans: "A", exp: "older than: nhiều tuổi hơn." },
-            { q: "Of the three sisters, Anna is the ___.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>OF THE THREE</span> ➔ Dùng so sánh nhất: tallest.", opts: ["A. tallest", "B. taller", "C. tall", "D. more tall"], ans: "A", exp: "So sánh từ 3 đối tượng trở lên dùng the tallest." },
-            { q: "Summer is hotter ___ spring.", hint: "💡 Ngữ cảnh: So sánh hơn 'hotter' đi với THAN.", opts: ["A. than", "B. as", "C. that", "D. of"], ans: "A", exp: "hotter than: nóng hơn." },
-            { q: "The cheetah is faster than all other animals. It is the ___.", hint: "💡 Ngữ cảnh: Nhanh nhất trong tất cả ➔ fastest.", opts: ["A. fastest", "B. faster", "C. fast", "D. more fast"], ans: "A", exp: "the + fastest: nhanh nhất." },
-            { q: "Which book is ___ interesting, this one or that one?", hint: "💡 Ngữ cảnh: So sánh 2 quyển sách ➔ Dùng so sánh hơn: more.", opts: ["A. more", "B. most", "C. much", "D. best"], ans: "A", exp: "So sánh 2 vật dùng 'more interesting'." },
-            { q: "He is the ___ player in our football team.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>THE</span> ➔ So sánh nhất: best.", opts: ["A. best", "B. better", "C. good", "D. goodest"], ans: "A", exp: "the + best: cầu thủ giỏi nhất." },
-            { q: "A lemon is sourer ___ an apple.", hint: "💡 Cấu trúc: So sánh hơn 'sourer' đi với THAN.", opts: ["A. than", "B. then", "C. the", "D. as"], ans: "A", exp: "sourer than: chua hơn." },
-            { q: "This pencil is shorter ___ that pen.", hint: "💡 Cấu trúc: So sánh hơn 'shorter' đi với THAN.", opts: ["A. than", "B. of", "C. as", "D. in"], ans: "A", exp: "shorter than: ngắn hơn." },
-            { q: "Of all my friends, Jack runs the ___.", hint: "💡 Cụm từ: <span class='highlight-key'>OF ALL</span> ➔ So sánh nhất: the fastest.", opts: ["A. fastest", "B. faster", "C. fast", "D. more fast"], ans: "A", exp: "Of all đi với so sánh nhất: the fastest." },
-            { q: "The blue bag is heavier ___ the green bag.", hint: "💡 Cấu trúc: So sánh hơn 'heavier' đi với THAN.", opts: ["A. than", "B. then", "C. the", "D. as"], ans: "A", exp: "heavier than: nặng hơn." },
-            { q: "Who is ___ oldest person in your family?", hint: "💡 Ngữ cảnh: Trước so sánh nhất 'oldest' dùng THE.", opts: ["A. the", "B. a", "C. than", "D. of"], ans: "A", exp: "the + oldest: người cao tuổi nhất." },
-            { q: "Monkeys are funnier ___ frogs.", hint: "💡 Cấu trúc: So sánh hơn 'funnier' đi với THAN.", opts: ["A. than", "B. the", "C. of", "D. as"], ans: "A", exp: "funnier than: vui nhộn hơn." },
-            { q: "My house is the ___ house in the village.", hint: "💡 Ngữ cảnh: <span class='highlight-key'>THE</span> ➔ So sánh nhất: biggest.", opts: ["A. biggest", "B. bigger", "C. big", "D. more big"], ans: "A", exp: "the + biggest: to nhất." },
-            { q: "Lions are ___ dangerous than sheep.", hint: "💡 Ngữ cảnh: Có 'than' và 'dangerous' là tính từ dài ➔ Dùng MORE.", opts: ["A. more", "B. most", "C. much", "D. as"], ans: "A", exp: "more dangerous than: nguy hiểm hơn." }
+            { q: "Look at the sign 'No Dogs Allowed'. You ___ bring your dog inside.", hint: "💡 Biển báo cấm chó vào: hành động này là điều bị cấm tuyệt đối hay được phép?", opts: ["A. can", "B. mustn't", "C. should", "D. shall"], ans: "B", exp: "Biển cấm rõ ràng dùng 'mustn't'." },
+            { q: "When Jack was only four years old, he ___ read chapter books.", hint: "💡 Mốc thời gian: <span class='highlight-key'>WHEN JACK WAS FOUR</span> (quá khứ). Một em bé 4 tuổi thường chưa thể đọc sách dày.", opts: ["A. can't", "B. couldn't", "C. mustn't", "D. shouldn't"], ans: "B", exp: "Nói về việc không thể làm trong quá khứ dùng 'couldn't'." },
+            { q: "Yesterday was my grandma's birthday, so I ___ buy a flowers bouquet.", hint: "💡 Việc bắt buộc phải làm trong quá khứ: <span class='highlight-key'>YESTERDAY</span>.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Quá khứ phải làm gì dùng 'had to'." },
+            { q: "My older brother is a strong swimmer. He can ___ very fast.", hint: "💡 Động từ đứng ngay sau modal verb 'can' phải ở dạng nào?", opts: ["A. swim", "B. swims", "C. swimming", "D. swam"], ans: "A", exp: "Sau 'can' dùng động từ nguyên mẫu (swim)." },
+            { q: "Tomorrow is Sunday, so I don't ___ wake up early.", hint: "💡 Sau trợ động từ phủ định <span class='highlight-key'>DON'T</span>, cụm từ nào được dùng?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Sau 'don't' dùng dạng nguyên mẫu 'have to'." },
+            { q: "Lions are powerful hunters, but they ___ fly like eagles.", hint: "💡 Khả năng tự nhiên: Sư tử có cánh để bay lượn trên bầu trời không?", opts: ["A. can", "B. can't", "C. must", "D. could"], ans: "B", exp: "Sư tử không có khả năng bay (can't)." },
+            { q: "It was extremely noisy, so I ___ hear what the teacher said.", hint: "💡 Thời điểm trong quá khứ (<span class='highlight-key'>IT WAS</span>): phòng quá ồn dẫn đến không nghe thấy được.", opts: ["A. can't", "B. couldn't", "C. mustn't", "D. shouldn't"], ans: "B", exp: "Không thể nghe thấy trong quá khứ dùng 'couldn't'." },
+            { q: "Pedestrians must ___ both left and right before crossing.", hint: "💡 Sau từ bắt buộc 'must', động từ cần giữ ở dạng nào?", opts: ["A. look", "B. looks", "C. looking", "D. looked"], ans: "A", exp: "Sau 'must' là động từ nguyên mẫu (look)." },
+            { q: "It's Saturday morning! ___ we ride our bicycles to the lake, Peter?", hint: "💡 Cấu trúc rủ bạn cùng đi đạp xe: <span class='highlight-key'>___ we + V?</span>.", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall we...?' dùng để rủ rê bạn bè tham gia hoạt động." },
+            { q: "Dolphins are very clever sea animals. They ___ learn fun tricks.", hint: "💡 Cá heo rất thông minh, vậy chúng có khả năng học các trò xiếc không?", opts: ["A. can", "B. can't", "C. mustn't", "D. shouldn't"], ans: "A", exp: "Cá heo có khả năng biểu diễn trò xiếc (can)." },
+            { q: "She has a pet kitten, so she has to ___ it twice every day.", hint: "💡 Đứng sau 'has to' là động từ ở dạng nào?", opts: ["A. feed", "B. feeds", "C. feeding", "D. fed"], ans: "A", exp: "Sau 'has to' là động từ nguyên mẫu (feed)." },
+            { q: "In the art gallery, visitors ___ touch the ancient paintings.", hint: "💡 Quy định bảo tàng mỹ thuật: hành vi sờ tay vào tranh cổ bị cấm tuyệt đối.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Quy định cấm sờ hiện vật dùng 'mustn't'." },
+            { q: "When my aunt was ten years old, she ___ speak two languages.", hint: "💡 Dấu hiệu: <span class='highlight-key'>WHEN MY AUNT WAS TEN</span> nói về khả năng trong quá khứ.", opts: ["A. can", "B. could", "C. must", "D. shall"], ans: "B", exp: "Khả năng trong quá khứ dùng 'could'." },
+            { q: "Last night, the television was broken, so we ___ read books instead.", hint: "💡 Sự việc đã xảy ra tối qua: <span class='highlight-key'>LAST NIGHT</span>.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Bắt buộc phải làm gì trong quá khứ dùng 'had to'." },
+            { q: "You should not ___ your sister's crayons without asking her first.", hint: "💡 Động từ đứng sau cụm 'should not' giữ ở dạng nguyên thể nào?", opts: ["A. take", "B. takes", "C. taking", "D. took"], ans: "A", exp: "Sau 'should not' là động từ nguyên mẫu (take)." },
+            { q: "___ you swim across the river when you were seven years old?", hint: "💡 Nhìn mốc thời gian: <span class='highlight-key'>WHEN YOU WERE SEVEN</span> để chọn từ hỏi khả năng trong quá khứ.", opts: ["A. Can", "B. Could", "C. Must", "D. Shall"], ans: "B", exp: "Hỏi khả năng trong quá khứ dùng 'Could you...?'." },
+            { q: "The sign says 'Danger: Deep Water'. Children ___ play near the edge.", hint: "💡 Biển báo nước sâu nguy hiểm: cấm trẻ em chơi đùa gần mép nước.", opts: ["A. must", "B. mustn't", "C. should", "D. can"], ans: "B", exp: "Cấm hành vi nguy hiểm dùng 'mustn't'." },
+            { q: "You look cold and shivering. ___ I make you a cup of hot cocoa?", hint: "💡 Thấy bạn đang run vì lạnh và ngỏ ý pha ca cao nóng giúp bạn.", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall I...?' dùng để đề nghị giúp đỡ người khác." },
+            { q: "She has practiced singing for years. She can ___ high notes perfectly.", hint: "💡 Đứng sau 'can' là động từ ở dạng nào?", opts: ["A. hit", "B. hits", "C. hitting", "D. hitted"], ans: "A", exp: "Sau 'can' là động từ nguyên mẫu (hit)." },
+            { q: "All car drivers have to ___ their seatbelts while driving.", hint: "💡 Động từ đứng ngay sau 'have to' phải ở dạng nguyên mẫu nào?", opts: ["A. wear", "B. wears", "C. wearing", "D. wore"], ans: "A", exp: "Sau 'have to' dùng động từ nguyên mẫu (wear)." }
         ]
     }
 };
@@ -601,10 +603,10 @@ function renderExercises() {
 }
 
 function getBadge(score) {
-    if (score === 20) return "🏆 Xuất sắc (20/20)";
-    if (score >= 16) return "🌟 Rất Giỏi (Huy hiệu Bạc)";
-    if (score >= 12) return "👍 Đạt Yêu Cầu (Khá)";
-    return "💪 Cố Gắng Luyện Tập Thêm";
+    if (score === 20) return "🏆 BẬC THẦY MODAL VERBS (20/20)";
+    if (score >= 16) return "🌟 HUY HIỆU THÔNG THÁI (Rất Giỏi)";
+    if (score >= 12) return "👍 HUY HIỆU TẬP TRUNG (Khá)";
+    return "💪 HUY HIỆU CỐ GẮNG (Cần luyện thêm)";
 }
 
 function checkExercise(exNum) {
@@ -612,7 +614,7 @@ function checkExercise(exNum) {
     const studentName = studentNameInput.value.trim();
 
     if (!studentName) {
-        alert("⚠️ Vui lòng nhập Tên học sinh ở ô phía trên trước khi check bài!");
+        alert("⚠️ Học sinh vui lòng nhập TÊN ở đầu trang trước khi bấm Check bài nhé!");
         studentNameInput.focus();
         return;
     }
@@ -648,7 +650,7 @@ function checkExercise(exNum) {
             }
         } else {
             qDiv.className = "question-card incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
-            expDiv.innerHTML = `⚠️ Chưa chọn! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
+            expDiv.innerHTML = `⚠️ Em chưa chọn đáp án! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
             expDiv.style.color = "var(--warning)";
             statusText = `<b>Chưa chọn</b> (Đáp án đúng: ${item.ans})`;
         }
