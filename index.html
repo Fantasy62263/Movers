@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ôn Tập Modal Verbs & Have/Had To - Movers</title>
+    <title>Ôn Tập Ngữ Pháp Tiếng Anh - Movers</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -37,7 +37,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
         }
 
@@ -77,13 +77,14 @@
         }
         .cheatsheet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 12px;
         }
         .cheat-item {
             padding: 12px 14px;
             border-radius: 12px;
             font-size: 13px;
+            line-height: 1.5;
         }
         .cheat-item strong {
             display: block;
@@ -347,35 +348,39 @@
 
 <div class="container">
     <div class="app-header">
-        <h1 class="app-title">🌟 ÔN TẬP MODAL VERBS & HAVE/HAD TO 🌟</h1>
-        <p class="app-subtitle">Trình độ Cambridge Movers • Chọn đáp án và bấm Check để gửi bài làm</p>
+        <h1 class="app-title">🌟 ÔN TẬP NGỮ PHÁP TIẾNG ANH (MOVERS) 🌟</h1>
+        <p class="app-subtitle">Đại từ quan hệ & Từ nối • Từ chỉ số lượng • Giới từ vị trí & Thời gian</p>
     </div>
 
-    <!-- BẢNG THẦN CHÚ HIỂN THỊ TRỰC TIẾP -->
+    <!-- BẢNG THẦN CHÚ HIỂN THỊ TRỰC TIẾP (ĐÃ LÀM SẠCH KÝ TỰ THỪA) -->
     <div class="cheatsheet-card">
         <div class="cheatsheet-title">📌 BẢNG THẦN CHÚ NGỮ PHÁP</div>
         <div class="cheatsheet-grid">
             <div class="cheat-item cheat-1">
-                <strong>1. Can & Could</strong>
-                <b>Can/Can't:</b> Có thể / không thể ở hiện tại.<br>
-                <b>Could/Couldn't:</b> Khả năng trong quá khứ <i>(yesterday, when I was five...)</i> hoặc nhờ vả lịch sự.
+                <strong>1. Đại Từ Quan Hệ & Từ Nối</strong>
+                <b>Who:</b> chỉ Người | <b>Which:</b> Đồ vật, Con vật | <b>Where:</b> Nơi chốn<br>
+                <b>and:</b> bổ sung | <b>but:</b> trái ngược<br>
+                <b>because:</b> lý do | <b>when:</b> thời điểm
             </div>
             <div class="cheat-item cheat-2">
-                <strong>2. Must & Mustn't</strong>
-                <b>Must:</b> Bắt buộc phải làm (luật, quy định).<br>
-                <b>Mustn't:</b> Cấm tuyệt đối không được làm!
+                <strong>2. Từ Chỉ Số Lượng (Quantifiers)</strong>
+                <b>Some:</b> câu khẳng định | <b>Any:</b> phủ định, câu hỏi<br>
+                <b>A lot of / Lots of:</b> nghĩa là nhiều (đếm được & không đếm được)<br>
+                <b>A few:</b> + danh từ đếm được số nhiều<br>
+                <b>A little:</b> + danh từ không đếm được
             </div>
             <div class="cheat-item cheat-3">
-                <strong>3. Have to / Has to / Had to</strong>
-                <b>Hiện tại:</b> I/We/They + <span class="highlight-key">have to</span> | He/She/It + <span class="highlight-key">has to</span>.<br>
-                <b>Quá khứ:</b> <span class="highlight-key">had to</span> (phải làm gì trong quá khứ).<br>
-                <b>Phủ định:</b> don't/doesn't have to (không cần phải).
+                <strong>3. Giới Từ Chỉ Vị Trí</strong>
+                <b>in front of</b> (phía trước), <b>behind</b> (phía sau)<br>
+                <b>next to</b> (ngay bên cạnh), <b>opposite</b> (đối diện)<br>
+                <b>between ... and</b> (ở giữa), <b>above</b> (phía trên)<br>
+                <b>under</b> (phía dưới), <b>inside / outside</b> (trong/ngoài)
             </div>
             <div class="cheat-item cheat-4">
-                <strong>4. Shall & Should / QUY TẮC VÀNG</strong>
-                <b>Shall I/we...?:</b> Rủ rê hoặc ngỏ ý giúp đỡ.<br>
-                <b>Should/Shouldn't:</b> Lời khuyên nên / không nên.<br>
-                <span class="highlight-key">Sau tất cả các từ trên luôn là V nguyên mẫu!</span>
+                <strong>4. Giới Từ Chỉ Thời Gian</strong>
+                <b>IN:</b> Tháng, Năm, Mùa, Buổi trong ngày<br>
+                <b>ON:</b> Ngày trong tuần, Ngày tháng cụ thể, Sinh nhật<br>
+                <b>AT:</b> Giờ giấc cố định, <i>at night, at the weekend</i>
             </div>
         </div>
     </div>
@@ -407,122 +412,122 @@ const TEACHER_CONFIG = {
 const quizData = {
     1: {
         questions: [
-            { q: "Birds have wings, so they ___ fly high in the sky.", hint: "💡 Quan sát khả năng tự nhiên: Loài chim có cánh thì có khả năng bay lượn hay không?", opts: ["A. can", "B. can't", "C. must not", "D. couldn't"], ans: "A", exp: "Chim có cánh nên có khả năng bay (can)." },
-            { q: "Fish live underwater. They ___ walk on land.", hint: "💡 Hãy suy nghĩ về loài cá: Chúng có chân để đi bộ trên cạn được không?", opts: ["A. can", "B. can't", "C. must", "D. could"], ans: "B", exp: "Cá không có khả năng đi bộ trên mặt đất (can't)." },
-            { q: "My sister is very talented. She can ___ the guitar beautifully.", hint: "💡 Nhớ lại Quy Tắc Vàng: Động từ đứng ngay sau 'can' phải ở dạng nào (có thêm -s hay -ing không)?", opts: ["A. play", "B. plays", "C. playing", "D. played"], ans: "A", exp: "Sau động từ khuyết thiếu 'can' là động từ nguyên mẫu không chia (play)." },
-            { q: "Can you ___ the door for me, please?", hint: "💡 Trong câu hỏi với 'Can you...', động từ hành động theo sau cần giữ nguyên dạng hay biến đổi?", opts: ["A. open", "B. opens", "C. opening", "D. opened"], ans: "A", exp: "Sau 'Can + S' là động từ nguyên mẫu (open)." },
-            { q: "It is very loud in here. I ___ hear what you are saying.", hint: "💡 Khi không gian xung quanh quá ồn ào, khả năng nghe của em sẽ thế nào?", opts: ["A. can", "B. can't", "C. must", "D. shall"], ans: "B", exp: "Phòng ồn ào dẫn đến không thể nghe rõ (can't)." },
-            { q: "Look at the baby! He can ___ his hands now.", hint: "💡 Xem lại dạng của động từ đứng sau 'can': cần chọn từ nguyên thể chưa chia.", opts: ["A. clap", "B. claps", "C. clapping", "D. clapped"], ans: "A", exp: "Sau 'can' dùng động từ nguyên mẫu (clap)." },
-            { q: "A penguin is a bird, but it ___ fly.", hint: "💡 Chim cánh cụt bơi rất giỏi, nhưng cánh của chúng có bay trên trời được như các loài chim khác không?", opts: ["A. can", "B. can't", "C. could", "D. must"], ans: "B", exp: "Chim cánh cụt không biết bay (can't fly)." },
-            { q: "Can your brother ___ a bicycle to school?", hint: "💡 Chú ý vị trí sau chủ ngữ 'your brother' trong câu hỏi bắt đầu bằng 'Can'.", opts: ["A. ride", "B. rides", "C. riding", "D. rode"], ans: "A", exp: "Động từ theo sau 'Can' ở dạng nguyên mẫu (ride)." },
-            { q: "When my grandfather was young, he ___ run very fast.", hint: "💡 Chú ý mốc thời gian: <span class='highlight-key'>WHEN ... WAS YOUNG</span> chỉ khả năng ở hiện tại hay trong quá khứ?", opts: ["A. can", "B. could", "C. must", "D. shall"], ans: "B", exp: "Nói về khả năng trong quá khứ (khi còn trẻ) dùng 'could'." },
-            { q: "When I was only one year old, I ___ ride a bicycle.", hint: "💡 Hãy nghĩ về một em bé 1 tuổi trong quá khứ: Em bé lúc đó đã có thể tự đạp xe chưa?", opts: ["A. can", "B. could", "C. couldn't", "D. must"], ans: "C", exp: "Lúc 1 tuổi trong quá khứ không thể đạp xe đạp (couldn't)." },
-            { q: "___ you please pass me the glass of milk?", hint: "💡 Khi muốn nhờ ai đó một cách thật lịch sự, ta dùng trợ động từ nào?", opts: ["A. Could", "B. Must", "C. Shall", "D. Shouldn't"], ans: "A", exp: "'Could you please...?' là cấu trúc yêu cầu/nhờ vả lịch sự." },
-            { q: "Yesterday was very foggy, so we ___ see the mountain clearly.", hint: "💡 Chú ý từ chỉ thời gian <span class='highlight-key'>YESTERDAY</span> và thời tiết nhiều sương mù: ta có nhìn rõ được không?", opts: ["A. can", "B. can't", "C. couldn't", "D. must not"], ans: "C", exp: "Hành động không thể nhìn thấy trong quá khứ (yesterday) dùng 'couldn't'." },
-            { q: "When Lucy was five, she could already ___ the piano.", hint: "💡 Động từ đứng sau 'could' tuân theo quy tắc gì về dạng của từ?", opts: ["A. play", "B. plays", "C. playing", "D. played"], ans: "A", exp: "Sau 'could' là động từ nguyên mẫu không chia (play)." },
-            { q: "I looked everywhere yesterday, but I ___ find my schoolbag.", hint: "💡 Sự việc xảy ra hôm qua (looked) và kết quả tìm kiếm không thấy: dùng từ chỉ quá khứ nào?", opts: ["A. can't", "B. couldn't", "C. mustn't", "D. shouldn't"], ans: "B", exp: "Không thể tìm thấy đồ vật trong quá khứ dùng 'couldn't'." },
-            { q: "Could you ___ me the way to the bus stop, please?", hint: "💡 Trong lời nhờ vả lịch sự 'Could you...', động từ phía sau ở dạng nào?", opts: ["A. tell", "B. tells", "C. telling", "D. told"], ans: "A", exp: "Sau 'Could you...' dùng động từ nguyên mẫu (tell)." },
-            { q: "Twenty years ago, my grandma ___ read books without wearing glasses.", hint: "💡 Dấu hiệu nhận biết: <span class='highlight-key'>TWENTY YEARS AGO</span> chỉ khả năng ở thời điểm nào?", opts: ["A. can", "B. could", "C. must", "D. should"], ans: "B", exp: "20 năm trước (quá khứ) có khả năng đọc sách không cần kính (could)." },
-            { q: "Could I ___ your pencil for a few minutes?", hint: "💡 Động từ đứng sau 'Could I...' cần ở dạng nguyên mẫu hay thêm đuôi?", opts: ["A. borrow", "B. borrows", "C. borrowing", "D. borrowed"], ans: "A", exp: "Sau 'Could I...' là động từ nguyên mẫu (borrow)." },
-            { q: "It was dark, but he had a torch, so he ___ see the path.", hint: "💡 Có đèn pin chiếu sáng trong quá khứ (<span class='highlight-key'>WAS</span>) giúp người đó có khả năng thấy đường.", opts: ["A. can", "B. could", "C. can't", "D. couldn't"], ans: "B", exp: "Nhờ có đèn pin nên trong quá khứ đã có thể nhìn thấy đường (could)." },
-            { q: "When Mary was in grade 1, she could ___ short poems.", hint: "💡 Tìm dạng động từ nguyên thể đứng sau trợ từ 'could'.", opts: ["A. write", "B. writes", "C. writing", "D. wrote"], ans: "A", exp: "Sau 'could' là động từ nguyên mẫu (write)." },
-            { q: "___ you ride a two-wheel bike when you were five?", hint: "💡 Nhìn vế sau: <span class='highlight-key'>WHEN YOU WERE FIVE</span> để chọn từ hỏi khả năng trong quá khứ.", opts: ["A. Can", "B. Could", "C. Must", "D. Shall"], ans: "B", exp: "Hỏi về khả năng lúc 5 tuổi trong quá khứ dùng 'Could you...?'." }
+            { q: "This is the girl ___ won the race.", hint: "💡 Quan sát từ đứng trước khoảng trống ('the girl'): Đây là danh từ chỉ người, con vật hay nơi chốn?", opts: ["A. who", "B. which", "C. where", "D. when"], ans: "A", exp: "'the girl' là người nên dùng đại từ quan hệ 'who'." },
+            { q: "The book ___ is on the table is mine.", hint: "💡 Xem xét từ 'The book': Đồ vật thì ta thay thế bằng đại từ quan hệ nào?", opts: ["A. who", "B. which", "C. where", "D. because"], ans: "B", exp: "'The book' là đồ vật nên dùng đại từ quan hệ 'which'." },
+            { q: "This is the school ___ I study every day.", hint: "💡 'The school' là địa điểm, nơi chốn diễn ra hành động học tập.", opts: ["A. who", "B. which", "C. where", "D. but"], ans: "C", exp: "Chỉ nơi chốn ta dùng đại từ quan hệ 'where'." },
+            { q: "Look at the puppy ___ is playing in the garden.", hint: "💡 Từ đứng trước là 'the puppy' (con vật). Đại từ nào dùng cho con vật?", opts: ["A. who", "B. which", "C. where", "D. and"], ans: "B", exp: "'puppy' là con vật nên dùng 'which'." },
+            { q: "The doctor ___ helped my grandfather was very kind.", hint: "💡 Từ 'The doctor' chỉ nghề nghiệp của con người. Hãy chọn đại từ thích hợp.", opts: ["A. who", "B. which", "C. where", "D. when"], ans: "A", exp: "'The doctor' là người nên dùng 'who'." },
+            { q: "That is the park ___ we ride our bicycles at the weekend.", hint: "💡 'The park' là công viên, nơi chốn diễn ra hoạt động đạp xe.", opts: ["A. who", "B. which", "C. where", "D. because"], ans: "C", exp: "Chỉ nơi chốn dùng 'where'." },
+            { q: "The boy ___ is wearing a blue cap is my cousin.", hint: "💡 Nhìn từ 'The boy': Đây là danh từ chỉ người.", opts: ["A. who", "B. which", "C. where", "D. but"], ans: "A", exp: "'The boy' chỉ người nên dùng 'who'." },
+            { q: "I like the toy train ___ makes a loud whistling sound.", hint: "💡 'The toy train' là món đồ chơi (đồ vật).", opts: ["A. who", "B. which", "C. where", "D. and"], ans: "B", exp: "Đồ vật dùng đại từ quan hệ 'which'." },
+            { q: "That is the supermarket ___ my mom buys fresh fruit.", hint: "💡 'The supermarket' là siêu thị, địa điểm mua sắm.", opts: ["A. who", "B. which", "C. where", "D. when"], ans: "C", exp: "Chỉ nơi chốn dùng 'where'." },
+            { q: "The teacher ___ teaches us music is very funny.", hint: "💡 'The teacher' là thầy cô giáo (người).", opts: ["A. who", "B. which", "C. where", "D. because"], ans: "A", exp: "Chỉ người dùng 'who'." },
+            { q: "I like eating apples ___ bananas for breakfast.", hint: "💡 Hai món ăn này bổ sung thêm thông tin cùng nhau.", opts: ["A. and", "B. but", "C. because", "D. where"], ans: "A", exp: "Từ nối nối 2 ý bổ sung dùng 'and'." },
+            { q: "I can swim very well, ___ I can't fly like a bird.", hint: "💡 Hai vế câu mang ý nghĩa trái ngược nhau: một việc làm được và một việc không làm được.", opts: ["A. and", "B. but", "C. because", "D. which"], ans: "B", exp: "Nối 2 ý trái ngược nhau dùng 'but'." },
+            { q: "He is smiling happily ___ today is his birthday.", hint: "💡 Vế sau giải thích nguyên nhân, lý do vì sao bạn ấy mỉm cười.", opts: ["A. and", "B. but", "C. because", "D. where"], ans: "C", exp: "Nêu lý do, nguyên nhân dùng 'because'." },
+            { q: "Please call me ___ you arrive at the train station.", hint: "💡 Câu này chỉ mốc thời điểm xảy ra hành động gọi điện.", opts: ["A. and", "B. but", "C. because", "D. when"], ans: "D", exp: "Chỉ mốc thời điểm dùng 'when'." },
+            { q: "She put on her warm coat ___ it was freezing cold outside.", hint: "💡 Vế sau giải thích lý do vì sao bạn ấy phải mặc áo khoác ấm.", opts: ["A. and", "B. but", "C. because", "D. which"], ans: "C", exp: "Chỉ nguyên nhân, lý do dùng 'because'." },
+            { q: "Tom wanted to go to the park, ___ it started to rain heavily.", hint: "💡 Dự định muốn đi chơi nhưng thời tiết lại mưa: hai vế đối lập trái ngược.", opts: ["A. and", "B. but", "C. because", "D. where"], ans: "B", exp: "Chỉ sự tương phản, trái ngược dùng 'but'." },
+            { q: "Peter washed his hands ___ brushed his teeth before bedtime.", hint: "💡 Hai hành động nối tiếp nhau cùng được thực hiện bổ sung.", opts: ["A. and", "B. but", "C. because", "D. who"], ans: "A", exp: "Nối 2 ý bổ sung dùng 'and'." },
+            { q: "Remember to turn off the lights ___ you leave the room.", hint: "💡 Chỉ mốc thời điểm khi nào thì cần tắt đèn.", opts: ["A. and", "B. but", "C. because", "D. when"], ans: "D", exp: "Chỉ mốc thời điểm dùng 'when'." },
+            { q: "We stayed inside the house ___ the thunderstorm was dangerous.", hint: "💡 Vế sau nêu lý do tại sao mọi người phải ở trong nhà.", opts: ["A. and", "B. but", "C. because", "D. which"], ans: "C", exp: "Nêu nguyên nhân dùng 'because'." },
+            { q: "The test was quite difficult, ___ Anna got the highest score.", hint: "💡 Bài thi khó nhưng Anna vẫn đạt điểm cao nhất: hai ý trái ngược nhau.", opts: ["A. and", "B. but", "C. because", "D. where"], ans: "B", exp: "Chỉ ý nghĩa tương phản dùng 'but'." }
         ]
     },
     2: {
         questions: [
-            { q: "You ___ finish your homework before you go to bed. It's your duty.", hint: "💡 Đây là nhiệm vụ và bổn phận cần phải làm của học sinh.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Diễn tả bổn phận, điều bắt buộc phải làm dùng 'must'." },
-            { q: "Shh! This is a quiet library. You ___ talk loudly.", hint: "💡 Trong thư viện có biển giữ trật tự: hành vi nói to bị cấm hay được phép?", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Hành động bị cấm trong thư viện dùng 'mustn't'." },
-            { q: "The traffic light is red. Drivers ___ stop immediately.", hint: "💡 Đèn giao thông màu đỏ: đây là luật bắt buộc mọi người phải tuân thủ.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. shall"], ans: "A", exp: "Luật giao thông bắt buộc dừng đèn đỏ dùng 'must'." },
-            { q: "The pan on the stove is boiling hot. You ___ touch it!", hint: "💡 Nồi chảo đang sôi trên bếp rất nguy hiểm: cảnh báo cấm chạm vào.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Cấm chạm vào đồ nguy hiểm dùng 'mustn't'." },
-            { q: "In class, students must ___ carefully to the teacher.", hint: "💡 Xác định dạng của động từ đứng ngay sau modal verb 'must'.", opts: ["A. listen", "B. listens", "C. listening", "D. listened"], ans: "A", exp: "Sau 'must' dùng động từ nguyên mẫu (listen)." },
-            { q: "There is a sign: 'Do Not Feed The Animals'. You ___ give them food.", hint: "💡 Biển báo cấm cho thú ăn: hành động cho thú ăn bị cấm tuyệt đối.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Biển báo cấm thực hiện hành động dùng 'mustn't'." },
-            { q: "It is raining heavily outside. You ___ take an umbrella with you.", hint: "💡 Trời đang mưa to: điều bắt buộc cần mang theo để không bị ướt.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Việc cần thiết phải làm dùng 'must'." },
-            { q: "You ___ run across the street without looking both ways.", hint: "💡 Băng qua đường mà không quan sát là hành động cực kỳ nguy hiểm, cấm làm.", opts: ["A. must", "B. mustn't", "C. could", "D. can"], ans: "B", exp: "Cấm thực hiện hành vi nguy hiểm dùng 'mustn't'." },
-            { q: "We must ___ our teeth every morning and evening.", hint: "💡 Chọn dạng nguyên mẫu thích hợp đứng sau 'must'.", opts: ["A. brush", "B. brushes", "C. brushing", "D. brushed"], ans: "A", exp: "Sau 'must' là động từ nguyên mẫu (brush)." },
-            { q: "Matches and lighters are dangerous. Children ___ play with them.", hint: "💡 Diêm và bật lửa dễ gây hỏa hoạn: trẻ em tuyệt đối không được nghịch.", opts: ["A. must", "B. mustn't", "C. could", "D. can"], ans: "B", exp: "Cấm trẻ em nghịch lửa dùng 'mustn't'." },
-            { q: "Patients are resting. Everyone ___ be quiet in the hospital.", hint: "💡 Bệnh nhân cần nghỉ ngơi: quy định bắt buộc phải giữ yên lặng ở bệnh viện.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Quy định bắt buộc giữ trật tự dùng 'must'." },
-            { q: "To protect our environment, people ___ throw plastic bags into rivers.", hint: "💡 Vứt rác nhựa xuống sông làm ô nhiễm môi trường: hành vi này bị cấm.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Cấm xả rác bừa bãi dùng 'mustn't'." },
-            { q: "To board an airplane, every passenger ___ show their passport or ID.", hint: "💡 Thủ tục lên máy bay: đây là quy định bắt buộc đối với mọi hành khách.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Quy định bắt buộc xuất trình giấy tờ dùng 'must'." },
-            { q: "You must not ___ your bicycle on the walkway for pedestrians.", hint: "💡 Đứng sau cụm 'must not' là động từ ở dạng nào?", opts: ["A. ride", "B. rides", "C. riding", "D. rode"], ans: "A", exp: "Sau 'must not' dùng động từ nguyên mẫu (ride)." },
-            { q: "The lake is very deep and the sign says 'No Swimming'. We ___ swim here.", hint: "💡 Biển báo ghi 'No Swimming': điều này có nghĩa là gì?", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Có biển cấm bơi thì tuyệt đối không được bơi (mustn't)." },
-            { q: "It is freezing cold in winter. You ___ wear a warm jacket.", hint: "💡 Thời tiết mùa đông buốt giá: việc cần thiết phải mặc áo ấm để giữ sức khỏe.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Điều rất cần thiết phải làm dùng 'must'." },
-            { q: "During an exam, students ___ look at their friends' papers.", hint: "💡 Quy chế thi cử: hành vi nhìn bài bạn là điều bị nghiêm cấm.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Nội quy cấm gian lận trong thi cử dùng 'mustn't'." },
-            { q: "When the plane is taking off, passengers must ___ their seatbelts.", hint: "💡 Động từ đứng sau 'must' phải giữ ở dạng nào?", opts: ["A. fasten", "B. fastens", "C. fastening", "D. fastened"], ans: "A", exp: "Sau 'must' là động từ nguyên mẫu (fasten)." },
-            { q: "You ___ bring food and drinks into the computer room.", hint: "💡 Phòng máy tính có quy định cấm mang đồ ăn nước uống để tránh hỏng thiết bị.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Nội quy cấm mang đồ ăn vào phòng máy dùng 'mustn't'." },
-            { q: "Before eating meals, everyone ___ wash their hands with soap.", hint: "💡 Quy tắc vệ sinh bắt buộc để phòng ngừa vi khuẩn gây bệnh.", opts: ["A. must", "B. mustn't", "C. couldn't", "D. can't"], ans: "A", exp: "Việc cần thiết bắt buộc phải làm vì vệ sinh dùng 'must'." }
+            { q: "There are ___ lemons on the tree in our garden.", hint: "💡 Đây là câu khẳng định và 'lemons' là danh từ đếm được số nhiều.", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "A", exp: "Câu khẳng định dùng 'some'." },
+            { q: "Are there ___ apples left in the basket?", hint: "💡 Chú ý dấu chấm hỏi ở cuối câu: Đây là câu hỏi nghi vấn.", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "B", exp: "Câu hỏi nghi vấn dùng 'any'." },
+            { q: "There isn't ___ juice in the fridge right now.", hint: "💡 Để ý từ phủ định 'isn't': Câu phủ định đi với từ chỉ số lượng nào?", opts: ["A. some", "B. any", "C. a few", "D. many"], ans: "B", exp: "Câu phủ định dùng 'any'." },
+            { q: "I have ___ close friends in my new primary school.", hint: "💡 'friends' là danh từ đếm được số nhiều. Muốn nói 'một vài người bạn' dùng từ nào?", opts: ["A. a few", "B. a little", "C. any", "D. much"], ans: "A", exp: "'a few' đi với danh từ đếm được số nhiều." },
+            { q: "I need ___ milk to make this pancake recipe.", hint: "💡 'milk' (sữa) là danh từ không đếm được. Để diễn tả 'một chút sữa' ta chọn từ nào?", opts: ["A. a few", "B. a little", "C. any", "D. many"], ans: "B", exp: "'a little' đi với danh từ không đếm được." },
+            { q: "There are ___ students playing games in the large schoolyard.", hint: "💡 Muốn diễn tả số lượng nhiều học sinh đi cùng giới từ 'of'.", opts: ["A. a lot of", "B. a few of", "C. any of", "D. a little of"], ans: "A", exp: "'a lot of' mang nghĩa là nhiều học sinh." },
+            { q: "Do you have ___ colored pencils in your pencil case?", hint: "💡 Đây là câu hỏi bắt đầu bằng 'Do you have...?'", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "B", exp: "Câu hỏi dùng 'any'." },
+            { q: "My grandmother baked ___ delicious cookies for us yesterday.", hint: "💡 Đây là câu kể khẳng định về những chiếc bánh quy.", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "A", exp: "Câu khẳng định dùng 'some'." },
+            { q: "There are only ___ coins in my pocket, just two or three.", hint: "💡 'coins' (đồng xu) là danh từ đếm được số nhiều, chỉ số lượng ít (2-3 đồng).", opts: ["A. a few", "B. a little", "C. any", "D. much"], ans: "A", exp: "'a few' đi với danh từ đếm được số nhiều." },
+            { q: "Please put ___ sugar into my warm tea. Just half a spoon.", hint: "💡 'sugar' (đường) là danh từ không đếm được.", opts: ["A. a few", "B. a little", "C. any", "D. many"], ans: "B", exp: "'a little' đi với danh từ không đếm được." },
+            { q: "He drank ___ water because he ran five kilometers.", hint: "💡 Uống rất nhiều nước sau khi chạy bộ (có 'of' phía sau).", opts: ["A. a lot of", "B. a few", "C. any", "D. many"], ans: "A", exp: "'a lot of' dùng được cho cả danh từ không đếm được 'water'." },
+            { q: "We don't have ___ butter to bake the birthday cake.", hint: "💡 Câu có trợ động từ phủ định 'don't have'.", opts: ["A. some", "B. any", "C. a few", "D. lots"], ans: "B", exp: "Câu phủ định dùng 'any'." },
+            { q: "There is ___ cheese on the kitchen table.", hint: "💡 Câu khẳng định chỉ một ít phô mai.", opts: ["A. some", "B. any", "C. a few", "D. many"], ans: "A", exp: "Câu khẳng định dùng 'some'." },
+            { q: "Only ___ birds are singing in the garden this cold morning.", hint: "💡 'birds' là danh từ đếm được số nhiều.", opts: ["A. a few", "B. a little", "C. any", "D. much"], ans: "A", exp: "'a few' đi với danh từ đếm được số nhiều." },
+            { q: "There is still ___ soup left in the bowl for you.", hint: "💡 'soup' (canh/súp) là danh từ không đếm được.", opts: ["A. a few", "B. a little", "C. any", "D. many"], ans: "B", exp: "'a little' đi với danh từ không đếm được." },
+            { q: "There are ___ books in the school library, thousands of them!", hint: "💡 Diễn tả số lượng cực kỳ nhiều và đi với giới từ 'of'.", opts: ["A. lots of", "B. a little of", "C. any", "D. a few of"], ans: "A", exp: "'lots of' mang nghĩa số lượng nhiều." },
+            { q: "Is there ___ bread left for breakfast?", hint: "💡 Câu hỏi nghi vấn với 'Is there...?'", opts: ["A. some", "B. any", "C. a few", "D. many"], ans: "B", exp: "Câu hỏi dùng 'any'." },
+            { q: "My dad bought ___ fresh vegetables at the supermarket.", hint: "💡 Câu kể khẳng định chỉ việc bố mua rau củ tươi.", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "A", exp: "Câu khẳng định dùng 'some'." },
+            { q: "She has ___ mistakes in her test, only one or two.", hint: "💡 'mistakes' (lỗi sai) là danh từ đếm được số nhiều.", opts: ["A. a few", "B. a little", "C. any", "D. much"], ans: "A", exp: "'a few' đi với danh từ đếm được số nhiều." },
+            { q: "Can you add ___ honey to my lemon drink, please?", hint: "💡 'honey' (mật ong) là danh từ không đếm được.", opts: ["A. a few", "B. a little", "C. any", "D. many"], ans: "B", exp: "'a little' dùng với danh từ không đếm được." }
         ]
     },
     3: {
         questions: [
-            { q: "I ___ wear a school uniform from Monday to Friday.", hint: "💡 Nhìn chủ ngữ: <span class='highlight-key'>I</span> đi với dạng nào của 'have to' ở hiện tại?", opts: ["A. have to", "B. has to", "C. had", "D. having to"], ans: "A", exp: "Chủ ngữ ngôi thứ nhất 'I' dùng 'have to'." },
-            { q: "My sister ___ wake up early because her class starts at 7 AM.", hint: "💡 Nhìn chủ ngữ: <span class='highlight-key'>MY SISTER</span> (ngôi thứ 3 số ít) đi với cụm từ nào?", opts: ["A. have to", "B. has to", "C. had", "D. having to"], ans: "B", exp: "Chủ ngữ số ít 'My sister' dùng 'has to'." },
-            { q: "Yesterday was Sunday, so Tom didn't ___ go to school.", hint: "💡 Nhớ lại: Sau trợ động từ phủ định <span class='highlight-key'>DIDN'T</span>, động từ theo sau giữ ở dạng nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Sau 'didn't' là động từ nguyên mẫu 'have to'." },
-            { q: "Last night, I ___ stay at home and do my homework.", hint: "💡 Chú ý mốc thời gian: <span class='highlight-key'>LAST NIGHT</span> (quá khứ) ➔ dùng dạng quá khứ của 'have to'.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Bắt buộc trong quá khứ dùng 'had to'." },
-            { q: "We have a big test tomorrow, so we ___ study hard tonight.", hint: "💡 Chủ ngữ <span class='highlight-key'>WE</span> (số nhiều) ở hiện tại đi với cụm từ nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Chủ ngữ số nhiều 'We' dùng 'have to'." },
-            { q: "My father ___ drive to work every morning because the office is far.", hint: "💡 Chủ ngữ <span class='highlight-key'>MY FATHER</span> (số ít) đi với dạng nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "B", exp: "Chủ ngữ số ít 'My father' dùng 'has to'." },
-            { q: "It is Sunday today! You don't ___ wake up at 6 AM.", hint: "💡 Sau trợ động từ phủ định <span class='highlight-key'>DON'T</span>, ta dùng cụm nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Sau 'don't' dùng dạng nguyên mẫu 'have to'." },
-            { q: "Yesterday, Mary was ill, so she ___ visit the doctor.", hint: "💡 Nhìn dấu hiệu thời gian: <span class='highlight-key'>YESTERDAY</span> và <span class='highlight-key'>WAS</span> (quá khứ).", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Sự việc bắt buộc đã diễn ra trong quá khứ dùng 'had to'." },
-            { q: "Does your brother ___ clean his bedroom every weekend?", hint: "💡 Trong câu hỏi bắt đầu bằng trợ động từ <span class='highlight-key'>DOES</span>, động từ đi theo giữ ở dạng nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Trong câu hỏi với 'Does', động từ trở về nguyên mẫu 'have to'." },
-            { q: "He has to ___ his dog for a walk every evening.", hint: "💡 Đứng ngay sau cụm 'has to' là động từ ở dạng nào?", opts: ["A. take", "B. takes", "C. taking", "D. took"], ans: "A", exp: "Sau 'has to' luôn là động từ nguyên mẫu (take)." },
-            { q: "Last week, we ___ wear warm jackets because it was freezing.", hint: "💡 Dấu hiệu thời gian: <span class='highlight-key'>LAST WEEK</span> chỉ quá khứ.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Bắt buộc trong quá khứ dùng 'had to'." },
-            { q: "Linh has a lot of chores. She has to ___ the dishes after dinner.", hint: "💡 Xác định dạng của động từ hành động đứng sau 'has to'.", opts: ["A. wash", "B. washes", "C. washing", "D. washed"], ans: "A", exp: "Sau 'has to' dùng động từ nguyên mẫu (wash)." },
-            { q: "Do they ___ wear helmets when they ride motorbikes?", hint: "💡 Sau trợ động từ hỏi <span class='highlight-key'>DO</span>, ta dùng cụm từ nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Trong câu hỏi với 'Do they', dùng 'have to'." },
-            { q: "Yesterday, I missed the bus, so I ___ walk all the way home.", hint: "💡 Hành động đã diễn ra hôm qua: <span class='highlight-key'>YESTERDAY</span>.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Hành động bắt buộc phải làm trong quá khứ dùng 'had to'." },
-            { q: "Today is a holiday. Peter doesn't ___ do any homework.", hint: "💡 Sau trợ từ phủ định <span class='highlight-key'>DOESN'T</span>, động từ trở về dạng nguyên mẫu nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Sau 'doesn't' dùng dạng nguyên mẫu 'have to'." },
-            { q: "She has to ___ her teeth before going to sleep.", hint: "💡 Chọn dạng nguyên mẫu không chia đứng sau 'has to'.", opts: ["A. brush", "B. brushes", "C. brushing", "D. brushed"], ans: "A", exp: "Sau 'has to' là động từ nguyên mẫu (brush)." },
-            { q: "The rain was very heavy yesterday, so they ___ stay inside the tent.", hint: "💡 Dấu hiệu: <span class='highlight-key'>YESTERDAY</span> và <span class='highlight-key'>WAS</span> (quá khứ).", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Quá khứ phải làm gì dùng 'had to'." },
-            { q: "My mother ___ prepare breakfast for the family every morning.", hint: "💡 Chủ ngữ <span class='highlight-key'>MY MOTHER</span> (ngôi thứ 3 số ít) đi với cụm từ nào?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "B", exp: "Chủ ngữ số ít 'My mother' dùng 'has to'." },
-            { q: "Two days ago, Nam lost his key, so he ___ call his parents for help.", hint: "💡 Dấu hiệu thời gian: <span class='highlight-key'>TWO DAYS AGO</span> (quá khứ).", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Bắt buộc phải làm gì trong quá khứ dùng 'had to'." },
-            { q: "You have to ___ quiet when the baby is sleeping.", hint: "💡 Sau 'have to' cần chọn dạng nguyên mẫu của động từ 'to be'.", opts: ["A. be", "B. is", "C. are", "D. being"], ans: "A", exp: "Sau 'have to' là động từ nguyên mẫu (be)." }
+            { q: "My birthday is ___ 5th October.", hint: "💡 Mốc thời gian là ngày tháng cụ thể trong năm. Giới từ nào đi với ngày tháng cụ thể?", opts: ["A. in", "B. on", "C. at", "D. under"], ans: "B", exp: "Ngày tháng cụ thể dùng giới từ 'on'." },
+            { q: "We have an English lesson ___ Monday morning.", hint: "💡 Mốc thời gian chỉ các thứ trong tuần (Monday).", opts: ["A. in", "B. on", "C. at", "D. between"], ans: "B", exp: "Thứ trong tuần dùng giới từ 'on'." },
+            { q: "School always starts ___ 7 o'clock every morning.", hint: "💡 Đây là giờ giấc cố định trong ngày.", opts: ["A. in", "B. on", "C. at", "D. opposite"], ans: "C", exp: "Giờ giấc cố định dùng giới từ 'at'." },
+            { q: "It is usually very hot and sunny ___ summer.", hint: "💡 'summer' là mùa trong năm. Giới từ nào đi với các mùa?", opts: ["A. in", "B. on", "C. at", "D. above"], ans: "A", exp: "Mùa trong năm dùng giới từ 'in'." },
+            { q: "The new bridge was built ___ 2026.", hint: "💡 Mốc thời gian chỉ năm (2026). Giới từ nào đi cùng năm?", opts: ["A. in", "B. on", "C. at", "D. behind"], ans: "A", exp: "Năm dùng giới từ 'in'." },
+            { q: "We usually travel to the seaside ___ July.", hint: "💡 'July' là tháng trong năm. Giới từ nào đứng trước tên tháng?", opts: ["A. in", "B. on", "C. at", "D. next to"], ans: "A", exp: "Tháng trong năm dùng giới từ 'in'." },
+            { q: "I enjoy reading fairy tales ___ the evening.", hint: "💡 Đây là buổi trong ngày (the morning, the afternoon, the evening).", opts: ["A. in", "B. on", "C. at", "D. under"], ans: "A", exp: "Buổi trong ngày dùng 'in the evening'." },
+            { q: "Owls sleep during the day and hunt ___ night.", hint: "💡 Cụm từ cố định chỉ thời điểm ban đêm.", opts: ["A. in", "B. on", "C. at", "D. between"], ans: "C", exp: "Thời điểm ban đêm dùng cụm cố định 'at night'." },
+            { q: "My family likes to go camping ___ the weekend.", hint: "💡 Cụm từ chỉ thời điểm dịp cuối tuần.", opts: ["A. in", "B. on", "C. at", "D. inside"], ans: "C", exp: "Dịp cuối tuần dùng 'at the weekend'." },
+            { q: "The cute cat is sleeping ___ the table, right on the floor.", hint: "💡 Con mèo nằm dưới sàn, ở vị trí phía dưới cái bàn.", opts: ["A. under", "B. above", "C. between", "D. in"], ans: "A", exp: "Ở phía dưới bề mặt dùng 'under'." },
+            { q: "The toy store is ___ the bakery and the bookstore.", hint: "💡 Để ý từ 'and' nối hai địa điểm: ở chính giữa hai vật.", opts: ["A. next to", "B. behind", "C. between", "D. under"], ans: "C", exp: "Cấu trúc ở giữa 2 địa điểm: 'between ... and'." },
+            { q: "Please sit ___ me so we can share the textbook.", hint: "💡 Ngồi ngay sát bên cạnh ai đó để cùng đọc sách.", opts: ["A. next to", "B. between", "C. under", "D. in front"], ans: "A", exp: "Ngay bên cạnh dùng 'next to'." },
+            { q: "The teacher is standing ___ the class, writing on the board.", hint: "💡 Đứng ở vị trí phía trước cả lớp học.", opts: ["A. in front of", "B. behind", "C. under", "D. inside"], ans: "A", exp: "Phía trước dùng 'in front of'." },
+            { q: "The post office is ___ the bank, on the other side of the street.", hint: "💡 Nằm ở phía đối diện, bên kia con đường.", opts: ["A. opposite", "B. behind", "C. under", "D. next"], ans: "A", exp: "Đối diện qua đường dùng 'opposite'." },
+            { q: "The round clock is hanging on the wall ___ the blackboard.", hint: "💡 Cái đồng hồ treo ở vị trí cao hơn, phía trên bảng nhưng không chạm mặt.", opts: ["A. under", "B. above", "C. between", "D. behind"], ans: "B", exp: "Phía trên không chạm mặt dùng 'above'." },
+            { q: "The puppy is hiding ___ the sofa because of the thunder.", hint: "💡 Con cún sợ hãi trốn ở phía sau cái ghế sofa.", opts: ["A. behind", "B. between", "C. next", "D. above"], ans: "A", exp: "Phía sau dùng 'behind'." },
+            { q: "It is freezing and raining. Don't play ___ in the garden!", hint: "💡 Ngoài vườn chịu mưa gió: vị trí bên ngoài.", opts: ["A. inside", "B. outside", "C. between", "D. under"], ans: "B", exp: "Bên ngoài trời dùng 'outside'." },
+            { q: "Come ___ the living room! The warm fire is burning.", hint: "💡 Bước vào trong phòng khách để sưởi ấm: vị trí bên trong.", opts: ["A. inside", "B. outside", "C. behind", "D. opposite"], ans: "A", exp: "Bên trong dùng 'inside'." },
+            { q: "We always do morning exercises ___ the morning.", hint: "💡 Buổi trong ngày: buổi sáng.", opts: ["A. in", "B. on", "C. at", "D. under"], ans: "A", exp: "Buổi trong ngày dùng 'in the morning'." },
+            { q: "We will have a great family party ___ Sunday.", hint: "💡 Ngày chủ nhật trong tuần.", opts: ["A. in", "B. on", "C. at", "D. between"], ans: "B", exp: "Thứ trong tuần dùng giới từ 'on'." }
         ]
     },
     4: {
         questions: [
-            { q: "___ I help you carry those heavy shopping bags, Grandma?", hint: "💡 Khi muốn ngỏ ý giúp đỡ một người khác, ta mở đầu câu hỏi bằng từ nào?", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Can't"], ans: "A", exp: "'Shall I...?' dùng để đưa ra lời đề nghị giúp đỡ người khác." },
-            { q: "You have a bad toothache. You ___ go to see the dentist.", hint: "💡 Đưa ra lời khuyên chân thành cho người đang bị đau răng: bạn nên làm gì?", opts: ["A. should", "B. shouldn't", "C. mustn't", "D. couldn't"], ans: "A", exp: "Đưa ra lời khuyên nên làm gì dùng 'should'." },
-            { q: "It is sunny outside. ___ we go to the playground for a game?", hint: "💡 Cấu trúc rủ bạn bè cùng làm một việc gì đó: <span class='highlight-key'>___ we + V?</span>.", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall we...?' dùng để rủ rê, gợi ý cùng làm gì." },
-            { q: "You look exhausted. You should ___ a short break right now.", hint: "💡 Sau lời khuyên 'should', động từ theo sau giữ ở dạng nào?", opts: ["A. take", "B. takes", "C. taking", "D. took"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (take)." },
-            { q: "You have a sore throat. You ___ drink ice-cold water.", hint: "💡 Đang bị viêm họng thì có nên uống nước đá lạnh không?", opts: ["A. should", "B. shouldn't", "C. must", "D. shall"], ans: "B", exp: "Khuyên không nên làm điều có hại cho sức khỏe dùng 'shouldn't'." },
-            { q: "It is getting dark. ___ I turn on the living room lights?", hint: "💡 Lời ngỏ ý giúp đỡ người trong nhà: hỏi xem có nên bật đèn lên không.", opts: ["A. Shall", "B. Mustn't", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall I...?' dùng để đề nghị làm một việc giúp mọi người." },
-            { q: "To stay healthy, children should ___ plenty of fresh vegetables.", hint: "💡 Động từ đứng sau 'should' cần ở dạng nguyên mẫu không chia.", opts: ["A. eat", "B. eats", "C. eating", "D. ate"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (eat)." },
-            { q: "Tomorrow is a school day. You ___ stay up past midnight playing games.", hint: "💡 Lời khuyên về thói quen sinh hoạt: có nên thức khuya chơi game trước ngày đi học?", opts: ["A. should", "B. shouldn't", "C. can", "D. shall"], ans: "B", exp: "Khuyên không nên thức khuya chơi game dùng 'shouldn't'." },
-            { q: "We have some bread and cheese. ___ we make some sandwiches for lunch?", hint: "💡 Cấu trúc gợi ý một ý tưởng ăn trưa cùng nhau với chủ ngữ 'we'.", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall we...?' là cấu trúc rủ rê, gợi ý hoạt động chung." },
-            { q: "You have an important test tomorrow. You shouldn't ___ TV all evening.", hint: "💡 Đứng sau 'shouldn't' là động từ ở dạng nào?", opts: ["A. watch", "B. watches", "C. watching", "D. watched"], ans: "A", exp: "Sau 'shouldn't' là động từ nguyên mẫu (watch)." },
-            { q: "The floor was just mopped and is slippery. You should ___ slowly.", hint: "💡 Sàn nhà trơn trượt: lời khuyên nhắc nhở nên di chuyển cẩn thận.", opts: ["A. walk", "B. walks", "C. walking", "D. walked"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (walk)." },
-            { q: "You look thirsty. ___ I bring you a glass of orange juice?", hint: "💡 Thấy bạn khát nước và muốn mang nước cho bạn: cấu trúc đề nghị giúp đỡ.", opts: ["A. Shall", "B. Mustn't", "C. Shouldn't", "D. Can't"], ans: "A", exp: "'Shall I...?' dùng để đề nghị phục vụ hoặc giúp đỡ ai đó." },
-            { q: "You ___ speak rudely to your teachers and grandparents.", hint: "💡 Nói chuyện vô lễ với người lớn tuổi là việc không nên làm.", opts: ["A. should", "B. shouldn't", "C. can", "D. shall"], ans: "B", exp: "Khuyên răn không được cư xử bất lịch sự dùng 'shouldn't'." },
-            { q: "Where ___ we meet this Saturday afternoon? At the park?", hint: "💡 Câu hỏi bàn bạc, thống nhất địa điểm gặp gỡ với chủ ngữ 'we'.", opts: ["A. shall", "B. must", "C. shouldn't", "D. couldn't"], ans: "A", exp: "'Where shall we meet?' dùng để bàn bạc, gợi ý địa điểm." },
-            { q: "To protect your teeth from cavities, you shouldn't ___ too many sweets.", hint: "💡 Động từ đứng sau 'shouldn't' có cần chia thì hay thêm đuôi không?", opts: ["A. eat", "B. eats", "C. eating", "D. ate"], ans: "A", exp: "Sau 'shouldn't' là động từ nguyên mẫu (eat)." },
-            { q: "Mom, you look tired. ___ I wash the dishes for you tonight?", hint: "💡 Đề nghị phụ giúp mẹ làm việc nhà: cấu trúc mở đầu bằng từ gì?", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall I...?' dùng khi ngỏ ý muốn làm việc gì giúp người khác." },
-            { q: "It is freezing outside. You should ___ on a warm woolen hat.", hint: "💡 Đứng sau 'should' cần chọn dạng nguyên mẫu của động từ.", opts: ["A. put", "B. puts", "C. putting", "D. putted"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (put)." },
-            { q: "What time ___ we start our picnic tomorrow morning?", hint: "💡 Câu hỏi thảo luận giờ giấc bắt đầu chuyến đi cùng nhau.", opts: ["A. shall", "B. must", "C. shouldn't", "D. can't"], ans: "A", exp: "'What time shall we...?' dùng để cùng nhau quyết định giờ giấc." },
-            { q: "If you feel dizzy and unwell, you should ___ down on the sofa.", hint: "💡 Lời khuyên chăm sóc bản thân khi bị chóng mặt: chọn động từ nguyên thể thích hợp.", opts: ["A. lie", "B. lies", "C. lying", "D. lay"], ans: "A", exp: "Sau 'should' là động từ nguyên mẫu (lie)." },
-            { q: "In the hospital hallway, visitors shouldn't ___ loudly.", hint: "💡 Hành động hò hét ở hành lang bệnh viện là điều không nên làm.", opts: ["A. shout", "B. shouts", "C. shouting", "D. shouted"], ans: "A", exp: "Sau 'shouldn't' là động từ nguyên mẫu (shout)." }
+            { q: "This is the friendly boy ___ helped me carry the heavy box.", hint: "💡 'The boy' là danh từ chỉ người. Chọn đại từ quan hệ thích hợp.", opts: ["A. who", "B. which", "C. where", "D. when"], ans: "A", exp: "'The boy' là người nên dùng 'who'." },
+            { q: "There aren't ___ bananas left in the kitchen basket.", hint: "💡 Câu phủ định với 'aren't' và danh từ đếm được số nhiều.", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "B", exp: "Câu phủ định dùng 'any'." },
+            { q: "We are going to visit the water park ___ Saturday.", hint: "💡 'Saturday' là thứ trong tuần.", opts: ["A. in", "B. on", "C. at", "D. under"], ans: "B", exp: "Thứ trong tuần đi với giới từ 'on'." },
+            { q: "She loves drawing pictures ___ painting colors.", hint: "💡 Hai hoạt động sở thích cùng được bổ sung thêm.", opts: ["A. and", "B. but", "C. because", "D. where"], ans: "A", exp: "Nối 2 ý bổ sung dùng 'and'." },
+            { q: "Your shoes are ___ the bed. You need to look down on the floor.", hint: "💡 Vị trí ở phía dưới gầm giường.", opts: ["A. under", "B. above", "C. between", "D. inside"], ans: "A", exp: "Ở phía dưới dùng 'under'." },
+            { q: "That is the hospital ___ my aunt works as a dedicated nurse.", hint: "💡 'The hospital' là bệnh viện (nơi chốn làm việc).", opts: ["A. who", "B. which", "C. where", "D. because"], ans: "C", exp: "Chỉ nơi chốn dùng 'where'." },
+            { q: "Could you give me ___ water? I am very thirsty.", hint: "💡 'water' là danh từ không đếm được, dùng để chỉ một chút nước.", opts: ["A. a few", "B. a little", "C. any", "D. many"], ans: "B", exp: "'a little' đi với danh từ không đếm được 'water'." },
+            { q: "The cartoon movie starts ___ 8 o'clock tonight.", hint: "💡 Mốc thời gian chỉ giờ giấc cố định.", opts: ["A. in", "B. on", "C. at", "D. opposite"], ans: "C", exp: "Giờ giấc dùng giới từ 'at'." },
+            { q: "The baby is crying loudly ___ he lost his teddy bear.", hint: "💡 Vế sau nêu lý do vì sao em bé khóc.", opts: ["A. and", "B. but", "C. because", "D. which"], ans: "C", exp: "Nêu lý do, nguyên nhân dùng 'because'." },
+            { q: "There is a tall apple tree right ___ our house, near the front gate.", hint: "💡 Vị trí ở phía trước ngôi nhà, cạnh cổng trước.", opts: ["A. in front of", "B. between", "C. under", "D. above"], ans: "A", exp: "Phía trước dùng 'in front of'." },
+            { q: "I found the key ___ opens the treasure box.", hint: "💡 'The key' (chìa khóa) là đồ vật.", opts: ["A. who", "B. which", "C. where", "D. when"], ans: "B", exp: "Đồ vật dùng đại từ quan hệ 'which'." },
+            { q: "She invited ___ classmates to her small birthday party.", hint: "💡 'classmates' là danh từ đếm được số nhiều (một vài người bạn).", opts: ["A. a few", "B. a little", "C. any", "D. much"], ans: "A", exp: "'a few' đi với danh từ đếm được số nhiều." },
+            { q: "It often snows in the north ___ winter.", hint: "💡 Mốc thời gian chỉ mùa trong năm (winter).", opts: ["A. in", "B. on", "C. at", "D. behind"], ans: "A", exp: "Mùa trong năm dùng giới từ 'in'." },
+            { q: "He studied very hard, ___ he didn't pass the exam.", hint: "💡 Chăm chỉ nhưng không đỗ: hai vế trái ngược nhau.", opts: ["A. and", "B. but", "C. because", "D. where"], ans: "B", exp: "Chỉ sự tương phản dùng 'but'." },
+            { q: "The bookstore is ___ the flower shop and the pharmacy.", hint: "💡 Vị trí ở giữa hai cửa hàng, có từ 'and'.", opts: ["A. between", "B. behind", "C. next", "D. under"], ans: "A", exp: "Ở giữa 2 nơi dùng 'between ... and'." },
+            { q: "Did you take ___ nice photos during your holiday?", hint: "💡 Câu hỏi nghi vấn trong quá khứ.", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "B", exp: "Câu hỏi nghi vấn dùng 'any'." },
+            { q: "We like going swimming ___ the weekend.", hint: "💡 Cụm từ thời gian chỉ dịp cuối tuần.", opts: ["A. in", "B. on", "C. at", "D. inside"], ans: "C", exp: "Dịp cuối tuần dùng 'at the weekend'." },
+            { q: "This is the cozy library ___ we read interesting comic books.", hint: "💡 'The library' là thư viện (nơi chốn).", opts: ["A. who", "B. which", "C. where", "D. but"], ans: "C", exp: "Chỉ nơi chốn dùng 'where'." },
+            { q: "Wash your hands carefully ___ you eat your lunch.", hint: "💡 Chỉ mốc thời điểm khi ăn trưa.", opts: ["A. and", "B. but", "C. because", "D. when"], ans: "D", exp: "Chỉ mốc thời điểm dùng 'when'." },
+            { q: "There are ___ apples on the tree, more than fifty!", hint: "💡 Diễn tả số lượng nhiều và đi kèm từ 'of'.", opts: ["A. a lot of", "B. a little of", "C. any", "D. a few of"], ans: "A", exp: "Số lượng nhiều dùng 'a lot of'." }
         ]
     },
     5: {
         questions: [
-            { q: "Look at the sign 'No Dogs Allowed'. You ___ bring your dog inside.", hint: "💡 Biển báo cấm chó vào: hành động này là điều bị cấm tuyệt đối hay được phép?", opts: ["A. can", "B. mustn't", "C. should", "D. shall"], ans: "B", exp: "Biển cấm rõ ràng dùng 'mustn't'." },
-            { q: "When Jack was only four years old, he ___ read chapter books.", hint: "💡 Mốc thời gian: <span class='highlight-key'>WHEN JACK WAS FOUR</span> (quá khứ). Một em bé 4 tuổi thường chưa thể đọc sách dày.", opts: ["A. can't", "B. couldn't", "C. mustn't", "D. shouldn't"], ans: "B", exp: "Nói về việc không thể làm trong quá khứ dùng 'couldn't'." },
-            { q: "Yesterday was my grandma's birthday, so I ___ buy a flowers bouquet.", hint: "💡 Việc bắt buộc phải làm trong quá khứ: <span class='highlight-key'>YESTERDAY</span>.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Quá khứ phải làm gì dùng 'had to'." },
-            { q: "My older brother is a strong swimmer. He can ___ very fast.", hint: "💡 Động từ đứng ngay sau modal verb 'can' phải ở dạng nào?", opts: ["A. swim", "B. swims", "C. swimming", "D. swam"], ans: "A", exp: "Sau 'can' dùng động từ nguyên mẫu (swim)." },
-            { q: "Tomorrow is Sunday, so I don't ___ wake up early.", hint: "💡 Sau trợ động từ phủ định <span class='highlight-key'>DON'T</span>, cụm từ nào được dùng?", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "A", exp: "Sau 'don't' dùng dạng nguyên mẫu 'have to'." },
-            { q: "Lions are powerful hunters, but they ___ fly like eagles.", hint: "💡 Khả năng tự nhiên: Sư tử có cánh để bay lượn trên bầu trời không?", opts: ["A. can", "B. can't", "C. must", "D. could"], ans: "B", exp: "Sư tử không có khả năng bay (can't)." },
-            { q: "It was extremely noisy, so I ___ hear what the teacher said.", hint: "💡 Thời điểm trong quá khứ (<span class='highlight-key'>IT WAS</span>): phòng quá ồn dẫn đến không nghe thấy được.", opts: ["A. can't", "B. couldn't", "C. mustn't", "D. shouldn't"], ans: "B", exp: "Không thể nghe thấy trong quá khứ dùng 'couldn't'." },
-            { q: "Pedestrians must ___ both left and right before crossing.", hint: "💡 Sau từ bắt buộc 'must', động từ cần giữ ở dạng nào?", opts: ["A. look", "B. looks", "C. looking", "D. looked"], ans: "A", exp: "Sau 'must' là động từ nguyên mẫu (look)." },
-            { q: "It's Saturday morning! ___ we ride our bicycles to the lake, Peter?", hint: "💡 Cấu trúc rủ bạn cùng đi đạp xe: <span class='highlight-key'>___ we + V?</span>.", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall we...?' dùng để rủ rê bạn bè tham gia hoạt động." },
-            { q: "Dolphins are very clever sea animals. They ___ learn fun tricks.", hint: "💡 Cá heo rất thông minh, vậy chúng có khả năng học các trò xiếc không?", opts: ["A. can", "B. can't", "C. mustn't", "D. shouldn't"], ans: "A", exp: "Cá heo có khả năng biểu diễn trò xiếc (can)." },
-            { q: "She has a pet kitten, so she has to ___ it twice every day.", hint: "💡 Đứng sau 'has to' là động từ ở dạng nào?", opts: ["A. feed", "B. feeds", "C. feeding", "D. fed"], ans: "A", exp: "Sau 'has to' là động từ nguyên mẫu (feed)." },
-            { q: "In the art gallery, visitors ___ touch the ancient paintings.", hint: "💡 Quy định bảo tàng mỹ thuật: hành vi sờ tay vào tranh cổ bị cấm tuyệt đối.", opts: ["A. must", "B. mustn't", "C. can", "D. could"], ans: "B", exp: "Quy định cấm sờ hiện vật dùng 'mustn't'." },
-            { q: "When my aunt was ten years old, she ___ speak two languages.", hint: "💡 Dấu hiệu: <span class='highlight-key'>WHEN MY AUNT WAS TEN</span> nói về khả năng trong quá khứ.", opts: ["A. can", "B. could", "C. must", "D. shall"], ans: "B", exp: "Khả năng trong quá khứ dùng 'could'." },
-            { q: "Last night, the television was broken, so we ___ read books instead.", hint: "💡 Sự việc đã xảy ra tối qua: <span class='highlight-key'>LAST NIGHT</span>.", opts: ["A. have to", "B. has to", "C. had to", "D. having to"], ans: "C", exp: "Bắt buộc phải làm gì trong quá khứ dùng 'had to'." },
-            { q: "You should not ___ your sister's crayons without asking her first.", hint: "💡 Động từ đứng sau cụm 'should not' giữ ở dạng nguyên thể nào?", opts: ["A. take", "B. takes", "C. taking", "D. took"], ans: "A", exp: "Sau 'should not' là động từ nguyên mẫu (take)." },
-            { q: "___ you swim across the river when you were seven years old?", hint: "💡 Nhìn mốc thời gian: <span class='highlight-key'>WHEN YOU WERE SEVEN</span> để chọn từ hỏi khả năng trong quá khứ.", opts: ["A. Can", "B. Could", "C. Must", "D. Shall"], ans: "B", exp: "Hỏi khả năng trong quá khứ dùng 'Could you...?'." },
-            { q: "The sign says 'Danger: Deep Water'. Children ___ play near the edge.", hint: "💡 Biển báo nước sâu nguy hiểm: cấm trẻ em chơi đùa gần mép nước.", opts: ["A. must", "B. mustn't", "C. should", "D. can"], ans: "B", exp: "Cấm hành vi nguy hiểm dùng 'mustn't'." },
-            { q: "You look cold and shivering. ___ I make you a cup of hot cocoa?", hint: "💡 Thấy bạn đang run vì lạnh và ngỏ ý pha ca cao nóng giúp bạn.", opts: ["A. Shall", "B. Must", "C. Shouldn't", "D. Couldn't"], ans: "A", exp: "'Shall I...?' dùng để đề nghị giúp đỡ người khác." },
-            { q: "She has practiced singing for years. She can ___ high notes perfectly.", hint: "💡 Đứng sau 'can' là động từ ở dạng nào?", opts: ["A. hit", "B. hits", "C. hitting", "D. hitted"], ans: "A", exp: "Sau 'can' là động từ nguyên mẫu (hit)." },
-            { q: "All car drivers have to ___ their seatbelts while driving.", hint: "💡 Động từ đứng ngay sau 'have to' phải ở dạng nguyên mẫu nào?", opts: ["A. wear", "B. wears", "C. wearing", "D. wore"], ans: "A", exp: "Sau 'have to' dùng động từ nguyên mẫu (wear)." }
+            { q: "The bus driver ___ drives our school bus is very polite.", hint: "💡 'The bus driver' (tài xế xe buýt) là từ chỉ người.", opts: ["A. who", "B. which", "C. where", "D. when"], ans: "A", exp: "'The bus driver' là người nên dùng 'who'." },
+            { q: "My little brother was born ___ 2020.", hint: "💡 Mốc thời gian chỉ năm (2020).", opts: ["A. in", "B. on", "C. at", "D. under"], ans: "A", exp: "Năm dùng giới từ 'in'." },
+            { q: "Put ___ butter on the warm bread, please. Not too much.", hint: "💡 'butter' (bơ) là danh từ không đếm được.", opts: ["A. a few", "B. a little", "C. any", "D. many"], ans: "B", exp: "'a little' đi với danh từ không đếm được." },
+            { q: "The family portrait hangs on the wall ___ the fireplace.", hint: "💡 Bức tranh treo ở vị trí cao hơn phía trên lò sưởi.", opts: ["A. under", "B. above", "C. between", "D. inside"], ans: "B", exp: "Phía trên không tiếp xúc mặt dùng 'above'." },
+            { q: "He jumped with joy ___ he received a great gift.", hint: "💡 Vế sau nêu lý do bạn ấy nhảy cẫng lên vì vui sướng.", opts: ["A. and", "B. but", "C. because", "D. which"], ans: "C", exp: "Nêu nguyên nhân, lý do dùng 'because'." },
+            { q: "Where is the red pen ___ I gave you yesterday?", hint: "💡 'The red pen' là cây bút (đồ vật).", opts: ["A. who", "B. which", "C. where", "D. when"], ans: "B", exp: "Đồ vật dùng đại từ quan hệ 'which'." },
+            { q: "Are there ___ monkeys in this zoo?", hint: "💡 Câu hỏi nghi vấn về loài khỉ trong sở thú.", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "B", exp: "Câu hỏi dùng 'any'." },
+            { q: "The national holiday is ___ 2nd September.", hint: "💡 Ngày tháng cụ thể trong năm.", opts: ["A. in", "B. on", "C. at", "D. behind"], ans: "B", exp: "Ngày tháng cụ thể dùng giới từ 'on'." },
+            { q: "The sweet kitten is sitting ___ me on the sofa.", hint: "💡 Vị trí ngay sát bên cạnh.", opts: ["A. next to", "B. between", "C. under", "D. above"], ans: "A", exp: "Ngay sát bên cạnh dùng 'next to'." },
+            { q: "She ran as fast as she could, ___ she still missed the bus.", hint: "💡 Chạy rất nhanh nhưng vẫn lỡ chuyến xe: hai ý trái ngược nhau.", opts: ["A. and", "B. but", "C. because", "D. where"], ans: "B", exp: "Chỉ sự tương phản dùng 'but'." },
+            { q: "This is the playground ___ children play soccer every afternoon.", hint: "💡 'The playground' là sân chơi (nơi chốn).", opts: ["A. who", "B. which", "C. where", "D. because"], ans: "C", exp: "Chỉ nơi chốn dùng 'where'." },
+            { q: "He only has ___ toy cars, around four cars.", hint: "💡 'toy cars' là danh từ đếm được số nhiều (chỉ số lượng ít).", opts: ["A. a few", "B. a little", "C. any", "D. much"], ans: "A", exp: "'a few' đi với danh từ đếm được số nhiều." },
+            { q: "Bright stars appear in the sky ___ night.", hint: "💡 Cụm từ cố định chỉ thời điểm ban đêm.", opts: ["A. in", "B. on", "C. at", "D. inside"], ans: "C", exp: "Thời điểm ban đêm dùng cụm 'at night'." },
+            { q: "It is a sunny day. The children are playing ___ in the garden.", hint: "💡 Vị trí ở bên ngoài trời.", opts: ["A. inside", "B. outside", "C. behind", "D. under"], ans: "B", exp: "Bên ngoài trời dùng 'outside'." },
+            { q: "You should wear a helmet ___ you ride your bicycle.", hint: "💡 Chỉ mốc thời điểm khi đi xe đạp.", opts: ["A. and", "B. but", "C. because", "D. when"], ans: "D", exp: "Chỉ thời điểm dùng 'when'." },
+            { q: "There are ___ fresh lemons in the kitchen.", hint: "💡 Câu kể khẳng định về những quả chanh.", opts: ["A. some", "B. any", "C. a little", "D. much"], ans: "A", exp: "Câu khẳng định dùng 'some'." },
+            { q: "The cinema is ___ the restaurant, across the street.", hint: "💡 Vị trí ở phía bên kia đường, đối diện nhau.", opts: ["A. opposite", "B. between", "C. behind", "D. under"], ans: "A", exp: "Đối diện dùng 'opposite'." },
+            { q: "The clown ___ made funny balloon animals was loved by everyone.", hint: "💡 'The clown' (chú hề) là danh từ chỉ người.", opts: ["A. who", "B. which", "C. where", "D. because"], ans: "A", exp: "Chỉ người dùng đại từ quan hệ 'who'." },
+            { q: "Beautiful flowers bloom everywhere ___ spring.", hint: "💡 'spring' là mùa xuân (mùa trong năm).", opts: ["A. in", "B. on", "C. at", "D. next to"], ans: "A", exp: "Mùa trong năm dùng giới từ 'in'." },
+            { q: "There isn't ___ milk in the glass.", hint: "💡 Câu phủ định với 'isn't' và danh từ không đếm được 'milk'.", opts: ["A. some", "B. any", "C. a few", "D. many"], ans: "B", exp: "Câu phủ định dùng 'any'." }
         ]
     }
 };
@@ -603,7 +608,7 @@ function renderExercises() {
 }
 
 function getBadge(score) {
-    if (score === 20) return "🏆 BẬC THẦY MODAL VERBS (20/20)";
+    if (score === 20) return "🏆 XUẤT SẮC TUYỆT ĐỐI (20/20)";
     if (score >= 16) return "🌟 HUY HIỆU THÔNG THÁI (Rất Giỏi)";
     if (score >= 12) return "👍 HUY HIỆU TẬP TRUNG (Khá)";
     return "💪 HUY HIỆU CỐ GẮNG (Cần luyện thêm)";
@@ -650,7 +655,7 @@ function checkExercise(exNum) {
             }
         } else {
             qDiv.className = "question-card incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
-            expDiv.innerHTML = `⚠️ Em chưa chọn đáp án! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
+            expDiv.innerHTML = `⚠️️ Em chưa chọn đáp án! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
             expDiv.style.color = "var(--warning)";
             statusText = `<b>Chưa chọn</b> (Đáp án đúng: ${item.ans})`;
         }
