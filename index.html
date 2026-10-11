@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ôn Tập 4 Thì Tiếng Anh & Vận Dụng Ngữ Pháp - Movers</title>
+    <title>Luyện Tập Chuyên Sâu Ngữ Pháp & Từ Vựng Movers (Phần 11, 13, 14)</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -113,7 +113,7 @@
             background: var(--card-bg);
             border-radius: 14px;
             padding: 16px 20px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             border: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -139,28 +139,39 @@
             box-shadow: 0 0 0 3px var(--primary-light);
         }
 
-        /* TABS */
+        /* TABS SECTION */
+        .tabs-wrapper {
+            margin-bottom: 20px;
+        }
+        .tab-group-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
         .tab-nav {
             display: flex;
             gap: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             overflow-x: auto;
             padding-bottom: 4px;
         }
         .tab-btn {
             flex: 1;
-            min-width: 90px;
-            padding: 11px 16px;
-            border: none;
+            min-width: 110px;
+            padding: 10px 14px;
             background: var(--card-bg);
             color: var(--text-sub);
             border-radius: 10px;
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            border: 1px solid var(--border);
+            border: 1.5px solid var(--border);
             transition: all 0.2s;
             text-align: center;
+            white-space: nowrap;
         }
         .tab-btn:hover {
             color: var(--primary);
@@ -173,7 +184,30 @@
             box-shadow: 0 4px 8px rgba(79, 70, 229, 0.25);
         }
 
-        /* EXERCISE PANEL */
+        /* ANSWER TABS */
+        .tab-btn.ans-tab {
+            background: #f1f5f9;
+            color: #94a3b8;
+            border-style: dashed;
+            cursor: not-allowed;
+        }
+        .tab-btn.ans-tab.unlocked {
+            background: #ecfdf5;
+            color: #047857;
+            border: 1.5px solid #10b981;
+            cursor: pointer;
+        }
+        .tab-btn.ans-tab.unlocked:hover {
+            background: #d1fae5;
+        }
+        .tab-btn.ans-tab.active {
+            background: #059669;
+            color: #ffffff;
+            border-color: #059669;
+            box-shadow: 0 4px 8px rgba(5, 150, 105, 0.25);
+        }
+
+        /* EXERCISE & ANSWER PANELS */
         .exercise-panel {
             display: none;
             background: var(--card-bg);
@@ -192,6 +226,11 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1.5px dashed var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         /* QUESTION CARD */
@@ -279,10 +318,47 @@
             accent-color: var(--primary);
         }
 
-        .explanation {
+        .feedback-status {
             margin-top: 10px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 13.5px;
+            font-weight: 700;
+        }
+
+        /* ANSWER KEY ITEM */
+        .ans-key-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 14px;
+            border-left: 5px solid #10b981;
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .ans-key-card.user-wrong {
+            border-left-color: #f59e0b;
+            background: #fffbeb;
+        }
+        .ans-key-q {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .ans-key-detail {
+            font-size: 14px;
+            color: #047857;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .ans-key-exp {
+            font-size: 13.5px;
+            color: #334155;
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-top: 6px;
         }
 
         /* CHECK BUTTON */
@@ -303,6 +379,23 @@
             background: var(--primary-hover);
         }
 
+        .btn-view-ans {
+            background: #059669;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 12px;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        .btn-view-ans:hover {
+            background: #047857;
+        }
+
         /* RESULT BOX */
         .result-panel {
             margin-top: 20px;
@@ -321,6 +414,23 @@
             font-size: 13px;
             font-weight: 700;
             margin-bottom: 8px;
+        }
+        .unlock-notice {
+            margin-top: 10px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .unlock-notice.locked {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+        .unlock-notice.unlocked {
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
         }
         .status-sending {
             color: var(--warning);
@@ -348,33 +458,39 @@
 
 <div class="container">
     <div class="app-header">
-        <h1 class="app-title">🌟 ÔN TẬP 4 THÌ TIẾNG ANH & VẬN DỤNG TỔNG HỢP 🌟</h1>
-        <p class="app-subtitle">Hiện tại đơn • Hiện tại tiếp diễn • Quá khứ đơn • Tương lai gần (Kèm Từ nối, ĐTQH & Giới từ)</p>
+        <h1 class="app-title">🌟 LUYỆN TẬP CHUYÊN SÂU NGỮ PHÁP MOVERS (PHẦN 11, 13, 14) 🌟</h1>
+        <p class="app-subtitle">Đạt tối thiểu 15/20 câu đúng ở mỗi bài để mở khóa Tab Đáp án & Giải thích chi tiết</p>
     </div>
 
     <!-- BẢNG THẦN CHÚ HIỂN THỊ TRỰC TIẾP -->
     <div class="cheatsheet-card">
-        <div class="cheatsheet-title">📌 BẢNG THẦN CHÚ NGỮ PHÁP TỔNG HỢP</div>
+        <div class="cheatsheet-title">📌 BẢNG THẦN CHÚ NGỮ PHÁP NÂNG CAO</div>
         <div class="cheatsheet-grid">
             <div class="cheat-item cheat-1">
-                <strong>1. Hiện Tại Đơn & Tiếp Diễn</strong>
-                <b>HT Đơn:</b> Thói quen, sự thật <i>(every day, usually, on Mondays)</i> &rarr; V(s/es) | don't/doesn't + V.<br>
-                <b>HT Tiếp Diễn:</b> Đang xảy ra <i>(now, at the moment, Look!, Listen!)</i> &rarr; am/is/are + V-ing.
+                <strong>Phần 11: Gợi Ý & Đề Nghị</strong>
+                <b>Let's + V (nguyên thể)...!</b> <i>(Câu cảm thán/kể)</i><br>
+                <b>How about / What about + V-ing...?</b> <i>(Câu hỏi có dấu ?)</i><br>
+                <span class="highlight-key">Chú ý nhìn dạng V và dấu câu!</span>
             </div>
             <div class="cheat-item cheat-2">
-                <strong>2. Quá Khứ Đơn & Tương Lai Gần</strong>
-                <b>QK Đơn:</b> Đã hoàn thành <i>(yesterday, last night, ... ago, in 2024)</i> &rarr; V2/-ed | didn't + V.<br>
-                <b>TL Gần:</b> Dự định, có dấu hiệu <i>(tomorrow, next week, soon)</i> &rarr; am/is/are + going to + V.
+                <strong>Phần 13: There is / are / was / were</strong>
+                <b>Hiện tại:</b> There is (ít/KĐĐ) | There are (nhiều)<br>
+                <b>Quá khứ:</b> There was (ít/KĐĐ) | There were (nhiều)<br>
+                <b>Bẫy số nhiều:</b> <i>children, people, mice, sheep, teeth, leaves</i>
             </div>
             <div class="cheat-item cheat-3">
-                <strong>3. Đại Từ Quan Hệ & Từ Nối</strong>
-                <b>Who:</b> người | <b>Which:</b> vật, con vật | <b>Where:</b> nơi chốn.<br>
-                <b>and:</b> bổ sung | <b>but:</b> trái ngược | <b>because:</b> lý do | <b>when:</b> thời điểm.
+                <strong>Phần 14: Mệnh Lệnh & Lời Khuyên</strong>
+                <b>Mệnh lệnh (Không có chủ ngữ):</b><br>
+                (+) V nguyên thể đầu câu | (-) Don't + V<br>
+                <b>Lời khuyên (Có chủ ngữ S):</b><br>
+                S + should / shouldn't + V nguyên thể
             </div>
             <div class="cheat-item cheat-4">
-                <strong>4. Giới Từ Chỉ Thời Gian & Vị Trí</strong>
-                <b>Thời gian:</b> IN (tháng, năm, mùa, buổi) | ON (thứ, ngày cụ thể) | AT (giờ, at night, at the weekend).<br>
-                <b>Vị trí:</b> in front of, behind, next to, opposite, between ... and, under, above.
+                <strong>Kết Hợp 4 Thì Movers</strong>
+                <b>HT Đơn:</b> usually, every day &rarr; V(s/es)<br>
+                <b>HT Tiếp Diễn:</b> now, Look! &rarr; am/is/are + V-ing<br>
+                <b>QK Đơn:</b> yesterday, ago &rarr; V2/ed<br>
+                <b>TL Gần:</b> tomorrow &rarr; am/is/are going to + V
             </div>
         </div>
     </div>
@@ -385,154 +501,184 @@
         <input type="text" id="student-name" placeholder="Ví dụ: Nguyễn Văn An" autocomplete="off">
     </div>
 
-    <!-- TABS -->
-    <div class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab(1)">Bài 1</button>
-        <button class="tab-btn" onclick="switchTab(2)">Bài 2</button>
-        <button class="tab-btn" onclick="switchTab(3)">Bài 3</button>
-        <button class="tab-btn" onclick="switchTab(4)">Bài 4</button>
-        <button class="tab-btn" onclick="switchTab(5)">Bài 5</button>
+    <!-- TABS NAVIGATION -->
+    <div class="tabs-wrapper">
+        <div class="tab-group-label">📋 Danh sách bài tập:</div>
+        <div class="tab-nav">
+            <button class="tab-btn active" id="tab-ex-1" onclick="switchExTab(1)">📝 Bài 1</button>
+            <button class="tab-btn" id="tab-ex-2" onclick="switchExTab(2)">📝 Bài 2</button>
+            <button class="tab-btn" id="tab-ex-3" onclick="switchExTab(3)">📝 Bài 3</button>
+            <button class="tab-btn" id="tab-ex-4" onclick="switchExTab(4)">📝 Bài 4</button>
+            <button class="tab-btn" id="tab-ex-5" onclick="switchExTab(5)">📝 Bài 5</button>
+        </div>
+
+        <div class="tab-group-label">🔑 Đáp án & Giải thích (Mở khóa khi đạt &ge; 15/20 câu):</div>
+        <div class="tab-nav">
+            <button class="tab-btn ans-tab" id="tab-ans-1" onclick="switchAnsTab(1)">🔒 Đáp án Bài 1</button>
+            <button class="tab-btn ans-tab" id="tab-ans-2" onclick="switchAnsTab(2)">🔒 Đáp án Bài 2</button>
+            <button class="tab-btn ans-tab" id="tab-ans-3" onclick="switchAnsTab(3)">🔒 Đáp án Bài 3</button>
+            <button class="tab-btn ans-tab" id="tab-ans-4" onclick="switchAnsTab(4)">🔒 Đáp án Bài 4</button>
+            <button class="tab-btn ans-tab" id="tab-ans-5" onclick="switchAnsTab(5)">🔒 Đáp án Bài 5</button>
+        </div>
     </div>
 
-    <!-- EXERCISES CONTAINER -->
+    <!-- EXERCISES & ANSWERS CONTAINER -->
     <div id="exercise-container"></div>
+    <div id="answer-container"></div>
 </div>
 
 <script>
 const TEACHER_CONFIG = {
-    googleScriptURL: "https://script.google.com/macros/s/AKfycbwaMoZrvQBmUUOPJOGJjH2doz7krotYU3TN5f0KdeCZ7RrIhLGmORAS3bMc-e2BDKic/exec"
+    googleScriptURL: "https://script.google.com/macros/s/AKfycbwaMoZrvQBmUUOPJOGJjH2doz7krotYU3TN5f0KdeCZ7RrIhLGmORAS3bMc-e2BDKic/exec",
+    unlockThreshold: 15
 };
+
+const unlockedState = { 1: false, 2: false, 3: false, 4: false, 5: false };
+const studentChoices = { 1: {}, 2: {}, 3: {}, 4: {}, 5: {} };
 
 const quizData = {
     1: {
         questions: [
-            { q: "The boy who is wearing a yellow cap usually ___ his bicycle to school in the morning.", hint: "💡 Quan sát từ nhận biết: 'usually' chỉ thói quen và mốc thời gian 'in the morning'. Chủ ngữ 'The boy' là số ít.", opts: ["A. rides", "B. rode", "C. is riding", "D. is going to ride"], ans: "A", exp: "Hiện tại đơn diễn tả thói quen lặp đi lặp lại với chủ ngữ số ít dùng 'rides'." },
-            { q: "Look! The cat which has black ears ___ up the tall tree in front of our house.", hint: "💡 Dấu hiệu mệnh lệnh mở đầu gây chú ý 'Look!' báo hiệu hành động đang diễn ra ngay lúc nói.", opts: ["A. climbs", "B. climbed", "C. is climbing", "D. is going to climb"], ans: "C", exp: "'Look!' là dấu hiệu của thì Hiện tại tiếp diễn: is climbing." },
-            { q: "My father always drinks tea in the morning, but today he ___ warm milk.", hint: "💡 Nhìn từ nối 'but' chỉ sự đối lập và từ 'today' nói về một hành động tạm thời khác với thói quen hằng ngày.", opts: ["A. drinks", "B. drank", "C. is drinking", "D. was drinking"], ans: "C", exp: "Hành động mang tính chất tạm thời, khác thường ngày hôm nay dùng Hiện tại tiếp diễn 'is drinking'." },
-            { q: "Listen! Someone ___ at the front door because they need our help.", hint: "💡 Dấu hiệu 'Listen!' báo hiệu hành động đang diễn ra đồng thời với lúc nghe thấy.", opts: ["A. knocks", "B. is knocking", "C. knocked", "D. is going to knock"], ans: "B", exp: "'Listen!' đi kèm với thì Hiện tại tiếp diễn: is knocking." },
-            { q: "The students who study in this classroom often ___ badminton at the weekend.", hint: "💡 'The students' là danh từ số nhiều, đi kèm trạng từ chỉ tần suất 'often' và giới từ 'at the weekend'.", opts: ["A. play", "B. plays", "C. are playing", "D. played"], ans: "A", exp: "Hiện tại đơn diễn tả thói quen với chủ ngữ số nhiều dùng động từ nguyên mẫu 'play'." },
-            { q: "She cannot answer the phone right now because she ___ dinner in the kitchen.", hint: "💡 Dấu hiệu thời gian 'right now' kết hợp từ nối chỉ nguyên nhân 'because': hành động nấu ăn đang diễn ra.", opts: ["A. cooks", "B. cooked", "C. is cooking", "D. is going to cook"], ans: "C", exp: "'right now' là từ nhận biết thì Hiện tại tiếp diễn: is cooking." },
-            { q: "The sun always ___ in the east and sets in the west.", hint: "💡 Đây là một chân lý, sự thật hiển nhiên trong tự nhiên đi kèm trạng từ 'always'.", opts: ["A. rises", "B. rose", "C. is rising", "D. is going to rise"], ans: "A", exp: "Sự thật hiển nhiên luôn dùng thì Hiện tại đơn: rises." },
-            { q: "Be quiet! The baby who was sick yesterday ___ in her bedroom now.", hint: "💡 Cảnh báo 'Be quiet!' kết hợp từ nhận biết 'now' ở cuối câu chỉ hành động đang diễn ra lúc này.", opts: ["A. sleeps", "B. slept", "C. is sleeping", "D. is going to sleep"], ans: "C", exp: "'Be quiet!' và 'now' báo hiệu thì Hiện tại tiếp diễn: is sleeping." },
-            { q: "We usually have an English test on Mondays, but today we ___ a science project.", hint: "💡 Sự tương phản với thói quen: 'usually ... on Mondays' đối lập với 'today' (hoạt động khác biệt tạm thời hôm nay).", opts: ["A. do", "B. did", "C. are doing", "D. were doing"], ans: "C", exp: "Hoạt động tạm thời diễn ra hôm nay dùng Hiện tại tiếp diễn: are doing." },
-            { q: "The doctor who works in this big hospital never ___ on Sundays.", hint: "💡 Mệnh đề có 'never' chỉ thói quen và mốc thời gian 'on Sundays'. Chủ ngữ chính 'The doctor' là số ít.", opts: ["A. work", "B. works", "C. is working", "D. worked"], ans: "B", exp: "Hiện tại đơn với chủ ngữ số ít và trạng từ 'never' dùng 'works'." },
-            { q: "Where is Peter? - He ___ under the big tree because it is too sunny.", hint: "💡 Trả lời cho câu hỏi tìm vị trí người đang ở đâu lúc này; hành động ngồi dưới gốc cây đang tiếp diễn.", opts: ["A. sits", "B. sat", "C. is sitting", "D. is going to sit"], ans: "C", exp: "Hành động đang diễn ra tại thời điểm nói dùng Hiện tại tiếp diễn: is sitting." },
-            { q: "They live in a beautiful house which ___ a green garden behind it.", hint: "💡 Mệnh đề quan hệ với 'which' mô tả đặc điểm cố định, thực tế vốn có của ngôi nhà.", opts: ["A. has", "B. is having", "C. had", "D. was having"], ans: "A", exp: "Mô tả đặc điểm cố định dùng Hiện tại đơn với ngôi thứ ba số ít: has." },
-            { q: "Hurry up! Everyone who joined our club ___ for you at the bus stop!", hint: "💡 Cụm 'Hurry up!' hối thúc hành động đang diễn ra lúc này; đại từ 'Everyone' luôn đi với động từ số ít.", opts: ["A. wait", "B. waits", "C. is waiting", "D. are waiting"], ans: "C", exp: "'Hurry up!' báo hiệu thì Hiện tại tiếp diễn, chủ ngữ 'Everyone' chia số ít: is waiting." },
-            { q: "My sister loves animals, so she always ___ the birds in the morning.", hint: "💡 Từ nối 'so' chỉ kết quả của sở thích, kết hợp trạng từ 'always' và mốc thời gian 'in the morning'.", opts: ["A. feed", "B. feeds", "C. is feeding", "D. fed"], ans: "B", exp: "Thói quen thường xuyên lặp lại ở Hiện tại đơn với chủ ngữ 'she' dùng 'feeds'." },
-            { q: "Look at Tom! He ___ between the two tall trees over there.", hint: "💡 Lời kêu gọi chú ý 'Look at...!' kết hợp vị trí 'over there' chỉ hành động đang diễn ra trước mắt.", opts: ["A. runs", "B. ran", "C. is running", "D. is going to run"], ans: "C", exp: "Hành động đang diễn ra trước mắt dùng Hiện tại tiếp diễn: is running." },
-            { q: "Water ___ at 100 degrees Celsius and freezes at 0 degrees.", hint: "💡 Quy luật khoa học, sự thật tự nhiên không bao giờ thay đổi.", opts: ["A. boils", "B. boiled", "C. is boiling", "D. is going to boil"], ans: "A", exp: "Quy luật tự nhiên dùng thì Hiện tại đơn: boils." },
-            { q: "The girl who lives next to my house ___ the piano at the moment.", hint: "💡 Cụm từ chỉ thời gian rất rõ ràng: 'at the moment' (ngay lúc này).", opts: ["A. plays", "B. played", "C. is playing", "D. is going to play"], ans: "C", exp: "'at the moment' là dấu hiệu của thì Hiện tại tiếp diễn: is playing." },
-            { q: "We often visit the countryside in summer because we ___ peaceful rivers.", hint: "💡 Động từ chỉ cảm xúc, sở thích 'like' trong câu nói về thói quen vào mùa hè ('in summer').", opts: ["A. like", "B. likes", "C. are liking", "D. liked"], ans: "A", exp: "Động từ chỉ trạng thái/sở thích 'like' không chia tiếp diễn; chủ ngữ 'we' dùng 'like'." },
-            { q: "Don't make noise! The teacher ___ an important lesson in front of the board.", hint: "💡 Cảnh báo mệnh lệnh 'Don't make noise!' nhắc nhở một việc đang diễn ra trong lớp.", opts: ["A. explains", "B. explained", "C. is explaining", "D. was explaining"], ans: "C", exp: "Cảnh báo không làm ồn vì hành động đang tiếp diễn: is explaining." },
-            { q: "My parents ___ to work on Saturday mornings.", hint: "💡 Câu phủ định chỉ lịch trình cố định vào các buổi sáng thứ Bảy ('on Saturday mornings'); chủ ngữ số nhiều.", opts: ["A. don't go", "B. doesn't go", "C. aren't going", "D. didn't go"], ans: "A", exp: "Hiện tại đơn phủ định với chủ ngữ số nhiều 'My parents' dùng 'don't go'." }
+            { q: "The sun is shining brightly now! ___ take our camera and walk to the waterfall!", hint: "💡 Quan sát động từ nguyên thể 'take' đứng ngay sau chỗ trống và dấu chấm than (!) ở cuối câu.", opts: ["A. Let's", "B. How about", "C. What about", "D. Shall"], ans: "A", exp: "Sau 'Let's' là động từ nguyên thể (take) và câu kết thúc bằng dấu chấm than." },
+            { q: "We finished our homework twenty minutes ago. ___ playing table tennis at the sports centre?", hint: "💡 Chú ý động từ 'playing' có đuôi -ing và câu kết thúc bằng dấu chấm hỏi (?).", opts: ["A. Let's", "B. How about", "C. Why don't", "D. Shall we"], ans: "B", exp: "Cấu trúc gợi ý đi với V-ing và dấu hỏi chấm: How about + V-ing...?" },
+            { q: "Look at those dark clouds! It is going to rain soon, so let's ___ inside the museum.", hint: "💡 Sau cấu trúc đề nghị 'let's', động từ chính phải ở dạng nào?", opts: ["A. stay", "B. staying", "C. stayed", "D. stays"], ans: "A", exp: "Cấu trúc: Let's + V nguyên thể (stay)." },
+            { q: "I bought some fresh strawberries at the market this morning. What about ___ a strawberry milkshake?", hint: "💡 Đi liền sau cụm 'What about' là động từ ở dạng nguyên thể hay thêm đuôi -ing?", opts: ["A. make", "B. makes", "C. making", "D. made"], ans: "C", exp: "Sau 'What about' dùng V-ing (making)." },
+            { q: "My little brother has a terrible toothache today. ___ taking him to the dentist right now?", hint: "💡 Động từ sau chỗ trống là 'taking' (dạng V-ing) và cuối câu có dấu hỏi chấm (?).", opts: ["A. Let's", "B. What about", "C. Should", "D. Must"], ans: "B", exp: "Trước V-ing (taking) trong câu hỏi gợi ý dùng 'What about'." },
+            { q: "We are going to camp near the forest tomorrow. Let's ___ a warm blanket and a torch!", hint: "💡 Nhìn cấu trúc 'Let's' trước chỗ trống để chọn đúng dạng của động từ.", opts: ["A. bring", "B. bringing", "C. brought", "D. brings"], ans: "A", exp: "Sau 'Let's' dùng động từ nguyên thể (bring)." },
+            { q: "There isn't any bread left for breakfast. How about ___ some hot noodles at the café opposite our house?", hint: "💡 Xác định dạng đúng của động từ khi đứng ngay sau cụm gợi ý 'How about'.", opts: ["A. eat", "B. ate", "C. eating", "D. eats"], ans: "C", exp: "Cấu trúc: How about + V-ing (eating)." },
+            { q: "The clown at the circus was very funny yesterday! ___ draw a picture of him for our art lesson!", hint: "💡 Động từ theo sau chỗ trống là 'draw' (nguyên mẫu) và cuối câu là dấu chấm than (!).", opts: ["A. How about", "B. What about", "C. Let's", "D. Shall"], ans: "C", exp: "Đi với động từ nguyên mẫu 'draw' và dấu chấm than là 'Let's'." },
+            { q: "It's snowing heavily outside now. What about ___ on our thick sweaters and scarves before going out?", hint: "💡 Động từ đi sau 'What about' cần biến đổi như thế nào (chú ý quy tắc gấp đôi phụ âm)?", opts: ["A. put", "B. putting", "C. puts", "D. puting"], ans: "B", exp: "Sau 'What about' dùng V-ing; 'put' gấp đôi phụ âm 't' thành 'putting'." },
+            { q: "Grandma is carrying a very heavy basket from the supermarket. Let's ___ her carry it upstairs!", hint: "💡 Sau 'Let's', ta dùng động từ ở dạng nào?", opts: ["A. help", "B. helping", "C. helped", "D. helps"], ans: "A", exp: "Cấu trúc: Let's + V nguyên thể (help)." },
+            { q: "We always visit the library on Saturdays, but today it is closed. ___ going roller skating in the park?", hint: "💡 Quan sát từ 'going' (V-ing) ngay sau chỗ trống và dấu chấm hỏi cuối câu.", opts: ["A. Let's", "B. How about", "C. Shall we", "D. Should we"], ans: "B", exp: "Trước V-ing trong câu hỏi gợi ý dùng 'How about'." },
+            { q: "Look! The dolphins are jumping out of the water! Let's ___ a video with my dad's phone!", hint: "💡 Đứng sau 'Let's' là động từ nguyên thể hay động từ chia theo thì hiện tại tiếp diễn?", opts: ["A. take", "B. taking", "C. took", "D. takes"], ans: "A", exp: "Dù câu trước ở thì tiếp diễn, sau 'Let's' vẫn luôn là V nguyên thể (take)." },
+            { q: "My cousins are going to visit our farm next Sunday. What about ___ a big chocolate cake for them?", hint: "💡 Sau 'What about', động từ có đuôi -e ở cuối khi thêm -ing sẽ viết như thế nào?", opts: ["A. bake", "B. baking", "C. bakeing", "D. baked"], ans: "B", exp: "Sau 'What about' dùng V-ing; 'bake' bỏ 'e' thêm '-ing' thành 'baking'." },
+            { q: "The kitchen floor is very wet because I washed it ten minutes ago. ___ play in the living room instead!", hint: "💡 Sau chỗ trống là động từ nguyên mẫu 'play' và cuối câu có dấu chấm than (!).", opts: ["A. What about", "B. How about", "C. Let's", "D. Are we"], ans: "C", exp: "Trước V nguyên mẫu 'play' trong câu đề nghị có dấu (!) dùng 'Let's'." },
+            { q: "I lost my favorite comic book in the playground yesterday. How about ___ for it after lunch?", hint: "💡 Quy tắc chia động từ đứng sau cụm từ 'How about'.", opts: ["A. look", "B. looked", "C. looking", "D. looks"], ans: "C", exp: "Cấu trúc: How about + V-ing (looking)." },
+            { q: "The bus to the city centre leaves at 8 o'clock. Let's ___ quickly so we don't miss it!", hint: "💡 Tìm dạng nguyên thể của động từ đứng sau 'Let's'.", opts: ["A. walk", "B. walking", "C. walked", "D. walks"], ans: "A", exp: "Sau 'Let's' luôn là động từ nguyên thể (walk)." },
+            { q: "We watched a movie about pirates last night. What about ___ up as pirates for the school party next week?", hint: "💡 Sau 'What about' cần chọn dạng động từ nào?", opts: ["A. dress", "B. dressed", "C. dressing", "D. dresses"], ans: "C", exp: "Sau 'What about' dùng V-ing (dressing)." },
+            { q: "It is very windy on the hill today! ___ fly our dragon kites together!", hint: "💡 Chú ý động từ nguyên mẫu 'fly' ngay sau chỗ trống và dấu chấm than cuối câu.", opts: ["A. How about", "B. What about", "C. Let's", "D. Shall"], ans: "C", exp: "Cấu trúc: Let's + V nguyên thể (fly)." },
+            { q: "Dad is sleeping in the bedroom because he worked late last night. How about ___ quietly in the garden?", hint: "💡 Chọn dạng đúng của động từ theo sau 'How about'.", opts: ["A. talk", "B. talking", "C. talked", "D. talks"], ans: "B", exp: "Cấu trúc: How about + V-ing (talking)." },
+            { q: "The water in the swimming pool is very clean and cool. ___ put on our swimsuits and jump in!", hint: "💡 Động từ 'put' ở dạng nguyên mẫu và câu kết thúc bằng dấu chấm than (!).", opts: ["A. Let's", "B. What about", "C. How about", "D. Why not"], ans: "A", exp: "Cấu trúc: Let's + V nguyên thể (put)." }
         ]
     },
     2: {
         questions: [
-            { q: "Last Sunday, we ___ the museum which is located opposite the post office.", hint: "💡 Mốc thời gian chỉ quá khứ rất rõ: 'Last Sunday' (Chủ nhật tuần trước).", opts: ["A. visit", "B. visited", "C. are visiting", "D. are going to visit"], ans: "B", exp: "'Last Sunday' là dấu hiệu thì Quá khứ đơn: visited." },
-            { q: "Look at those dark clouds in the sky! It ___ very soon.", hint: "💡 Bằng chứng rõ ràng trước mắt ('dark clouds') báo hiệu một hiện tượng sắp sửa xảy ra ('soon').", opts: ["A. rains", "B. rained", "C. is going to rain", "D. was raining"], ans: "C", exp: "Dự đoán có căn cứ, dấu hiệu thực tế trước mắt dùng Tương lai gần: is going to rain." },
-            { q: "The girl who sat next to me yesterday ___ her lunchbox.", hint: "💡 Câu phủ định trong quá khứ có từ nhận biết 'yesterday'.", opts: ["A. doesn't bring", "B. didn't bring", "C. isn't bringing", "D. isn't going to bring"], ans: "B", exp: "Quá khứ đơn dạng phủ định mượn trợ động từ: didn't bring." },
-            { q: "Nam has already bought a ticket. He ___ a movie at 7 o'clock tonight.", hint: "💡 Đã có sự chuẩn bị trước ('bought a ticket') cho một kế hoạch cụ thể vào tối nay ('tonight').", opts: ["A. watches", "B. watched", "C. is going to watch", "D. watch"], ans: "C", exp: "Kế hoạch đã có sự chuẩn bị trước dùng Tương lai gần: is going to watch." },
-            { q: "We stayed inside our house two days ago because the weather ___ stormy.", hint: "💡 Mốc thời gian 'two days ago' và động từ 'stayed' ở vế trước chỉ thời điểm trong quá khứ.", opts: ["A. is", "B. was", "C. were", "D. is going to be"], ans: "B", exp: "Quá khứ đơn của động từ 'to be' đi với chủ ngữ không đếm được 'the weather' là 'was'." },
-            { q: "They have packed their suitcases. They ___ to Da Nang next Monday.", hint: "💡 Hành động đã xếp xong hành lý báo hiệu một chuyến đi chắc chắn đã được lên kế hoạch vào thứ Hai tới.", opts: ["A. travel", "B. traveled", "C. are going to travel", "D. were traveling"], ans: "C", exp: "Kế hoạch tương lai đã chuẩn bị sẵn dùng Tương lai gần: are going to travel." },
-            { q: "The man who fixed our roof last week ___ under the hot sun for five hours.", hint: "💡 Mệnh đề quan hệ có dấu hiệu 'last week' và 'fixed' báo hiệu toàn bộ sự việc diễn ra trong quá khứ.", opts: ["A. works", "B. worked", "C. is working", "D. is going to work"], ans: "B", exp: "Hành động đã hoàn thành trong quá khứ dùng Quá khứ đơn: worked." },
-            { q: "I have made a decision. I ___ how to play the guitar in the summer.", hint: "💡 'have made a decision' (đã quyết định) thể hiện một dự định cá nhân trong tương lai.", opts: ["A. learn", "B. learned", "C. am going to learn", "D. was learning"], ans: "C", exp: "Dự định đã được quyết định dùng Tương lai gần: am going to learn." },
-            { q: "When I arrived at the bus stop yesterday, the bus ___ there.", hint: "💡 Dấu hiệu 'yesterday' và 'arrived' chỉ trạng thái không có mặt của xe buýt trong quá khứ.", opts: ["A. isn't", "B. wasn't", "C. weren't", "D. isn't going to be"], ans: "B", exp: "Quá khứ đơn phủ định của 'to be' với chủ ngữ số ít 'the bus' là 'wasn't'." },
-            { q: "Watch out! You ___ that fragile glass which is on the high shelf!", hint: "💡 Lời cảnh báo nguy cơ sắp xảy ra trước mắt: 'Watch out!' (Hãy cẩn thận coi chừng!).", opts: ["A. drop", "B. dropped", "C. are going to drop", "D. were dropping"], ans: "C", exp: "Cảnh báo điều sắp xảy ra ngay trước mắt dùng Tương lai gần: are going to drop." },
-            { q: "Where ___ you ___ on your summer holiday last year?", hint: "💡 Câu hỏi về kỳ nghỉ đã diễn ra vào năm ngoái: 'last year'.", opts: ["A. do / go", "B. did / go", "C. are / going", "D. are / going to go"], ans: "B", exp: "Câu hỏi ở thì Quá khứ đơn dùng trợ động từ: did + S + V nguyên thể (did you go)." },
-            { q: "We have bought fresh flour and sugar. We ___ a cake tonight.", hint: "💡 Đã chuẩn bị đầy đủ nguyên liệu ('bought flour and sugar') để thực hiện dự định tối nay.", opts: ["A. make", "B. made", "C. are going to make", "D. were making"], ans: "C", exp: "Dự định có chuẩn bị trước dùng Tương lai gần: are going to make." },
-            { q: "The boy who found my lost key yesterday ___ it back to me with a smile.", hint: "💡 Từ nhận biết 'yesterday' chỉ hành động trao trả chìa khóa đã hoàn thành; chú ý động từ bất quy tắc của 'give'.", opts: ["A. gives", "B. gave", "C. is giving", "D. is going to give"], ans: "B", exp: "Quá khứ đơn bất quy tắc của 'give' là 'gave'." },
-            { q: "She ___ at home tomorrow evening because she has an invitation to a party.", hint: "💡 Câu phủ định chỉ kế hoạch ngày mai: 'tomorrow evening'.", opts: ["A. doesn't stay", "B. didn't stay", "C. isn't going to stay", "D. wasn't staying"], ans: "C", exp: "Tương lai gần dạng phủ định: isn't going to stay." },
-            { q: "My family ___ this lovely wooden house in 2020.", hint: "💡 Mốc thời gian năm xác định trong quá khứ: 'in 2020'; động từ bất quy tắc của 'build'.", opts: ["A. build", "B. built", "C. is building", "D. is going to build"], ans: "B", exp: "Mốc thời gian 'in 2020' dùng Quá khứ đơn, dạng bất quy tắc là 'built'." },
-            { q: "Look! The cat is jumping onto the table. It ___ over the milk jug!", hint: "💡 Con mèo đang nhảy lên bàn (dấu hiệu trước mắt), nguy cơ làm đổ bình sữa sắp xảy ra.", opts: ["A. knocks", "B. knocked", "C. is going to knock", "D. was knocking"], ans: "C", exp: "Dự đoán nguy cơ sắp xảy ra dựa trên hiện tượng trước mắt dùng Tương lai gần: is going to knock." },
-            { q: "___ she ___ the doctor two days ago because of her high fever?", hint: "💡 Câu hỏi nghi vấn trong quá khứ có mốc thời gian 'two days ago'.", opts: ["A. Does / visit", "B. Did / visit", "C. Is / visiting", "D. Is / going to visit"], ans: "B", exp: "Câu hỏi Quá khứ đơn: Did + S + V nguyên thể (Did she visit)." },
-            { q: "We ___ a picnic in the park next Saturday because the weather forecast is sunny.", hint: "💡 Kế hoạch dã ngoại vào thứ Bảy tuần tới: 'next Saturday'.", opts: ["A. have", "B. had", "C. are going to have", "D. were having"], ans: "C", exp: "Kế hoạch tương lai dùng Tương lai gần: are going to have." },
-            { q: "The little dog ___ behind the sofa when the thunderstorm started last night.", hint: "💡 Dấu hiệu 'last night' và 'started' chỉ hành động chú cún trốn sau ghế; động từ bất quy tắc của 'hide'.", opts: ["A. hides", "B. hid", "C. is hiding", "D. is going to hide"], ans: "B", exp: "Quá khứ đơn bất quy tắc của 'hide' là 'hid'." },
-            { q: "They ___ the train to Hue tomorrow morning because all tickets are sold out.", hint: "💡 Kế hoạch phủ định vào sáng mai: 'tomorrow morning'.", opts: ["A. don't take", "B. didn't take", "C. aren't going to take", "D. weren't taking"], ans: "C", exp: "Tương lai gần dạng phủ định: aren't going to take." }
+            { q: "Look at the field! There ___ three white sheep eating green grass near the river right now.", hint: "💡 Cẩn thận bẫy danh từ bất quy tắc: 'three white sheep' là số ít hay số nhiều? Và thời gian là 'right now'.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "B", exp: "'three white sheep' là danh từ số nhiều (sheep giữ nguyên dạng ở số nhiều) và 'right now' ở hiện tại nên dùng 'There are'." },
+            { q: "Fifty years ago, there ___ any tall buildings or supermarkets in this small village.", hint: "💡 Chú ý mốc thời gian 'Fifty years ago' (quá khứ), từ 'any' (câu phủ định) và danh từ số nhiều 'buildings'.", opts: ["A. aren't", "B. wasn't", "C. weren't", "D. isn't"], ans: "C", exp: "Quá khứ phủ định với danh từ số nhiều 'buildings' dùng 'weren't'." },
+            { q: "I am very hungry, but there ___ any hot soup left in the pot on the stove.", hint: "💡 Động từ 'am' chỉ hiện tại, từ 'any' chỉ câu phủ định, và 'soup' là danh từ không đếm được.", opts: ["A. isn't", "B. aren't", "C. wasn't", "D. weren't"], ans: "A", exp: "Ở hiện tại, danh từ không đếm được 'soup' đi với phủ định 'isn't'." },
+            { q: "___ there many children at the funfair when you went there last Saturday?", hint: "💡 Đây là câu hỏi ở thì quá khứ ('last Saturday') với danh từ số nhiều bất quy tắc 'many children'.", opts: ["A. Was", "B. Were", "C. Are", "D. Is"], ans: "B", exp: "'children' là danh từ số nhiều và sự việc ở quá khứ ('last Saturday') nên câu hỏi dùng 'Were there...?'." },
+            { q: "Be careful! There ___ some water on the bathroom floor because my brother is taking a shower.", hint: "💡 Ngữ cảnh đang diễn ra ở hiện tại ('Be careful!', 'is taking') và 'water' là danh từ không đếm được.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "A", exp: "Danh từ không đếm được 'water' ở hiện tại dùng 'There is'." },
+            { q: "Last night, there ___ a very loud thunderstorm, so the puppy hid under my bed.", hint: "💡 Mốc thời gian 'Last night' (quá khứ) và cụm danh từ số ít 'a very loud thunderstorm'.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "C", exp: "Quá khứ số ít dùng 'There was'." },
+            { q: "Look inside the old box! There ___ two little gray mice hiding behind the books!", hint: "💡 'Look!' chỉ hiện tại; chú ý danh từ bất quy tắc 'two little gray mice' (những con chuột).", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "B", exp: "'mice' là danh từ số nhiều của 'mouse', ở hiện tại dùng 'There are'." },
+            { q: "There ___ a lot of snow on the roof of our house yesterday morning.", hint: "💡 Dấu hiệu 'yesterday morning' (quá khứ) và danh từ 'snow' (tuyết - không đếm được).", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "C", exp: "Danh từ không đếm được 'snow' trong quá khứ dùng 'There was'." },
+            { q: "___ there a cinema opposite the train station when your grandpa was young?", hint: "💡 Câu hỏi trong quá khứ ('when your grandpa was young') với danh từ số ít 'a cinema'.", opts: ["A. Is", "B. Are", "C. Was", "D. Were"], ans: "C", exp: "Câu hỏi quá khứ với danh từ số ít 'a cinema' dùng 'Was there...?'." },
+            { q: "In autumn, there ___ always lots of yellow leaves on the ground in our schoolyard.", hint: "💡 Trạng từ 'always' chỉ sự việc lặp lại ở hiện tại; 'leaves' (những chiếc lá) là danh từ số nhiều.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "B", exp: "Hiện tại đơn với danh từ số nhiều 'leaves' dùng 'There are'." },
+            { q: "We walked to the beach yesterday, but there ___ any people swimming because the sea was cold.", hint: "💡 Dấu hiệu 'yesterday', từ 'any' (phủ định) và danh từ số nhiều 'people' (nhiều người).", opts: ["A. wasn't", "B. weren't", "C. aren't", "D. isn't"], ans: "B", exp: "'people' là danh từ số nhiều, câu phủ định trong quá khứ dùng 'weren't'." },
+            { q: "___ there any cheese in the fridge? I want to make a sandwich right now.", hint: "💡 Ngữ cảnh hiện tại ('right now') và danh từ không đếm được 'cheese' (phô mai).", opts: ["A. Is", "B. Are", "C. Was", "D. Were"], ans: "A", exp: "Câu hỏi hiện tại với danh từ không đếm được 'cheese' dùng 'Is there...?'." },
+            { q: "Two days ago, there ___ a colorful parrot sitting on our balcony.", hint: "💡 Thời gian 'Two days ago' (quá khứ) và danh từ số ít 'a colorful parrot'.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "C", exp: "Quá khứ số ít dùng 'There was'." },
+            { q: "Today is a holiday, so there ___ any homework for the students!", hint: "💡 'Today is' chỉ hiện tại, từ 'any' chỉ câu phủ định và 'homework' là danh từ không đếm được.", opts: ["A. isn't", "B. aren't", "C. wasn't", "D. weren't"], ans: "A", exp: "'homework' là danh từ không đếm được nên dùng 'isn't'." },
+            { q: "When we visited the castle last month, there ___ many old paintings on the walls.", hint: "💡 Dấu hiệu 'last month' (quá khứ) và danh từ số nhiều 'many old paintings'.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "D", exp: "Quá khứ số nhiều dùng 'There were'." },
+            { q: "There ___ twenty-five desks and a big blackboard in my classroom this year.", hint: "💡 Thời gian 'this year' (hiện tại) và cụm danh từ số nhiều đứng ngay sau chỗ trống 'twenty-five desks'.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "B", exp: "Danh từ đứng ngay sau là 'twenty-five desks' (số nhiều) ở hiện tại nên dùng 'There are'." },
+            { q: "Why were you late this morning? - Because there ___ a lot of traffic on the bridge.", hint: "💡 Câu hỏi ở quá khứ ('Why were you late this morning?') và danh từ không đếm được 'traffic' (giao thông/xe cộ).", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "C", exp: "'traffic' là danh từ không đếm được, trong quá khứ dùng 'There was'." },
+            { q: "___ there any kangaroos at the zoo when you went there yesterday?", hint: "💡 Câu hỏi quá khứ ('yesterday') đi với danh từ đếm được số nhiều 'kangaroos'.", opts: ["A. Was", "B. Were", "C. Are", "D. Is"], ans: "B", exp: "Câu hỏi quá khứ với danh từ số nhiều dùng 'Were there...?'." },
+            { q: "Look at the baby! He is smiling, and there ___ two small white teeth in his mouth now!", hint: "💡 'Look!' và 'now' chỉ hiện tại; chú ý danh từ bất quy tắc 'two small white teeth' (hai chiếc răng).", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "B", exp: "'teeth' là số nhiều của 'tooth', ở hiện tại dùng 'There are'." },
+            { q: "There ___ a clown at Jack's birthday party last Sunday because the clown was sick.", hint: "💡 Thời gian 'last Sunday' (quá khứ), danh từ số ít 'a clown' và lý do chú hề bị ốm nên không có mặt.", opts: ["A. isn't", "B. wasn't", "C. weren't", "D. aren't"], ans: "B", exp: "Quá khứ phủ định với danh từ số ít 'a clown' dùng 'wasn't'." }
         ]
     },
     3: {
         questions: [
-            { q: "My brother usually rides his bike to school, but this morning he ___ because his bike was broken.", hint: "💡 Vế đầu là thói quen nhưng vế sau nói về sự việc đã diễn ra sáng nay ('this morning') khi xe bị hỏng ('was broken').", opts: ["A. walks", "B. walked", "C. is walking", "D. is going to walk"], ans: "B", exp: "Sự việc đã xảy ra và kết thúc sáng nay kèm lý do quá khứ dùng Quá khứ đơn: walked." },
-            { q: "Listen! The birds in the tree outside my window ___ sweetly.", hint: "💡 Lời nhắc 'Listen!' hướng sự chú ý đến tiếng chim hót đang diễn ra ngay lúc này.", opts: ["A. sing", "B. sang", "C. are singing", "D. are going to sing"], ans: "C", exp: "'Listen!' là từ nhận biết thì Hiện tại tiếp diễn: are singing." },
-            { q: "Tomorrow is Sunday, so I ___ up early in the morning.", hint: "💡 Kế hoạch phủ định cho ngày mai ('Tomorrow'): không cần phải dậy sớm.", opts: ["A. don't get", "B. didn't get", "C. am not going to get", "D. wasn't getting"], ans: "C", exp: "Kế hoạch cho ngày mai dùng Tương lai gần phủ định: am not going to get." },
-            { q: "The earth ___ around the sun in 365 days.", hint: "💡 Chân lý khoa học bất biến về chuyển động của Trái Đất.", opts: ["A. goes", "B. went", "C. is going", "D. is going to go"], ans: "A", exp: "Sự thật hiển nhiên dùng Hiện tại đơn với chủ ngữ số ít: goes." },
-            { q: "Look! A strange man ___ out of the bank which is opposite the supermarket!", hint: "💡 Mệnh lệnh 'Look!' báo hiệu hành động đang diễn ra trước mắt người nói.", opts: ["A. runs", "B. ran", "C. is running", "D. is going to run"], ans: "C", exp: "'Look!' báo hiệu thì Hiện tại tiếp diễn: is running." },
-            { q: "We ___ Tom at the sports club last Friday because he was sick.", hint: "💡 Dấu hiệu thời gian kết thúc trong quá khứ: 'last Friday'.", opts: ["A. don't see", "B. didn't see", "C. aren't seeing", "D. aren't going to see"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't see'." },
-            { q: "Hurry up! Look at that bus! It ___ in thirty seconds!", hint: "💡 Xe buýt chuẩn bị chuyển bánh ngay trước mắt ('Look at...!') trong vài giây tới.", opts: ["A. leaves", "B. left", "C. is going to leave", "D. was leaving"], ans: "C", exp: "Hành động sắp xảy ra ngay lập tức có dấu hiệu trước mắt dùng Tương lai gần: is going to leave." },
-            { q: "Cats ___ water and they almost never swim in ponds.", hint: "💡 Tập tính tự nhiên, sự thật về loài mèo.", opts: ["A. dislike", "B. disliked", "C. are disliking", "D. are going to dislike"], ans: "A", exp: "Sự thật tự nhiên dùng Hiện tại đơn với chủ ngữ số nhiều: dislike." },
-            { q: "What ___ you ___ at your study desk right now?", hint: "💡 Câu hỏi có từ nhận biết 'right now' (ngay lúc này).", opts: ["A. do / do", "B. did / do", "C. are / doing", "D. are / going to do"], ans: "C", exp: "'right now' dùng Hiện tại tiếp diễn câu hỏi: are you doing." },
-            { q: "Two hours ago, my mom ___ delicious cookies in the oven.", hint: "💡 Mốc thời gian quá khứ: 'Two hours ago' (Cách đây hai tiếng).", opts: ["A. bakes", "B. baked", "C. is baking", "D. is going to bake"], ans: "B", exp: "'Two hours ago' là dấu hiệu thì Quá khứ đơn: baked." },
-            { q: "He has prepared his tennis racket. He ___ with his uncle tomorrow.", hint: "💡 Đã chuẩn bị vợt sẵn sàng cho hoạt động ngày mai ('tomorrow').", opts: ["A. plays", "B. played", "C. is going to play", "D. was playing"], ans: "C", exp: "Kế hoạch đã chuẩn bị dùng Tương lai gần: is going to play." },
-            { q: "She always ___ her hands with soap before having lunch.", hint: "💡 Thói quen vệ sinh hằng ngày có trạng từ 'always' và từ nối thời gian 'before'.", opts: ["A. wash", "B. washes", "C. is washing", "D. washed"], ans: "B", exp: "Hiện tại đơn diễn tả thói quen, chủ ngữ 'she' thêm -es: washes." },
-            { q: "Be quiet! The headmaster ___ to the students in the schoolyard.", hint: "💡 Cảnh báo 'Be quiet!' cho biết thầy hiệu trưởng đang phát biểu lúc này.", opts: ["A. speaks", "B. spoke", "C. is speaking", "D. is going to speak"], ans: "C", exp: "'Be quiet!' báo hiệu hành động đang diễn ra: is speaking." },
-            { q: "Last year, my family ___ to Nha Trang by train in July.", hint: "💡 Thời gian quá khứ hoàn thành: 'Last year' và 'in July'.", opts: ["A. travel", "B. traveled", "C. are traveling", "D. are going to travel"], ans: "B", exp: "'Last year' dùng Quá khứ đơn: traveled." },
-            { q: "Look at those black clouds! It ___ on the mountain soon.", hint: "💡 Dấu hiệu mây đen báo hiệu trời sắp đổ mưa/tuyết ('soon').", opts: ["A. snows", "B. snowed", "C. is going to snow", "D. was snowing"], ans: "C", exp: "Dự đoán thời tiết có căn cứ dùng Tương lai gần: is going to snow." },
-            { q: "The train always ___ at 6 o'clock every morning.", hint: "💡 Lịch trình tàu xe cố định hằng ngày: 'always' và 'every morning'.", opts: ["A. arrives", "B. arrived", "C. is arriving", "D. is going to arrive"], ans: "A", exp: "Lịch trình tàu xe cố định dùng Hiện tại đơn: arrives." },
-            { q: "Yesterday afternoon, while I was reading a book, my friend ___ me.", hint: "💡 Hành động xen vào trong quá khứ ('Yesterday afternoon').", opts: ["A. calls", "B. called", "C. is calling", "D. is going to call"], ans: "B", exp: "Hành động xen vào trong quá khứ dùng Quá khứ đơn: called." },
-            { q: "They ___ video games at the moment because they are preparing for a test.", hint: "💡 Câu phủ định có từ nhận biết 'at the moment' (ngay lúc này).", opts: ["A. don't play", "B. didn't play", "C. aren't playing", "D. aren't going to play"], ans: "C", exp: "'at the moment' dùng Hiện tại tiếp diễn phủ định: aren't playing." },
-            { q: "We have packed the tent. We ___ near the lake this weekend.", hint: "💡 Đã thu dọn lều trại sẵn sàng cho chuyến đi cuối tuần này.", opts: ["A. camp", "B. camped", "C. are going to camp", "D. were camping"], ans: "C", exp: "Dự định đã chuẩn bị đồ đạc dùng Tương lai gần: are going to camp." },
-            { q: "My uncle ___ a new red motorbike three days ago.", hint: "💡 Mốc thời gian quá khứ: 'three days ago'; động từ bất quy tắc của 'buy'.", opts: ["A. buys", "B. bought", "C. is buying", "D. is going to buy"], ans: "B", exp: "'three days ago' dùng Quá khứ đơn, dạng bất quy tắc là 'bought'." }
+            { q: "The baby is sleeping in the bedroom right now. ___ make any loud noise in the hallway!", hint: "💡 Vế thứ hai không có chủ ngữ đứng đầu, dùng để ra lệnh/yêu cầu không được làm ồn.", opts: ["A. Don't", "B. Shouldn't", "C. Not", "D. Doesn't"], ans: "A", exp: "Câu mệnh lệnh phủ định (không có chủ ngữ) bắt đầu bằng 'Don't + V'." },
+            { q: "Peter has a high temperature and a headache today. He ___ go outside to play football in the rain.", hint: "💡 Chú ý câu đã có chủ ngữ 'He' đứng trước chỗ trống và mang ý nghĩa khuyên không nên làm điều có hại.", opts: ["A. don't", "B. doesn't", "C. shouldn't", "D. should"], ans: "C", exp: "Câu có chủ ngữ 'He' diễn tả lời khuyên không nên làm gì dùng 'shouldn't'." },
+            { q: "___ on your helmet before you ride your bicycle to the sports centre, Nam!", hint: "💡 Câu không có chủ ngữ ở đầu, trực tiếp yêu cầu Nam đội mũ bảo hiểm.", opts: ["A. Put", "B. Putting", "C. Puts", "D. Should put"], ans: "A", exp: "Câu mệnh lệnh khẳng định bắt đầu bằng động từ nguyên thể (Put)." },
+            { q: "Your hands are very dirty after working in the garden. You ___ wash them with soap before lunch.", hint: "💡 Câu có chủ ngữ 'You' đứng trước chỗ trống, đưa ra lời khuyên giữ vệ sinh trước bữa trưa.", opts: ["A. should", "B. shouldn't", "C. don't", "D. let's"], ans: "A", exp: "Câu có chủ ngữ 'You' đưa ra lời khuyên nên làm gì dùng 'should'." },
+            { q: "___ swim in that deep river! Look at the warning sign near the bridge!", hint: "💡 Không có chủ ngữ ở đầu câu; đây là lời cảnh báo khẩn cấp ngăn cản hành động nguy hiểm.", opts: ["A. Shouldn't", "B. Don't", "C. Mustn't", "D. Not"], ans: "B", exp: "Câu mệnh lệnh phủ định đứng đầu câu dùng 'Don't + V'." },
+            { q: "My sister has a bad stomachache because she ate too much ice cream yesterday. She ___ see the doctor soon.", hint: "💡 Câu có chủ ngữ 'She' và động từ nguyên mẫu 'see' phía sau, khuyên bạn ấy nên đi khám.", opts: ["A. should", "B. shouldn't", "C. don't", "D. let's"], ans: "A", exp: "Lời khuyên nên làm gì khi có chủ ngữ 'She' dùng 'should'." },
+            { q: "It is going to snow heavily tonight. ___ forget to bring the little puppy inside the house!", hint: "💡 Câu mệnh lệnh nhắc nhở 'Đừng quên...' và không có chủ ngữ đứng đầu.", opts: ["A. Shouldn't", "B. Don't", "C. Doesn't", "D. Didn't"], ans: "B", exp: "Mệnh lệnh phủ định 'Đừng quên' dùng 'Don't forget...'." },
+            { q: "___ carefully to the tour guide when we visit the old castle tomorrow morning!", hint: "💡 Câu bắt đầu trực tiếp bằng động từ để nhắc nhở mọi người lắng nghe.", opts: ["A. Listen", "B. Listening", "C. Listens", "D. Listened"], ans: "A", exp: "Câu mệnh lệnh khẳng định đặt V nguyên thể đầu câu (Listen)." },
+            { q: "Children ___ eat too many sweets and chocolates at night because it is bad for their teeth.", hint: "💡 Chú ý chủ ngữ 'Children' đứng đầu câu và lý do 'bad for their teeth' ở phía sau.", opts: ["A. don't", "B. shouldn't", "C. should", "D. aren't"], ans: "B", exp: "Lời khuyên không nên làm điều có hại cho răng (có chủ ngữ 'Children') dùng 'shouldn't'." },
+            { q: "The stairs in the basement are dark and wet. ___ walk down there without a torch!", hint: "💡 Câu không có chủ ngữ đứng đầu, ngăn cản việc đi xuống cầu thang tối mà không có đèn pin.", opts: ["A. Shouldn't", "B. Don't", "C. Not", "D. Didn't"], ans: "B", exp: "Câu mệnh lệnh phủ định đặt 'Don't' ở đầu câu." },
+            { q: "Grandpa is tired because he worked on the farm all morning. You ___ bring him a cup of warm tea.", hint: "💡 Câu có chủ ngữ 'You', khuyên nên mang trà ấm mời ông.", opts: ["A. should", "B. shouldn't", "C. don't", "D. let's"], ans: "A", exp: "Lời khuyên nên làm điều tốt dùng 'should'." },
+            { q: "___ quiet, please! The teacher is explaining how to do the science project.", hint: "💡 Câu mệnh lệnh mở đầu bằng động từ 'to be' đứng trước tính từ 'quiet'.", opts: ["A. Be", "B. Is", "C. Are", "D. Should"], ans: "A", exp: "Câu mệnh lệnh khẳng định với tính từ dùng động từ nguyên thể 'Be'." },
+            { q: "Tom has an important English exam tomorrow morning, so he ___ watch cartoons late at night.", hint: "💡 Có chủ ngữ 'he', ngày mai thi nên khuyên không nên thức khuya xem hoạt hình.", opts: ["A. don't", "B. doesn't", "C. shouldn't", "D. should"], ans: "C", exp: "Lời khuyên không nên làm gì dùng 'shouldn't'." },
+            { q: "___ the window, please! It is very hot and sunny in this classroom right now.", hint: "💡 Câu yêu cầu lịch sự có từ 'please' và không có chủ ngữ đứng đầu câu.", opts: ["A. Open", "B. Opening", "C. Opens", "D. Opened"], ans: "A", exp: "Câu mệnh lệnh khẳng định bắt đầu bằng V nguyên thể (Open)." },
+            { q: "Look! The monkey at the zoo looks angry. ___ throw bananas or stones at it!", hint: "💡 Câu ngăn cản hành động trêu chọc thú trong sở thú, không có chủ ngữ đứng đầu.", opts: ["A. Shouldn't", "B. Don't", "C. Doesn't", "D. Not"], ans: "B", exp: "Mệnh lệnh phủ định bắt đầu bằng 'Don't'." },
+            { q: "When you have a sore throat and a cough, you ___ drink warm water with honey.", hint: "💡 Mệnh đề chính có chủ ngữ 'you', khuyên việc nên làm khi bị đau họng và ho.", opts: ["A. should", "B. shouldn't", "C. don't", "D. let's"], ans: "A", exp: "Khuyên nên uống nước ấm mật ong khi đau họng dùng 'should'." },
+            { q: "___ your wet umbrella on the sofa! Put it outside on the balcony, please.", hint: "💡 Câu đầu tiên không có chủ ngữ, yêu cầu không được để chiếc ô ướt lên ghế sofa.", opts: ["A. Shouldn't put", "B. Don't put", "C. Not put", "D. Doesn't put"], ans: "B", exp: "Câu mệnh lệnh phủ định: Don't + V nguyên thể (Don't put)." },
+            { q: "People ___ drop plastic bottles on the beach because it makes the ocean dirty.", hint: "💡 Câu có chủ ngữ 'People' ở đầu, khuyên mọi người không nên xả rác nhựa ra biển.", opts: ["A. don't", "B. shouldn't", "C. should", "D. aren't"], ans: "B", exp: "Lời khuyên không nên làm điều gây ô nhiễm dùng 'shouldn't'." },
+            { q: "The traffic light is turning red now. ___ your bicycle immediately, Jack!", hint: "💡 Câu gọi tên Jack ở cuối, đầu câu không có chủ ngữ, yêu cầu dừng xe ngay lập tức.", opts: ["A. Stop", "B. Stopping", "C. Stops", "D. Stopped"], ans: "A", exp: "Câu mệnh lệnh khẳng định đặt V nguyên thể đầu câu (Stop)." },
+            { q: "Mary hurt her back when she carried that heavy box yesterday. She ___ lift heavy things today.", hint: "💡 Đã bị đau lưng từ hôm qua nên hôm nay khuyên cô ấy không nên bê đồ nặng (có chủ ngữ 'She').", opts: ["A. don't", "B. doesn't", "C. shouldn't", "D. should"], ans: "C", exp: "Lời khuyên không nên làm gì dùng 'shouldn't'." }
         ]
     },
     4: {
         questions: [
-            { q: "The boy who lives next to my house ___ football in the yard right now.", hint: "💡 Mệnh đề quan hệ xác định chủ ngữ, phía sau có từ nhận biết 'right now'.", opts: ["A. plays", "B. played", "C. is playing", "D. is going to play"], ans: "C", exp: "'right now' dùng Hiện tại tiếp diễn: is playing." },
-            { q: "We ___ to the beach yesterday because it rained heavily all day.", hint: "💡 Từ nhận biết quá khứ 'yesterday' và từ nối chỉ lý do 'because'.", opts: ["A. don't go", "B. didn't go", "C. aren't going", "D. aren't going to go"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't go'." },
-            { q: "Look! The puppy which was born last month ___ behind the sofa.", hint: "💡 Lời nhắc 'Look!' hướng sự chú ý vào hành động của chú cún con đang diễn ra.", opts: ["A. runs", "B. ran", "C. is running", "D. is going to run"], ans: "C", exp: "'Look!' báo hiệu thì Hiện tại tiếp diễn: is running." },
-            { q: "She has saved enough pocket money. She ___ a storybook tomorrow.", hint: "💡 Đã tiết kiệm đủ tiền để thực hiện dự định mua sách vào ngày mai ('tomorrow').", opts: ["A. buys", "B. bought", "C. is going to buy", "D. was buying"], ans: "C", exp: "Dự định tương lai có sự chuẩn bị dùng Tương lai gần: is going to buy." },
-            { q: "My father usually ___ newspapers in the living room at 7 o'clock.", hint: "💡 Thói quen đọc báo hằng ngày có trạng từ 'usually' và giờ giấc 'at 7 o'clock'.", opts: ["A. reads", "B. read", "C. is reading", "D. is going to read"], ans: "A", exp: "Thói quen thường xuyên dùng Hiện tại đơn: reads." },
-            { q: "The birthday cake which Mom made two hours ago ___ very sweet.", hint: "💡 Sự việc làm bánh và thưởng thức đã diễn ra cách đây hai tiếng ('two hours ago').", opts: ["A. tastes", "B. tasted", "C. is tasting", "D. is going to taste"], ans: "B", exp: "'two hours ago' dùng Quá khứ đơn: tasted." },
-            { q: "Be quiet! The teacher ___ important notes on the blackboard.", hint: "💡 Cảnh báo giữ yên lặng 'Be quiet!' vì giáo viên đang viết bài trên bảng.", opts: ["A. writes", "B. wrote", "C. is writing", "D. is going to write"], ans: "C", exp: "'Be quiet!' dùng Hiện tại tiếp diễn: is writing." },
-            { q: "They ___ to London next summer because they have already booked the flight.", hint: "💡 Đã đặt vé máy bay xong xuôi cho chuyến đi mùa hè tới ('next summer').", opts: ["A. travel", "B. traveled", "C. are going to travel", "D. were traveling"], ans: "C", exp: "Kế hoạch chắc chắn có vé máy bay dùng Tương lai gần: are going to travel." },
-            { q: "Tigers never ___ grass because they are carnivores.", hint: "💡 Sự thật tự nhiên về loài hổ, kết hợp trạng từ 'never' và từ nối 'because'.", opts: ["A. eat", "B. ate", "C. are eating", "D. are going to eat"], ans: "A", exp: "Sự thật tự nhiên dùng Hiện tại đơn số nhiều: eat." },
-            { q: "Where ___ you when the sudden thunderstorm hit the town last night?", hint: "💡 Câu hỏi về vị trí của bạn trong quá khứ: 'last night'.", opts: ["A. are", "B. were", "C. was", "D. are going to be"], ans: "B", exp: "Quá khứ đơn của 'to be' đi với chủ ngữ 'you' là 'were'." },
-            { q: "The girl who won the first prize always ___ hard in the library after school.", hint: "💡 Thói quen học chăm chỉ có trạng từ 'always' và mốc 'after school'.", opts: ["A. study", "B. studies", "C. is studying", "D. studied"], ans: "B", exp: "Hiện tại đơn với chủ ngữ số ít 'The girl': studies." },
-            { q: "Listen! Someone ___ a beautiful violin melody in the room above us.", hint: "💡 'Listen!' báo hiệu tiếng đàn đang ngân vang ngay lúc này.", opts: ["A. plays", "B. played", "C. is playing", "D. is going to play"], ans: "C", exp: "'Listen!' dùng Hiện tại tiếp diễn: is playing." },
-            { q: "Look at that fragile glass on the edge of the table! It ___ down!", hint: "💡 Cái ly đặt chông chênh bên mép bàn, nguy cơ rơi vỡ sắp xảy ra.", opts: ["A. falls", "B. fell", "C. is going to fall", "D. was falling"], ans: "C", exp: "Dự đoán nguy cơ trước mắt dùng Tương lai gần: is going to fall." },
-            { q: "My uncle ___ his car in front of the house two days ago.", hint: "💡 Thời gian quá khứ xác định: 'two days ago'.", opts: ["A. repairs", "B. repaired", "C. is repairing", "D. is going to repair"], ans: "B", exp: "'two days ago' dùng Quá khứ đơn: repaired." },
-            { q: "Students in Vietnam ___ to school on Sundays.", hint: "💡 Lịch trình nghỉ học cố định vào các ngày Chủ nhật ('on Sundays').", opts: ["A. don't go", "B. doesn't go", "C. aren't going", "D. didn't go"], ans: "A", exp: "Hiện tại đơn phủ định số nhiều: don't go." },
-            { q: "What ___ she ___ in the kitchen at the moment?", hint: "💡 Câu hỏi có từ nhận biết 'at the moment' (ngay lúc này).", opts: ["A. does / cook", "B. did / cook", "C. is / cooking", "D. is / going to cook"], ans: "C", exp: "'at the moment' dùng Hiện tại tiếp diễn câu hỏi: is she cooking." },
-            { q: "The police officer who caught the robber ___ an award last week.", hint: "💡 Sự việc khen thưởng đã hoàn tất vào tuần trước: 'last week'.", opts: ["A. receives", "B. received", "C. is receiving", "D. is going to receive"], ans: "B", exp: "'last week' dùng Quá khứ đơn: received." },
-            { q: "I have packed my swimsuit. I ___ in the sea tomorrow afternoon.", hint: "💡 Đã chuẩn bị sẵn đồ bơi cho buổi chiều mai ('tomorrow afternoon').", opts: ["A. swim", "B. swam", "C. am going to swim", "D. was swimming"], ans: "C", exp: "Dự định tương lai có sự chuẩn bị dùng Tương lai gần: am going to swim." },
-            { q: "The sun ___ warmth and light to all living things every day.", hint: "💡 Chân lý khoa học tự nhiên lặp lại mỗi ngày ('every day').", opts: ["A. gives", "B. gave", "C. is giving", "D. is going to give"], ans: "A", exp: "Chân lý tự nhiên dùng Hiện tại đơn số ít: gives." },
-            { q: "They ___ their grandparents last weekend because their car was broken.", hint: "💡 Mốc thời gian quá khứ 'last weekend' kết hợp từ nối nguyên nhân 'because'.", opts: ["A. don't visit", "B. didn't visit", "C. aren't visiting", "D. aren't going to visit"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't visit'." }
+            { q: "Yesterday was my sister's birthday, and there ___ a big chocolate cake and twenty balloons in the living room.", hint: "💡 Chú ý mốc thời gian 'Yesterday' (quá khứ) và cụm danh từ đứng ngay sát sau chỗ trống là 'a big chocolate cake' (số ít).", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "C", exp: "Trong cấu trúc liệt kê, động từ chia theo danh từ đứng gần nhất ('a big chocolate cake' - số ít) ở quá khứ nên dùng 'There was'." },
+            { q: "We are going to have a picnic on the island tomorrow! ___ prepare some cheese sandwiches and apple juice tonight!", hint: "💡 Động từ sau chỗ trống là 'prepare' (nguyên thể) và cuối câu có dấu chấm than (!).", opts: ["A. How about", "B. What about", "C. Let's", "D. Shall"], ans: "C", exp: "Trước V nguyên thể (prepare) trong câu đề nghị dùng 'Let's'." },
+            { q: "Look! The floor in the supermarket is very wet now. ___ run, or you are going to fall down!", hint: "💡 Câu cảnh báo không có chủ ngữ ở đầu, ngăn cản hành động chạy trên sàn ướt.", opts: ["A. Shouldn't", "B. Don't", "C. Doesn't", "D. Not"], ans: "B", exp: "Câu mệnh lệnh phủ định mở đầu bằng 'Don't'." },
+            { q: "How about ___ our grandparents in the countryside this weekend? They always love seeing us!", hint: "💡 Xác định dạng đúng của động từ đi ngay sau cụm từ gợi ý 'How about'.", opts: ["A. visit", "B. visited", "C. visiting", "D. visits"], ans: "C", exp: "Cấu trúc: How about + V-ing (visiting)." },
+            { q: "When I opened the cupboard ten minutes ago, there ___ any bowls or plates inside it.", hint: "💡 Mốc thời gian 'ten minutes ago' (quá khứ), từ 'any' (phủ định) và danh từ số nhiều 'bowls'.", opts: ["A. isn't", "B. aren't", "C. wasn't", "D. weren't"], ans: "D", exp: "Quá khứ phủ định với danh từ số nhiều 'bowls' dùng 'weren't'." },
+            { q: "You ___ wear a warm coat and a scarf when you go out tonight because the wind is blowing strongly.", hint: "💡 Câu đã có chủ ngữ 'You' đứng đầu, đưa ra lời khuyên giữ ấm cơ thể.", opts: ["A. should", "B. shouldn't", "C. don't", "D. let's"], ans: "A", exp: "Có chủ ngữ 'You', khuyên nên làm gì dùng 'should'." },
+            { q: "Listen! There ___ someone playing the violin beautifully in the music room upstairs right now.", hint: "💡 'Listen!' và 'right now' chỉ hiện tại; đại từ bất định 'someone' luôn được tính là ngôi thứ 3 số ít.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "A", exp: "'someone' là số ít, ở hiện tại dùng 'There is'." },
+            { q: "The weather is sunny and warm this afternoon. What about ___ our new kites on the hill?", hint: "💡 Chọn dạng động từ thích hợp đứng sau cụm 'What about'.", opts: ["A. fly", "B. flew", "C. flying", "D. flies"], ans: "C", exp: "Cấu trúc: What about + V-ing (flying)." },
+            { q: "___ feed the sharks or dolphins when you visit the aquarium tomorrow!", hint: "💡 Câu không có chủ ngữ ở đầu, ra lệnh cấm cho cá mập hoặc cá heo ăn.", opts: ["A. Shouldn't", "B. Don't", "C. Doesn't", "D. Didn't"], ans: "B", exp: "Câu mệnh lệnh phủ định dùng 'Don't'." },
+            { q: "Last summer, my family camped near a lake, and there ___ lots of colorful fish swimming in the water.", hint: "💡 Thời gian 'Last summer' (quá khứ) và cụm 'lots of colorful fish' (nhiều con cá - số nhiều).", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "D", exp: "'lots of colorful fish' mang nghĩa số nhiều (nhiều con cá) trong quá khứ nên dùng 'There were'." },
+            { q: "My dad is washing his car in front of the house now. Let's ___ outside and help him!", hint: "💡 Đi sau 'Let's' là động từ ở dạng nguyên mẫu nào?", opts: ["A. go", "B. going", "C. went", "D. goes"], ans: "A", exp: "Cấu trúc: Let's + V nguyên thể (go)." },
+            { q: "Lucy has an earache today, so she ___ go swimming in the cold pool with her friends.", hint: "💡 Câu có chủ ngữ 'she', bị đau tai nên khuyên không nên đi bơi ở hồ nước lạnh.", opts: ["A. don't", "B. doesn't", "C. shouldn't", "D. should"], ans: "C", exp: "Lời khuyên không nên làm điều có hại khi có chủ ngữ 'she' dùng 'shouldn't'." },
+            { q: "___ there any milk in the bottle? My little sister is crying because she is hungry.", hint: "💡 Ngữ cảnh hiện tại ('is crying', 'is hungry') và danh từ không đếm được 'milk'.", opts: ["A. Is", "B. Are", "C. Was", "D. Were"], ans: "A", exp: "Câu hỏi hiện tại với danh từ không đếm được 'milk' dùng 'Is there...?'." },
+            { q: "___ your teeth carefully before you go to bed every night, Ben!", hint: "💡 Câu nhắc nhở trực tiếp Ben, đầu câu không có chủ ngữ.", opts: ["A. Brush", "B. Brushing", "C. Brushes", "D. Brushed"], ans: "A", exp: "Câu mệnh lệnh khẳng định bắt đầu bằng V nguyên thể (Brush)." },
+            { q: "We missed the bus five minutes ago! ___ taking a taxi to the train station so we aren't late?", hint: "💡 Quan sát động từ 'taking' (dạng V-ing) sau chỗ trống và dấu chấm hỏi cuối câu.", opts: ["A. Let's", "B. How about", "C. Shall we", "D. Should we"], ans: "B", exp: "Trước V-ing trong câu hỏi gợi ý dùng 'How about'." },
+            { q: "There ___ any computers or mobile phones when my great-grandmother was a little girl.", hint: "💡 Thời gian quá khứ ('when my great-grandmother was a little girl'), từ 'any' và danh từ số nhiều 'computers'.", opts: ["A. isn't", "B. aren't", "C. wasn't", "D. weren't"], ans: "D", exp: "Quá khứ phủ định với danh từ số nhiều dùng 'weren't'." },
+            { q: "You look very tired after the football match. ___ down on the sofa and drink some orange juice!", hint: "💡 Câu thứ hai không có chủ ngữ, trực tiếp bảo người nghe ngồi xuống ghế sofa nghỉ ngơi.", opts: ["A. Sit", "B. Sitting", "C. Sits", "D. Sat"], ans: "A", exp: "Câu mệnh lệnh khẳng định bắt đầu bằng V nguyên thể (Sit)." },
+            { q: "The movie about dinosaurs is going to start in ten minutes! Let's ___ our tickets at the gate now!", hint: "💡 Sau cấu trúc đề nghị 'Let's' cần chọn động từ dạng nào?", opts: ["A. buy", "B. buying", "C. bought", "D. buys"], ans: "A", exp: "Sau 'Let's' dùng động từ nguyên thể (buy)." },
+            { q: "Students ___ talk loudly or use mobile phones when they are studying in the library.", hint: "💡 Câu có chủ ngữ 'Students' ở đầu, khuyên răn về quy tắc ứng xử trong thư viện.", opts: ["A. don't", "B. shouldn't", "C. should", "D. aren't"], ans: "B", exp: "Lời khuyên không nên làm ồn trong thư viện (có chủ ngữ 'Students') dùng 'shouldn't'." },
+            { q: "___ there a big hospital near your house when you lived in the city three years ago?", hint: "💡 Câu hỏi ở thì quá khứ ('three years ago') với danh từ số ít 'a big hospital'.", opts: ["A. Is", "B. Are", "C. Was", "D. Were"], ans: "C", exp: "Câu hỏi quá khứ với danh từ số ít dùng 'Was there...?'." }
         ]
     },
     5: {
         questions: [
-            { q: "This is the hospital where my aunt ___ as a kind nurse every day.", hint: "💡 Mệnh đề quan hệ 'where' chỉ nơi làm việc hằng ngày ('every day').", opts: ["A. works", "B. worked", "C. is working", "D. is going to work"], ans: "A", exp: "Công việc cố định hằng ngày dùng Hiện tại đơn số ít: works." },
-            { q: "Look at the little boy! He ___ on the wet floor in front of the door!", hint: "💡 Bằng chứng sàn nhà đang trơn ướt; nguy cơ cậu bé sắp trượt ngã.", opts: ["A. slips", "B. slipped", "C. is going to slip", "D. was slipping"], ans: "C", exp: "Cảnh báo nguy cơ sắp xảy ra dựa trên dấu hiệu thực tế dùng Tương lai gần: is going to slip." },
-            { q: "Last night, the cat which was sleeping under the car suddenly ___ loudly.", hint: "💡 Mốc thời gian 'Last night' chỉ tiếng kêu bất ngờ của chú mèo.", opts: ["A. meows", "B. meowed", "C. is meowing", "D. is going to meow"], ans: "B", exp: "'Last night' dùng Quá khứ đơn: meowed." },
-            { q: "Right now, the students who joined the art club ___ pictures on the wall.", hint: "💡 Từ nhận biết 'Right now' (ngay bây giờ); chủ ngữ 'the students' là số nhiều.", opts: ["A. draw", "B. drew", "C. are drawing", "D. are going to draw"], ans: "C", exp: "'Right now' dùng Hiện tại tiếp diễn số nhiều: are drawing." },
-            { q: "My brother has an important test next week, so he ___ this weekend.", hint: "💡 Có bài kiểm tra nên bạn ấy dự định ôn tập vào cuối tuần này ('this weekend').", opts: ["A. reviews", "B. reviewed", "C. is going to review", "D. was reviewing"], ans: "C", exp: "Dự định có lý do rõ ràng dùng Tương lai gần: is going to review." },
-            { q: "Farmers usually ___ up early in the morning to work in the rice fields.", hint: "💡 Thói quen của các bác nông dân có trạng từ 'usually' và mốc 'in the morning'.", opts: ["A. get", "B. gets", "C. are getting", "D. got"], ans: "A", exp: "Hiện tại đơn chủ ngữ số nhiều 'Farmers' dùng 'get'." },
-            { q: "When we ___ in Da Lat two years ago, the weather was chilly in December.", hint: "💡 Mốc thời gian 'two years ago' và 'was chilly' chỉ chuyến đi trong quá khứ.", opts: ["A. are", "B. were", "C. was", "D. are going to be"], ans: "B", exp: "Quá khứ đơn của 'to be' đi với 'we' là 'were'." },
-            { q: "Hurry! The train which goes to Hanoi ___ the station in two minutes!", hint: "💡 'Hurry!' giục giã; đoàn tàu sắp sửa lăn bánh trong 2 phút tới.", opts: ["A. leaves", "B. left", "C. is going to leave", "D. was leaving"], ans: "C", exp: "Sự việc sắp xảy ra ngay trước mắt dùng Tương lai gần: is going to leave." },
-            { q: "She ___ seafood yesterday because she is allergic to shrimp.", hint: "💡 Hành động không ăn hải sản đã diễn ra ngày hôm qua: 'yesterday'.", opts: ["A. doesn't eat", "B. didn't eat", "C. isn't eating", "D. isn't going to eat"], ans: "B", exp: "Quá khứ đơn phủ định dùng 'didn't eat'." },
-            { q: "Listen! The baby who is sleeping in the bedroom ___ right now.", hint: "💡 Câu phủ định có 'Listen!' và 'right now': em bé đang không khóc.", opts: ["A. doesn't cry", "B. didn't cry", "C. isn't crying", "D. isn't going to cry"], ans: "C", exp: "'Listen!' và 'right now' dùng Hiện tại tiếp diễn phủ định: isn't crying." },
-            { q: "Water ___ at 0 degrees Celsius in winter.", hint: "💡 Chân lý khoa học tự nhiên về nhiệt độ đóng băng của nước.", opts: ["A. freezes", "B. froze", "C. is freezing", "D. is going to freeze"], ans: "A", exp: "Chân lý tự nhiên dùng Hiện tại đơn số ít: freezes." },
-            { q: "They have bought cinema tickets. They ___ an animated film at 8 PM tonight.", hint: "💡 Đã cầm vé xem phim trong tay, kế hoạch xem phim tối nay ('tonight').", opts: ["A. watch", "B. watched", "C. are going to watch", "D. were watching"], ans: "C", exp: "Kế hoạch đã chuẩn bị vé dùng Tương lai gần: are going to watch." },
-            { q: "The woman who lives opposite our house ___ roses in her garden yesterday.", hint: "💡 Hành động trồng hoa hồng diễn ra hôm qua: 'yesterday'.", opts: ["A. plants", "B. planted", "C. is planting", "D. is going to plant"], ans: "B", exp: "'yesterday' dùng Quá khứ đơn: planted." },
-            { q: "Why ___ you ___ loudly right now in the quiet library?", hint: "💡 Câu hỏi tại sao đang cười lớn ngay lúc này ('right now') trong thư viện.", opts: ["A. do / laugh", "B. did / laugh", "C. are / laughing", "D. are / going to laugh"], ans: "C", exp: "'right now' dùng Hiện tại tiếp diễn câu hỏi: are you laughing." },
-            { q: "Every Saturday morning, my sister ___ her bedroom before playing games.", hint: "💡 Thói quen dọn phòng vào mỗi sáng thứ Bảy: 'Every Saturday morning'.", opts: ["A. cleans", "B. cleaned", "C. is cleaning", "D. is going to clean"], ans: "A", exp: "Thói quen định kỳ dùng Hiện tại đơn số ít: cleans." },
-            { q: "Watch out! That tall ladder is shaking. It ___ down!", hint: "💡 Chiếc thang đang lắc lư trước mắt; nguy cơ đổ ngã sắp xảy ra.", opts: ["A. falls", "B. fell", "C. is going to fall", "D. was falling"], ans: "C", exp: "Cảnh báo nguy cơ trước mắt dùng Tương lai gần: is going to fall." },
-            { q: "We ___ to school yesterday morning because of the heavy flood.", hint: "💡 Sự việc nghỉ học vì ngập lụt đã diễn ra sáng hôm qua: 'yesterday morning'.", opts: ["A. don't go", "B. didn't go", "C. aren't going", "D. aren't going to go"], ans: "B", exp: "'yesterday morning' dùng Quá khứ đơn phủ định: didn't go." },
-            { q: "Look! The monkey which has a long tail ___ a banana on the tree branch.", hint: "💡 'Look!' báo hiệu chú khỉ đang ăn quả chuối trên cành cây ngay lúc này.", opts: ["A. eats", "B. ate", "C. is eating", "D. is going to eat"], ans: "C", exp: "'Look!' dùng Hiện tại tiếp diễn: is eating." },
-            { q: "The postman always ___ letters to our house at 9 AM.", hint: "💡 Thói quen giao thư hằng ngày có 'always' và giờ giấc 'at 9 AM'.", opts: ["A. delivers", "B. delivered", "C. is delivering", "D. is going to deliver"], ans: "A", exp: "Thói quen thường xuyên dùng Hiện tại đơn số ít: delivers." },
-            { q: "Tomorrow is a public holiday, so my family ___ a barbecue in the garden.", hint: "💡 Dự định mở tiệc nướng vào ngày mai ('Tomorrow') vì là ngày nghỉ lễ.", opts: ["A. has", "B. had", "C. is going to have", "D. was having"], ans: "C", exp: "Dự định tương lai dùng Tương lai gần: is going to have." }
+            { q: "When we walked through the forest yesterday afternoon, there ___ three cute rabbits hiding behind a rock.", hint: "💡 Mệnh đề thời gian có 'yesterday afternoon' (quá khứ) và danh từ số nhiều 'three cute rabbits'.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "D", exp: "Quá khứ đi với danh từ số nhiều 'three cute rabbits' dùng 'There were'." },
+            { q: "I am bored of watching TV. What about ___ a board game with our cousins in the living room?", hint: "💡 Nhìn cụm từ 'What about' trước chỗ trống để chọn dạng đúng của động từ.", opts: ["A. play", "B. played", "C. playing", "D. plays"], ans: "C", exp: "Cấu trúc: What about + V-ing (playing)." },
+            { q: "___ touch that hot saucepan on the cooker! Mum is cooking soup right now!", hint: "💡 Câu cảnh báo khẩn cấp không có chủ ngữ đứng đầu, ngăn cản chạm vào nồi đang nóng.", opts: ["A. Shouldn't", "B. Don't", "C. Doesn't", "D. Not"], ans: "B", exp: "Câu mệnh lệnh phủ định dùng 'Don't'." },
+            { q: "There ___ any hot water in the bathroom this morning, so I had to wash my face with cold water.", hint: "💡 Thời gian 'this morning' kết hợp vế sau 'had to' (quá khứ), từ 'any' (phủ định) và danh từ không đếm được 'water'.", opts: ["A. isn't", "B. aren't", "C. wasn't", "D. weren't"], ans: "C", exp: "Quá khứ phủ định với danh từ không đếm được 'water' dùng 'wasn't'." },
+            { q: "Your schoolbag is too heavy for your back. You ___ carry all those thick comic books to school every day.", hint: "💡 Câu có chủ ngữ 'You', khuyên không nên mang quá nhiều truyện tranh nặng đi học mỗi ngày.", opts: ["A. don't", "B. shouldn't", "C. should", "D. aren't"], ans: "B", exp: "Lời khuyên không nên làm điều gây hại cho lưng dùng 'shouldn't'." },
+            { q: "The sky is clear and full of stars tonight! ___ go up to the balcony and look at the moon!", hint: "💡 Động từ ngay sau chỗ trống là 'go' (nguyên thể) và cuối câu có dấu chấm than (!).", opts: ["A. How about", "B. What about", "C. Let's", "D. Shall"], ans: "C", exp: "Cấu trúc: Let's + V nguyên thể (go)." },
+            { q: "___ there many people waiting at the bus stop when the rain started last night?", hint: "💡 Câu hỏi ở quá khứ ('last night') với danh từ số nhiều bất quy tắc 'many people'.", opts: ["A. Was", "B. Were", "C. Are", "D. Is"], ans: "B", exp: "'people' là danh từ số nhiều, câu hỏi quá khứ dùng 'Were there...?'." },
+            { q: "___ off your dirty boots before you walk on the clean carpet in the living room, please!", hint: "💡 Câu yêu cầu có từ 'please', đầu câu không có chủ ngữ.", opts: ["A. Take", "B. Taking", "C. Takes", "D. Took"], ans: "A", exp: "Câu mệnh lệnh khẳng định bắt đầu bằng V nguyên thể (Take)." },
+            { q: "Mum is going to have a birthday party tomorrow evening. How about ___ a beautiful card for her right now?", hint: "💡 Động từ đứng sau 'How about' cần chia ở dạng nào?", opts: ["A. draw", "B. drew", "C. drawing", "D. draws"], ans: "C", exp: "Cấu trúc: How about + V-ing (drawing)." },
+            { q: "Look at the kitchen table! There ___ a bowl of hot pasta and two glasses of milk for your dinner now.", hint: "💡 Chú ý từ 'now' (hiện tại) và cụm danh từ đứng ngay sát sau chỗ trống là 'a bowl of hot pasta' (1 bát mì - số ít).", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "A", exp: "Chia theo cụm danh từ đầu tiên đứng ngay sau chỗ trống ('a bowl of hot pasta' - số ít) ở hiện tại nên dùng 'There is'." },
+            { q: "When you ride a motorbike on busy streets, you ___ always wear a safe helmet.", hint: "💡 Mệnh đề chính có chủ ngữ 'you', khuyên điều luôn luôn nên làm khi đi xe máy.", opts: ["A. should", "B. shouldn't", "C. don't", "D. let's"], ans: "A", exp: "Khuyên nên làm điều an toàn dùng 'should'." },
+            { q: "We have two hours before the train leaves. Let's ___ some postcards at the shop opposite the station!", hint: "💡 Tìm dạng đúng của động từ đi ngay sau cấu trúc 'Let's'.", opts: ["A. buy", "B. buying", "C. bought", "D. buys"], ans: "A", exp: "Sau 'Let's' luôn là động từ nguyên thể (buy)." },
+            { q: "___ eat that green apple! It fell on the dirty ground five minutes ago.", hint: "💡 Câu đầu không có chủ ngữ, ngăn cản việc ăn quả táo bị rơi xuống đất bẩn.", opts: ["A. Shouldn't", "B. Don't", "C. Doesn't", "D. Didn't"], ans: "B", exp: "Câu mệnh lệnh phủ định dùng 'Don't + V'." },
+            { q: "There ___ four kittens sleeping in the basket yesterday, but now I can only see three!", hint: "💡 Mệnh đề đầu có từ nhận biết 'yesterday' (quá khứ) và danh từ số nhiều 'four kittens'.", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "D", exp: "Quá khứ số nhiều ('four kittens') dùng 'There were'." },
+            { q: "My grandparents live in a quiet village. ___ taking the train to visit them next Sunday?", hint: "💡 Quan sát động từ 'taking' (V-ing) ngay sau chỗ trống và dấu chấm hỏi cuối câu.", opts: ["A. Let's", "B. What about", "C. Shall we", "D. Should we"], ans: "B", exp: "Cấu trúc câu hỏi gợi ý với V-ing: What about + V-ing...?" },
+            { q: "Paul has a bad cough today, so he ___ drink cold soda or eat ice cream.", hint: "💡 Câu có chủ ngữ 'he', đang bị ho nên khuyên không nên uống nước ngọt lạnh hay ăn kem.", opts: ["A. don't", "B. doesn't", "C. shouldn't", "D. should"], ans: "C", exp: "Lời khuyên không nên làm điều có hại cho sức khỏe dùng 'shouldn't'." },
+            { q: "___ there any treasure inside the pirate's box when the boys opened it in the story?", hint: "💡 Câu hỏi trong quá khứ ('when the boys opened it') và 'treasure' (kho báu) là danh từ không đếm được.", opts: ["A. Is", "B. Are", "C. Was", "D. Were"], ans: "C", exp: "'treasure' là danh từ không đếm được, trong câu hỏi quá khứ dùng 'Was there...?'." },
+            { q: "It is raining outside right now. ___ your raincoat before you walk to the bus stop!", hint: "💡 Câu mệnh lệnh khẳng định không có chủ ngữ đứng đầu, nhắc mặc áo mưa.", opts: ["A. Put on", "B. Putting on", "C. Puts on", "D. Putted on"], ans: "A", exp: "Câu mệnh lệnh khẳng định đặt V nguyên thể đầu câu (Put on)." },
+            { q: "The sports centre is very crowded on Saturday afternoons. Let's ___ early tomorrow morning to play badminton!", hint: "💡 Sau 'Let's' cần chọn động từ ở dạng nguyên mẫu nào?", opts: ["A. go", "B. going", "C. went", "D. goes"], ans: "A", exp: "Cấu trúc: Let's + V nguyên thể (go)." },
+            { q: "Look! There ___ a dolphin and two whales swimming near our boat right now!", hint: "💡 'Look!' và 'right now' chỉ hiện tại; danh từ đứng ngay sát sau chỗ trống là 'a dolphin' (số ít).", opts: ["A. is", "B. are", "C. was", "D. were"], ans: "A", exp: "Khi liệt kê sau 'There', động từ to be hòa hợp với danh từ đầu tiên đứng sát nó ('a dolphin' - số ít) ở hiện tại nên dùng 'There is'." }
         ]
     }
 };
 
-function switchTab(num) {
-    document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
-        btn.classList.toggle('active', idx + 1 === num);
-    });
-    document.querySelectorAll('.exercise-panel').forEach((p, idx) => {
-        p.classList.toggle('active', idx + 1 === num);
-    });
+function clearActiveTabs() {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.exercise-panel').forEach(p => p.classList.remove('active'));
+}
+
+function switchExTab(num) {
+    clearActiveTabs();
+    document.getElementById(`tab-ex-${num}`).classList.add('active');
+    document.getElementById(`panel-ex${num}`).classList.add('active');
+}
+
+function switchAnsTab(num) {
+    if (!unlockedState[num]) {
+        alert(`🔒 Đáp án Bài ${num} đang bị khóa!\n\nEm cần hoàn thành Bài ${num} và đạt ít nhất ${TEACHER_CONFIG.unlockThreshold}/20 câu đúng để mở khóa phần Đáp án & Giải thích chi tiết nhé!`);
+        return;
+    }
+    clearActiveTabs();
+    document.getElementById(`tab-ans-${num}`).classList.add('active');
+    document.getElementById(`panel-ans${num}`).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function toggleHint(qId) {
@@ -549,21 +695,25 @@ function toggleHint(qId) {
 }
 
 function renderExercises() {
-    const container = document.getElementById('exercise-container');
-    let html = '';
+    const exContainer = document.getElementById('exercise-container');
+    const ansContainer = document.getElementById('answer-container');
+    let exHtml = '';
+    let ansHtml = '';
 
     for (let exNum = 1; exNum <= 5; exNum++) {
         const exData = quizData[exNum];
-        html += `
+        exHtml += `
             <div class="exercise-panel ${exNum === 1 ? 'active' : ''}" id="panel-ex${exNum}">
-                <div class="panel-header">Bài ${exNum}:</div>
+                <div class="panel-header">
+                    <span>Bài ${exNum}:</span>
+                </div>
                 <form id="form-ex${exNum}">
         `;
 
         exData.questions.forEach((item, index) => {
             const qNum = index + 1;
             const qId = `ex${exNum}-q${qNum}`;
-            html += `
+            exHtml += `
                 <div class="question-card" id="${qId}">
                     <div class="question-top">
                         <div class="question-title">Câu ${qNum}: ${item.q}</div>
@@ -575,7 +725,7 @@ function renderExercises() {
 
             item.opts.forEach(opt => {
                 const optVal = opt.charAt(0);
-                html += `
+                exHtml += `
                     <label class="opt-label">
                         <input type="radio" name="${qId}" value="${optVal}">
                         <span>${opt}</span>
@@ -583,26 +733,62 @@ function renderExercises() {
                 `;
             });
 
-            html += `
+            exHtml += `
                     </div>
-                    <div class="explanation" id="exp-${qId}"></div>
+                    <div class="feedback-status" id="st-${qId}"></div>
                 </div>
             `;
         });
 
-        html += `
+        exHtml += `
                 </form>
                 <button type="button" class="btn-submit" onclick="checkExercise(${exNum})">Check Bài ${exNum}</button>
                 <div id="result-ex${exNum}" class="result-panel"></div>
             </div>
         `;
+
+        ansHtml += `
+            <div class="exercise-panel" id="panel-ans${exNum}">
+                <div class="panel-header">
+                    <span style="color: #047857;">🔓 Đáp Án & Giải Thích Chi Tiết - Bài ${exNum}</span>
+                    <button type="button" class="btn-submit" style="margin-top:0; padding: 8px 16px; font-size: 13px;" onclick="switchExTab(${exNum})">&larr; Quay lại Bài ${exNum}</button>
+                </div>
+                <div id="ans-list-ex${exNum}"></div>
+            </div>
+        `;
     }
 
-    container.innerHTML = html;
+    exContainer.innerHTML = exHtml;
+    ansContainer.innerHTML = ansHtml;
+}
+
+function renderAnswerKeyContent(exNum) {
+    const listContainer = document.getElementById(`ans-list-ex${exNum}`);
+    const questions = quizData[exNum].questions;
+    let html = '';
+
+    questions.forEach((item, index) => {
+        const qNum = index + 1;
+        const userChoice = studentChoices[exNum][qNum] || "Chưa chọn";
+        const isCorrect = userChoice === item.ans;
+        const fullAnsOption = item.opts.find(o => o.startsWith(item.ans)) || item.ans;
+
+        html += `
+            <div class="ans-key-card ${isCorrect ? '' : 'user-wrong'}">
+                <div class="ans-key-q">Câu ${qNum}: ${item.q}</div>
+                <div class="ans-key-detail">
+                    ${isCorrect ? '✅' : '❌'} Lựa chọn của em: <b>${userChoice}</b> &nbsp;|&nbsp; 🎯 Đáp án đúng: <b>${fullAnsOption}</b>
+                </div>
+                <div class="ans-key-exp">💡 <b>Giải thích:</b> ${item.exp}</div>
+            </div>
+        `;
+    });
+
+    listContainer.innerHTML = html;
 }
 
 function getBadge(score) {
-    if (score === 20) return "🏆 BẬC THẦY 4 THÌ TIẾNG ANH (20/20)";
+    if (score === 20) return "🏆 BẬC THẦY NGỮ PHÁP MOVERS (20/20)";
     if (score >= 16) return "🌟 HUY HIỆU THÔNG THÁI (Rất Giỏi)";
     if (score >= 12) return "👍 HUY HIỆU TẬP TRUNG (Khá)";
     return "💪 HUY HIỆU CỐ GẮNG (Cần luyện thêm)";
@@ -627,35 +813,67 @@ function checkExercise(exNum) {
         const qNum = index + 1;
         const qId = `ex${exNum}-q${qNum}`;
         const qDiv = document.getElementById(qId);
-        const expDiv = document.getElementById(`exp-${qId}`);
+        const stDiv = document.getElementById(`st-${qId}`);
         const selected = document.querySelector(`input[name="${qId}"]:checked`);
 
         let statusText = "";
         let color = "#dc2626";
 
         if (selected) {
+            studentChoices[exNum][qNum] = selected.value;
             if (selected.value === item.ans) {
                 score++;
                 qDiv.className = "question-card correct" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
-                expDiv.innerHTML = `✅ Chính xác! <i>(${item.exp})</i>`;
-                expDiv.style.color = "var(--success)";
+                stDiv.innerHTML = `✅ Chính xác!`;
+                stDiv.style.color = "var(--success)";
                 statusText = `<b>Đúng</b> (Chọn ${selected.value})`;
                 color = "#047857";
             } else {
                 qDiv.className = "question-card incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
-                expDiv.innerHTML = `❌ Chưa đúng. Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
-                expDiv.style.color = "var(--danger)";
+                stDiv.innerHTML = `❌ Chưa đúng! Em hãy kiểm tra và chọn lại nhé.`;
+                stDiv.style.color = "var(--danger)";
                 statusText = `<b>Sai</b> (Chọn ${selected.value} - Đáp án đúng: ${item.ans})`;
             }
         } else {
+            studentChoices[exNum][qNum] = "Chưa chọn";
             qDiv.className = "question-card incorrect" + (qDiv.classList.contains('show-hint') ? " show-hint" : "");
-            expDiv.innerHTML = `⚠️ Em chưa chọn đáp án! Đáp án đúng là <b>${item.ans}</b>. <i>(${item.exp})</i>`;
-            expDiv.style.color = "var(--warning)";
+            stDiv.innerHTML = `⚠️ Em chưa chọn đáp án cho câu này!`;
+            stDiv.style.color = "var(--warning)";
             statusText = `<b>Chưa chọn</b> (Đáp án đúng: ${item.ans})`;
         }
 
         detailsHTMLArr.push(`<p style="margin: 4px 0; color: ${color};"><b>Câu ${qNum}:</b> ${item.q}<br>&rarr; Trạng thái: ${statusText}</p>`);
     });
+
+    let unlockHTML = '';
+    if (score >= TEACHER_CONFIG.unlockThreshold) {
+        unlockedState[exNum] = true;
+        const ansTabBtn = document.getElementById(`tab-ans-${exNum}`);
+        ansTabBtn.classList.add('unlocked');
+        ansTabBtn.innerHTML = `🔓 Đáp án Bài ${exNum}`;
+        renderAnswerKeyContent(exNum);
+
+        unlockHTML = `
+            <div class="unlock-notice unlocked">
+                🎉 Chúc mừng! Em đã đạt ${score}/${total} câu đúng (tối thiểu ${TEACHER_CONFIG.unlockThreshold}/20) và mở khóa thành công phần <b>Đáp án & Giải thích Bài ${exNum}</b>!<br>
+                <button type="button" class="btn-view-ans" onclick="switchAnsTab(${exNum})">🔓 Xem Đáp Án & Giải Thích Bài ${exNum}</button>
+            </div>
+        `;
+    } else if (unlockedState[exNum]) {
+        renderAnswerKeyContent(exNum);
+        unlockHTML = `
+            <div class="unlock-notice unlocked">
+                🔓 Tab <b>Đáp án Bài ${exNum}</b> đã được mở khóa từ lần đạt điểm trước.<br>
+                <button type="button" class="btn-view-ans" onclick="switchAnsTab(${exNum})">🔓 Xem Đáp Án & Giải Thích Bài ${exNum}</button>
+            </div>
+        `;
+    } else {
+        unlockHTML = `
+            <div class="unlock-notice locked">
+                🔒 Em cần làm đúng ít nhất <b>${TEACHER_CONFIG.unlockThreshold}/${total} câu</b> để mở khóa Tab Đáp án & Giải thích của Bài ${exNum} (Hiện tại: <b>${score}/${total}</b>). Hãy xem lại các câu báo đỏ và bấm Check lại nhé!
+            </div>
+        `;
+    }
 
     const resultBox = document.getElementById(`result-ex${exNum}`);
     resultBox.style.display = "block";
@@ -665,6 +883,7 @@ function checkExercise(exNum) {
         <div class="badge-pill">${badge}</div>
         <h3 style="color: var(--primary); margin: 6px 0;">📊 Kết Quả Bài ${exNum}: ${score}/${total} Câu Đúng</h3>
         <p style="font-size: 14px;"><b>Học sinh:</b> ${studentName}</p>
+        ${unlockHTML}
         <div id="email-status-ex${exNum}" class="status-sending">⏳ Đang gửi kết quả bài làm...</div>
     `;
 
@@ -688,7 +907,7 @@ function checkExercise(exNum) {
             st.innerHTML = "📧 ĐÃ GỬI BÀI THÀNH CÔNG!";
         }
     })
-    .catch(err => {
+    .catch(() => {
         const st = document.getElementById(`email-status-ex${exNum}`);
         if (st) {
             st.className = "status-sending";
